@@ -40,4 +40,5 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
+	
 </beans:beans>
