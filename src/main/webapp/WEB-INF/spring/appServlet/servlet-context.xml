@@ -23,6 +23,7 @@
 	</beans:bean>
 	
 	
+	
 	<!-- 파일 업로드 -->
 	<beans:bean id="multipartResolver"
 	   class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -38,4 +39,5 @@
 				<beans:value>messages.validation</beans:value>
 			</beans:list>
 		</beans:property>
+	</beans:bean>
 </beans:beans>
