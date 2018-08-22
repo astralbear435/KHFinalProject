@@ -9,6 +9,10 @@
 	Hello world!  
 </h1>
 
+<<<<<<< HEAD
 <P>  The time on the server is ${serverTime}. 100</P>
+=======
+<P>  The time on the server is ${serverTime}. 88</P>
+>>>>>>> parent of 13e18c2... 9
 </body>
 </html>
