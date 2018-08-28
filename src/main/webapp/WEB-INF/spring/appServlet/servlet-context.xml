@@ -22,8 +22,36 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- tiles 설정 -->
+	<beans:bean id="tilesConfigurer"
+	    class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list>
+				<beans:value>/WEB-INF/tiles-def/admin.xml</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
 	
+	<beans:bean 
+	   class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<beans:property name="viewClass"
+		 value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+		<beans:property name="order" value="1"/>
+	</beans:bean>
+
+	<!-- popup창 또는 Ajax 통신 등 tiles를 이용하지 않고
+	JSP를 호출해야 하는 경우 -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="2"/>
+	</beans:bean>
 	
+	<!-- 파일 다운로드 -->
+	<beans:bean 
+	  class="org.springframework.web.servlet.view.BeanNameViewResolver"
+	  p:order="0"/>
+	  
 	<!-- 파일 업로드 -->
 	<beans:bean id="multipartResolver"
 	   class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -40,5 +68,8 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
+
+	<!-- 데이터 작업 없이 뷰 호출 - 메인페이지 -->
+	<view-controller path="/admin/admin.do" view-name="admin"/>
 	
 </beans:beans>
