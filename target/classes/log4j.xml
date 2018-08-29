@@ -14,6 +14,10 @@
 	<logger name="kr.spring.finalproject">
 		<level value="info" />
 	</logger>
+		<!-- Application Loggers -->
+	<logger name="kr.spring">
+		<level value="debug" />
+	</logger>
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
