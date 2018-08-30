@@ -22,6 +22,7 @@ public class UploadFileUtils {
         String savedName = uuid.toString() + "_" + originalName;
         // 업로드할 디렉토리(날짜별 폴더) 생성 
         String savedPath = calcPath(uploadPath);
+        System.out.println(savedPath);
         // 파일 경로(기존의 업로드경로+날짜별경로), 파일명을 받아 파일 객체 생성
         File target = new File(uploadPath + savedPath, savedName);
         // 임시 디렉토리에 업로드된 파일을 지정된 디렉토리로 복사
@@ -47,7 +48,7 @@ public class UploadFileUtils {
         // 저장할 파일명 = UUID + 원본이름
         String savedName = uuid.toString() + "_" + originalName; 
         String mainPath = "\\mainImage";
-        String thumbnailPath = "\\thumbnailPath";
+        makeDir(uploadPath, mainPath);
         // 파일 경로, 파일명을 받아 파일 객체 생성
         File target = new File(uploadPath+mainPath ,savedName);
         // 임시 디렉토리에 업로드된 파일을 지정된 디렉토리로 복사
@@ -56,15 +57,14 @@ public class UploadFileUtils {
         // 파일명이 aaa.bbb.ccc.jpg일 경우 마지막 마침표를 찾기 위해
         String formatName = originalName.substring(originalName.lastIndexOf(".")+1);
         String uploadedFileName = null;
-        System.out.println(uploadPath+thumbnailPath);
         // 이미지 파일은 썸네일 사용
         if (MediaUtils.getMediaType(formatName) != null) {
             // 썸네일 생성
-            uploadedFileName = makeThumbnail(uploadPath, uploadPath+thumbnailPath, savedName);
+            uploadedFileName = makeThumbnail(uploadPath, mainPath, savedName);
         // 나머지는 아이콘
         } else {
             // 아이콘 생성
-            uploadedFileName = makeIcon(uploadPath, uploadPath+thumbnailPath, savedName);
+            uploadedFileName = makeIcon(uploadPath, mainPath, savedName);
         }
         return uploadedFileName;
     }

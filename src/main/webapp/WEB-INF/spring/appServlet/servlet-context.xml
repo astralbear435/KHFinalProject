@@ -73,5 +73,15 @@
 
 	<!-- 데이터 작업 없이 뷰 호출 - 메인페이지 -->
 	<view-controller path="/admin/admin.do" view-name="admin"/>
-	
+	<!-- 파일업로드에 필요한 bean -->
+<beans:bean id="mulitpartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <!-- 파일업로드 용량 -->
+    <beans:property name="maxUploadSize" value="10485760"/>
+</beans:bean>
+<!-- 파일업로드를 위한 디렉토리 설정 -->
+<!-- String uploadPath = new String("업로드 경로") -->
+<beans:bean id="uploadPath" class="java.lang.String">
+    <!-- 파일업로드 디렉토리-->
+    <beans:constructor-arg value="D:\\javaWork\\workspace_spring\\KHFinalProject\\src\\main\\webapp\\upload"/>
+</beans:bean>
 </beans:beans>
