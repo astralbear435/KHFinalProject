@@ -77,7 +77,18 @@
 		             pointcut-ref="servicePublicMethod"/>              
 	</aop:config>
 
-
+<!-- mybatis 설정 -->
+	<bean id="sqlSessionFactory"
+	      class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/> 
+		<property name="typeAliasesPackage" 
+		                   value="kr.spring.admin.mainpage.domain"/>               
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" 
+		              value="kr.spring.admin.mainpage.dao" />
+	</bean>
+	
 	<!-- 암호화,복호화 알고리즘 처리 -->
 	<bean id="cipherAES" class="kr.spring.util.CipherTemplate">
 		<property name="algorithm" value="AES"/>                                     

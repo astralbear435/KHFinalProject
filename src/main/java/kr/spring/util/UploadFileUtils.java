@@ -74,13 +74,10 @@ public class UploadFileUtils {
         // File.separator : 디렉토리 구분자(\\)
         // 연도, ex) \\2017 
         String yearPath = File.separator + cal.get(Calendar.YEAR);
-        System.out.println(yearPath);
         // 월, ex) \\2017\\03
         String monthPath = yearPath + File.separator + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
-        System.out.println(monthPath);
         // 날짜, ex) \\2017\\03\\01
         String datePath = monthPath + File.separator + new DecimalFormat("00").format(cal.get(Calendar.DATE));
-        System.out.println(datePath);
         // 디렉토리 생성 메서드 호출
         makeDir(uploadPath, yearPath, monthPath, datePath);
         return datePath;

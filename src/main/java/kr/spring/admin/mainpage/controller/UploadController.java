@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.spring.admin.mainpage.domain.MainImageCommand;
+import kr.spring.admin.mainpage.service.MainImageService;
 import kr.spring.util.MediaUtils;
 import kr.spring.util.UploadFileUtils;
 
@@ -27,6 +29,11 @@ public class UploadController {
     @Resource(name="uploadPath")
     String uploadPath;
     
+    String fN;
+  
+    @Resource
+	private MainImageService mainImageService;
+    Integer order = 0; 
 	private Logger log = Logger.getLogger(this.getClass());
 
     @RequestMapping(value="/admin/pageSetup/mainPage.do", method=RequestMethod.GET)
@@ -42,7 +49,18 @@ public class UploadController {
     	log.debug("originalName : "+file.getOriginalFilename());
     	log.debug("size : "+file.getSize());
     	log.debug("contentType : "+file.getContentType());
-        return new ResponseEntity<String>(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()), HttpStatus.OK);
+    	fN = UploadFileUtils.uploadMain(uploadPath, file.getOriginalFilename(), file.getBytes());
+    	MainImageCommand mainimage = new MainImageCommand();
+    	mainimage.setMain_img_name(fN.substring(fN.indexOf("s_")+2));
+    	mainimage.setS_main_img_name(fN.substring(fN.indexOf("s_")));
+    	if(mainImageService.selectImageCount()==0) {
+    		order=1;
+    	}else {
+    		order=mainImageService.selectImageCount()+1;
+    	}
+    		mainimage.setMain_order(order);
+    	mainImageService.insertMainImage(mainimage);
+        return new ResponseEntity<String>(fN, HttpStatus.OK);
     }
     // 6. 이미지 표시 매핑
     @ResponseBody // view가 아닌 data리턴
@@ -72,6 +90,7 @@ public class UploadController {
                 // 바이트배열을 스트링으로 : new String(fileName.getBytes("utf-8"),"iso-8859-1") * iso-8859-1 서유럽언어, 큰 따옴표 내부에  " \" 내용 \" "
                 // 파일의 한글 깨짐 방지
                 headers.add("Content-Disposition", "attachment; filename=\""+new String(fileName.getBytes("utf-8"), "iso-8859-1")+"\"");
+                System.out.println("이미지: "+fileName);
                 //headers.add("Content-Disposition", "attachment; filename='"+fileName+"'");
             }
             // 바이트배열, 헤더, HTTP상태코드
@@ -100,6 +119,7 @@ public class UploadController {
             // 썸네일 이미지 파일 추출
             String front = fileName.substring(0, 12);
             String end = fileName.substring(14);
+            System.out.println(front + end);
             // 썸네일 이미지 삭제
             new File(uploadPath + (front + end).replace('/', File.separatorChar)).delete();
         }
