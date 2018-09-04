@@ -20,8 +20,8 @@ public class MainImageServiceImpl implements MainImageService {
 	}
 
 	@Override
-	public void deleteMainImage(Integer num) {
-		mainImageMapper.deleteMainImage(num);
+	public void deleteMainImage(String s_img) {
+		mainImageMapper.deleteMainImage(s_img);
 		
 	}
 

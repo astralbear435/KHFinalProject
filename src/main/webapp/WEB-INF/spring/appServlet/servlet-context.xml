@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<context:component-scan base-package="kr.spring.admin.mainpage.controller"/>
-	<context:component-scan base-package="kr.spring.visitor.controller"></context:component-scan>
+	<context:component-scan base-package="kr.spring.visitor.controller"/>
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
@@ -30,7 +30,6 @@
 		<beans:property name="definitions">
 			<beans:list>
 				<beans:value>/WEB-INF/tiles-def/admin.xml</beans:value>
-				<beans:value>/WEB-INF/tiles-def/admin_mainPage.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
