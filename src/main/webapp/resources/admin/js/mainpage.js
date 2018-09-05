@@ -31,7 +31,7 @@ $(document).ready(function(){
 	                str = "<div><a href='displayFile.do?fileName="+data+"'>"+getOriginalName(data)+"</a>";
 	            }
 	            // 삭제 버튼
-	            str += "<span data-src="+data+"><i class='fa fa-fw fa-close'></i></span></div>";
+	            str += "<br><span data-src="+data+"><i class='fa fa-fw fa-close'></i></span></div>";
 	            $(".uploadedList").append(str);
 	        }
 	    });

@@ -82,12 +82,14 @@
 	      class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/> 
 		<property name="typeAliasesPackage" 
-		                   value="kr.spring.admin.mainpage.domain,
+		                   value="kr.spring.member.domain,
+		                   		  kr.spring.admin.mainpage.domain,
 		                   		  kr.spring.visitor.domain"/>               
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" 
-		              value="kr.spring.admin.mainpage.dao,
+		              value="kr.spring.member.dao,
+		              		 kr.spring.admin.mainpage.dao,
 		              		 kr.spring.visitor.dao" />
 	</bean>
 	

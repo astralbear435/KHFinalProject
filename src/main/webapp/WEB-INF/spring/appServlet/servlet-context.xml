@@ -7,8 +7,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
+	<context:component-scan base-package="kr.spring.member.controller" />
 	<context:component-scan base-package="kr.spring.admin.mainpage.controller"/>
+	<context:component-scan base-package="kr.spring.admin.notice.controller"/>
 	<context:component-scan base-package="kr.spring.visitor.controller"/>
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -72,7 +73,7 @@
 	</beans:bean>
 
 	<!-- 데이터 작업 없이 뷰 호출 - 메인페이지 -->
-	<view-controller path="/admin/admin.do" view-name="admin"/>
+	<view-controller path="/admin/main.do" view-name="admin"/>
 	<!-- 파일업로드에 필요한 bean -->
 <beans:bean id="mulitpartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
     <!-- 파일업로드 용량 -->
@@ -84,4 +85,10 @@
     <!-- 파일업로드 디렉토리-->
     <beans:constructor-arg value="D:\\javaWork\\workspace_spring\\KHFinalProject\\src\\main\\webapp\\upload"/>
 </beans:bean>
+<interceptors>
+		<interceptor>
+			<mapping path="/admin/main.do"/>
+			<beans:bean class="kr.spring.interceptor.AdminLoginCheckInterceptor"/>
+		</interceptor>
+</interceptors>
 </beans:beans>

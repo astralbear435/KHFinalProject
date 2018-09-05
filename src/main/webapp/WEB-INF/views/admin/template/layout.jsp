@@ -5,6 +5,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<%
+    String ipAddress = (String) request.getRemoteAddr();
+    //
+    if(ipAddress.equals("0:0:0:0:0:0:0:1")||ipAddress.equals("192.168.10.3")) {
+%>
+
+<%     
+    } else {
+%>
+        <script type="text/javascript">
+            alert("외부 접속이라 접근 금지");
+            history.back();
+        </script>
+<%
+        return;
+    }
+%>
 <title><tiles:getAsString name="title"/></title>
 <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">

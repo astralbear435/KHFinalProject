@@ -119,14 +119,11 @@ public class UploadController {
             // 썸네일 이미지 파일 추출
             String front = fileName.substring(0, 11);
             String end = fileName.substring(13);
-            System.out.println("front : "+ front);
-            System.out.println("emd : "+end);
             // 썸네일 이미지 삭제
             new File(uploadPath + (front + end).replace('/', File.separatorChar)).delete();
         }
         // 원본 파일 삭제
         new File(uploadPath + fileName.replace('/', File.separatorChar)).delete();
-        System.out.println(fileName);
         mainImageService.deleteMainImage(fileName.substring(fileName.indexOf("s_")));
         // 데이터와 http 상태 코드 전송
         return new ResponseEntity<String>("deleted", HttpStatus.OK);
