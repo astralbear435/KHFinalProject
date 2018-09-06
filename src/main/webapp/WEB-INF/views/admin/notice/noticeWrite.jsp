@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/admin/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/admin/dist/css/skins/_all-skins.min.css">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <!-- Content Header (Page header) -->
 <section class="content-header">
 	<h1>
@@ -20,114 +26,59 @@
 			<h3 class="box-title">공지사항 작성</h3>
 		</div>
 		<div class="box-body">
-			<div class="input-group">
-				<span class="input-group-addon">@</span> <input type="text"
-					class="form-control" placeholder="Username">
-			</div>
-			<br>
-
-			<div class="input-group">
-				<input type="text" class="form-control"> <span
-					class="input-group-addon">.00</span>
-			</div>
-			<br>
-
-			<div class="input-group">
-				<span class="input-group-addon">$</span> <input type="text"
-					class="form-control"> <span class="input-group-addon">.00</span>
-			</div>
-
-			<h4>With icons</h4>
-
-			<div class="input-group">
-				<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-				<input type="email" class="form-control" placeholder="Email">
-			</div>
-			<br>
-
-			<div class="input-group">
-				<input type="text" class="form-control"> <span
-					class="input-group-addon"><i class="fa fa-check"></i></span>
-			</div>
-			<br>
-
-			<div class="input-group">
-				<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-				<input type="text" class="form-control"> <span
-					class="input-group-addon"><i class="fa fa-ambulance"></i></span>
-			</div>
-
-			<h4>With checkbox and radio inputs</h4>
-
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="input-group">
-						<span class="input-group-addon"> <input type="checkbox">
-						</span> <input type="text" class="form-control">
+			<form:form commandName="command" action="write.do" id="register_form"
+				enctype="multipart/form-data">
+				<form:hidden path="n_id" />
+				<form:errors element="div" cssClass="error-color" />
+				<ul>
+					<li><label for="n_subject">제목</label> <form:input path="n_subject" />
+						<form:errors path="n_subject" cssClass="error-color" /></li>
+					<li><div class="box-body pad">
+					<form:textarea id="editor1" path="n_content"/>
+							
+					
 					</div>
-					<!-- /input-group -->
+					</li>
+				</ul>
+				<div class="align-center">
+					<input type="submit" value="전송"> <input type="button"
+						value="목록" onclick="location.href='list.do'">
 				</div>
-				<!-- /.col-lg-6 -->
-				<div class="col-lg-6">
-					<div class="input-group">
-						<span class="input-group-addon"> <input type="radio">
-						</span> <input type="text" class="form-control">
-					</div>
-					<!-- /input-group -->
-				</div>
-				<!-- /.col-lg-6 -->
-			</div>
-			<!-- /.row -->
-
-			<h4>With buttons</h4>
-
-			<p class="margin">
-				Large:
-				<code>.input-group.input-group-lg</code>
-			</p>
-
-			<div class="input-group input-group-lg">
-				<div class="input-group-btn">
-					<button type="button" class="btn btn-warning dropdown-toggle"
-						data-toggle="dropdown">
-						Action <span class="fa fa-caret-down"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li class="divider"></li>
-						<li><a href="#">Separated link</a></li>
-					</ul>
-				</div>
-				<!-- /btn-group -->
-				<input type="text" class="form-control">
-			</div>
-			<!-- /input-group -->
-			<p class="margin">Normal</p>
-
-			<div class="input-group">
-				<div class="input-group-btn">
-					<button type="button" class="btn btn-danger">Action</button>
-				</div>
-				<!-- /btn-group -->
-				<input type="text" class="form-control">
-			</div>
-			<!-- /input-group -->
-			<p class="margin">
-				Small
-				<code>.input-group.input-group-sm</code>
-			</p>
-
-			<div class="input-group input-group-sm">
-				<input type="text" class="form-control"> <span
-					class="input-group-btn">
-					<button type="button" class="btn btn-info btn-flat">Go!</button>
-				</span>
-			</div>
-			<!-- /input-group -->
+			</form:form>
 		</div>
 	</div>
 
 </section>
 <!-- /.content -->
+
+
+<!-- jQuery 3 -->
+<script
+	src="${pageContext.request.contextPath}/resources/admin/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script
+	src="${pageContext.request.contextPath}/resources/admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script
+	src="${pageContext.request.contextPath}/resources/admin/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script
+	src="${pageContext.request.contextPath}/resources/admin/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script
+	src="${pageContext.request.contextPath}/resources/admin/dist/js/demo.js"></script>
+<!-- CK Editor -->
+<script
+	src="${pageContext.request.contextPath}/resources/admin/bower_components/ckeditor/ckeditor.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script
+	src="${pageContext.request.contextPath}/resources/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<script>
+  $(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('editor1')
+    //bootstrap WYSIHTML5 - text editor
+    $('.textarea').wysihtml5()
+  })
+</script>
