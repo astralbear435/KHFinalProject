@@ -26,10 +26,10 @@ public class MemberConfirmIdAjaxController {
 	@RequestMapping("/member/confirmId.do")
 	//JSON 문자열 생성
 	@ResponseBody
-	public Map<String,String> process(@RequestParam("id") String id) {	//id를 받아야 하기 때문에 @RequestParam
+	public Map<String,String> process(@RequestParam("id") String id) {
 		
 		if(log.isDebugEnabled()) {
-			log.debug("<<id>> : " + id);	//<<id>> 는 보고자 하는 문자열을 보기 쉽게 하기 위해 넣은 것
+			log.debug("<<id>> : " + id);
 		}
 		
 		Map<String,String> map = new HashMap<String,String>();
