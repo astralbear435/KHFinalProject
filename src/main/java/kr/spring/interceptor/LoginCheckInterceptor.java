@@ -7,27 +7,31 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+//인터셉터 (설정파일에 등록하여 사용)
+
 public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 	
 	private Logger log = Logger.getLogger(this.getClass());
 	
 	@Override
-	public boolean preHandle(HttpServletRequest request, 
-				HttpServletResponse response, Object handler) throws Exception {
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		
 		if(log.isDebugEnabled()) {
+			
 			log.debug("===LoginCheckInterceptor진입===");
 		}
 		
-		//로그인 여부 감시
+		//로그인 여부 검사
 		HttpSession session = request.getSession();
-		if(session.getAttribute("user_id")==null) {
-			//로그인이 되지 않은 상태
-			response.sendRedirect(request.getContextPath()+"/member/login.do");
-			return false; //프로세스 메소드에 집입 불가
+		if(session.getAttribute("user_id") == null) {	//로그인이 되지 않은 상태
+			
+			response.sendRedirect(request.getContextPath() + "/member/login.do");
+			
+			return false;
+
 		}
 		
 		return true;
 	}
-	
+
 }

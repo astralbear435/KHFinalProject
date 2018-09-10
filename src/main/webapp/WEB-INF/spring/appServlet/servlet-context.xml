@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans
-	xmlns="http://www.springframework.org/schema/mvc"
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
 	<context:component-scan
 		base-package="kr.spring.note.controller" />
 	<context:component-scan
@@ -31,6 +29,16 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
+	<!-- tiles 설정 -->
+	<beans:bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list>	<!-- 실행시 아래의 xml 파일이 없으면 오류 발생!! -->
+				<beans:value>/WEB-INF/tiles-def/main.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/member.xml</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
 	<!-- 파일 다운로드 : 우선순위0 -->
 	<beans:bean
 		class="org.springframework.web.servlet.view.BeanNameViewResolver"
@@ -57,6 +65,12 @@
 		<beans:property name="order" value="1" />
 	</beans:bean>
 
+	<beans:bean
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<beans:property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<beans:property name="order" value="1" />
+	</beans:bean>
 
 	<!-- popup창 또는 Ajax 통신 등 tiles를 이용하지 않고 JSP를 호출해야 하는 경우 -->
 	<beans:bean
@@ -66,6 +80,15 @@
 		<beans:property name="order" value="2" />
 	</beans:bean>
 
+
+
+
+	<!-- 파일 업로드 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="52428800" />
+		<beans:property name="defaultEncoding" value="UTF-8" />
+	</beans:bean>
 
 	<!-- 메시지 처리 -->
 	<beans:bean id="messageSource"
@@ -81,6 +104,10 @@
 	<view-controller path="/main/main.do" view-name="main" />
 	<view-controller path="/main/about.do"
 		view-name="about" />
+	<view-controller path="/member/deleteConfirm.do"
+		view-name="deleteConfirm" />
+	<view-controller path="/member/successSendPw.do"
+		view-name="successSendPw" />
 	<view-controller path="/main/gallery.do"
 		view-name="gallery" />
 	<view-controller path="/main/icons.do"
@@ -107,6 +134,9 @@
 			<mapping path="/shelter/shelterInfo.do" />
 			<mapping path="/note/receivedList.do" />
 			<mapping path="/board/sendList.do" />
+			<mapping path="/member/detail.do" />
+			<mapping path="/member/update.do" />
+			<mapping path="member/resendEmail.do" />
 			<beans:bean
 				class="kr.spring.interceptor.LoginCheckInterceptor" />
 		</interceptor>
