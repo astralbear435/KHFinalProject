@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,7 @@ public class MemberConfirmIdAjaxController {
 	@RequestMapping("/member/confirmId.do")
 	//JSON 문자열 생성
 	@ResponseBody
-	public Map<String,String> process(@RequestParam("id") String id) {
+	public Map<String,String> processId(@RequestParam("m_id") String id) {	//id를 받아야 하기 때문에 @RequestParam
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<id>> : " + id);
@@ -34,7 +35,7 @@ public class MemberConfirmIdAjaxController {
 		
 		Map<String,String> map = new HashMap<String,String>();
 		
-		MemberCommand member = memberService.seslectMember(id);
+		MemberCommand member = memberService.selectMember(id);
 		if(member != null) {	//id 중복
 			map.put("result", "idDuplicated");
 		} else {	//id 미중복
@@ -43,22 +44,46 @@ public class MemberConfirmIdAjaxController {
 		
 		return map;
 	}
+	
+	@RequestMapping("/member/confirmNickname.do")
+	//JSON 문자열 생성
+	@ResponseBody
+	public Map<String,String> processNickname(@RequestParam("m_nickname") String nickname) {
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<nickname>> : " + nickname);
+		}
+		
+		Map<String,String> map = new HashMap<String,String>();
+		
+		MemberCommand member = memberService.checkMember_n(nickname);
+		if(member != null) {	//nickname 중복
+			map.put("result", "nicknameDuplicated");
+		} else {	//nickname 미중복
+			map.put("result", "nicknameNotFound");
+		}
+		
+		return map;
+	}
+	
+	@RequestMapping("/member/confirmEmail.do")
+	//JSON 문자열 생성
+	@ResponseBody
+	public Map<String,String> processEmail(@RequestParam("m_email") String email) {
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<email>> : " + email);
+		}
+		
+		Map<String,String> map = new HashMap<String,String>();
+		
+		MemberCommand member = memberService.checkMember_e(email);
+		if(member != null) {	//email 중복
+			map.put("result", "emailDuplicated");
+		} else {	//email 미중복
+			map.put("result", "emailNotFound");
+		}
+		
+		return map;
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
