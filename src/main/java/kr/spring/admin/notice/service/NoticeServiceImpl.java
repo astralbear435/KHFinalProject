@@ -46,4 +46,10 @@ public class NoticeServiceImpl implements NoticeService {
 		notice.deleteNotice(n_idx);
 	}
 
+	@Override
+	public Integer selectCountList() {
+		// TODO Auto-generated method stub
+		return notice.selectCountList();
+	}
+
 }

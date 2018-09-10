@@ -25,9 +25,20 @@ public class CkeditorCommand {
 	public void setN_filename(String n_filename) {
 		this.n_filename = n_filename;
 	}
+	/**
+	 * 
+	 * @return the cKEditorFuncNum'
+	 * @since 1.0
+	 * 
+	 */
 	public String getCKEditorFuncNum() {
 		return CKEditorFuncNum;
 	}
+	/**
+	 * 
+	 * @param cKEditorFuncNum the cKEditorFuncNum to set
+	 * @since 1.0
+	 */
 	public void setCKEditorFuncNum(String cKEditorFuncNum) {
 		CKEditorFuncNum = cKEditorFuncNum;
 	}

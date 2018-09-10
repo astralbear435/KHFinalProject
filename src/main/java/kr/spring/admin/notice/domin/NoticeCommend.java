@@ -15,7 +15,6 @@ public class NoticeCommend {
 	private String n_content;
 	private String n_id;
 	private Integer n_hit;
-	@NotNull
 	private Date n_reg_date;
 	private Date n_last_modified;
 	public Integer getN_idx() {

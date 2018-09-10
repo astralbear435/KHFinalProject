@@ -99,5 +99,6 @@
 	<bean id="cipherAES" class="kr.spring.util.CipherTemplate">
 		<property name="algorithm" value="AES"/>                                     
 		<property name="secretKey" value="ibvlqxkqsokz4xyrgpljfcgu9"/>
-	</bean>		
+	</bean>
+	<bean id = "multipartResolver" class = "org.springframework.web.multipart.commons.CommonsMultipartResolver" />		
 </beans>

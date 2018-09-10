@@ -6,6 +6,7 @@ import kr.spring.admin.notice.domin.NoticeCommend;
 
 public interface NoticeService {
 	public List<NoticeCommend> selectNoticeList();
+	public Integer selectCountList();
 	public NoticeCommend selectNotice(Integer n_inx);
 	public void insertNotice(NoticeCommend nc);
 	public void updateNotice(NoticeCommend nc);

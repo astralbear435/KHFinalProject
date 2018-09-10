@@ -8,7 +8,7 @@
 <%
     String ipAddress = (String) request.getRemoteAddr();
     //
-    if(ipAddress.equals("0:0:0:0:0:0:0:1")||ipAddress.equals("192.168.10.3")) {
+    if(ipAddress.equals("0:0:0:0:0:0:0:1")||ipAddress.equals("127.0.0.1")||ipAddress.equals("192.168.10.3")) {
 %>
 
 <%     
