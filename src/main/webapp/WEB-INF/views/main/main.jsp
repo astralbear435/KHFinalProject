@@ -167,7 +167,7 @@
 				<div class="col-md-6 col-news-right">
 						<div class="col-news-top">
 							<a href="single.html" class="date-in button2">
-								<img class="img-responsive mix-in" src="images/3.jpg" alt="">
+								<img class="img-responsive mix-in" src="${pageContext.request.contextPath}/resources/images/3.jpg" alt="">
 								<div class="month-in">
 									<div class="team-date">
 										<span class="day">03</span>
@@ -197,7 +197,7 @@
 						<div class="col-news-top">
 						
 							<a href="single.html" class="date-in button2">
-								<img class="img-responsive mix-in" src="images/5.jpg" alt="">
+								<img class="img-responsive mix-in" src="${pageContext.request.contextPath}/resources/images/5.jpg" alt="">
 								<div class="month-in">
 									<div class="team-date">
 										<span class="day">24</span>
