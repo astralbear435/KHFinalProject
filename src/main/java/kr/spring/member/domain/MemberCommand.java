@@ -34,6 +34,26 @@ public class MemberCommand {
 	
 	private String verify_key;
 	
+	private String g_name;
+	private String g_id;
+	
+	
+	public String getG_name() {
+		return g_name;
+	}
+
+	public void setG_name(String g_name) {
+		this.g_name = g_name;
+	}
+
+	public String getG_id() {
+		return g_id;
+	}
+
+	public void setG_id(String g_id) {
+		this.g_id = g_id;
+	}
+
 	//비밀번호 일치 여부 체크
 	public boolean isCheckedPasswd(String userPasswd) {
 

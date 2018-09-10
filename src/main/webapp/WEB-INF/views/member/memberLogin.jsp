@@ -22,7 +22,8 @@
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="로그인"> <br><br>
+			<input type="submit" value="로그인"> <br>
+			<input type="button" value="구글 로그인" onclick="location.href='${google_url}'">
 			<input type="button" value="아이디/비밀번호 찾기" onclick="location.href='${pageContext.request.contextPath}/member/findMember.do'">
 			<input type="button" value="회원가입" onclick="location.href='${pageContext.request.contextPath}/member/write.do'">
 		</div>

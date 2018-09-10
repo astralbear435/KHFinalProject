@@ -54,6 +54,7 @@
 	<view-controller path="/main/main.do" view-name="main"/>
 	<view-controller path="/member/deleteConfirm.do" view-name="deleteConfirm"/>
 	<view-controller path="/member/successSendPw.do" view-name="successSendPw"/>
+	
 	<!-- 메시지 처리 -->
 	<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<beans:property name="basenames">

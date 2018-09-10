@@ -73,6 +73,7 @@ $(document).ready(function() {
 	
 			});
 		}
+		event.preventDefault();
 	});
 	
 	/*//비밀번호 찾기
