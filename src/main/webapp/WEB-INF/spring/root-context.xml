@@ -74,25 +74,34 @@
 		<aop:advisor advice-ref="txAdvice"
 		             pointcut-ref="servicePublicMethod"/>              
 	</aop:config>
-	
-	<!-- mybatis 설정 -->
+<!-- mybatis 설정 -->
 	<bean id="sqlSessionFactory"
 	      class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-		<!-- MemberCommand의 빈 이름을 자동으로 memberCommand로 설정해줌 / MemberDaoImpl.class를 자동으로 생성해줌-->
-		<property name="typeAliasesPackage" value="kr.spring.tem.domain,kr.spring.note.domain,kr.spring.shelter.domain"/>
+		<property name="dataSource" ref="dataSource"/> 
+		<property name="typeAliasesPackage" 
+		                   value="kr.spring.member.domain,
+		                   		  kr.spring.admin.mainpage.domain,
+		                   		  kr.spring.visitor.domain,
+		                   		  kr.spring.admin.notice.domain,
+		                   		  kr.spring.tem.domain,
+		                   		  kr.spring.note.domain,
+		                   		  kr.spring.shelter.domain"/>               
 	</bean>
-	
-	<!-- value 값 안에 있는 모든 자바빈을 전부 다 스캔해서 bean으로 생성해줌 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="kr.spring.tem.dao,kr.spring.note.dao,kr.spring.shelter.dao"/>
+		<property name="basePackage" 
+		              value="kr.spring.member.dao,
+		              		 kr.spring.admin.mainpage.dao,
+		              		 kr.spring.visitor.dao,
+		              		 kr.spring.admin.notice.dao,
+		              		 kr.spring.tem.dao,
+		              		 kr.spring.note.dao,
+		              		 kr.spring.shelter.dao" />
 	</bean>
 	
-	<!-- 암호화 복호화 알고리즘 처리 -->
+	<!-- 암호화,복호화 알고리즘 처리 -->
 	<bean id="cipherAES" class="kr.spring.util.CipherTemplate">
-		<property name="algorithm" value="AES"/>
-		<property name="secretKey" value="sdjbhtseq4819ebahn02tujmo"/>
+		<property name="algorithm" value="AES"/>                                     
+		<property name="secretKey" value="ibvlqxkqsokz4xyrgpljfcgu9"/>
 	</bean>
-		
-
+	<bean id = "multipartResolver" class = "org.springframework.web.multipart.commons.CommonsMultipartResolver" />		
 </beans>

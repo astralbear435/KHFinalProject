@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="admin"
+		template="/WEB-INF/views/admin/template/layout.jsp">
+		<put-attribute name="title" value="Admin Page" />
+		<put-attribute name="menu"
+			value="/WEB-INF/views/admin/template/menu.jsp" />
+		<put-attribute name="header"
+			value="/WEB-INF/views/admin/template/header.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/main/main.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/admin/template/footer.jsp" />
+	</definition>
+
+	<definition name="mainPageSetup" extends="admin">
+		<put-attribute name="title" value="메인페이지 설정" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/pageSetup/mainPage.jsp" />
+	</definition>
+	<definition name="noticeList" extends="admin">
+		<put-attribute name="title" value="공지사항"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/notice/noticeList.jsp"/>
+	</definition>  
+	<definition name="noticeWrite" extends="admin">
+		<put-attribute name="title" value="공지사항 작성"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/notice/noticeWrite.jsp"/>
+	</definition>  
+	
+</tiles-definitions>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
