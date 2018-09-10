@@ -29,16 +29,7 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
-	<!-- tiles 설정 -->
-	<beans:bean id="tilesConfigurer"
-		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
-		<beans:property name="definitions">
-			<beans:list>	<!-- 실행시 아래의 xml 파일이 없으면 오류 발생!! -->
-				<beans:value>/WEB-INF/tiles-def/main.xml</beans:value>
-				<beans:value>/WEB-INF/tiles-def/member.xml</beans:value>
-			</beans:list>
-		</beans:property>
-	</beans:bean>
+
 	<!-- 파일 다운로드 : 우선순위0 -->
 	<beans:bean
 		class="org.springframework.web.servlet.view.BeanNameViewResolver"
