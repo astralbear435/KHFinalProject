@@ -7,7 +7,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
+		
+	<context:component-scan base-package="kr.spring.note.controller" />
+	<context:component-scan base-package="kr.spring.shelter.controller" />
+	
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
@@ -15,30 +18,73 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-
+	
+	<!-- 파일 다운로드 : 우선순위0 -->
+	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0">
+		
+	</beans:bean>
+	
+	<!-- Tiles 설정 : 우선순위1 사용하지 않는 것을 넣으면 오류 발생 -->
+	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list><!-- list로 명시 해놔서 여러개 설정 가능 -->
+				<beans:value>/WEB-INF/tiles-def/main.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/shelter.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/note.xml</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	<beans:bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"></beans:property>
+		<beans:property name="order" value="1"/>
+	</beans:bean>
+	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="2"/>
 	</beans:bean>
 	
-	
-	
+		
 	<!-- 파일 업로드 -->
 	<beans:bean id="multipartResolver"
-	   class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+			class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="52428800"/>
 		<beans:property name="defaultEncoding" value="UTF-8"/>
 	</beans:bean>
 	
 	<!-- 메시지 처리 -->
-	<beans:bean id="messageSource"
-	  class="org.springframework.context.support.ResourceBundleMessageSource">
+	<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<beans:property name="basenames">
 			<beans:list>
 				<beans:value>messages.validation</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
+	
+	<!-- 데이터 작업 없이 View 호출 - 메인페이지 -->
+	<view-controller path="/main/main.do" view-name="main"/>
+	<view-controller path="/main/about.do" view-name="about"/>
+	<view-controller path="/main/gallery.do" view-name="gallery"/>
+	<view-controller path="/main/icons.do" view-name="icons"/>
+	<view-controller path="/main/codes2.do" view-name="codes2"/>
+	<view-controller path="/main/blog.do" view-name="blog"/>
+	<view-controller path="/main/contact.do" view-name="contact"/>
+	<view-controller path="/main/single.do" view-name="single"/>
+	<view-controller path="/member/login.do" view-name="memberLogin"/>
+	<view-controller path="/shelter/shelterWrite.do" view-name="shelterWrite"/>
+	<view-controller path="/shelter/shelterList.do" view-name="shelterList"/>
+	
+	<!-- 로그인 여부 체크 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/member/logout.do"/>
+			<mapping path="/shelter/shelterInfo.do"/>
+			<mapping path="/note/receivedList.do"/>
+			<mapping path="/board/sendList.do"/>
+			<beans:bean class="kr.spring.interceptor.LoginCheckInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

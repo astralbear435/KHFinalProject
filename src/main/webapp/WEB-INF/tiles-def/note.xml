@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="noteMain" template="/WEB-INF/views/template/noteLayout.jsp">
+		<put-attribute name="title" value="Spring 회원제 게시판"/>
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="noteMenu" value="/WEB-INF/views/template/noteMenu.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="receivedList" extends="noteMain">
+		<put-attribute name="title" value="shelterWrite"/>
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/note/receivedList.jsp"/>
+	</definition>
+	<definition name="sendList" extends="noteMain">
+		<put-attribute name="title" value="sendList"/>
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/note/sendList.jsp"/>
+	</definition>
+
+	<definition name="notePopup" template="/WEB-INF/views/template/notePopup.jsp">
+		<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
+	</definition>
+	<definition name="noteDetail" extends="notePopup">
+		<put-attribute name="title" value="쪽지 상세"/>
+		<put-attribute name="body" value="/WEB-INF/views/note/noteDetail.jsp"/>
+	</definition>
+	<definition name="noteWrite" extends="notePopup">
+		<put-attribute name="title" value="쪽지 작성"/>
+		<put-attribute name="body" value="/WEB-INF/views/note/noteWrite.jsp"/>
+	</definition>
+</tiles-definitions>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

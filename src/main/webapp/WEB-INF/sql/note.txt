@@ -1,0 +1,11 @@
+CREATE TABLE note(
+	note_num number(8) not null,
+	sender varchar2(20) not null,
+	recipient varchar2(20) not null,
+	note_content clob not null,
+	write_date date default sysdate not null,
+	note_status varchar2(20) not null,
+    constraint note_pk primary key (note_num)
+);
+
+create sequence note_seq;
