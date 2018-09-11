@@ -11,13 +11,6 @@
 						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 	                    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 	                    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
-	
-	<!-- Root Context: defines shared resources visible to all other web components -->
-	<!-- 빈 자동 스캔 - servlet-context.xml에서
-	Controller를 자동 스캔 설정해서 아래 설정에서는
-	Controller를 자동 스캔 제외 -->
-
-	
 	<!-- 빈 자동 스캔 - servlet-context.xml에서 Controller를 자동 스캔 설정해서 아래 설정에서는 Controller를 자동 스캔 제외 -->
 	<context:component-scan base-package="kr.spring">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>

@@ -10,20 +10,18 @@
 		</layout>
 	</appender>
 	
+	
 	<!-- Application Loggers -->
 	<logger name="kr.spring.tem">
 		<level value="debug" />
 	</logger>
-		<logger name="kr.spring">
-		<level value="debug" />
-	</logger>
-		<!-- Application Loggers -->
 	<logger name="kr.spring">
-	<logger name="kr.spring.member">
-
 		<level value="debug" />
 	</logger>
-	
+	<logger name="kr.spring.member">
+		<level value="debug" />
+	</logger>
+		
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
 		<level value="info" />

@@ -5,41 +5,66 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-
+	<definition name="main"
+		template="/WEB-INF/views/template/layout.jsp">
+		<put-attribute name="title" value="Coco And Nabi" />
+		<put-attribute name="menu"
+			value="/WEB-INF/views/template/menu.jsp" />
+		<put-attribute name="header"
+			value="/WEB-INF/views/template/header.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/main.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/template/footer.jsp" />
+	</definition>
 	<definition name="about" extends="main">
-		<put-attribute name="title" value="about"/>
-		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/main/about.jsp"/>
+		<put-attribute name="title" value="about" />
+		<put-attribute name="menu"
+			value="/WEB-INF/views/template/menu2.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/about.jsp" />
 	</definition>
 	<definition name="gallery" extends="main">
-		<put-attribute name="title" value="gallery"/>
-		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/main/gallery.jsp"/>
+		<put-attribute name="title" value="gallery" />
+		<put-attribute name="menu"
+			value="/WEB-INF/views/template/menu2.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/gallery.jsp" />
 	</definition>
 	<definition name="icons" extends="main">
-		<put-attribute name="title" value="icons"/>
-		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/main/icons.jsp"/>
+		<put-attribute name="title" value="icons" />
+		<put-attribute name="menu"
+			value="/WEB-INF/views/template/menu2.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/icons.jsp" />
 	</definition>
 	<definition name="codes2" extends="main">
-		<put-attribute name="title" value="codes2"/>
-		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/main/codes2.jsp"/>
+		<put-attribute name="title" value="codes2" />
+		<put-attribute name="menu"
+			value="/WEB-INF/views/template/menu2.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/codes2.jsp" />
 	</definition>
 	<definition name="blog" extends="main">
-		<put-attribute name="title" value="blog"/>
-		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/main/blog.jsp"/>
+		<put-attribute name="title" value="blog" />
+		<put-attribute name="menu"
+			value="/WEB-INF/views/template/menu2.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/blog.jsp" />
 	</definition>
 	<definition name="contact" extends="main">
-		<put-attribute name="title" value="contact"/>
-		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/main/contact.jsp"/>
+		<put-attribute name="title" value="contact" />
+		<put-attribute name="menu"
+			value="/WEB-INF/views/template/menu2.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/contact.jsp" />
 	</definition>
 	<definition name="single" extends="main">
-		<put-attribute name="title" value="single"/>
-		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/main/single.jsp"/>
+		<put-attribute name="title" value="single" />
+		<put-attribute name="menu"
+			value="/WEB-INF/views/template/menu2.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/single.jsp" />
 	</definition>
 
 </tiles-definitions>
