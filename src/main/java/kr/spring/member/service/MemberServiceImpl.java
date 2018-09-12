@@ -166,5 +166,14 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.findId(m_email);
 	}
 	
+	//구글 로그인
+	/*@Override
+	public MemberCommand googleLogin(MemberCommand member) throws Exception {
+		
+		memberMapper.googleLogin(member);
+		
+		return null;
+	}*/
+	
 	
 }

@@ -4,8 +4,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>kr.spring</groupId>
-	<artifactId>tem</artifactId>
-	<name>Tem</name>
+	<artifactId>ProjectCAN</artifactId>
+	<name>KHFinalProject</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -118,7 +118,7 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
+
 		<!-- 라이브러리 추가 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -195,10 +195,11 @@
 			<artifactId>commons-codec</artifactId>
 			<version>1.9</version>
 		</dependency>
+		<!-- mail -->
 		<dependency>
 			<groupId>org.imgscalr</groupId>
 			<artifactId>imgscalr-lib</artifactId>
-			<version>4.2</version> 
+			<version>4.2</version>
 		</dependency>
 
 		<dependency>
@@ -206,13 +207,14 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
 		</dependency>
-		<!-- mail -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-	    <!-- 라이브러리 추가 -->	
+		<!-- 1:1 채팅 -->
+
+		<!-- 라이브러리 추가 -->
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>

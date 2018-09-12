@@ -59,7 +59,7 @@
 		<put-attribute name="title" value="비밀번호 찾기"/>
 		<put-attribute name="body" value="/WEB-INF/views/member/successSendPw.jsp"/>
 	</definition>
-	
+		
 </tiles-definitions>
 
 

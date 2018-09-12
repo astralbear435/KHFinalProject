@@ -79,7 +79,6 @@
 		<beans:property name="maxUploadSize" value="52428800" />
 		<beans:property name="defaultEncoding" value="UTF-8" />
 	</beans:bean>
-
 	<!-- 메시지 처리 -->
 	<beans:bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
@@ -139,7 +138,6 @@
 		</interceptor>
 	</interceptors>
 
-
 	<!-- 파일업로드를 위한 디렉토리 설정 -->
 	<!-- String uploadPath = new String("업로드 경로") -->
 	<beans:bean id="uploadPath" class="java.lang.String">
@@ -147,5 +145,4 @@
 		<beans:constructor-arg
 			value="D:\\javaWork\\workspace_spring\\KHFinalProject\\src\\main\\webapp\\upload" />
 	</beans:bean>
-
 </beans:beans>

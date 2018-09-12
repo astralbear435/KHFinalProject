@@ -63,6 +63,8 @@ public interface MemberMapper {
 	@Update("UPDATE member_detail SET m_passwd=#{m_passwd} WHERE m_email=#{m_email}")
 	public void updatePw(@Param("m_email") String m_email, @Param("m_passwd") String m_passwd);
 	
+	/*//구글 로그인
+	@Update("UPDATE google_login SET g_name=#{g_name},g_id=#{g_id} WHERE m_email=#{m_email}")
+	public void googleLogin(MemberCommand member);*/
+	
 }
-
-
