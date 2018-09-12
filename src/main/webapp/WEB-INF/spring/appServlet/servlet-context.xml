@@ -20,6 +20,7 @@
 		base-package="kr.spring.admin.notice.controller" />
 	<context:component-scan
 		base-package="kr.spring.visitor.controller" />
+	<context:component-scan base-package="kr.spring.goods.controller" />
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -47,6 +48,7 @@
 				<beans:value>/WEB-INF/tiles-def/shelter.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/note.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/admin.xml</beans:value>
+			<beans:value>/WEB-INF/tiles-def/good.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
