@@ -21,6 +21,8 @@
 	<context:component-scan
 		base-package="kr.spring.visitor.controller" />
 	<context:component-scan base-package="kr.spring.goods.controller" />
+	<context:component-scan
+	    base-package="kr.spring.board.controller"/>
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -50,6 +52,7 @@
 				<beans:value>/WEB-INF/tiles-def/admin.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/member.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/good.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/dog_board.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

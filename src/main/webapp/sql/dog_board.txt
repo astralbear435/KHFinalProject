@@ -1,0 +1,38 @@
+create sequence reply_seq;
+
+create table dog_board(
+an_num number not null,
+an_id varchar2(20) not null,
+an_name varchar2(60) not null,
+an_review varchar2(60) not null,
+an_operate varchar2(20) not null,
+an_species varchar2(100) not null,
+an_color varchar2(500) not null,
+an_gender varchar2(100) not null,
+an_content clob not null,
+an_hit number(5),
+reg_date date not null,
+filename varchar2(100),
+uploadfile blob,
+constraint dog_board_pk primary key(an_num),
+constraint dog_board_member_fk1 foreign key(an_id) references member(m_id)
+);
+
+create table dgboard_reply(
+ re_num number not null,
+ pt_num number(5) ,
+ depth number(3),
+ re_content varchar2(900) not null,
+ re_date date not null,
+ num number not null,
+ id varchar2(12) not null,
+ constraint dog_board_reply_pk primary key (re_num),
+ constraint reply_dog_board_fk1 foreign key (num) references dog_board (an_num),
+ constraint reply_member_fk2 foreign key(id) references member(m_id)                             
+);
+
+
+
+
+
+
