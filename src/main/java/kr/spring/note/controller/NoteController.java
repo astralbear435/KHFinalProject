@@ -21,6 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.note.domain.NoteCommand;
 import kr.spring.note.service.NoteService;
+import kr.spring.shelter.domain.ShelterCommand;
+import kr.spring.shelter.service.ShelterService;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
 
@@ -32,6 +34,9 @@ public class NoteController {
 
 	@Resource
 	private NoteService noteService;
+	
+	@Resource
+	private ShelterService shelterService;
 
 	/* 받은 쪽지함 received / 보낸 쪽지함 send */
 	@RequestMapping("/note/receivedList.do")
@@ -135,12 +140,37 @@ public class NoteController {
 	/* 쪽지 작성 */
 	@RequestMapping(value="/note/write.do", method=RequestMethod.GET)
 	public String form(HttpSession session, Model model) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("", "");
+		
+		// 총 글의 갯수 또는 검색 된 글의 갯수
+		int count = shelterService.selectRowCount(map);
+		String idArray = "";
+		
+		List<ShelterCommand> list = null;
+		
+		if(count > 0) {
+			list = shelterService.selectList(map);
+			
+			for(ShelterCommand s : list) {
+				idArray += s.getS_id() + ",";
+			}
+			
+			idArray = idArray.substring(0,idArray.lastIndexOf(","));
+
+			System.out.println("idArray : " + idArray);
+		}
+		
 		String id = (String)session.getAttribute("user_id");
 		
 		NoteCommand command = new NoteCommand();
+		
+		// 보내는 사람의 아이디를 접속자 아이디로 설정
 		command.setSender(id);
 		
 		model.addAttribute("command",command);
+		model.addAttribute("idArray",idArray);
 		
 		return "note/noteWrite";
 	}

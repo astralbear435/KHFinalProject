@@ -17,19 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.shelter.domain.ShelterCommand;
 import kr.spring.shelter.service.ShelterService;
 import kr.spring.util.CipherTemplate;
-import kr.spring.util.PagingUtil;
 
 @Controller
 public class ShelterController {
 	private Logger log = Logger.getLogger(this.getClass());
-	private int rowCount = 10;
-	private int pageCount = 10;
 	
 	@Resource
 	private ShelterService shelterService;
@@ -54,9 +50,6 @@ public class ShelterController {
 	public String submitShelter(@ModelAttribute("command") 
 							@Valid ShelterCommand shelterCommand, 
 							BindingResult result) {
-
-		
-		System.out.println("----->" + shelterCommand);
 		
 		if(result.hasErrors()) {
 			return formShelter();
@@ -78,12 +71,8 @@ public class ShelterController {
 
 		Map<String,String> map = new HashMap<String,String>();
 		
-		System.out.println("--------------------------------"+id);
-		
 		ShelterCommand shelter = shelterService.selectShelter(id);
 		
-		System.out.println("----->" + shelter);
-
 		if(shelter != null) {
 			//아이디 중복
 			map.put("result", "idDuplicated");
@@ -243,18 +232,9 @@ public class ShelterController {
 		// 총 글의 갯수 또는 검색 된 글의 갯수
 		int count = shelterService.selectRowCount(map);
 		
-		if(log.isDebugEnabled()) {
-			log.debug("<<count>> : " + count);
-		}
-		
 		List<ShelterCommand> list = null;
 		if(count > 0) {
 			list = shelterService.selectList(map);
-			
-			if(log.isDebugEnabled()) {
-				log.debug("<<list>> : " + list);
-			}
-			
 		}
 		
 		ModelAndView mav = new ModelAndView();
