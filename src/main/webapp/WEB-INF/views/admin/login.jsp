@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,13 +56,15 @@
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
-    <form action="login.do" method="post">
+    <form:form commandName="command" action="login.do" id="login_form">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" id="id" name="id">
+      <form:input path="m_id" cssClass="form-control"/> 
+	   <form:errors path="m_id" cssClass="error-color"/>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input id="passwd" name="passwd" type="password" class="form-control" placeholder="Password">
+        <form:password path="m_passwd" cssClass="form-control"/> 
+				<form:errors path="m_passwd" cssClass="error-color"/>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -78,7 +81,7 @@
         </div>
         <!-- /.col -->
       </div>
-    </form>
+    </form:form>
 
   </div>
   <!-- /.login-box-body -->

@@ -21,6 +21,7 @@
 	<context:component-scan
 		base-package="kr.spring.visitor.controller" />
 	<context:component-scan base-package="kr.spring.goods.controller" />
+	<context:component-scan base-package="kr.spring.admin.controller" />
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -120,6 +121,9 @@
 	<view-controller path="/admin/main.do"
 		view-name="admin" />
 	<view-controller path="/admin/notlogin.do" view-name="notlogin" />
+	<view-controller path="/admin/noadmin.do" view-name="noadmin" />
+	<view-controller path="/admin/logout.do" view-name="logout" />
+	
 	<!-- 로그인 여부 체크 -->
 	<interceptors>
 		<interceptor>

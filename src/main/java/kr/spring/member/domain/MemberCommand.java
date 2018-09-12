@@ -57,7 +57,7 @@ public class MemberCommand {
 	//비밀번호 일치 여부 체크
 	public boolean isCheckedPasswd(String userPasswd) {
 
-		if(auth > 0 && m_passwd.equals(userPasswd)) {
+		if(auth==-1 ||auth > 0 && m_passwd.equals(userPasswd)) {
 			
 			return true;
 		}

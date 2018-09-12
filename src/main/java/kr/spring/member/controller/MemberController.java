@@ -51,10 +51,6 @@ public class MemberController {
 		log.debug("<<memberCommand>> : " + memberCommand);
 	}
 
-		if(result.hasFieldErrors("m_id") || result.hasFieldErrors("m_passwd")) {
-
-			return "admin/login";
-		}
 
 		//로그인 체크(id,비밀번호 일치 여부 체크)
 		try {
@@ -65,9 +61,9 @@ public class MemberController {
 
 				//비밀번호 일치 여부 체크
 				check = member.isCheckedPasswd(cipherAES.encrypt(memberCommand.getM_passwd()));
-
+				
 			}
-
+			log.debug("<<check>> - "+check);
 			if(check) {	//인증성공, 로그인 처리
 
 				session.setAttribute("user_id", member.getM_id());
@@ -101,6 +97,23 @@ public class MemberController {
 
 		return "/admin/waring/notlogin";
 	}
+	@RequestMapping(value="/admin/noadmin.do",method=RequestMethod.GET)
+	public String noadmin() {
+
+		return "/admin/waring/noadmin";
+	}
+	
+	//=========================admin 로그인========================
+	//=========================admin 로그아웃========================
+	@RequestMapping("/admin/logout.do")
+	public String adminLogout(HttpSession session) {
+
+		//로그아웃
+		session.invalidate();
+
+		return "redirect:/admin/main.do";
+	}
+	//=========================admin 로그아웃========================
 	//=================== 회 원 가 입 ====================
 
 	//회원등록 폼 호출

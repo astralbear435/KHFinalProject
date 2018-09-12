@@ -68,7 +68,7 @@
 			</li>
 			<li>
 				<label for="upload">프로필사진</label>
-				<input type="file" name="upload" id="upload"/>
+				<input type="file" multiple accept='image/*' name="upload" id="upload"/>
 			</li>
 			<li>
 				<label for="m_birth">생년월일</label>

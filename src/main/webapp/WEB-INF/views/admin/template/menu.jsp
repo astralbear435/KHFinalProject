@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/admin/js/jquery-3.3.1.min.js"></script>
 <script>
@@ -27,14 +28,13 @@ $(document).ready(function(){
 	<!-- Sidebar user panel (optional) -->
 	<div class="user-panel">
 		<div class="pull-left image">
-			<img
-				src="${pageContext.request.contextPath}/resources/admin/dist/img/user2-160x160.jpg"
-				class="img-circle" alt="User Image">
+	<img src="${pageContext.request.contextPath}/member/imageView.do?m_id=${member.m_id}"	class="img-circle" alt="User Image"> 
+			
 		</div>
 		<div class="pull-left info">
-			<p>Alexander Pierce</p>
+			<p>${member.m_name}</p>
 			<!-- Status -->
-			<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+			<a href="#"><i class="fa fa-circle text-success"></i> ${member.m_id}</a>
 		</div>
 	</div>
 
