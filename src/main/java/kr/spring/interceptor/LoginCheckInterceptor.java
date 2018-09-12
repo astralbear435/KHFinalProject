@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 //인터셉터 (설정파일에 등록하여 사용)
+
 public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 	
 	private Logger log = Logger.getLogger(this.getClass());
@@ -27,8 +28,10 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 			response.sendRedirect(request.getContextPath() + "/member/login.do");
 			
 			return false;
+
 		}
 		
 		return true;
 	}
+
 }

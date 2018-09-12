@@ -68,19 +68,3 @@ public interface MemberMapper {
 	public void googleLogin(MemberCommand member);*/
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+
     xmlns:context="http://www.springframework.org/schema/context"
+
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-	                    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 	                    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 	                    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
-	
 	<!-- 빈 자동 스캔 - servlet-context.xml에서 Controller를 자동 스캔 설정해서 아래 설정에서는 Controller를 자동 스캔 제외 -->
 	<context:component-scan base-package="kr.spring">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
@@ -38,10 +39,10 @@
 	<!-- 선언적 트랜잭션 처리 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="insert*"/>
-			<tx:method name="update*"/>
-			<tx:method name="delete*"/>
-			<tx:method name="select*" read-only="true"/>
+			<tx:method name="insert*" /> <!-- 데이터가 변하므로 * -->
+			<tx:method name="update*" />
+			<tx:method name="delete*" />
+			<tx:method name="select*" read-only="true" /> <!-- 읽어드리는 것이므로 read-only 추가 -->
 		</tx:attributes>         
 	</tx:advice>
 	<!-- 
@@ -61,27 +62,43 @@
 	timeout			트랜잭션의 타임 아웃 시간을 초 단위
 	                 로 설정                                 
 	 -->
-	 <aop:config>
-		<aop:pointcut expression="execution(public * kr.spring..*ServiceImpl.*(..))" id="servicePublicMethod"/>
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="servicePublicMethod"/>              
+	<aop:config>
+		<aop:pointcut expression="execution(public * kr.spring..*ServiceImpl.*(..))" 
+		              id="servicePublicMethod"/>
+		<aop:advisor advice-ref="txAdvice"
+		             pointcut-ref="servicePublicMethod"/>              
 	</aop:config>
-	
-	<!-- mybatis 설정 -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-		<property name="typeAliasesPackage" value="kr.spring.member.domain"/>        
+<!-- mybatis 설정 -->
+	<bean id="sqlSessionFactory"
+	      class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/> 
+		<property name="typeAliasesPackage" 
+		                   value="kr.spring.member.domain,
+		                   		  kr.spring.admin.mainpage.domain,
+		                   		  kr.spring.visitor.domain,
+		                   		  kr.spring.admin.notice.domain,
+		                   		  kr.spring.tem.domain,
+		                   		  kr.spring.note.domain,
+		                   		  kr.spring.shelter.domain"/>               
 	</bean>
-	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="kr.spring.member.dao"/>
+		<property name="basePackage" 
+		              value="kr.spring.member.dao,
+		              		 kr.spring.admin.mainpage.dao,
+		              		 kr.spring.visitor.dao,
+		              		 kr.spring.admin.notice.dao,
+		              		 kr.spring.tem.dao,
+		              		 kr.spring.note.dao,
+		              		 kr.spring.shelter.dao" />
 	</bean>
 	
-	<!-- 암호화 복호화 알고리즘 -->
+	<!-- 암호화,복호화 알고리즘 처리 -->
 	<bean id="cipherAES" class="kr.spring.util.CipherTemplate">
-		<property name="algorithm" value="AES"/>
-		<property name="secretKey" value="sfcz9p8jodr89a9remtcvp5mp"/>
-	</bean>	
-	
+		<property name="algorithm" value="AES"/>                                     
+		<property name="secretKey" value="ibvlqxkqsokz4xyrgpljfcgu9"/>
+	</bean>
+	<bean id = "multipartResolver" class = "org.springframework.web.multipart.commons.CommonsMultipartResolver" />		
+
 	<!-- 메일 보내기 -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
@@ -111,5 +128,6 @@
 		<property name="scope" value="https://www.googleapis.com/auth/plus.login" />
 		<property name="redirectUri" value="http://localhost:8080/ProjectCAN/oauth2callback" />
 	</bean> -->
+
 
 </beans>

@@ -87,3 +87,4 @@ public class MemberConfirmIdAjaxController {
 		return map;
 	}
 }
+

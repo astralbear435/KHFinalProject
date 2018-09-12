@@ -191,20 +191,3 @@ public class MemberCommand {
 				+ ", m_reg_date=" + m_reg_date + ", m_checked_email=" + m_checked_email + ", verify_key=" + verify_key + "]";
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
