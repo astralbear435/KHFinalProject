@@ -137,14 +137,6 @@ public class ShelterController {
 
 	}
 
-	//================== 로그아웃 =========================
-	@RequestMapping("/member/logout.do")
-	public String processLogin(HttpSession session) {
-		//로그아웃
-		session.invalidate();
-
-		return "redirect:/main/main.do";
-	}
 	
 	//================== 회원 상세 정보 =========================
 	// 진입 전 비밀번호 확인

@@ -2,6 +2,7 @@ package kr.spring.admin.notice.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,9 +38,21 @@ public class NoticeController {
 	//============글쓰기 이미지 업로드 ===========//
 	@RequestMapping(value = "/admin/notice/fileUpload.do")
 	public String fileUpload(final HttpServletRequest request,CkeditorCommand ckeditorCommand , Model model){
-		HttpSession session = request.getSession();
+		Date date = new Date();
+		int year = date.getYear();
+		int month = date.getMonth();
+		String monthStr = "";
+		if(month<10) monthStr = "0"+month;
+		else monthStr = ""+month;
+
+		String defaultPath = request.getRealPath("/");
+		String contextPath = request.getSession().getServletContext().getContextPath();
+		String fileUploadPathTail = "notice/"+ year +monthStr;
+		String fileUploadPath = defaultPath +"/"+fileUploadPathTail;
+
+		/*HttpSession session = request.getSession();
 		String rootPath = session.getServletContext().getRealPath("/");
-		
+
 		String attachPath = "upload/notice/";
 
 		MultipartFile upload = ckeditorCommand.getN_upload();
@@ -60,6 +73,33 @@ public class NoticeController {
 		}
 		model.addAttribute("filePath",attachPath + filename);          //결과값을
 		model.addAttribute("CKEditorFuncNum",CKEditorFuncNum);//jsp ckeditor 콜백함수로 보내줘야함
+		return "admin/notice/fileUpload";
+		 */
+		try {
+			MultipartFile file =ckeditorCommand.getN_upload();
+			if(file != null) {
+				String fileName = file.getOriginalFilename();
+				String fileNameExt = fileName.substring(fileName.indexOf(".")+1);
+				if(!"".equals(fileName)) {
+					File destD = new File(fileUploadPath);
+					
+					//임시 엑셀디렉토리 생성
+					if(!destD.exists()) {
+						//없으면 생성
+						destD.mkdirs();
+					}
+					File destination =File.createTempFile("ckeditor_","."+fileNameExt,destD);
+					file.transferTo(destination);
+					
+					ckeditorCommand.setN_filename(destination.getName());
+					ckeditorCommand.setN_attach_path(contextPath+"/"+fileUploadPathTail+"/"+destination.getName());
+					
+				}
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("ckedit",ckeditorCommand);//jsp ckeditor 콜백함수로 보내줘야함
 		return "admin/notice/fileUpload";
 	}
 	//==============게시판 글 등록=============//
