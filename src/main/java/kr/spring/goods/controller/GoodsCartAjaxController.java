@@ -25,6 +25,10 @@ import kr.spring.goods.service.GoodsService;
 import kr.spring.member.dao.MemberMapper;
 import kr.spring.member.domain.MemberCommand;
 import kr.spring.member.service.MemberService;
+import kr.spring.note.domain.NoteCommand;
+import kr.spring.note.service.NoteService;
+import kr.spring.shelter.domain.ShelterCommand;
+import kr.spring.shelter.service.ShelterService;
 
 @Controller
 public class GoodsCartAjaxController {
@@ -34,6 +38,9 @@ public class GoodsCartAjaxController {
 	private MemberService memberService;
 	@Resource
 	private GoodsService goodsService;
+	@Resource
+	private NoteService noteService;
+
 	
 	//======================장바구니등록==================
 	
@@ -183,7 +190,7 @@ public Map<String,Object>priceCart(@RequestParam("num") String price,@RequestPar
 
 @RequestMapping("/goods/order.do")
 @ResponseBody
-public Map<String,String> insertOrder(@RequestParam("dona_id")String dona_id,@RequestParam("dona_name") String dona_name,@RequestParam("dona_asname") String dona_asname,@RequestParam("goodsNum") String goodsnum,@RequestParam("ptotal") int dona_price,@RequestParam("amount") String dona_goodsamount,@RequestParam("dona_message")String dona_message,HttpSession session){
+public Map<String,String> insertOrder(@RequestParam("as_id")String as_id,@RequestParam("dona_id")String dona_id,@RequestParam("dona_name") String dona_name,@RequestParam("dona_asname") String dona_asname,@RequestParam("goodsNum") String goodsnum,@RequestParam("ptotal") int dona_price,@RequestParam("amount") String dona_goodsamount,@RequestParam("dona_message")String dona_message,HttpSession session){
 	Map<String,String> map=new HashMap<String,String>();
 	String user_id=(String)session.getAttribute("user_id");
 	if(user_id==null) {
@@ -200,9 +207,17 @@ public Map<String,String> insertOrder(@RequestParam("dona_id")String dona_id,@Re
 		order.setDona_message(dona_message);//보낼 메세지
 		if(log.isDebugEnabled()) {
 			log.debug("<<결제내역 함 보자>> :"+order);
+			log.debug("<<보호소 아이딬>> :"+as_id);
 		}
 		//결제DB에 등록하기
 		goodsService.insertOrder(order);
+	
+		NoteCommand note=new NoteCommand();
+		note.setSender(dona_id);
+		note.setRecipient(as_id);
+		note.setNote_content(dona_message);
+		noteService.insert(note);
+		
 		map.put("result","success");
 	}
 	return map;
@@ -234,7 +249,8 @@ public Map<String,Object> insertMultiOrder(@RequestParam("dona_id")String dona_i
 //기부자,전달메세지 업데이트
 @RequestMapping("/goods/orderUpdate.do")
 @ResponseBody
-public Map<String,String> updateMultiOrder(@RequestParam("dona_username")String dona_username,@RequestParam("dona_message")String dona_message,@RequestParam("order_num")int order_num){
+public Map<String,String> updateMultiOrder(@RequestParam("dona_username")String dona_username,@RequestParam("dona_message")String dona_message,@RequestParam("order_num")int order_num,HttpSession session){
+	String id=(String)session.getAttribute("user_id");
 	Map<String,String> map=new HashMap<String,String>();
 	OrderCommand multiorder=new OrderCommand();
 	multiorder.setDona_username(dona_username);

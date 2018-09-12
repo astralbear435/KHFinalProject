@@ -104,4 +104,10 @@ public class GoodsServiceImpl implements GoodsService {
 		return goodsMapper.selectDona_num();
 	}
 
+	@Override
+	public int selectAuth(String id) {
+		// TODO Auto-generated method stub
+		return goodsMapper.selectAuth(id);
+	}
+
 }

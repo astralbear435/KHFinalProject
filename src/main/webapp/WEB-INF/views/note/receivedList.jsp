@@ -39,7 +39,7 @@
 								<c:if test="${note.read_status.equals('open_not')}">
 									<tr class="table-warning">
 										<td><input type="checkbox" name="checkRow" data-num="${note.note_num}"></td>
-										<th scope="row">${note.recipient}</th>
+										<th scope="row">${note.sender}</th>
 										<td>
 											<a href="Javascript:;"
 												onClick="window.open('${pageContext.request.contextPath}/note/detail.do?note_num=${note.note_num}','쪽지','width=450, height=550, scrollbars=no')">
@@ -47,14 +47,14 @@
 										</td>
 										<td>${note.write_date}</td>
 										<td>차단</td>
-									</tr>
-								</c:if>
+									</tr> 
+								</c:if> 
 
 								<!-- 읽었을 때 -->
 								<c:if test="${!note.read_status.equals('open_not')}">
 									<tr>
 										<td><input type="checkbox" name="checkRow" data-num="${note.note_num}"></td>
-										<th scope="row">${note.recipient}</th>
+										<th scope="row">${note.sender}</th>
 										<td>
 											<a href="Javascript:;"
 												onClick="window.open('${pageContext.request.contextPath}/note/detail.do?note_num=${note.note_num}','쪽지','width=450, height=550, scrollbars=no')">

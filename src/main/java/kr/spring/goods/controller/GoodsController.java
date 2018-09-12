@@ -88,16 +88,20 @@ public class GoodsController {
 				if(log.isDebugEnabled()) {
 					log.debug("<<list>> : "+as_list);
 				}	
-			
 			}
 			int g_count=0;
 			goodsphotolist=goodsService.goodsPhotoList(photo_map);
+			
+			//회원의 auth값 받아오기
+			int m_auth = goodsService.selectAuth(id);
+	
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("goodsList");
 			mav.addObject("goodslist",goodsphotolist);
 			mav.addObject("count",count);
 			mav.addObject("user_id",id);
-			mav.addObject("as_list", as_list);
+			mav.addObject("as_list",as_list);
+			mav.addObject("m_auth",m_auth);
 			mav.addObject("pagingHtml", page.getPagingHtml());
 			
 		

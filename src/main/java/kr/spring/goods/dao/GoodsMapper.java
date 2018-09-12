@@ -53,4 +53,7 @@ public interface GoodsMapper {
 	//기부성명,메세지 업데이트
 	@Update("UPDATE DONATION SET dona_username=#{dona_username},dona_message=#{dona_message} WHERE dona_num=#{dona_num}")
 	public void updateOrder(OrderCommand order);
+	@Select("SELECT auth FROM MEMBER WHERE m_id=#{id}")
+	public int selectAuth(String id);
 }
+

@@ -15,7 +15,7 @@ img {
  
 } 
 #backdiv{
-	  background-color:#E0E0E0;
+	   border: 1px solid #888;
 	  width:100%;
 }
  .modal {
@@ -87,7 +87,6 @@ $(document).ready(function(){
 </script>
 <div class="container">
 <br>
-	<h2>목록</h2>
 	<form action="list.do" id="search_form" method="get">
 		<ul style="list-style:none; margin:0;padding:0;text-align:center">
 			<li style="display:inline-block;">
@@ -108,8 +107,10 @@ $(document).ready(function(){
 	
   <!-- 모달 창을 여는 버튼 -->
 <!-- 보호소만 볼 수 있게 걸러주세요 (나중에 꼭) -->
+<c:if test="${m_auth==3}">
   <div style="float:right;">
-   <button id="openModal">물품 추가 신청</button></div><br><br>
+   <button id="openModal" class="btn btn-primary">addGoods</button></div><br><br>
+</c:if>   
    <!-- The Modal -->
     <div id="myModal" class="modal">
  
@@ -154,30 +155,6 @@ $(document).ready(function(){
 	<div class="align-center">후원할 보호소가 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0}">
-		<table style="text-align:center; width:100%;border: 1px solid #444444;">
-		<tr>
-			<th>보호소ID</th>
-			<th>보호소명</th>
-			<th>위치</th>
-			<th>배변패드</th>
-			<th>개사료(전연령)</th>
-			<th>고양이 사료</th>
-			<th>샴푸</th>
-			<th>고양이용 모래</th>
-		</tr>
-		<c:forEach var="as_list" items="${as_list}">
-		<tr  style="text-align: center;">
-			<td>${as_list.as_id}</td>
-			<td>${as_list.as_name}</td>
-			<td>${as_list.as_location}</td>
-			<td>${as_list.pad}</td>
-			<td>${as_list.dogfood}</td>
-			<td>${as_list.cattoy}</td>
-			<td>${as_list.shampoo}</td>
-			<td>${as_list.catsand}</td>
-		</tr>
-		</c:forEach>
-	</table>
 	<br><br>
 
 	<c:forEach var="as_list" items="${as_list}">

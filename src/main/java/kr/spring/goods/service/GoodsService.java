@@ -34,4 +34,6 @@ public interface GoodsService {
 	public void updateOrder(OrderCommand order);
 	//시퀀스 값 받아오기
 	public int selectDona_num();
+	//회원의 auth 값 받아오기
+	public int selectAuth(String id);
 }
