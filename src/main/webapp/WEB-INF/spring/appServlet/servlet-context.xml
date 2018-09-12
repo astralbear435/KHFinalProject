@@ -20,7 +20,15 @@
 		base-package="kr.spring.admin.notice.controller" />
 	<context:component-scan
 		base-package="kr.spring.visitor.controller" />
-	<context:component-scan base-package="kr.spring.goods.controller" />
+	<context:component-scan 
+		base-package="kr.spring.goods.controller" />
+	<context:component-scan
+		base-package="kr.spring.recruit.controller" />
+	<context:component-scan
+		base-package="kr.spring.volunteer.controller" />
+	<context:component-scan
+		base-package="kr.spring.mypage.controller" />
+	
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -50,6 +58,10 @@
 				<beans:value>/WEB-INF/tiles-def/admin.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/member.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/good.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/recruit.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/volunteer.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/mypage.xml</beans:value>
+				
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -119,6 +131,8 @@
 		view-name="shelterList" />
 	<view-controller path="/admin/main.do"
 		view-name="admin" />
+	<view-controller path="/recruit/recruitWrite.do"
+		view-name="recruitWrite" />
 	<!-- 로그인 여부 체크 -->
 	<interceptors>
 		<interceptor>
