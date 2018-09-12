@@ -59,12 +59,7 @@
 		<put-attribute name="title" value="비밀번호 찾기"/>
 		<put-attribute name="body" value="/WEB-INF/views/member/successSendPw.jsp"/>
 	</definition>
-	
-	<definition name="googleSuccess" extends="main">
-		<put-attribute name="title" value="구글 로그인"/>
-		<put-attribute name="body" value="/WEB-INF/views/member/googleSuccess.jsp"/>
-	</definition>
-	
+		
 </tiles-definitions>
 
 

@@ -15,7 +15,7 @@
 			
 			window.open('', '_self', ''); // 브라우저창 닫기
 			
-			self.location = '/Final/main/main.do';
+			self.location = '/ProjectCAN/main/main.do';
 		</script>
 	</body>
 </html>

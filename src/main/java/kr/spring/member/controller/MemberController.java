@@ -1,24 +1,11 @@
 package kr.spring.member.controller;
 
-import java.io.IOException;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.social.connect.Connection;
-import org.springframework.social.google.api.Google;
-import org.springframework.social.google.api.impl.GoogleTemplate;
-import org.springframework.social.google.api.plus.Person;
-import org.springframework.social.google.api.plus.PlusOperations;
-import org.springframework.social.google.connect.GoogleConnectionFactory;
-import org.springframework.social.oauth2.AccessGrant;
-import org.springframework.social.oauth2.GrantType;
-import org.springframework.social.oauth2.OAuth2Operations;
-import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -37,12 +24,6 @@ import kr.spring.util.CipherTemplate;
 public class MemberController {
 
 	private Logger log = Logger.getLogger(this.getClass());
-
-	@Autowired
-	private GoogleConnectionFactory googleConnectionFactory;
-
-	@Autowired
-	private OAuth2Parameters googleOAuth2Parameters;
 
 	@Resource
 	private MemberService memberService;
@@ -126,63 +107,15 @@ public class MemberController {
 
 
 	//=================== 회원 로그인 =====================
-
+	
 	//로그인 폼
 	@RequestMapping(value="/member/login.do", method=RequestMethod.GET)
-	public String Login(Model model, HttpSession session) {
-
-		//구글code 발행 
-		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
-		String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
-
-		log.info("구글:" + url);
-
-		model.addAttribute("google_url", url);
-
-		//생성한 인증 URL을 View로 전달 
+	public String Login() {
+		
 		return "memberLogin";
 
 	}
-
-	// 구글 Callback호출 메소드
-	@RequestMapping(value="/oauth2callback", method={ RequestMethod.GET, RequestMethod.POST })
-	public String googleCallback(HttpServletRequest request) throws IOException {
-
-		String code = request.getParameter("code");
-		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
-		AccessGrant accessGrant = oauthOperations.exchangeForAccess(code , googleOAuth2Parameters.getRedirectUri(), null);
-
-		String accessToken = accessGrant.getAccessToken();
-		Long expireTime = accessGrant.getExpireTime();
-		if (expireTime != null && expireTime < System.currentTimeMillis()) {
-			accessToken = accessGrant.getRefreshToken();
-			log.info("accessToken is expired. refresh token~~~~~~~~~~~~~~" + accessToken);
-		}
-		Connection<Google> connection = googleConnectionFactory.createConnection(accessGrant);
-		Google google = connection == null ? new GoogleTemplate(accessToken) : connection.getApi();
-		PlusOperations plusOperations = google.plusOperations();
-		Person profile = plusOperations.getGoogleProfile();
-
-		MemberCommand member = new MemberCommand();
-		member.setM_email(profile.getAccountEmail());
-		member.setM_name(profile.getDisplayName());
-		member.setM_id("g" + profile.getId());
-		
-		HttpSession session = request.getSession();
-		try {
-			
-			//member = memberService.googleLogin(member);
-			
-		} catch (Exception e) {
-			
-			e.printStackTrace();
-		}
-		
-		session.setAttribute("login", member );
-		log.info(member);
-		return "googleSuccess";
-	}
-
+	
 	//로그인 폼에 전송된 데이터 처리
 	@RequestMapping(value="/member/login.do",method=RequestMethod.POST)
 	public String submitLogin(@ModelAttribute("command") @Valid MemberCommand memberCommand, BindingResult result, HttpServletRequest request, HttpSession session) {
@@ -191,8 +124,7 @@ public class MemberController {
 
 			log.debug("<<memberCommand>> : " + memberCommand);
 		}*/
-
-		//id와 passwd 필드만 체크 (이렇게 하지 않으면 id와 passwd만 있는 자바빈을 따로 만들어야 함)
+		
 		if(result.hasFieldErrors("m_id") || result.hasFieldErrors("m_passwd")) {
 
 			return "memberLogin";
@@ -224,6 +156,7 @@ public class MemberController {
 				return "redirect:/main/main.do";
 
 			} else {	//인증실패
+				
 				throw new Exception();
 			}
 
@@ -275,8 +208,6 @@ public class MemberController {
 
 			return find();
 		}
-
-
 	}
 
 
