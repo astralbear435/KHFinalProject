@@ -34,7 +34,7 @@
 				
 				<li> <a href="${pageContext.request.contextPath}/mypage/mypage.do?v_id=${user_id}">마이페이지</a> </li>
 			
-				<c:if test="${!empty user_id }">
+				<c:if test="${!empty user_id && user_auth == 3}">
 				<li> <a href="${pageContext.request.contextPath}/mypage/mypageShelter.do?r_id=${user_id}">보호소 마이페이지</a> </li>
 				</c:if>
 				<li><a href="${pageContext.request.contextPath}/goods/list.do">후원하기</a></li>

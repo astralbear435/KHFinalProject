@@ -25,12 +25,12 @@
 		회원가입 : 회원가입 한 분들에 한해 봉사시간 입력이 가능하며, 봉사활동 중 사고발생 시 상해보상이 가능하므로 반드시 사전
 		가입하셔야 합니다. <br>
 	</p>
-
-
+ 
+<c:if test="${!empty user_id && user_auth == 3}">
 	<input type="button" value="봉사활동 모집 글 쓰기"
 		class="btn btn-primary btn-lg"
 		onclick="location.href='${pageContext.request.contextPath}/recruit/recruitWrite.do'">
-
+</c:if>
 	<form action="recruitList.do" id="search_form" method="get">
 		<ul class="search">
 			<li><select name="keyfield">

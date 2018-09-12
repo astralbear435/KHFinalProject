@@ -41,6 +41,12 @@ public class MypageController {
 	public RecruitCommand initCommand2() {
 		return new RecruitCommand();
 	}
+	
+	@ModelAttribute("donation")
+	public OrderCommand initCommand3() {
+		return new OrderCommand();
+	}
+	
 
 	//++++++++++++++++++++메뉴에서 일반 회원 마이페이지 호출+++++++++++++++++++++++++++//
 	@RequestMapping("mypage/mypage.do")
@@ -50,28 +56,40 @@ public class MypageController {
 		MemberCommand member = mypageService.selectId(id);
 		
 		RecruitCommand volunteer = new RecruitCommand();
+		OrderCommand donation = new OrderCommand();
+		
 		volunteer.setV_id(id);
 		String v_id = volunteer.getV_id();
+		donation.setDona_id(id);
+		String dona_id = donation.getDona_id();
 		
-	
 		List<RecruitCommand> list = null;
 		list = mypageService.selectList(v_id);
 		
+		List<OrderCommand> donaList = null;
+		donaList = mypageService.selectDanaList(dona_id);		
+		
 		model.addAttribute("command",member);
 		model.addAttribute("volunteer",volunteer);
+		model.addAttribute("donation",donation);
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<memberCommand>> : " + member);
 		}	
 		if(log.isDebugEnabled()) {
 			log.debug("<<volunteer>> : " + volunteer);
-		}	
+		}
+		if(log.isDebugEnabled()) {
+			log.debug("<<donation>> : " + donation);
+		}
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("mypage/mypage");
 		mav.addObject("list",list);
 		mav.addObject("command", member);
 		mav.addObject("volunteer", volunteer);
+		mav.addObject("donaList", donaList);
+		mav.addObject("donation", donation);
 		
 		return mav; 	
 		
@@ -147,7 +165,7 @@ public class MypageController {
 		
 	}
 	
-	//후원한 내역 보여주기
+	//후원한 내역 보여주기//변경 위
 	@RequestMapping("mypage/donation.do")
 	public ModelAndView donationProcess (HttpSession session, Model model) {		
 		
