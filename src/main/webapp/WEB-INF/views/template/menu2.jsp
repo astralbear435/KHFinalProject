@@ -17,7 +17,7 @@
 				<li> <a href="${pageContext.request.contextPath}/main/main.do">Home</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/main/gallery.do">Gallery</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/main/icons.do">Icons</a> </li>
-				<li> <a href="${pageContext.request.contextPath}/main/codes2.do">Codes</a> </li>
+				<li> <a href="${pageContext.request.contextPath}/ap/apMain.do">임시보호</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/shelter/shelterList.do">보호소</a> </li>
 				<c:if test="${empty user_id}">
 				<li><a href="${pageContext.request.contextPath}/shelter/write.do">회원가입</a></li>
