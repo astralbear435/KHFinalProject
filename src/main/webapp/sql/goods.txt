@@ -1,0 +1,101 @@
+create table spmember(
+  id varchar2(12) not null,
+  auth number(1) default 1 not null,
+  constraint spmember_pk primary key (id)
+);
+create table spmember_detail(
+  id varchar2(12) not null,
+  name varchar2(30) not null,
+  passwd varchar2(35) not null,
+  phone varchar2(15) not null,
+  email varchar2(50) not null,
+  zipcode varchar2(5) not null,
+  address1 varchar2(60) not null,
+  address2 varchar2(60),
+  reg_date date not null,
+  constraint spmember_detail_pk primary key (id),
+  constraint spmember_detail_fk1 foreign key (id) references spmember (id)
+);
+
+create table spboard(
+ num number not null,
+ title varchar2(100) not null,
+ content clob not null,
+ hit number(5) default 0 not null,
+ reg_date date not null,
+ uploadfile blob,
+ filename varchar2(100),
+ ip varchar2(40) not null,
+ id varchar2(12) not null,
+ constraint spboard_pk primary key (num),
+ constraint spboard_spmember_fk1 foreign key (id) references spmember (id)
+);
+
+create sequence board_seq;
+
+create table spboard_reply(
+ re_num number not null,
+ re_content varchar2(900) not null,
+ re_date date not null,
+ re_ip varchar2(40) not null,
+ num number not null,
+ id varchar2(12) not null,
+ constraint spboard_reply_pk primary key (re_num),
+ constraint reply_spboard_fk1 foreign key (num) references spboard (num),
+ constraint reply_spmember_fk2 foreign key (id) references spmember (id)                             
+);
+
+create sequence reply_seq;
+create table AS_goods(
+ as_name varchar2(100) not null,
+ as_id varchar2(100) not null,
+ as_location varchar2(100) not null,
+ pad number(30) default 0,
+ Dogfood number(30) default 0,
+ Catfood number(30) default 0,
+ shampoo number(30) default 0,
+ catSand number(30) default 0,
+ as_auth number(2) default 2
+);
+
+create table goods_DB(
+g_name varchar2(100) not null,
+g_price number(30),
+g_photo1 varchar2(100),
+g_photo2 varchar2(100),
+g_photo3 varchar2(100) ,
+g_num number(100),
+g_id varchar2(100),
+g_origin varchar2(100),
+g_content CLOB,
+amount  varchar2(100)
+);
+
+drop table persnal_cart;
+
+create table persnal_cart(
+p_cartnum number(30) not null primary key,
+p_id varchar2(100) not null,
+p_name varchar2(100) not null,
+p_num number(30) not null,
+p_price number(38) not null,
+p_amount number(30) not null,
+p_goodsname varchar2(100) not null,
+p_goodsphoto number(30) not null
+
+);
+
+create sequence cart_seq;
+
+create table donation(
+dona_num number(30) not null primary key,
+dona_id varchar2(100) not null,
+dona_name varchar2(100) not null,
+dona_date date not null,
+dona_massage varchar2(300),
+dona_price number not null,
+dona_goodsnum varchar2(300) not null,
+dona_goodsamount varchar2(300) not null,
+dona_username varchar2(300)
+);
+create sequence order_seq;
