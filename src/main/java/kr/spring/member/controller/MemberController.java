@@ -38,7 +38,69 @@ public class MemberController {
 		return new MemberCommand();
 	}
 
+	//=========================admin 로그인========================
+	@RequestMapping(value="/admin/login.do",method=RequestMethod.GET)
+	public String adminlogin() {
 
+		return "admin/login";
+	}
+	@RequestMapping(value="/admin/login.do",method=RequestMethod.POST)
+	public String adminsubmit(@ModelAttribute("command") @Valid MemberCommand memberCommand, BindingResult result, Model model, HttpServletRequest request, HttpSession session) throws Exception{
+		if(log.isDebugEnabled()) {
+
+		log.debug("<<memberCommand>> : " + memberCommand);
+	}
+
+		if(result.hasFieldErrors("m_id") || result.hasFieldErrors("m_passwd")) {
+
+			return "admin/login";
+		}
+
+		//로그인 체크(id,비밀번호 일치 여부 체크)
+		try {
+			MemberCommand member = memberService.selectMember(memberCommand.getM_id());
+			boolean check = false;
+
+			if(member != null) {
+
+				//비밀번호 일치 여부 체크
+				check = member.isCheckedPasswd(cipherAES.encrypt(memberCommand.getM_passwd()));
+
+			}
+
+			if(check) {	//인증성공, 로그인 처리
+
+				session.setAttribute("user_id", member.getM_id());
+				session.setAttribute("user_auth", member.getAuth());
+
+				if(log.isDebugEnabled()) {
+				log.debug("<<인증 성공>>");
+				log.debug("<<user_id>> : " + member.getM_id());
+				log.debug("<<user_auth>> : " + member.getAuth());
+			}
+
+				return "redirect:/admin/main.do";
+
+			} else {	//인증실패
+
+				throw new Exception();
+			}
+
+		} catch(Exception e) {	//인증실패로 폼 호출
+
+			result.reject("invalidIdOrPasswd");
+			if(log.isDebugEnabled()) {
+				log.debug("<<인증 실패>>");
+			}
+			return "admin/login";
+		}
+
+	}
+	@RequestMapping(value="/admin/notlogin.do",method=RequestMethod.GET)
+	public String notlogin() {
+
+		return "/admin/waring/notlogin";
+	}
 	//=================== 회 원 가 입 ====================
 
 	//회원등록 폼 호출
@@ -107,15 +169,15 @@ public class MemberController {
 
 
 	//=================== 회원 로그인 =====================
-	
+
 	//로그인 폼
 	@RequestMapping(value="/member/login.do", method=RequestMethod.GET)
 	public String Login() {
-		
+
 		return "memberLogin";
 
 	}
-	
+
 	//로그인 폼에 전송된 데이터 처리
 	@RequestMapping(value="/member/login.do",method=RequestMethod.POST)
 	public String submitLogin(@ModelAttribute("command") @Valid MemberCommand memberCommand, BindingResult result, HttpServletRequest request, HttpSession session) {
@@ -124,7 +186,7 @@ public class MemberController {
 
 			log.debug("<<memberCommand>> : " + memberCommand);
 		}*/
-		
+
 		if(result.hasFieldErrors("m_id") || result.hasFieldErrors("m_passwd")) {
 
 			return "memberLogin";
@@ -156,7 +218,7 @@ public class MemberController {
 				return "redirect:/main/main.do";
 
 			} else {	//인증실패
-				
+
 				throw new Exception();
 			}
 
@@ -351,8 +413,8 @@ public class MemberController {
 			return "memberDelete";
 		}
 	}
-	
-	
+
+
 	//======================== 1:1 채팅 =======================
-	
+
 }
