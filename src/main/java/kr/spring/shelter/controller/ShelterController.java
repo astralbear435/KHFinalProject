@@ -39,19 +39,19 @@ public class ShelterController {
 
 	
 	@ModelAttribute("command")
-	public ShelterCommand initCommand() {
+	public ShelterCommand initShelterCommand() {
 		return new ShelterCommand();
 	}
 	
 	//================== 회원가입 =========================
 	//회원 가입 폼 호출
 	@RequestMapping(value="/shelter/write.do", method=RequestMethod.GET)
-	public String form() {
+	public String formShelter() {
 		return "shelterWrite";
 	}
 	//회원 가입 데이터 전송
 	@RequestMapping(value="/shelter/write.do", method=RequestMethod.POST)
-	public String submit(@ModelAttribute("command") 
+	public String submitShelter(@ModelAttribute("command") 
 							@Valid ShelterCommand shelterCommand, 
 							BindingResult result) {
 
@@ -59,7 +59,7 @@ public class ShelterController {
 		System.out.println("----->" + shelterCommand);
 		
 		if(result.hasErrors()) {
-			return form();
+			return formShelter();
 		}
 		
 		//CipherTemplate을 이용한 암호화
@@ -74,11 +74,15 @@ public class ShelterController {
 	// ============= 아이디 중복 확인 ==============
 	@RequestMapping("/shelter/confirmId.do")
 	@ResponseBody
-	public Map<String,String> process(@RequestParam("id") String id){
+	public Map<String,String> processShelter(@RequestParam("id") String id){
 
 		Map<String,String> map = new HashMap<String,String>();
-
+		
+		System.out.println("--------------------------------"+id);
+		
 		ShelterCommand shelter = shelterService.selectShelter(id);
+		
+		System.out.println("----->" + shelter);
 
 		if(shelter != null) {
 			//아이디 중복
@@ -94,18 +98,18 @@ public class ShelterController {
 	//================== 로그인 =========================	
 	// 로그인 폼 호출
 	@RequestMapping(value="/shelter/shelterLogin.do", method=RequestMethod.GET)
-	public String formLogin() {
+	public String formLoginShelter() {
 		return "shelterLogin";
 	}
 
 	// 로그인폼에서 전송된 데이터 처리
 	@RequestMapping(value="/shelter/shelterLogin.do", method=RequestMethod.POST)
-	public String submitLogin(@Valid ShelterCommand shelterCommand, 
+	public String submitLoginShelter(@Valid ShelterCommand shelterCommand, 
 								BindingResult result, HttpSession session) {
 		
 		// memberCommand에 전부 체크하게 어노테이션이 선언되어 있으므로 id와 passwd의 필드만 체크
 		if(result.hasFieldErrors("id") || result.hasFieldErrors("passwd")) {
-			return formLogin();
+			return formLoginShelter();
 		}
 		
 		//로그인 체크(id,비밀번호 일치 여부 체크)
@@ -132,14 +136,14 @@ public class ShelterController {
 			//인증 실패로 폼 호출
 			result.reject("invalidIdOrPassword");
 			
-			return formLogin();
+			return formLoginShelter();
 		}
 
 	}
 
 	//================== 로그아웃 =========================
-	@RequestMapping("/member/logout.do")
-	public String processLogin(HttpSession session) {
+	@RequestMapping("/shelter/logout.do")
+	public String processLoginShelter(HttpSession session) {
 		//로그아웃
 		session.invalidate();
 
@@ -149,7 +153,7 @@ public class ShelterController {
 	//================== 회원 상세 정보 =========================
 	// 진입 전 비밀번호 확인
 	@RequestMapping("/shelter/shelterConfirm.do")
-	public String confirmForm(HttpSession session, Model model) {
+	public String confirmFormShelter(HttpSession session, Model model) {
 		
 		String id = (String)session.getAttribute("user_id");
 		
@@ -165,7 +169,7 @@ public class ShelterController {
 	
 	// 상세 정보 확인
 	@RequestMapping("/shelter/shelterInfo.do")
-	public String process(HttpSession session, Model model) {
+	public String processShelter(HttpSession session, Model model) {
 		
 		String id = (String)session.getAttribute("user_id");
 		
@@ -182,7 +186,7 @@ public class ShelterController {
 	//================== 회원 정보 수정 =========================
 	// 전송 된 데이터 처리
 	@RequestMapping("/shelter/update.do")
-	public String submitUpdate(@Valid ShelterCommand shelterCommand,
+	public String submitUpdateShelter(@Valid ShelterCommand shelterCommand,
 								BindingResult result, HttpSession session) {
 		
 		System.out.println("----->" + shelterCommand);
@@ -214,7 +218,7 @@ public class ShelterController {
 
 	//================== 회원 탈퇴 =========================
 	@RequestMapping("/shelter/delete.do")
-	public String submitDalete(@Valid ShelterCommand shelterCommand, 
+	public String submitDeleteShelter(@Valid ShelterCommand shelterCommand, 
 								BindingResult result, HttpSession session) {
 		
 		ShelterCommand shelter = shelterService.selectShelter(shelterCommand.getS_id());// 자바빈 형태로 id가져오기
@@ -230,12 +234,11 @@ public class ShelterController {
 
 	//================== 보호소 리스트 =========================
 	@RequestMapping(value="/shelter/shelterList.do", method=RequestMethod.GET)
-	public ModelAndView shelterList(@RequestParam(value="pageNum", defaultValue="1") int currentPage, 
-									  @RequestParam(value="keyfield", defaultValue="") String keyfield,
-									  @RequestParam(value="keyword", defaultValue="") String keyword) {
+	public ModelAndView shelterListGet(@RequestParam(value="local", defaultValue="") String local,
+									@RequestParam(value="name", defaultValue="") String name) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
+		map.put("local", local);
+		map.put("name", name);
 		
 		// 총 글의 갯수 또는 검색 된 글의 갯수
 		int count = shelterService.selectRowCount(map);
@@ -243,11 +246,6 @@ public class ShelterController {
 		if(log.isDebugEnabled()) {
 			log.debug("<<count>> : " + count);
 		}
-		
-		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "shelterList.do");
-		
-		map.put("start", page.getStartCount());
-		map.put("end", page.getEndCount());
 		
 		List<ShelterCommand> list = null;
 		if(count > 0) {
@@ -263,14 +261,47 @@ public class ShelterController {
 		mav.setViewName("shelterList");
 		mav.addObject("count", count);
 		mav.addObject("list", list);
-		mav.addObject("pagingHtml", page.getPagingHtml());
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/shelter/shelterList.do", method=RequestMethod.POST)
+	public ModelAndView shelterListPost(@RequestParam(value="local", defaultValue="") String local,
+									@RequestParam(value="name", defaultValue="") String name) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("local", local);
+		map.put("name", name);
+		
+		// 총 글의 갯수 또는 검색 된 글의 갯수
+		int count = shelterService.selectRowCount(map);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<count>> : " + count);
+		}
+		
+		List<ShelterCommand> list = null;
+		if(count > 0) {
+			list = shelterService.selectList(map);
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<list>> : " + list);
+			}
+			
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("shelterList");
+		mav.addObject("count", count);
+		mav.addObject("list", list);
 		
 		return mav;
 	}
 	
 	// 보호소 페이지
 	@RequestMapping(value="/shelter/shelterDetail.do", method=RequestMethod.GET)
-	public String view(@RequestParam("id") String id, Model model) {
+	public String viewShelter(@RequestParam("id") String id, Model model, HttpSession session) {
+		
+		String user_id = (String)session.getAttribute("user_id");
 		
 		ShelterCommand shelter = shelterService.selectShelter(id);
 		
@@ -280,6 +311,7 @@ public class ShelterController {
 		String address = s_address1.substring(0,findIndexOf-1);
 		shelter.setS_address1(address);
 		
+		model.addAttribute("user_id", user_id);
 		model.addAttribute("shelter", shelter);
 		
 		return "shelterDetail";
@@ -287,7 +319,7 @@ public class ShelterController {
 	
 	//이미지 출력
 	@RequestMapping("/shelter/imageView.do")
-	public ModelAndView download(@RequestParam("id") String id) {
+	public ModelAndView downloadShelter(@RequestParam("id") String id) {
 
 		ShelterCommand shelter = shelterService.selectShelter(id);
 

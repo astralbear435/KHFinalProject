@@ -27,7 +27,7 @@
 				<li><a href="#">${user_id}님 로그인</a></li>
 				<li><a href="${pageContext.request.contextPath}/shelter/shelterConfirm.do">회원정보</a></li>
 				<li><a href="${pageContext.request.contextPath}/note/receivedList.do">쪽지</a></li>
-				<li><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
+				<li><a href="${pageContext.request.contextPath}/shelter/logout.do">로그아웃</a></li>
 				</c:if>
 			  </ul>
 			</div>
