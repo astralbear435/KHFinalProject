@@ -15,20 +15,20 @@
 			<div>보낸 쪽지가 없습니다.</div>
 		</c:if>
 		<c:if test="${count > 0}">
-			<div style="width: 950px; margin: 0 auto">
+			<div style="width: 80%; margin: 0 auto">
 				<div style="text-align: left; margin-bottom: 10px;">
 					<input type="button" value="삭제" id="deleteBtn" onclick="deleteAction();">
 				</div>
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th scope="col" style="width: 90px;">
+							<th scope="col" style="width: 10%;">
 								<input type="checkbox" class="checkAll" onclick="checkAll();">
 							</th>
-							<th scope="col" style="width: 140px;">받는 사람</th>
-							<th scope="col" style="width: 390px;">내용</th>
-							<th scope="col">보낸 날짜</th>
-							<th scope="col">수신 여부</th>
+							<th scope="col" style="width: 20%;">받는 사람</th>
+							<th scope="col">내용</th>
+							<th scope="col" style="width: 15%;">보낸 날짜</th>
+							<th scope="col" style="width: 15%;">수신 여부</th>
 						</tr>
 					</thead>
 					<tbody>

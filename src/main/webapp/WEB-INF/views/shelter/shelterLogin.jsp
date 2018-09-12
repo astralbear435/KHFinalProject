@@ -5,8 +5,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <div class="page-main-style">
 	<div class="horizontal"></div><!-- 가로 여백 -->
-	<div style="width: 500px; margin: 0 auto;">
-		<form action="login.do" id="loginForm" method="post">
+	<div style="width: 500px; margin: 0 auto;" id="shelterLogin">
+		<form action="shelterLogin.do" id="loginForm" method="post">
 			<fieldset>
 				<div class="form-group" style="width: 280px; margin: 0 auto;">
 					<label for="s_id">아이디</label>
