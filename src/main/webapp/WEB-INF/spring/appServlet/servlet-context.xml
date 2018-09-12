@@ -21,7 +21,6 @@
 	<context:component-scan
 		base-package="kr.spring.visitor.controller" />
 	<context:component-scan base-package="kr.spring.goods.controller" />
-	<context:component-scan base-package="kr.spring.ap.controller" /> 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -51,8 +50,6 @@
 				<beans:value>/WEB-INF/tiles-def/admin.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/member.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/good.xml</beans:value>
-				<beans:value>/WEB-INF/tiles-def/ap.xml</beans:value>
-				<beans:value>/WEB-INF/tiles-def/apcall.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -122,12 +119,6 @@
 		view-name="shelterList" />
 	<view-controller path="/admin/main.do"
 		view-name="admin" />
-	<view-controller path="/ap/apCallList.do" view-name="apCallList"/>
-	<view-controller path="/ap/apMain.do" view-name="apMain"/>
-	<view-controller path="/ap/apForm.do" view-name="apForm"/>
-	<view-controller path="/ap/apForm1.do" view-name="apForm1"/>
-	<view-controller path="/ap/apList.do" view-name="apList"/>
-	<view-controller path="/ap/apModify.do" view-name="apModify"/>
 	<!-- 로그인 여부 체크 -->
 	<interceptors>
 		<interceptor>
