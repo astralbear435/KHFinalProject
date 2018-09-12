@@ -3,6 +3,7 @@ package kr.spring.ap.domain;
 public class ApCommand {
 	
 	private int ap_num;
+	private int ap_ok;
 	private String id;
 	private String ap_job;
 	private String ap_cer;
@@ -20,6 +21,12 @@ public class ApCommand {
 	}
 	public void setAp_num(int ap_num) {
 		this.ap_num = ap_num;
+	}
+	public int getAp_ok() {
+		return ap_ok;
+	}
+	public void setAp_ok(int ap_ok) {
+		this.ap_ok = ap_ok;
 	}
 	public String getId() {
 		return id;
@@ -90,9 +97,10 @@ public class ApCommand {
 	
 	@Override
 	public String toString() {
-		return "ApCommand [ap_num=" + ap_num + ", id=" + id + ", ap_job=" + ap_job + ", ap_cer=" + ap_cer + ", ap_act="
-				+ ap_act + ", ap_pet=" + ap_pet + ", ap_ser=" + ap_ser + ", ap_home=" + ap_home + ", ap_sel=" + ap_sel
-				+ ", ap_nopet=" + ap_nopet + ", ap_service=" + ap_service + ", ap_mon=" + ap_mon + "]";
+		return "ApCommand [ap_num=" + ap_num + ", ap_ok=" + ap_ok + ", id=" + id + ", ap_job=" + ap_job + ", ap_cer="
+				+ ap_cer + ", ap_act=" + ap_act + ", ap_pet=" + ap_pet + ", ap_ser=" + ap_ser + ", ap_home=" + ap_home
+				+ ", ap_sel=" + ap_sel + ", ap_nopet=" + ap_nopet + ", ap_service=" + ap_service + ", ap_mon=" + ap_mon
+				+ "]";
 	}
 	
 }

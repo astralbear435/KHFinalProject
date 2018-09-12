@@ -21,7 +21,7 @@
 	<context:component-scan
 		base-package="kr.spring.visitor.controller" />
 	<context:component-scan base-package="kr.spring.goods.controller" />
-	<context:component-scan base-package="kr.spring.ap.controller" />
+	<context:component-scan base-package="kr.spring.ap.controller" /> 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
