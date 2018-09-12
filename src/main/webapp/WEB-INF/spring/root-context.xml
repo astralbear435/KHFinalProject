@@ -80,7 +80,7 @@
 		                   		  kr.spring.tem.domain,
 		                   		  kr.spring.note.domain,
 		                   		  kr.spring.shelter.domain,
-		                   		    kr.spring.goods.domain"/>               
+		                   		  kr.spring.goods.domain"/>               
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" 

@@ -48,7 +48,8 @@
 				<beans:value>/WEB-INF/tiles-def/shelter.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/note.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/admin.xml</beans:value>
-			<beans:value>/WEB-INF/tiles-def/good.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/member.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/good.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
