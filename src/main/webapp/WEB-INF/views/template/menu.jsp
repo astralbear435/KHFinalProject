@@ -13,7 +13,7 @@
 			</div>
 
 			<div id="m_nav_container" class="m_nav">
-			  <ul id="m_nav_list" class="m_nav nav nav-pills">
+			  <ul id="m_nav_list" class="m_nav">
 				<li> <a href="${pageContext.request.contextPath}/main/main.do">Home</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/main/gallery.do">Gallery</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/main/icons.do">Icons</a> </li>
@@ -29,6 +29,7 @@
 				<li><a href="${pageContext.request.contextPath}/note/receivedList.do">쪽지</a></li>
 				<li><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
 				</c:if>
+				<li><a href="${pageContext.request.contextPath}/goods/list.do">후원하기</a></li>
 			  </ul>
 			</div>
 		<!-- menu -->

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="goodsWrite" extends="main">
+		<put-attribute name="title" value="등록하기" />
+		<put-attribute name="body" value="/WEB-INF/views/goods/goodsWrite.jsp"/>	
+	</definition>	
+	<definition name="goodsList" extends="main">
+		<put-attribute name="title" value="목록" />
+		<put-attribute name="body" value="/WEB-INF/views/goods/goodsList.jsp"/>		
+	</definition>
+	<definition name="goodsDetail" extends="main">
+		<put-attribute name="title" value="물품 상세" />
+		<put-attribute name="body" value="/WEB-INF/views/goods/goodsDetail.jsp"/>	
+	</definition>
+</tiles-definitions>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
