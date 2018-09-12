@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="memberWrite" extends="main">
+		<put-attribute name="title" value="회원가입"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/memberWrite.jsp"/>
+	</definition>
+	
+	<definition name="memberLogin" extends="main">
+		<put-attribute name="title" value="회원로그인"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/memberLogin.jsp"/>
+	</definition>
+	
+	<definition name="memberView" extends="main">
+		<put-attribute name="title" value="회원상세정보"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/memberView.jsp"/>
+	</definition>
+	
+	<definition name="memberModify" extends="main">
+		<put-attribute name="title" value="회원정보수정"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/memberModify.jsp"/>
+	</definition>
+	
+	<definition name="memberDelete" extends="main">
+		<put-attribute name="title" value="회원탈퇴"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/memberDelete.jsp"/>
+	</definition>
+	
+	<definition name="deleteConfirm" extends="main">
+		<put-attribute name="title" value="회원탈퇴 안내창"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/deleteConfirm.jsp"/>
+	</definition>
+	
+	<definition name="sendEmail" extends="main">
+		<put-attribute name="title" value="인증메일전송완료"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/sendEmail.jsp"/>
+	</definition>
+	
+	<definition name="resendEmail" extends="main">
+		<put-attribute name="title" value="인증메일 재전송완료"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/resendEmail.jsp"/>
+	</definition>
+	
+	<definition name="emailConfirm" extends="main">
+		<put-attribute name="title" value="메일인증완료"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/emailConfirm.jsp"/>
+	</definition>
+	
+	<definition name="findMember" extends="main">
+		<put-attribute name="title" value="아이디 찾기"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/findMember.jsp"/>
+	</definition>
+	
+	<definition name="successSendPw" extends="main">
+		<put-attribute name="title" value="비밀번호 찾기"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/successSendPw.jsp"/>
+	</definition>
+		
+</tiles-definitions>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

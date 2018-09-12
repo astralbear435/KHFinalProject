@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
+
+    xmlns:context="http://www.springframework.org/schema/context"
+
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:p="http://www.springframework.org/schema/p"
@@ -9,26 +11,19 @@
 						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 	                    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 	                    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
-	
-	<!-- Root Context: defines shared resources visible to all other web components -->
-	<!-- 빈 자동 스캔 - servlet-context.xml에서
-	Controller를 자동 스캔 설정해서 아래 설정에서는
-	Controller를 자동 스캔 제외 -->
+	<!-- 빈 자동 스캔 - servlet-context.xml에서 Controller를 자동 스캔 설정해서 아래 설정에서는 Controller를 자동 스캔 제외 -->
 	<context:component-scan base-package="kr.spring">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
 	<!-- JDBC 기반 트랜잭션 관리자 설정 -->
-	<bean id="transactionManager"
-	     class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
-	     p:dataSource-ref="dataSource"/>
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		  p:dataSource-ref="dataSource"/>
 	
-	<context:property-placeholder 
-	       location="classpath:config/jdbc.properties"/>
+	<context:property-placeholder location="classpath:config/jdbc.properties"/>
 	
 	<!-- 커넥션 풀을 이용한 DataSource 설정 -->
-	<bean id="dataSource"
-	        class="org.apache.commons.dbcp.BasicDataSource">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}"/>
 		<property name="url" value="${jdbc.url}"/>
 		<property name="username" value="${jdbc.username}"/> 
@@ -40,10 +35,9 @@
 		<!-- 최대 대기시간(초) : 초과시 연결 실패 오류 발생 -->
 		<property name="maxWait" value="5"/>       
 	</bean>
-
+	
 	<!-- 선언적 트랜잭션 처리 -->
-	<tx:advice id="txAdvice" 
-	         transaction-manager="transactionManager">
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="insert*" /> <!-- 데이터가 변하므로 * -->
 			<tx:method name="update*" />
@@ -74,25 +68,68 @@
 		<aop:advisor advice-ref="txAdvice"
 		             pointcut-ref="servicePublicMethod"/>              
 	</aop:config>
-	
-	<!-- mybatis 설정 -->
+<!-- mybatis 설정 -->
 	<bean id="sqlSessionFactory"
 	      class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-		<!-- MemberCommand의 빈 이름을 자동으로 memberCommand로 설정해줌 / MemberDaoImpl.class를 자동으로 생성해줌-->
-		<property name="typeAliasesPackage" value="kr.spring.tem.domain,kr.spring.note.domain,kr.spring.shelter.domain"/>
+		<property name="dataSource" ref="dataSource"/> 
+		<property name="typeAliasesPackage" 
+		                   value="kr.spring.member.domain,
+		                   		  kr.spring.admin.mainpage.domain,
+		                   		  kr.spring.visitor.domain,
+		                   		  kr.spring.admin.notice.domain,
+		                   		  kr.spring.tem.domain,
+		                   		  kr.spring.note.domain,
+		                   		  kr.spring.shelter.domain,
+		                   		  kr.spring.goods.domain"/>               
 	</bean>
-	
-	<!-- value 값 안에 있는 모든 자바빈을 전부 다 스캔해서 bean으로 생성해줌 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="kr.spring.tem.dao,kr.spring.note.dao,kr.spring.shelter.dao"/>
+		<property name="basePackage" 
+		              value="kr.spring.member.dao,
+		              		 kr.spring.admin.mainpage.dao,
+		              		 kr.spring.visitor.dao,
+		              		 kr.spring.admin.notice.dao,
+		              		 kr.spring.tem.dao,
+		              		 kr.spring.note.dao,
+		              		 kr.spring.shelter.dao
+		              		 ,kr.spring.goods.dao" />
 	</bean>
 	
-	<!-- 암호화 복호화 알고리즘 처리 -->
+	<!-- 암호화,복호화 알고리즘 처리 -->
 	<bean id="cipherAES" class="kr.spring.util.CipherTemplate">
-		<property name="algorithm" value="AES"/>
-		<property name="secretKey" value="sdjbhtseq4819ebahn02tujmo"/>
+		<property name="algorithm" value="AES"/>                                     
+		<property name="secretKey" value="ibvlqxkqsokz4xyrgpljfcgu9"/>
 	</bean>
-		
+	<bean id = "multipartResolver" class = "org.springframework.web.multipart.commons.CommonsMultipartResolver" />		
+
+	<!-- 메일 보내기 -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="khtestfinal@gmail.com" />
+		<property name="password" value="q0w9e8r7!@" />
+		<!-- email 요청시는 SMTP -->
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- google Class Bean설정 추가 -->
+	<!-- 클라이언트ID와 보안비밀 세팅 -->
+	<!-- <bean id="googleConnectionFactory"
+		class="org.springframework.social.google.connect.GoogleConnectionFactory">
+		<constructor-arg value="1021358288049-nbdea5hpjlmstb0bskbv47pdahpesmuh.apps.googleusercontent.com" />
+		<constructor-arg value="8o7JA4alF4KQXyBmzRN1UpO1" />
+	</bean> -->
+	<!-- 승인된 자바스크립트 원본과 승인된 리디렉션 URI -->
+	<!-- <bean id="googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
+		<property name="scope" value="https://www.googleapis.com/auth/plus.login" />
+		<property name="redirectUri" value="http://localhost:8080/ProjectCAN/oauth2callback" />
+	</bean> -->
+
 
 </beans>

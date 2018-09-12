@@ -130,6 +130,7 @@ public class ShelterController {
 
 	}
 
+
 	//================== 로그아웃 =========================
 	@RequestMapping("/shelter/logout.do")
 	public String processLoginShelter(HttpSession session) {
@@ -138,6 +139,7 @@ public class ShelterController {
 
 		return "redirect:/main/main.do";
 	}
+
 	
 	//================== 회원 상세 정보 =========================
 	// 진입 전 비밀번호 확인
