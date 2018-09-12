@@ -20,14 +20,14 @@
 				<li> <a href="${pageContext.request.contextPath}/main/codes2.do">Codes</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/shelter/shelterList.do">보호소</a> </li>
 				<c:if test="${empty user_id}">
-				<li><a href="${pageContext.request.contextPath}/shelter/write.do">회원가입</a></li>
-				<li><a href="${pageContext.request.contextPath}/shelter/shelterLogin.do">로그인</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/provision.do">회원가입</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/login.do">로그인</a></li>
 				</c:if>
 				<c:if test="${!empty user_id}">
 				<li>${user_id}님 로그인 중</li>
 				<li><a href="${pageContext.request.contextPath}/shelter/shelterConfirm.do">회원정보</a></li>
 				<li><a href="${pageContext.request.contextPath}/note/receivedList.do">쪽지</a></li>
-				<li><a href="${pageContext.request.contextPath}/shelter/logout.do">로그아웃</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
 				</c:if>
 				<li><a href="${pageContext.request.contextPath}/goods/list.do">후원하기</a></li>
 			  </ul>

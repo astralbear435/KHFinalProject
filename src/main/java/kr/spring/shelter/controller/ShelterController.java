@@ -47,9 +47,8 @@ public class ShelterController {
 	}
 	//회원 가입 데이터 전송
 	@RequestMapping(value="/shelter/write.do", method=RequestMethod.POST)
-	public String submitShelter(@ModelAttribute("command") 
-							@Valid ShelterCommand shelterCommand, 
-							BindingResult result) {
+	public String submitShelter(@Valid ShelterCommand shelterCommand, 
+								BindingResult result) {
 		
 		if(result.hasErrors()) {
 			return formShelter();
@@ -106,9 +105,13 @@ public class ShelterController {
 			ShelterCommand shelter = shelterService.selectShelter(shelterCommand.getS_id());
 			boolean check = false;
 			
+			System.out.println("shelter : " + shelter);
+			
 			if(shelter != null) {//아이디가 존재하면
+				
 				// 비밀번호 일치 여부 체크 > 암호화 된 비번의 일치여부 확인
 				check = shelter.isCheckedPasswd(cipherAES.encrypt(shelterCommand.getS_passwd()));
+				System.out.println(check);
 			}
 			if(check) {
 				//인증 성공, 로그인처리
@@ -122,6 +125,7 @@ public class ShelterController {
 			}
 			
 		}catch(Exception e) {
+			
 			//인증 실패로 폼 호출
 			result.reject("invalidIdOrPassword");
 			
@@ -129,17 +133,6 @@ public class ShelterController {
 		}
 
 	}
-
-
-	//================== 로그아웃 =========================
-	@RequestMapping("/shelter/logout.do")
-	public String processLoginShelter(HttpSession session) {
-		//로그아웃
-		session.invalidate();
-
-		return "redirect:/main/main.do";
-	}
-
 	
 	//================== 회원 상세 정보 =========================
 	// 진입 전 비밀번호 확인

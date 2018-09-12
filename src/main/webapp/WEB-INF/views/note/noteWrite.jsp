@@ -61,7 +61,7 @@
 				</div>
 				<hr size="1" width="100%"><br>
 				<label for="note_content"></label>
-				<textarea rows="20" cols="48" style="resize:none;" name="note_content">${idArray}</textarea><br>
+				<textarea rows="20" cols="48" style="resize:none;" name="note_content"></textarea><br>
 				<div class="letter-count" style="text-align:right">0 / 1000</div>
 				<p align="center">
 					<input type="submit" value="보내기">
