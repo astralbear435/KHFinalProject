@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.member.domain.MemberCommand;
 import kr.spring.member.service.MemberService;
+import kr.spring.shelter.service.ShelterService;
 import kr.spring.util.CipherTemplate;
 
 
@@ -27,6 +28,9 @@ public class MemberController {
 
 	@Resource
 	private MemberService memberService;
+	
+	@Resource
+	private ShelterService shelterService;
 
 	@Resource
 	private CipherTemplate cipherAES;
@@ -41,9 +45,16 @@ public class MemberController {
 	//=========================admin 로그인========================
 	@RequestMapping(value="/admin/login.do",method=RequestMethod.GET)
 	public String adminlogin() {
-
 		return "admin/login";
+		}
+		
+	// 약관 폼 호출
+	@RequestMapping(value="/member/privision.do")
+	public String privision() {
+		return "member/provision";
 	}
+
+	
 	@RequestMapping(value="/admin/login.do",method=RequestMethod.POST)
 	public String adminsubmit(@ModelAttribute("command") @Valid MemberCommand memberCommand, BindingResult result, Model model, HttpServletRequest request, HttpSession session) throws Exception{
 		if(log.isDebugEnabled()) {
@@ -244,8 +255,6 @@ public class MemberController {
 			return "memberLogin";
 		}
 	}
-
-
 	//================== 회원 아이디/비밀번호 찾기 ====================
 
 	@RequestMapping(value="/member/findMember.do",method=RequestMethod.GET)

@@ -11,10 +11,12 @@
 	<input type="hidden" id="s_address1" value="${shelter.s_address1}">
 	<div class="horizontal"></div><!-- 가로 여백 -->
 	<div class="bigSquare">
+		<c:if test="${user_id == shelter.s_id}">
 		<p align="right" style="margin:0;">
 			<input type="button" value="수정하기"
-					onclick="location.href='#'">
+					onclick="location.href='${pageContext.request.contextPath}/shelter/shelterConfirm.do'">
 		</p>
+		</c:if>
 		<div class="horizontal"></div><!-- 가로 여백 -->
 		<div class="mainPhoto" style="background-image: url(imageView.do?id=${shelter.s_id});">		
 			<div class="titleDetail">${shelter.s_name}</div>

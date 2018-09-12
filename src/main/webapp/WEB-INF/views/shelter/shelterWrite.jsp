@@ -76,7 +76,7 @@ $(document).ready(function(){
 				<fieldset class="clearB">
 					<div class="w500 h72">
 						<div class="form-group floatL">
-							<label for="s_id">아이디</label>
+							<label for="s_id">아이디</label><br>
 							<form:input path="s_id" class="form-control" id="s_id" name="s_id"
 										style="width: 278px;" placeholder="아이디 입력"/>
 						</div>
@@ -124,7 +124,7 @@ $(document).ready(function(){
 					
 					<div class="w500 h72">
 						<div class="form-group floatL">
-							<label for="s_zipcode">우편번호</label>
+							<label for="s_zipcode">우편번호</label><br>
 							<form:input path="s_zipcode" class="form-control" name="s_zipcode"
 											placeholder="우편번호 찾기 버튼 클릭" style="width:200px;" readonly="readonly"/>
 							<form:errors path="s_zipcode" cssClass="error-color"/>
