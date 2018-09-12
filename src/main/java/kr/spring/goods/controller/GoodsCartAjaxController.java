@@ -91,7 +91,7 @@ public class GoodsCartAjaxController {
 			 sum+=a.getP_price();
 		 }	 
 		
-		 cartmav.setViewName("goods/goodsCart");
+		 cartmav.setViewName("goodsCart");
 		 cartmav.addObject("cartList",cartlist);
 		 cartmav.addObject("sum",sum);
 		return cartmav;
