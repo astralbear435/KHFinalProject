@@ -67,34 +67,34 @@ $(document).ready(function() {
 				             cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="species">견종</label>
-				<form:input path="species"/>
-				<form:errors path="species" 
-				             cssClass="error-color"/>
+				<label for="an_species">견종</label>
+				<form:input path="an_species"/>
+				<form:errors path="an_species" 
+				             cssClass="error-an_species"/>
 			</li>
 				<li>
-				<label for="color">색상</label>
-				<form:textarea path="color"/>
-				<form:errors path="color" 
-				             cssClass="error-color"/>
+				<label for="an_color">색상</label>
+				<form:textarea path="an_color"/>
+				<form:errors path="an_color" 
+				             cssClass="error-an_color"/>
 			</li>
 			<li>
-				<label for="gender">성별</label>
-				<select name="gender">
+				<label for="an_gender">성별</label>
+				<select name="an_gender">
 				<option type="checkbox" value="수컷">수컷</option>
 				<option type="checkbox" value="암컷">암컷</option>
 				</select>
 			</li>
 			<li>
-				<label for="operate">중성화여부</label>
-				<select name="operate">
+				<label for="an_operate">중성화여부</label>
+				<select name="an_operate">
 				<option type="checkbox" value="완료">완료</option>
 				<option type="checkbox" value="미완료">미완료</option>
 				</select>
 			</li>
 			<li>
-				<label for="review">접종여부</label>
-				<select name="operate">
+				<label for="an_review">접종여부</label>
+				<select name="an_review">
 				<option type="checkbox" value="접종완료">접종완료</option>
 				<option type="checkbox" value="접종미완료">접종미완료</option>
 				</select>

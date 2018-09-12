@@ -133,7 +133,7 @@ public class BoardController {
 
 
 		BoardCommand board = boardService.selectBoard(num);
-		System.out.println(board.getAn_hit());
+		System.out.println("조회수의 값ㅇ느? :"+board.getAn_hit());
 		//줄바꿈 처리
 		//board.setAn_content(StringUtil.useBrNoHtml(board.getAn_content()));
 

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script> --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board.reply.js"></script>
 <script type="text/javascript">
 //삭제시 확인
@@ -30,7 +30,7 @@ img{
 <div class="page-main-style">
 	<br><br>
 	<font color="#17BEFF" size="3">${board.id}</font>&nbsp;
-	<span><b><a style="font-size:20px">[${board.species}&nbsp;&nbsp;${board.reg_date}]</a><b style="float:right;">조회수 : ${board.hit}</b></b></span>
+	<span><b><a style="font-size:20px">[${board.an_species}&nbsp;&nbsp;${board.reg_date}]</a><b style="float:right;">조회수 : ${board.an_hit}</b></b></span>
 	<hr size="1" width="100%">
 	<br>
 	<div style="display:inline-block; font-size:15px; width:740px;">
@@ -38,11 +38,11 @@ img{
 	</a>
 	<ul>
 		<li><b>보호소 : ${board.id}</b></li>
-		<li>견종   :  ${board.species}</li>
-		<li>색상   :  ${board.color}</li>
-		<li>성별   :  ${board.gender}</li>
-		<li>접종여부  : ${board.review}</li>
-		<li>중성화  :  ${board.operate}</li>
+		<li>견종   :  ${board.an_species}</li>
+		<li>색상   :  ${board.an_color}</li>
+		<li>성별   :  ${board.an_gender}</li>
+		<li>접종여부  : ${board.an_review}</li>
+		<li>중성화  :  ${board.an_operate}</li>
 	</ul>
 		</div>
 <%-- 	<div style="displayinline-block; font-size:20px; width:48%">

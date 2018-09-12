@@ -20,9 +20,9 @@
  	                   b.an_review,
  	                   b.an_species,
  	                   b.an_hit,
- 	                   b.an_reg_date,
- 	                   b.an_id,
- 	                   r.an_re_cnt
+ 	                   b.reg_date,
+ 	                   b.id,
+ 	                   r.re_cnt
  	                FROM dog_board b LEFT OUTER JOIN (SELECT num,COUNT(*) re_cnt
  	                                                FROM <!-- dog_board_reply -->
  	                                                dgboard_reply GROUP BY num)r
@@ -43,7 +43,7 @@
 			 	    		b.an_content like '%' || #{keyword} || '%'
 			 	    	</if>
 			 	    </where>
- 	                ORDER BY b.an_num desc)a)
+ 	                ORDER BY b.num desc)a)
  	<![CDATA[
  		WHERE rnum >= #{start} AND rnum <= #{end}
  	]]>                	

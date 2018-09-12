@@ -1,5 +1,5 @@
 create sequence reply_seq;
-
+create sequence board_seq;
 create table dog_board(
 an_num number not null,
 an_id varchar2(20) not null,
@@ -32,7 +32,8 @@ create table dgboard_reply(
 );
 
 
-
+create sequence board_seq;
+create sequence reply_seq;
 
 
 
