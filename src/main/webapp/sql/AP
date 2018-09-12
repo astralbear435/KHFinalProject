@@ -1,0 +1,50 @@
+create table ap_form(
+	ap_num	number not null,
+	ap_ok number not null,
+	id varchar2(50) not null,
+	ap_job varchar2(100) not null,
+	ap_cer number,
+	ap_act number,
+	ap_pet number,
+	ap_ser clob,
+	ap_home number not null,
+	ap_sel number not null,
+	ap_nopoet number not null,
+	ap_mon number not null,
+	ap_service number not null,
+	constraint ap_form_pk primary key (ap_num)
+);
+create sequence ap_seq;
+
+create table ap_call_home(
+    call_num number not null,
+    call_name varchar2(30) not null,
+    call_phone varchar2(100) not null,
+    call_start varchar2(300) not null,
+    call_end varchar2(300) not null,
+    call_wei number not null,
+    call_re number not null,
+    call_re_date varchar2(300),
+    call_re_hour varchar2(50),
+    call_re_min varchar2(50),
+    call_intro clob not null,
+    constraint ap_call_form_pk primary key (call_num)
+);
+create sequence ap_call_seq;
+
+create table AP_BO_CALL(
+	bo_num number not null,
+	bo_id varchar2(30) not null,
+	bo_date_start varchar2(300) not null,
+	bo_start_hour varchar2(300) not null,
+	bo_start_min varchar2(300) not null,
+	bo_date_end varchar2(300) not null,
+	bo_end_hour varchar2(300) not null,
+	bo_end_min varchar2(300) not null,
+	id varchar2(30) not null,
+	ap_num number not null,
+	constraint AP_BO_CALL_pk primary key (bo_id)
+);
+create sequence ap_bo_seq;
+	
+	
