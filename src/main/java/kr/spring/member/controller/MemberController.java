@@ -42,7 +42,12 @@ public class MemberController {
 
 		return new MemberCommand();
 	}
-	
+
+	// 통합 로그인 폼 호출
+	@RequestMapping(value="/member/selectLogin.do")
+	public String selectLogin() {
+		return "selectLogin";
+	}
 	
 	// 약관 폼 호출
 	@RequestMapping(value="/member/privision.do")
