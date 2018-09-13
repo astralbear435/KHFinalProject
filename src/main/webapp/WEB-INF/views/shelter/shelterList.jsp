@@ -60,7 +60,7 @@
 					<div class="col-md-4 gallery-grid">
 						<div class="wpf-demo-4">  
 							<a href="${pageContext.request.contextPath}/shelter/shelterDetail.do?id=${shelter.s_id}" class="jzBoxLink item-hover" title="Njoy Trip">  
-								<img src="/ProjectCAN/resources/images/시험용 썸네일.png" alt=" " class="img-responsive" />
+								<img src="${pageContext.request.contextPath}/shelter/imageView.do?id=${shelter.s_id}" alt=" " class="img-responsive" />
 								<div class="view-caption">
 									<p>${shelter.s_name}</p>
 								</div> 

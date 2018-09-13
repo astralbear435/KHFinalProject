@@ -116,7 +116,6 @@ public class ShelterController {
 				
 				// 비밀번호 일치 여부 체크 > 암호화 된 비번의 일치여부 확인
 				check = shelter.isCheckedPasswd(cipherAES.encrypt(shelterCommand.getS_passwd()));
-				System.out.println(check);
 			}
 			if(check) {
 				//인증 성공, 로그인처리
@@ -233,10 +232,12 @@ public class ShelterController {
 		
 		// 총 글의 갯수 또는 검색 된 글의 갯수
 		int count = shelterService.selectRowCount(map);
+		System.out.println(count);
 		
 		List<ShelterCommand> list = null;
 		if(count > 0) {
 			list = shelterService.selectList(map);
+			System.out.println(list);
 		}
 		
 		ModelAndView mav = new ModelAndView();
@@ -290,8 +291,10 @@ public class ShelterController {
 		// 주소값에서 괄호 지워서 보내기
 		String s_address1 = shelter.getS_address1();
 		int findIndexOf = s_address1.indexOf("(");
-		String address = s_address1.substring(0,findIndexOf-1);
-		shelter.setS_address1(address);
+		if(findIndexOf > 0) {
+			String address = s_address1.substring(0,findIndexOf-1);
+			shelter.setS_address1(address);
+		}
 		
 		model.addAttribute("user_id", user_id);
 		model.addAttribute("shelter", shelter);
