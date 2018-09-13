@@ -83,15 +83,16 @@ $('#buyMeNow').click(function(event){
 	var dona_asname=$('#p_name').val();//보호소명
 	var dona_name=$('#dona_name').val();//기부자	
 	var dona_message=$('#dona_message').val();//기부내용
-	requestPay(ptotal,goodsName,goodsNum,dona_id,amount,dona_name,dona_asname,dona_message);
+	var as_id=$('#as_id').val();//보호소 아이디
+	requestPay(ptotal,goodsName,goodsNum,dona_id,amount,dona_name,dona_asname,dona_message,as_id);
 });
 
-function requestPay(ptotal,goodsName,goodsNum,dona_id,amount,dona_name,dona_asname,dona_message) {
+function requestPay(ptotal,goodsName,goodsNum,dona_id,amount,dona_name,dona_asname,dona_message,as_id) {
     // IMP.request_pay(param, callback) 호출
     IMP.request_pay({ // param
         pg: "inicis",
         pay_method: "card",
-        merchant_uid: "ORD20180131-0000015",
+        merchant_uid: "ORD20180131-0000077",
         name: goodsName,
         amount:ptotal,
         buyer_email: "gildong@gmail.com",
@@ -103,7 +104,7 @@ function requestPay(ptotal,goodsName,goodsNum,dona_id,amount,dona_name,dona_asna
         if(rsp.success) {
         	$.ajax({
 				type:'post',
-				data:{dona_id:dona_id,dona_name:dona_name,dona_asname:dona_asname,goodsNum:goodsNum,ptotal:ptotal,amount:amount,dona_message:dona_message},
+				data:{dona_id:dona_id,dona_name:dona_name,dona_asname:dona_asname,goodsNum:goodsNum,ptotal:ptotal,amount:amount,dona_message:dona_message,as_id:as_id},
 				url:'order.do',
 				dataType:'json',
 				cache:false,
@@ -252,7 +253,8 @@ $('.slider-for').slick({
 		 <input type="hidden" id="p_num" name="p_num" value="${goods.g_num}"/> 
 		 <input type="hidden" id="p_goodsname" name="p_goodsname" value="${goods.g_name}">
 		 <input type="hidden" id="p_goodsphoto" name="p_goodsphoto" value="${goods.g_photo1}">
-			
+		 <input type="hidden" id="as_id" name="as_id" value="${as_detail.as_id}">
+		
 		<c:if test="${user_id=='not'}">
 			<button type="button" id="gologin" onclick="gologin_click();">바로결제</button>
 		</c:if>
@@ -261,6 +263,7 @@ $('.slider-for').slick({
 			<button type="button" id="paynow">바로결제</button>	
 		</c:if>
 		<p>${user_id}</p>
+		<p>${as_detail.as_id}</p>
 		</form>
 		
 		<div style="text-align:center">

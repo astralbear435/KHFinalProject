@@ -48,8 +48,10 @@ public class NoteController {
 		map.put("keyfield", "recipient");
 		map.put("keyword", recipient);
 		
-		//총 글의 갯수 또는 검색 된 글의 갯수
+		// 총 글의 갯수 또는 검색 된 글의 갯수
 		int count = noteService.selectNoteRowCount(map);
+		// 안 읽은 쪽지 수 세기
+		int openNotCount = 0;
 		
 		PagingUtil page = new PagingUtil("recipient", recipient, currentPage, count, rowCount, pageCount, "note/receivedList.do");
 		
@@ -60,15 +62,19 @@ public class NoteController {
 		if(count > 0) {
 			list = noteService.selectNoteList(map);
 			
-			// 쪽지 미리보기에 ...처리
 			for(NoteCommand note :  list) {
+				// 내용이 긴 쪽지 미리보기에 ...처리
 				if(note.getNote_content().length() >= 20) note.setNote_content(note.getNote_content().substring(0,20) + "...");
+				
+				// 안 읽은 쪽지 갯수 세기
+				if(note.getRecipient().equals(recipient) && note.getRead_status().equals("open_not")) openNotCount++;
 			}
 		}
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("receivedList");
 		mav.addObject("count", count);
+		mav.addObject("openNotCount", openNotCount);
 		
 		if(list != null) {
 			mav.addObject("list", list);
@@ -89,6 +95,8 @@ public class NoteController {
 		
 		//총 글의 갯수 또는 검색 된 글의 갯수
 		int count = noteService.selectNoteRowCount(map);
+		// 안 읽은 쪽지 수
+		int openNotCount = 0;
 		
 		PagingUtil page = new PagingUtil("sender", sender, currentPage, count, rowCount, pageCount, "note/sendList.do");
 		
@@ -102,14 +110,21 @@ public class NoteController {
 			// 쪽지 미리보기에 ...처리
 			for(NoteCommand note :  list) {
 				if(note.getNote_content().length() >= 20) note.setNote_content(note.getNote_content().substring(0,20) + "...");
+				
+				// 안 읽은 쪽지 갯수 세기
+				if(note.getRecipient().equals(sender) && note.getRead_status().equals("open_not")) openNotCount++;
 			}
 		}
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("sendList");
 		mav.addObject("count", count);
-		mav.addObject("list", list);
-		mav.addObject("pagingHtml", page.getPagingHtml());
+		mav.addObject("openNotCount", openNotCount);
+		
+		if(list != null) {
+			mav.addObject("list", list);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+		}
 		
 		return mav;
 	}

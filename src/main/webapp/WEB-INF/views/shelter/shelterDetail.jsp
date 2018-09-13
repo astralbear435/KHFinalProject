@@ -2,11 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>보호소 상세</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sy.css">
-</head>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sy.css">
 <body>
 	<input type="hidden" id="s_address1" value="${shelter.s_address1}">
 	<div class="horizontal"></div><!-- 가로 여백 -->
@@ -18,7 +14,7 @@
 		</p>
 		</c:if>
 		<div class="horizontal"></div><!-- 가로 여백 -->
-		<div class="mainPhoto" style="background-image: url(imageView.do?id=${shelter.s_id});">		
+		<div class="mainPhoto">		
 			<div class="titleDetail">${shelter.s_name}</div>
 		</div><br>
 		
@@ -123,7 +119,7 @@
 				<div style="text-align: center;">
 					<div  class="link2blank" style="width:160px;"></div>
 					<div style="float:left">
-						<img src="${pageContext.request.contextPath}\resources\images\빨간강아지.png" class="square">
+						<img src="${pageContext.request.contextPath}\resources\images\sy\빨간강아지.png" class="square">
 						<div class="linkSquare">
 							<div style="font-size:30px;">동물 보호 현황</div>
 							<div style="font-size:17px;">
@@ -136,7 +132,7 @@
 					</div>
 					<div  class="link2blank" style="width: 145px;"></div>
 					<div style="float:left">
-						<img src="${pageContext.request.contextPath}\resources\images\파란고양이.png" class="square">
+						<img src="${pageContext.request.contextPath}\resources\images\sy\파란고양이.png" class="square">
 						<div class="linkSquare">
 							<div style="font-size:30px;">물품 후원하기</div>
 							<div style="font-size:17px;">
@@ -156,7 +152,7 @@
 		<!-- 링크3 시작 -->
 		<div style="width: 1000px; margin: 0 auto;">
 			<div style="float:left">
-				<img src="${pageContext.request.contextPath}\resources\images\빨간강아지.png" class="square">
+				<img src="${pageContext.request.contextPath}\resources\images\sy\빨간강아지.png" class="square">
 				<div class="linkSquare">
 					<div style="font-size:30px;">동물 보호 현황</div>
 					<div style="font-size:17px;">
@@ -169,7 +165,7 @@
 			</div>
 			<div class="link3blank"></div>
 			<div style="float:left">
-				<img src="${pageContext.request.contextPath}\resources\images\파란고양이.png" class="square">
+				<img src="${pageContext.request.contextPath}\resources\images\sy\파란고양이.png" class="square">
 				<div class="linkSquare">
 					<div style="font-size:30px;">물품 후원하기</div>
 					<div style="font-size:17px;">
@@ -182,7 +178,7 @@
 			</div>
 			<div class="link3blank"></div>
 			<div style="float:left">
-				<img src="${pageContext.request.contextPath}\resources\images\노란개.png" class="square">
+				<img src="${pageContext.request.contextPath}\resources\images\sy\노란개.png" class="square">
 				<div class="linkSquare">
 					<div style="font-size:30px;">자원봉사 신청</div>
 					<div style="font-size:17px;">

@@ -7,9 +7,8 @@
 		때문에 -->
 	<select id="selectList" parameterType="map"
 		resultType="ShelterCommand">
-		select * from (
-		select *
-		from shelter_detail sd
+		select sd.*,m.auth from (
+							select * from shelter_detail 
 
 		<where>
 			<!-- if문에 들어오지 못하면 where이 생성되지 않음. -->
@@ -69,14 +68,15 @@
 			</if>
 		</where>
 
-		order by sd.s_reg_date desc)
+		order by s_reg_date desc) sd inner join (
+												select * from member where auth=4)m on sd.s_id = m.m_id
 	</select>
 
 	<!-- map,interger는 Map,Integer 둘 다 상관 없음. mybatisc가 alias를 가지고 있으므로 -->
 	<select id="selectRowCount" parameterType="map"
 		resultType="integer">
-		select count(*)
-		from shelter_detail sd
+		select count(*) from (
+							select * from shelter_detail
 
 		<!-- 다이나믹 형태(동적인 sql) : 상황에 따라 sql이 적용됨 -->
 		<where>
@@ -136,6 +136,9 @@
 				and sd.s_name like '%' || #{name,jdbcType=VARCHAR} || '%'
 			</if>
 		</where>
+		
+		order by s_reg_date desc) sd inner join (
+												select * from member where auth=4)m on sd.s_id = m.m_id
 	</select>
 
 </mapper>
