@@ -11,6 +11,7 @@ import kr.spring.goods.domain.OrderCommand;
 
 
 public interface GoodsService {
+	//as_goods디비에 보호소 정보 등록하기
 	public void insert(GoodsCommand goods);
 	public List<GoodsCommand> getASList(Map<String,Object> map);
 	public GoodsCommand selectDetailAS(String as_name);
@@ -39,5 +40,8 @@ public interface GoodsService {
 	public int selectAuth(String id);
 	//보호소의 did값 받아오기
 	public int selectDid(String id);
+	
+	//업데이트
+	public void updateAs(GoodsCommand goods);
 	
 }

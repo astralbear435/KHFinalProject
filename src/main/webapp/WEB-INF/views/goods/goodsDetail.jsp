@@ -191,9 +191,9 @@ $('.slider-for').slick({
                 <!-- 정보 확인 창  -->
                 <div style="text-align: center;border: 1px solid gray;">
                 <ul style="list-style:none; font-size:20px;">
-                	<li>기부자 :<input type="text" id="dona_name"></li>
+                	<li>기부자 :<input type="text"  class="form-control" id="dona_name"></li>
                 	<li><a style="color:gray">(해당 이름으로 기부됩니다.)</a></li>
-                	<li>메세지:<textarea rows="10" cols="30" id="dona_message" placeholder="공란도 괜찮습니다."></textarea></li>
+                	<li>메세지:<textarea rows="10"  class="form-control" cols="30" id="dona_message" placeholder="공란도 괜찮습니다."></textarea></li>
                 </ul>
                 </div>
                 <br><br>
@@ -217,13 +217,10 @@ $('.slider-for').slick({
 <!-- 내용 시작 -->    
 <div class="container">
 <br>
-	<h4><a style="color:blue">${as_detail.as_name}</a>/기부하기</h4>
+	<h4><a style="color:blue" href="${pageContext.request.contextPath}/shelter/shelterDetail.do?id=${as_detail.as_id}">${as_detail.as_name}</a><a href="${pageContext.request.contextPath}/goods/list.do">/기부하기</a></h4>
 	<br>
-	<h1>${goods.g_name}</h1>
-<%-- 	<div style="display:inline-block">
-		<img src="${pageContext.request.contextPath}/upload/${goods.g_photo1}" alt="">
-	</div> --%>
 <!-- 이미지 슬라이드 가자!! -->
+<div style="margin-bottom: 10%;">
 <div style="display:inline-block; width:40%">
 		<div class="slider-for">
 		<img src="${pageContext.request.contextPath}/upload/goods/${goods.g_photo1}" alt="">
@@ -236,16 +233,21 @@ $('.slider-for').slick({
 		<img src="${pageContext.request.contextPath}/upload/goods/${goods.g_photo3}" alt="">
 		</div></div>
 	<div style="display:inline-block">
+		<h1>${goods.g_name}</h1><hr>
 		<p>원산지 : ${goods.g_origin}</p>
 		<p style="width:500px">상품 설명 : ${goods.g_content}</p>
+		<hr>
 		<form id="cart_order">
-		수량 : <input type="number" name="p_amount" id="order_quantity"/>
-
-		 <b><div id="total">
-		  	<span id="item_total_txt">합계 : 0원</span>
-		 </div></b>
-		<br><br>
-		<button type="button" id="gocart">장바구니</button>	
+		<p style="display: inline-block;">
+		수량 : <input type="number" class="form-control" name="p_amount" id="order_quantity"/><b><div id="total" style="display: inline-block; float:right; color:#B60000;font-size: 25px;"><span id="item_total_txt">합계 : 0원</span>
+		 </div></b></p>
+		<br>
+		<!-- 장바구니 버튼 -->
+		   <div style="padding-bottom: 10px;padding-top: 10px;cursor:pointer;text-align:center;width:44%;border:1px solid #4285F4;display: inline-block;"id="gocart">
+                <span class="pop_bt" style="font-size: 13pt;color:#4285F4;"><b>장바구니</b></span>
+            </div>
+       
+		<!-- <button type="button" id="gocart">장바구니</button>	 -->
          
          <input type="hidden" name="p_price" id ="sumPrice" value="${goods.g_price}"/>
 	     <input type="hidden" id="p_name" name="p_name" value="${as_detail.as_name}"/>
@@ -256,19 +258,22 @@ $('.slider-for').slick({
 		 <input type="hidden" id="as_id" name="as_id" value="${as_detail.as_id}">
 		
 		<c:if test="${user_id=='not'}">
-			<button type="button" id="gologin" onclick="gologin_click();">바로결제</button>
+			<!-- <button type="button" id="gologin" onclick="gologin_click();">바로결제</button> -->
+			     <div style="padding-bottom: 10px;padding-top: 10px;cursor:pointer;background-color:#4285F4;text-align:center;width:44%; display: inline-block;color:write;"  onclick="gologin_click();">
+                <span class="pop_bt" style="font-size: 13pt;color:white;"><b>바로결제</b></span>
+            </div>
+			<div style="width:9%;height:50%;text-align:center;display:inline-block;border:1px solid #4285F4;padding:2%;cursor:pointer;" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+			<span class="glyphicon glyphicon-home" aria-hidden="true"></span></div>
 		</c:if>
 		<c:if test="${user_id!='not'}">
-			<!-- <input type="submit" value="바로결제"> -->
-			<button type="button" id="paynow">바로결제</button>	
+			<!-- <button type="button" id="paynow">바로결제</button>	 -->
+			   <div style="padding-bottom: 10px;padding-top: 10px;cursor:pointer;background-color:#4285F4; text-align:center;width:44%; display: inline-block; color:write;" id="paynow">
+                <span class="pop_bt" style="font-size: 13pt;color:white;"><b>바로결제</b></span>
+            </div>
+           <div style="width:9%;height:50%;text-align:center;display:inline-block;border:1px solid #4285F4;padding:2%;cursor:pointer;" onclick="location.href='${pageContext.request.contextPath}/main/main.do'"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></div>
 		</c:if>
-		<p>${user_id}</p>
-		<p>${as_detail.as_id}</p>
-		</form>
-		
-		<div style="text-align:center">
-		<button onclick="location.href='${pageContext.request.contextPath}/main/main.do'">홈으로</button>
-		</div>
+		</form>		
+
 	</div>
 </div>
 </div>

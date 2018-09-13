@@ -61,9 +61,22 @@ public class ShelterController {
 		
 		//CipherTemplate을 이용한 암호화
 		shelterCommand.setS_passwd(cipherAES.encrypt(shelterCommand.getS_passwd()));
-
+		
 		// 회원가입
 		shelterService.insert(shelterCommand);
+		//as_goods에 임시 등록
+		GoodsCommand goods=new GoodsCommand();
+		goods.setAs_id(shelterCommand.getS_id());//아이디
+		goods.setAs_name(shelterCommand.getS_name());//보호소 명
+		goods.setAs_location(shelterCommand.getS_address1());
+		goods.setPad(0);
+		goods.setDogfood(0);
+		goods.setCatfood(0);
+		goods.setShampoo(0);
+		goods.setCatsand(0);
+		goods.setAs_did(0);
+		//임시가입
+		goodsService.insert(goods);
 
 		return "redirect:/main/main.do";
 	}
@@ -317,7 +330,7 @@ public class ShelterController {
 		return mav;
 	}
 
-	//====================보호소 기본 물품 등록(소은)=================//
+	//====================보호소 기본 물품 업데이트(소은)=================//
 	@RequestMapping("/shelter/insertgoods.do")
 	@ResponseBody
 	public Map<String,String> insertgoods(@RequestParam("as_id")String as_id,
@@ -337,9 +350,9 @@ public class ShelterController {
 		goods.setCatsand(catsand);
 		goods.setAs_did(did);
 		
-		goodsService.insert(goods);
+		goodsService.updateAs(goods);
 		if(log.isDebugEnabled()) {
-			log.debug("<<물건등록 함 보자>> :"+goods);
+			log.debug("<<물건 수정 값 함 보자>> :"+goods);
 		}
 		map.put("result","success");		
 		return map;

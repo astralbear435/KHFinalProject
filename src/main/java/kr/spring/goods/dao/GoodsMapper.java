@@ -60,6 +60,10 @@ public interface GoodsMapper {
 	//보호소의 did값 받아오기 => did값은 물품등록했는지안했는지 구분해주는 값이다.
 	@Select("SELECT as_did FROM as_goods WHERE as_id=#{id}")
 	public int selectDid(String id);
+	//as_goods 보호소 갯수 업데이트
+	@Update("UPDATE as_goods SET pad=#{pad},dogfood=#{dogfood},catfood=#{catfood},shampoo=#{shampoo},catsand=#{catsand},as_did=#{as_did} WHERE as_id=#{as_id}")
+	public void updateAs(GoodsCommand goods);
+	
 	
 }
 

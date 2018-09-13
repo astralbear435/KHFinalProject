@@ -86,6 +86,7 @@ $(document).ready(function(){
 				if(data.result=='success'){
 					alert('정상적으로 고객님의 후원물품 리스트에 등록되었습니다.');
 					$('#myModal').hide();
+					location.reload();
 				}else{
 					$('#myModal').hide();
 					alert('죄송합니다. 세션만료로 로그아웃 되었습니다. 다시 로그인 해주십시오.');
@@ -95,6 +96,7 @@ $(document).ready(function(){
 			error:function(){
 	      	alert('(물품등록)에러입니다.');
 	      	$('#myModal').hide();
+	      	location.reload();
           	}
 	});
 	 
