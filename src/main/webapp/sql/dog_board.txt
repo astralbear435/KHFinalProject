@@ -1,5 +1,6 @@
 create sequence reply_seq;
 create sequence board_seq;
+
 create table dog_board(
 an_num number not null,
 an_id varchar2(20) not null,
@@ -20,8 +21,8 @@ constraint dog_board_member_fk1 foreign key(an_id) references member(m_id)
 
 create table dgboard_reply(
  re_num number not null,
- pt_num number(5) ,
- depth number(3),
+ pt_num number not null ,
+ depth number not null,
  re_content varchar2(900) not null,
  re_date date not null,
  num number not null,

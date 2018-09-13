@@ -43,13 +43,15 @@ $(document).ready(function() {
 <style>
 ul{
 	list-style:none;
+	align:center;
 }
 </style>
 <div class="page-main-style">
-	<h1>글쓰기</h1>
+	<h3 align="center">(보호소)용 동물 등록페이지</h3>
 	<form:form commandName="boardCommand" action="write.do" id="register_form" enctype="multipart/form-data">
 	    <form:hidden path="id"/>
 		<form:errors element="div" cssClass="error-color"/>	
+		<br><br>
 		<ul>
 			<li>
 				<label for="upload">메인이미지</label>
@@ -109,7 +111,7 @@ ul{
 				             cssClass="error-an_content"/>
 			</li>
 		</ul>
-		<div class="align-center">
+		<div align="center">
 			<input type="submit" value="전송">
 			<input type="button" value="목록"
 			      onclick="location.href='list.do'">

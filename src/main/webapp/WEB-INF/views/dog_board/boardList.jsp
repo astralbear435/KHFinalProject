@@ -7,21 +7,34 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resource/css/layout.css"></script>
 <style>
 ul{
-   float:right;
    list-style:none;
    text-align:center;
+   align:center;
    }
+form{
+   width:50%;
+   height:10%;
+   align:center;
+}
 </style>
 <div class="page-main-style">
-	<h2>게시판 목록</h2>
+	<h2 align="center">입양페이지</h2>
 	<br>
 	<br>
-	<div class="align-right">
-		<c:if test="${!empty user_id}">
-		<input type="button" value="글쓰기"
-		       onclick="location.href='write.do'">
-		</c:if>
-	</div>
+		<form action="list.do" id="search_form" method="get">
+		<ul class="search">
+			<li>
+				<select name="keyfield">
+					<option value="id">보호소명칭</option>
+					<option value="an_name">동물이름</option>
+					<option value="all">전체</option>
+				</select>
+				<input type="text" name="keyword" id="keyword">
+				<input type="submit" value="찾기">
+				<input type="button" value="새로고침" onclick="location.href='list.do'">
+			</li>
+		</ul>
+	</form>
 	<br><br>
 	<c:if test="${count == 0}"><!--  게시물이 없을때 -->
 	<div class="align-center">등록된 게시물이 없습니다.</div>
@@ -35,25 +48,13 @@ ul{
 			${board.reg_date} &nbsp;<font size="1">조회 ${board.an_hit}</font><br><br><br></a>
 		</div>
 	</c:forEach> 
-	<div class="align-center">${pagingHtml}</div>
+	<div align="right">
+		<c:if test="${!empty user_id}">
+		<input type="button" value="글쓰기"
+		       onclick="location.href='write.do'">
+		</c:if>
+	</div>
+	<div align="center">${pagingHtml}</div>
 	</c:if>
-	<form action="list.do" id="search_form" method="get">
-		<ul class="search">
-			<li>
-				<select name="keyfield">
-					<option value="id">보호소명칭</option>
-					<option value="name">동물이름</option>
-					<option value="all">전체</option>
-				</select>
-			</li>
-			<li>
-				<input type="text" name="keyword" id="keyword">
-			</li>
-			<li>
-				<input type="submit" value="찾기">
-				<input type="button" value="새로고침" onclick="location.href='list.do'">
-			</li>
-		</ul>
-	</form>
 	
 </div>

@@ -181,14 +181,14 @@ public class BoardController {
 		BoardCommand boardCommand = 
 				boardService.selectBoard(num);
 
-		model.addAttribute("command", boardCommand);
+		model.addAttribute("boardCommand", boardCommand);
 
 		return "boardModify";
 	}
 	//수정 폼에서 전송된 데이터 처리
 	@RequestMapping(value="/dog_board/update.do",
 			method=RequestMethod.POST)
-	public String submit(@ModelAttribute("boardcommand")
+	public String submit(@ModelAttribute("boardCommand")
 	@Valid BoardCommand boardCommand,
 	BindingResult result,
 	HttpSession session,

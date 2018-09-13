@@ -24,7 +24,7 @@ public class BoardReplyAjaxController {
 	private Logger log = Logger.getLogger(this.getClass());
 	private int rowCount = 10;
 	private int pageCount = 10;
-	
+		
 	@Resource
 	private BoardService boardService;
 	
@@ -165,6 +165,48 @@ public class BoardReplyAjaxController {
 		
 		return map;
 	}
+	/*//댓글의 댓글
+	@RequestMapping("/dog_board/answerReply.do")
+	@ResponseBody
+	public Map<String,String> answerReply(
+			BoardReplyCommand boardReplyCommand,
+			HttpSession session,
+			HttpServletRequest request){
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<boardReplyCommand>> : " + 
+		                      boardReplyCommand);
+		}
+		
+		Map<String,String> map = 
+				new HashMap<String,String>();
+		
+		String user_id = 
+			(String)session.getAttribute("user_id");
+		
+		int pt_num = 0, depth = 0;
+		
+		if(request.getParameter("parent_num")!=null) {//답글
+			pt_num = Integer.parseInt(request.getParameter("parent_num"));
+			depth = Integer.parseInt(request.getParameter("depth"));
+		}
+		request.setAttribute("pt_num", pt_num);
+		request.setAttribute("depth", depth);
+		
+		if(user_id==null) {
+			//로그인이 안 되어있는 경우
+			map.put("result", "logout");
+			
+		}else{
+			
+			//댓글 등록
+			boardService.insertReply(boardReplyCommand);
+			map.put("result", "success");
+		}
+		
+		return map;
+	}
+	*/
 }
 
 

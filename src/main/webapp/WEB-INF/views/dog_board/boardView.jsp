@@ -34,14 +34,19 @@ img{
 	<hr size="1" width="100%">
 	<br>
 	<div style="display:inline-block; font-size:15px; width:740px;">
-	<a href="detail.do?num=${board.num}"><img src="imageView.do?num=${board.num}" width="400" height="250">
+	<a href="detail.do?num=${board.num}"><img src="imageView.do?num=${board.num}" width="500" height="300">
 	</a>
 	<ul>
 		<li><b>보호소 : ${board.id}</b></li>
-		<li>견종   :  ${board.an_species}</li>
-		<li>색상   :  ${board.an_color}</li>
+		<br>
+		<li>묘종/견종   :  ${board.an_species}</li>
+		<br>
+		<li>모상   :  ${board.an_color}</li>
+		<br>
 		<li>성별   :  ${board.an_gender}</li>
+		<br>
 		<li>접종여부  : ${board.an_review}</li>
+		<br>
 		<li>중성화  :  ${board.an_operate}</li>
 	</ul>
 		</div>
@@ -78,18 +83,19 @@ img{
 	</div>
 	
 		<div id="reply_div">
-		<span class="reply-title">댓글 달기</span>
+		<br>
+		<span class="reply-title"></span>
 		<form id="re_form">
 			<input type="hidden" name="num"
 			       value="${board.num}" id="num">
 			<input type="hidden" name="id"
 			       value="${user_id}" id="user_id">
-			<textarea rows="3" cols="50"
+			<textarea rows="3" cols="60"
 			  name="re_content" id="re_content"
-			  class="rep-content"
+			  class="re-content"
 			  <c:if test="${empty user_id}">disabled="disabled"</c:if>
 			  >
-			  <c:if test="${empty user_id}">로그인해야 작성할 수 있습니다.</c:if></textarea>              
+			  <c:if test="${empty user_id}"><font text-align="center">로그인해야 작성할 수 있습니다.</font></c:if></textarea>              
 			<c:if test="${!empty user_id}">
 			<div id="re_first">
 				<span class="letter-count">300/300</span>
@@ -98,6 +104,7 @@ img{
 			<div id="re_second" class="align-right">
 				<input type="submit" value="전송">
 			</div>
+			<br>
 			</c:if>
 		</form>
 	</div>

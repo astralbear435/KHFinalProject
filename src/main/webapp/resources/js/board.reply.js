@@ -106,7 +106,7 @@ $(document).ready(function(){
 				}
 			},
 			error:function(){
-				alert('등록시 네트워크 오류 발생!(test)');
+				alert('등록시 네트워크 오류 발생!');
 			}
 		});
 		//기본 이벤트 제거
@@ -230,31 +230,6 @@ $(document).ready(function(){
 		//기본 이벤트 제거
 		event.preventDefault();
 	});
-	
-/*	
-    //댓글의 댓글 시작
-	$(document).on('click','reply_btn',function(){
-		//부모글 번호
-		var re_num = $(this).attr('data-num');
-		//작성자 아이디
-		var id = $(this).attr('data-id');
-		//댓글 내용
-		var re_content = $(this).parent().find('p').text();
-		
-		//댓글의 댓글 폼 UI
-		var replyUI = '<form id="mre_form">';
-			replyUI += ' <input type="hidden" name="depth" id="mre_num" value="'+depth+'">';
-			replyUI += ' <input type="hidden" name="re_num" id="id" value="'+re_num+'">';
-			replyUI += ' <textarea rows="3" cols="50" name="re_content" id="mre_content" class="rep-content">'+re_content+'</textarea>';
-			replyUI += ' <div id="mre_first"><span class="letter-count">300/300</span></div>';
-			replyUI += ' <div id="mre_second" class="align-right">';
-			replyUI += '   <input type="submit" value="전송">';
-			replyUI += '   <input type="button" value="취소" class="re-reset">';
-			replyUI += ' </div>';
-			replyUI += ' <hr size="1" noshade width="96%">';
-			replyUI += '</form>';
-	});*/
-	
 	//댓글 삭제
 	$(document).on('click','.delete-btn',function(){
 		//댓글 번호

@@ -40,10 +40,15 @@ $(document).ready(function() {
     }
 });
 </script>
+<style>
+ul{
+   list-style:none;
+   }
+</style>
 <div class="page-main-style">
-	<h1>글수정</h1>
-	<form:form commandName="command" action="update.do"
-	    id="register_form"
+	<h3 align="center">글수정</h3>
+	<br><br>
+	<form:form commandName="boardCommand" action="update.do" id="register_form"
 	    enctype="multipart/form-data">
 	    <form:hidden path="id"/>
 	    <form:hidden path="num"/>
@@ -64,19 +69,17 @@ $(document).ready(function() {
 				<label for="an_name">강아지 이름</label>
 				<form:input path="an_name"/>
 				<form:errors path="an_name" 
-				             cssClass="error-color"/>
+				             cssClass="error-an_name"/>
 			</li>
 			<li>
-				<label for="an_species">견종</label>
+				<label for="an_species">묘종/견종</label>
 				<form:input path="an_species"/>
-				<form:errors path="an_species" 
-				             cssClass="error-an_species"/>
+				<form:errors path="an_species" cssClass="error-an_species"/>
 			</li>
 				<li>
-				<label for="an_color">색상</label>
+				<label for="an_color">모색</label>
 				<form:textarea path="an_color"/>
-				<form:errors path="an_color" 
-				             cssClass="error-an_color"/>
+				<form:errors path="an_color" cssClass="error-an_color"/>
 			</li>
 			<li>
 				<label for="an_gender">성별</label>
@@ -102,12 +105,11 @@ $(document).ready(function() {
 			<li>
 				<label for="an_content">내용</label>
 				<form:textarea path="an_content"/>
-				<form:errors path="an_content" 
-				             cssClass="error-color"/>
+				<form:errors path="an_content"  cssClass="error-an_content"/>
 			</li>
 			
 		</ul>
-		<div class="align-center">
+		<div align="center">
 			<input type="submit" value="전송">
 			<input type="button" value="목록"
 			      onclick="location.href='list.do'">
