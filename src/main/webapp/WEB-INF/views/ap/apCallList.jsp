@@ -5,15 +5,13 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/apCall.js"></script>
 <div class="container">
 	<br><br>
-
 	<div class="col-md-12">
 		<form class="form-inline my-2 my-lg-0" action="list.do" style="float:center;" id="search_form" method="get">
 			<div class="form-group">
 				<select class="custom-select" name="keyfield">
-					<option selected="">Open this select menu</option>
+					<option selected>Open this select menu</option>
 					<option value="all">전체</option>
 					<option value="title">제목</option>
-					<option value="id">ID</option>
 					<option value="content">내용</option>
 				</select>
 			</div>

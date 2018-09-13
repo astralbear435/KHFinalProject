@@ -126,19 +126,19 @@
 	<view-controller path="/ap/apMain.do" view-name="apMain"/>
 	<view-controller path="/ap/apForm.do" view-name="apForm"/>
 	<view-controller path="/ap/apForm1.do" view-name="apForm1"/>
-	<view-controller path="/ap/apList.do" view-name="apList"/>
 	<view-controller path="/ap/apModify.do" view-name="apModify"/>
+	<view-controller path="/ap/apList.do" view-name="apList"/>
 	<!-- 로그인 여부 체크 -->
 	<interceptors>
 		<interceptor>
+			<mapping path="/ap/apCallList.do" />
 			<mapping path="/shelter/shelterInfo.do" />
 			<mapping path="/note/receivedList.do" />
 			<mapping path="/board/sendList.do" />
 			<mapping path="/member/detail.do" />
 			<mapping path="/member/update.do" />
 			<mapping path="/member/resendEmail.do" />
-			<beans:bean
-				class="kr.spring.interceptor.LoginCheckInterceptor" />
+			<beans:bean class="kr.spring.interceptor.LoginCheckInterceptor" />
 		</interceptor>
 	</interceptors>
 

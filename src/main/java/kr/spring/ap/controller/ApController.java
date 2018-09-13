@@ -123,7 +123,7 @@ public class ApController {
 		List<ApCommand> list = null;
 		if(count > 0) {
 			list = apService.selectApList(map);
-			
+			log.debug("<<list>> : " + list);
 			if(log.isDebugEnabled()) {
 				log.debug("<<list>> : " + list);
 			}
