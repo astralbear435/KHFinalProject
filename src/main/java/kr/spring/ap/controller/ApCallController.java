@@ -72,12 +72,17 @@ public class ApCallController {
 //==========임시보호자 집으로 부르기 목록==========
 	@RequestMapping("/ap/apCallList.do")
 	public ModelAndView process(@RequestParam(value="pageNum", defaultValue="1") int currentPage, 
-								@RequestParam(value="keyfield", defaultValue="") String keyfield,
-								@RequestParam(value="keyword", defaultValue="") String keyword) {
+								@RequestParam(value="call_wei", defaultValue="") String call_wei,
+								@RequestParam(value="call_re", defaultValue="") String call_re) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
+		map.put("call_wei", call_wei);
+		map.put("call_re", call_re);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("call_wei : "+call_wei);
+			log.debug("call_re : "+call_re);
+		}
 		
 		//총 글의 갯수 또는 검색 된 글의 갯수
 		int count = apCallService.selectCallRowCount(map);
@@ -86,7 +91,7 @@ public class ApCallController {
 			log.debug("<<count>> : " + count);
 		}
 		
-		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "apCallList.do");
+		PagingUtil page = new PagingUtil(call_wei, call_re, currentPage, count, rowCount, pageCount, "apCallList.do");
 		
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());

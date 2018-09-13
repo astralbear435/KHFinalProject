@@ -9,11 +9,44 @@
   		
   			select * from ap_call_home
   			
-  			<where>
-		  		<if test="keyword != '' and keyfield == 'title'">
-		  			call_name like '%' || #{keyword} || '%'
-		  		</if>
-		  	</where>
+		<choose>
+	  		<when test="call_wei == 1 and call_re == 0">
+		       WHERE call_wei = #{call_wei}
+		    </when>
+		    <when test="call_wei == 1 and call_re == 1">
+		       WHERE call_wei=#{call_wei} and call_re=#{call_re}
+		    </when>
+		    <when test="call_wei == 1 and call_re == 2">
+		       WHERE call_wei = #{call_wei} and call_re = #{call_re}
+		    </when>
+		    <when test="call_wei == 2 and call_re == 0">
+		       WHERE call_wei = #{call_wei}
+		    </when>
+		    <when test="call_wei == 2 and call_re == 1">
+		       WHERE call_wei = #{call_wei} and call_re = #{call_re}
+		    </when>
+		    <when test="call_wei == 2 and call_re == 2">
+		       WHERE call_wei = #{call_wei} and call_re = #{call_re}
+		    </when>
+		    <when test="call_re == 1 and call_re == 0">
+		       WHERE call_re = #{call_re}
+		    </when>
+		    <when test="call_re == 1 and call_re == 1">
+		       WHERE call_wei = #{call_wei} and call_re = #{call_re}
+		    </when>
+		    <when test="call_re == 1 and call_re == 2">
+		       WHERE call_wei = #{call_wei} and call_re = #{call_re}
+		    </when>
+		    <when test="call_re == 2 and call_re == 0">
+		       WHERE call_re = #{call_re}
+		    </when>
+		    <when test="call_re == 2 and call_re == 1">
+		       WHERE call_wei = #{call_wei} and call_re = #{call_re}
+		    </when>
+		    <when test="call_re == 2 and call_re == 2">
+		       WHERE call_wei = #{call_wei} and call_re = #{call_re}
+		    </when>
+		 </choose>
   			
   			order by call_num desc)a)
   			
@@ -25,13 +58,45 @@
   <!-- map,interger는 Map,Integer 둘 다 상관 없음. mybatisc가 alias를 가지고 있으므로 -->
 	<select id="selectCallRowCount" parameterType="map" resultType="integer">
 	  	select count(*)
-	  	from ap_call_home
-	  	<where>
-	  		<if test="keyword != '' and keyfield == 'title'">
-	  			call_name like '%' || #{keyword} || '%'
-	  		</if>
-	
-	  	</where>
+	  	from ap_call_home 
+	  	<choose>
+	  		<when test="call_wei == 1 and call_re == 0">
+		       WHERE call_wei = #{call_wei}
+		    </when>
+		    <when test="call_wei == 1 and call_re == 1">
+		       WHERE call_wei=#{call_wei} and call_re=#{call_re}
+		    </when>
+		    <when test="call_wei == 1 and call_re == 2">
+		       WHERE call_wei = #{call_wei} and call_re = #{call_re}
+		    </when>
+		    <when test="call_wei == 2 and call_re == 0">
+		       WHERE call_wei = #{call_wei}
+		    </when>
+		    <when test="call_wei == 2 and call_re == 1">
+		       WHERE call_wei = #{call_wei} and call_re = #{call_re}
+		    </when>
+		    <when test="call_wei == 2 and call_re == 2">
+		       WHERE call_wei = #{call_wei} and call_re = #{call_re}
+		    </when>
+		    <when test="call_re == 1 and call_re == 0">
+		       WHERE call_re = #{call_re}
+		    </when>
+		    <when test="call_re == 1 and call_re == 1">
+		       WHERE call_wei = #{call_wei} and call_re = #{call_re}
+		    </when>
+		    <when test="call_re == 1 and call_re == 2">
+		       WHERE call_wei = #{call_wei} and call_re = #{call_re}
+		    </when>
+		    <when test="call_re == 2 and call_re == 0">
+		       WHERE call_re = #{call_re}
+		    </when>
+		    <when test="call_re == 2 and call_re == 1">
+		       WHERE call_wei = #{call_wei} and call_re = #{call_re}
+		    </when>
+		    <when test="call_re == 2 and call_re == 2">
+		       WHERE call_wei = #{call_wei} and call_re = #{call_re}
+		    </when>
+		 </choose>
   </select>
   
   	<update id="update">
