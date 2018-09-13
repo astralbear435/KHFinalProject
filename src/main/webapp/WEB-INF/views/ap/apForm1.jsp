@@ -28,9 +28,11 @@
 				<tr>
 					<th style="text-align: center;">자격증 보유시 자격증 내역</th>
 					<td>
-						<input type="checkbox" value="1" id="ap_cer" name="ap_cer">반려동물 관리사
+						<input type="checkbox" value="1" id="ap_cer" name="ap_cer">없음
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="checkbox" value="2" id="ap_cer" name="ap_cer">반려동물 행동교정사
+						<input type="checkbox" value="2" id="ap_cer" name="ap_cer">반려동물 관리사
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="checkbox" value="3" id="ap_cer" name="ap_cer">반려동물 행동교정사
 					</td>
 				</tr>
 				<tr>

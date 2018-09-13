@@ -101,12 +101,12 @@ public class ApController {
 //==========임시보호자 집으로 부르기 목록==========
 	@RequestMapping("/ap/apList.do")
 	public ModelAndView process(@RequestParam(value="pageNum", defaultValue="1") int currentPage, 
-								@RequestParam(value="keyfield", defaultValue="") String keyfield,
-								@RequestParam(value="keyword", defaultValue="") String keyword) {
+								@RequestParam(value="ap_home", defaultValue="") String ap_home,
+								@RequestParam(value="ap_service", defaultValue="") String ap_service) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
+		map.put("ap_home", ap_home);
+		map.put("ap_service", ap_service);
 		
 		//총 글의 갯수 또는 검색 된 글의 갯수
 		int count = apService.selectApRowCount(map);
@@ -115,7 +115,7 @@ public class ApController {
 			log.debug("<<count>> : " + count);
 		}
 		
-		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "apList.do");
+		PagingUtil page = new PagingUtil(ap_home, ap_service, currentPage, count, rowCount, pageCount, "apList.do");
 		
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
