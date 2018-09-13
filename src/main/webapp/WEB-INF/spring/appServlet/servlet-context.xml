@@ -28,7 +28,7 @@
 		base-package="kr.spring.volunteer.controller" />
 	<context:component-scan
 		base-package="kr.spring.mypage.controller" />
-	
+	<context:component-scan base-package="kr.spring.ap.controller" />
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -61,7 +61,8 @@
 				<beans:value>/WEB-INF/tiles-def/recruit.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/volunteer.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/mypage.xml</beans:value>
-				
+				<beans:value>/WEB-INF/tiles-def/ap.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/apcall.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -135,17 +136,23 @@
 		view-name="admin" />
 	<view-controller path="/recruit/recruitWrite.do"
 		view-name="recruitWrite" />
+	<view-controller path="/ap/apCallList.do" view-name="apCallList"/>
+	<view-controller path="/ap/apMain.do" view-name="apMain"/>
+	<view-controller path="/ap/apForm.do" view-name="apForm"/>
+	<view-controller path="/ap/apForm1.do" view-name="apForm1"/>
+	<view-controller path="/ap/apModify.do" view-name="apModify"/>
+	<view-controller path="/ap/apList.do" view-name="apList"/>
 	<!-- 로그인 여부 체크 -->
 	<interceptors>
 		<interceptor>
+			<mapping path="/ap/apCallList.do" />
 			<mapping path="/shelter/shelterInfo.do" />
 			<mapping path="/note/receivedList.do" />
 			<mapping path="/board/sendList.do" />
 			<mapping path="/member/detail.do" />
 			<mapping path="/member/update.do" />
 			<mapping path="/member/resendEmail.do" />
-			<beans:bean
-				class="kr.spring.interceptor.LoginCheckInterceptor" />
+			<beans:bean class="kr.spring.interceptor.LoginCheckInterceptor" />
 		</interceptor>
 	</interceptors>
 
