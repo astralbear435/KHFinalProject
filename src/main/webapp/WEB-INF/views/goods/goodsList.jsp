@@ -126,10 +126,10 @@ $(document).ready(function(){
                 <form>
                 <input type="hidden" id="g_id" value=" ${user_id}">
 <b>보호소ID : ${user_id}</b><br>
-상품이름 : <input type="text" placeholder="예)강아지 연고" id="g_name"><br>
-판매주소 : <input type="url" placeholder="생략가능" id="url"><br>
-희망수량 : <input type="number" id="amount"><br>
-상세요청 : <textarea id="message"></textarea>
+상품이름 : <input type="text"  class="form-control" placeholder="예)강아지 연고" id="g_name"><br>
+판매주소 : <input type="url"  class="form-control" placeholder="생략가능" id="url"><br>
+희망수량 : <input type="number"  class="form-control" id="amount"><br>
+상세요청 : <textarea id="message" class="form-control"></textarea>
               
                 </form>
                 </div>
@@ -187,9 +187,10 @@ $(document).ready(function(){
     
   </script>
 	<!-- 슬라이드 끝났다  -->
-	</div><br>
+	</div><br><br>
 	</c:forEach>
-<%-- 	<div style="text-align: center;">${pagingHtml}</div>	 --%>
+
+<div style="margin-left: 45%;">${pagingHtml}</div>
 	</c:if>
 	</div><br/><br/><br/>
 </div>

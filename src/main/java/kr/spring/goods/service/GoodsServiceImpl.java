@@ -117,4 +117,10 @@ public class GoodsServiceImpl implements GoodsService {
 		return goodsMapper.selectDid(id);
 	}
 
+	@Override
+	public void updateAs(GoodsCommand goods) {
+		//as_goods 갯수 업데이트
+		goodsMapper.updateAs(goods);
+	}
+
 }

@@ -30,8 +30,8 @@ import kr.spring.util.PagingUtil;
 @Controller
 public class GoodsController {
 	private Logger log = Logger.getLogger(this.getClass());
-	private int rowCount = 10;
-	private int pageCount = 10;
+	private int rowCount = 5;
+	private int pageCount = 5;
 	
 	@Resource
 	private GoodsService goodsService;
@@ -74,17 +74,17 @@ public class GoodsController {
 			}
 			int g_count=0;
 			goodsphotolist=goodsService.goodsPhotoList(photo_map);
-			
-			//회원의 auth값 받아오기
-			int m_auth = goodsService.selectAuth(id);
-	
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("goodsList");
+			if(id!=null) {
+			//회원의 auth값 받아오기
+			int m_auth = goodsService.selectAuth(id);
+			mav.addObject("m_auth",m_auth);
+			}			
 			mav.addObject("goodslist",goodsphotolist);
 			mav.addObject("count",count);
 			mav.addObject("user_id",id);
-			mav.addObject("as_list",as_list);
-			mav.addObject("m_auth",m_auth);
+			mav.addObject("as_list",as_list);		
 			mav.addObject("pagingHtml", page.getPagingHtml());
 			
 		
