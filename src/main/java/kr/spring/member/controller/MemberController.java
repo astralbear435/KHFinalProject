@@ -1,5 +1,8 @@
 package kr.spring.member.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,11 +16,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.member.domain.MemberCommand;
 import kr.spring.member.service.MemberService;
-import kr.spring.shelter.domain.ShelterCommand;
 import kr.spring.shelter.service.ShelterService;
 import kr.spring.util.CipherTemplate;
 
@@ -123,68 +126,54 @@ public class MemberController {
 
 
 	//=================== 회원 로그인 =====================
-	
-	//로그인 폼
-	@RequestMapping(value="/member/login.do", method=RequestMethod.GET)
-	public String Login() {
 		
-		return "memberLogin";
-
-	}
-	
-	//로그인 폼에 전송된 데이터 처리
-	@RequestMapping(value="/member/login.do",method=RequestMethod.POST)
-	public String submitLogin(@ModelAttribute("command") @Valid MemberCommand memberCommand, BindingResult result, HttpServletRequest request, HttpSession session) {
-
-		/*if(log.isDebugEnabled()) {
-
-			log.debug("<<memberCommand>> : " + memberCommand);
-		}*/
+	@RequestMapping("/member/memberLogin.do")
+	@ResponseBody
+	public Map<String,String> memberLogin(@RequestParam("m_id") String m_id, @RequestParam("m_passwd") String m_passwd, HttpServletRequest request, HttpSession session) {
 		
-		if(result.hasFieldErrors("m_id") || result.hasFieldErrors("m_passwd")) {
-
-			return "memberLogin";
-		}
-
-		//로그인 체크(id,비밀번호 일치 여부 체크)
+		Map<String,String> map = new HashMap<String,String>();
+		
 		try {
-			MemberCommand member = memberService.selectMember(memberCommand.getM_id());
+			
+			MemberCommand member = memberService.selectMember(m_id);
+			log.info(member.getM_id());
 			boolean check = false;
-
+			
 			if(member != null) {
-
-				//비밀번호 일치 여부 체크
-				check = member.isCheckedPasswd(cipherAES.encrypt(memberCommand.getM_passwd()));
-
+				
+				check = member.isCheckedPasswd(cipherAES.encrypt(m_passwd));
+				log.info(member.getM_passwd());
 			}
-
+			
 			if(check) {	//인증성공, 로그인 처리
 
 				session.setAttribute("user_id", member.getM_id());
 				session.setAttribute("user_auth", member.getAuth());
 
-				/*if(log.isDebugEnabled()) {
+				if(log.isDebugEnabled()) {
 					log.debug("<<인증 성공>>");
 					log.debug("<<user_id>> : " + member.getM_id());
 					log.debug("<<user_auth>> : " + member.getAuth());
-				}*/
-
-				return "redirect:/main/main.do";
+				}
+				
+				map.put("result", "success");
+				
+				return map;
 
 			} else {	//인증실패
 				
 				throw new Exception();
 			}
-
-		} catch(Exception e) {	//인증실패로 폼 호출
-
-			result.reject("invalidIdOrPasswd");
-			/*if(log.isDebugEnabled()) {
-				log.debug("<<인증 실패>>");
-			}*/
-			return "memberLogin";
+			
+		} catch(Exception e) {
+			
+			map.put("result", "false");
+			
+			return map;
 		}
 	}
+	
+	
 	//================== 회원 아이디/비밀번호 찾기 ====================
 
 	@RequestMapping(value="/member/findMember.do",method=RequestMethod.GET)

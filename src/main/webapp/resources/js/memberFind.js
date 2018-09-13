@@ -73,14 +73,35 @@ $(document).ready(function() {
 	
 			});
 		}
-		event.preventDefault();
 	});
 	
-	/*//비밀번호 찾기
-	$('#findMember_form #find_passwd').submit(function() {
+	//비밀번호 찾기
+	$('#findMember_form').submit(function() {
 		
+		$('#message_email').empty();
+		$('#m_email.errors').empty();
+	
+			
 		check = true;
-		checkEmail();
+		//이메일 입력 여부 판단
+		if($('#m_email').val() == '') {
+
+			$('#message_email').css('color','red').text('이메일을 입력하세요.');
+			$('#m_email').focus();
+			
+			check = false;
+			
+			return false;
+		}
+		
+		if(regex.test($('#m_email').val()) === false) {
+			
+			$('#message_email').css('color','red').text('이메일 형식이 올바르지 않습니다.');
+		    
+			check = false;
+			
+			return false;
+		}
 
 		if(check) {
 			
@@ -89,7 +110,7 @@ $(document).ready(function() {
 			
 			$.ajax({
 
-				url:'find_Member.do',
+				url:'findMember.do',
 				type:'post',
 				data:{m_email:$('#m_email').val()},
 				dataType:'json',
@@ -101,11 +122,9 @@ $(document).ready(function() {
 
 					if(data.result == 'emailNotFound') {	//이메일이 없는 경우
 						
-						
 						$('#message_email').css('color','red').text('등록되지 않은 이메일입니다.');
 
 					} else if(data.result == 'emailFound') {	//이메일이 존재하는 경우
-						
 						
 						var output = '';
 						output += '등록된 이메일로 임시비밀번호가 전송되었습니다.';
@@ -127,10 +146,11 @@ $(document).ready(function() {
 
 			});
 		}
-	});*/
+		
+	});
 	
 	//이메일 검색 오류 안내 메시지 초기화
-	$('#findMember_form #m_email').keyup(function () {
+	$('#m_email').keyup(function () {
 		
 		$('#message_email').text('');
 	});

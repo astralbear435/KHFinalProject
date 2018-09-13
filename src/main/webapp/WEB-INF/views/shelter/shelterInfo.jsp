@@ -59,7 +59,7 @@ $(document).ready(function(){
     });
   //모달창 클릭시
     $("#openModal").click(function() {
-    	$('#myModal').show(); // 모달창 보여주기
+    	
     
     });
   //모달 창 닫기
