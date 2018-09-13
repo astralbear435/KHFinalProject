@@ -3,6 +3,7 @@ package kr.spring.goods.service;
 import java.util.List;
 import java.util.Map;
 
+import kr.spring.goods.domain.AdminCheck;
 import kr.spring.goods.domain.CartListCommand;
 import kr.spring.goods.domain.GoodsCommand;
 import kr.spring.goods.domain.GoodsListCommand;
@@ -25,7 +26,7 @@ public interface GoodsService {
 	public int deleteCart(Integer p_cartnum);
 	
 	//물건 추가 등록
-	public void addNewGoods(GoodsListCommand goods);
+	public void addNewGoods(AdminCheck check);
 	//장바구니에서 부분주문 할 때 합 갖고오기
 	public List<CartListCommand> getOrderPrice(Integer p_cartnum);
 	//결제 등록(주문)
@@ -36,4 +37,7 @@ public interface GoodsService {
 	public int selectDona_num();
 	//회원의 auth 값 받아오기
 	public int selectAuth(String id);
+	//보호소의 did값 받아오기
+	public int selectDid(String id);
+	
 }

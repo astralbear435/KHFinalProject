@@ -15,7 +15,7 @@ img {
  
 } 
 #backdiv{
-	   border: 1px solid #888;
+	 background-color:#e0f7ff;
 	  width:100%;
 }
  .modal {
@@ -58,6 +58,9 @@ $(document).ready(function(){
 		var g_id=$('#g_id').val();
 		var g_name=$('#g_name').val();
 		var amount=$('#amount').val();
+		var url=$('#url').val();
+		var message=$('#message').val();
+		
 		if(name==null){
 			alert('상품명을 정확하게 써주세요');
 			return;
@@ -67,7 +70,7 @@ $(document).ready(function(){
 		}else{
 			$.ajax({
 				type:'post',
-				data:{id:g_id,name:g_name,amount:amount},
+				data:{id:g_id,name:g_name,amount:amount,url:url,amount:amount,message:message},
 				url:'addInsert.do',
 				dataType:'json',
 				cache:false,
@@ -91,23 +94,23 @@ $(document).ready(function(){
 		<ul style="list-style:none; margin:0;padding:0;text-align:center">
 			<li style="display:inline-block;">
 				<select name="keyfield">
-					<option value="as_name">보호소명</option>
-					<option value="as_location">지역</option>
-					<option value="all">전체</option>
+					<option value="as_name">name</option>
+					<option value="as_location">location</option>
+					<option value="all">all</option>
 				</select>
 			</li>
 			<li style="display:inline-block;">
 				<input type="text" name="keyword" id="keyword">
 			</li>
 			<li style="display:inline-block;">
-				<input type="submit" value="검색">
+				<input type="submit" value="search">
 			</li>
 		</ul>
 	</form>
 	
   <!-- 모달 창을 여는 버튼 -->
 <!-- 보호소만 볼 수 있게 걸러주세요 (나중에 꼭) -->
-<c:if test="${m_auth==3}">
+<c:if test="${m_auth==3||m_auth==4}">
   <div style="float:right;">
    <button id="openModal" class="btn btn-primary">addGoods</button></div><br><br>
 </c:if>   
@@ -124,9 +127,9 @@ $(document).ready(function(){
                 <input type="hidden" id="g_id" value=" ${user_id}">
 <b>보호소ID : ${user_id}</b><br>
 상품이름 : <input type="text" placeholder="예)강아지 연고" id="g_name"><br>
-판매주소 : <input type="url" placeholder="생략가능"><br>
+판매주소 : <input type="url" placeholder="생략가능" id="url"><br>
 희망수량 : <input type="number" id="amount"><br>
-상세요청 : <textarea></textarea>
+상세요청 : <textarea id="message"></textarea>
               
                 </form>
                 </div>
@@ -160,7 +163,7 @@ $(document).ready(function(){
 	<c:forEach var="as_list" items="${as_list}">
 	
 	<div id="backdiv">
-		<span style="text-align:center;"><p><a style="font-size:40px;font-weight: bold;color:#3498DB">${as_list.as_name}</a><a style="font-size:15px;color:gray;">: ${as_list.as_location}</a></p></span>
+		<div style="width:40%; color:#e0f7ff;display: inline-block;">?</div><div style="text-align:center;display: inline-block;"><a style="font-size:40px;font-weight: bold;color:#3498DB">${as_list.as_name}</a></div><div style="font-size:15px;color:gray;display: inline-block;">: ${as_list.as_location}</div>
 	<!--슬라이드 가즈아!!! -->
 	<div class="autoplay">
 	    <c:forEach var="goodsList" items="${goodslist}">
@@ -175,7 +178,7 @@ $(document).ready(function(){
   <script type="text/javascript">
     $(document).ready(function(){      
       $('.autoplay').slick({
-    	  slidesToShow:4,
+    	  slidesToShow:5,
     	  slidesToScroll: 1,
     	  autoplay: true,
     	  autoplaySpeed: 2000,
@@ -186,7 +189,7 @@ $(document).ready(function(){
 	<!-- 슬라이드 끝났다  -->
 	</div><br>
 	</c:forEach>
-	<div style="text-align: center;">${pagingHtml}</div>	
+<%-- 	<div style="text-align: center;">${pagingHtml}</div>	 --%>
 	</c:if>
-	</div>
+	</div><br/><br/><br/>
 </div>

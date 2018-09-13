@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.goods.domain.CartListCommand;
+import kr.spring.goods.domain.GoodsCommand;
 import kr.spring.goods.domain.OrderCommand;
 import kr.spring.goods.service.GoodsService;
 import kr.spring.member.dao.MemberMapper;
@@ -41,7 +42,6 @@ public class GoodsCartAjaxController {
 	@Resource
 	private NoteService noteService;
 
-	
 	//======================장바구니등록==================
 	
 	@RequestMapping(value="/goods/insertCart.do")
