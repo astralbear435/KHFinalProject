@@ -99,3 +99,13 @@ dona_goodsamount varchar2(300) not null,
 dona_username varchar2(300)
 );
 create sequence order_seq;
+
+//임시 물품 추가 등록
+
+create table admin_check(
+  ch_id varchar2(100) not null,
+  ch_name varchar2(100) not null,
+  ch_amount number not null,
+  ch_message CLOB,
+  ch_url varchar(100)
+);

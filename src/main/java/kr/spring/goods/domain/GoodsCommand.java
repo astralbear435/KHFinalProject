@@ -6,10 +6,12 @@ public class GoodsCommand {
 	private String as_location;
 	private int pad;
 	private int dogfood;
-	private int cattoy;
+	private int catfood;
 	private int shampoo;
 	private int catsand;
 	private int as_auth;
+	private int as_did;
+	
 	public String getAs_name() {
 		return as_name;
 	}
@@ -40,11 +42,11 @@ public class GoodsCommand {
 	public void setDogfood(int dogfood) {
 		this.dogfood = dogfood;
 	}
-	public int getCattoy() {
-		return cattoy;
+	public int getCatfood() {
+		return catfood;
 	}
-	public void setCattoy(int cattoy) {
-		this.cattoy = cattoy;
+	public void setCatfood(int catfood) {
+		this.catfood = catfood;
 	}
 	public int getShampoo() {
 		return shampoo;
@@ -64,11 +66,17 @@ public class GoodsCommand {
 	public void setAs_auth(int as_auth) {
 		this.as_auth = as_auth;
 	}
+	public int getAs_did() {
+		return as_did;
+	}
+	public void setAs_did(int as_did) {
+		this.as_did = as_did;
+	}
 	@Override
 	public String toString() {
 		return "GoodsCommand [as_name=" + as_name + ", as_id=" + as_id + ", as_location=" + as_location + ", pad=" + pad
-				+ ", dogfood=" + dogfood + ", cattoy=" + cattoy + ", shampoo=" + shampoo + ", catsand=" + catsand
-				+ ", as_auth=" + as_auth + "]";
+				+ ", dogfood=" + dogfood + ", catfood=" + catfood + ", shampoo=" + shampoo + ", catsand=" + catsand
+				+ ", as_auth=" + as_auth + ", as_did=" + as_did + "]";
 	}
 	
 	

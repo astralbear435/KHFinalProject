@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.goods.domain.GoodsCommand;
+import kr.spring.goods.service.GoodsService;
 import kr.spring.shelter.domain.ShelterCommand;
 import kr.spring.shelter.service.ShelterService;
 import kr.spring.util.CipherTemplate;
@@ -32,7 +34,10 @@ public class ShelterController {
 
 	@Resource
 	private CipherTemplate cipherAES;
-
+	
+	@Resource
+	private GoodsService goodsService;
+	
 	
 	@ModelAttribute("command")
 	public ShelterCommand initShelterCommand() {
@@ -158,11 +163,13 @@ public class ShelterController {
 		String id = (String)session.getAttribute("user_id");
 		
 		ShelterCommand shelter = shelterService.selectShelter(id);
+		int as_did=goodsService.selectDid(id);
 		
 		// 암호화 된 비밀번호를 복호화(db는 변동 없음)
 		shelter.setS_passwd(cipherAES.decrypt(shelter.getS_passwd()));
 		
 		model.addAttribute("shelter", shelter);
+		model.addAttribute("as_did", as_did);
 		
 		return "shelterInfo";
 	}
@@ -306,4 +313,34 @@ public class ShelterController {
 
 		return mav;
 	}
+
+	//====================보호소 기본 물품 등록(소은)=================//
+	@RequestMapping("/shelter/insertgoods.do")
+	@ResponseBody
+	public Map<String,String> insertgoods(@RequestParam("as_id")String as_id,
+			@RequestParam("as_name")String as_name,@RequestParam("as_location")String as_location,
+			@RequestParam("pad")int pad,@RequestParam("dogfood")int dogfood,@RequestParam("catfood")int catfood
+			,@RequestParam("shampoo")int shampoo,@RequestParam("catsand")int catsand){
+		Map<String,String> map=new HashMap<String,String>();
+		int did=1;
+		GoodsCommand goods=new GoodsCommand();
+		goods.setAs_id(as_id);
+		goods.setAs_name(as_name);
+		goods.setAs_location(as_location);
+		goods.setPad(pad);
+		goods.setDogfood(dogfood);
+		goods.setCatfood(catfood);
+		goods.setShampoo(shampoo);
+		goods.setCatsand(catsand);
+		goods.setAs_did(did);
+		
+		goodsService.insert(goods);
+		if(log.isDebugEnabled()) {
+			log.debug("<<물건등록 함 보자>> :"+goods);
+		}
+		map.put("result","success");		
+		return map;
+	}			
+	
+	
 }
