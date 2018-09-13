@@ -11,7 +11,6 @@
 				<div class="m_nav_ham" id="m_ham_3"></div>
 			  </div>
 			</div>
-
 			<div id="m_nav_container" class="m_nav">
 			  <ul id="m_nav_list" class="m_nav">
 				<li> <a href="${pageContext.request.contextPath}/main/main.do">Home</a> </li>

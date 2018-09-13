@@ -8,20 +8,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-	<context:component-scan
-		base-package="kr.spring.note.controller" />
-	<context:component-scan
-		base-package="kr.spring.shelter.controller" />
-	<context:component-scan
-		base-package="kr.spring.member.controller" />
-	<context:component-scan
-		base-package="kr.spring.admin.mainpage.controller" />
-	<context:component-scan
-		base-package="kr.spring.admin.notice.controller" />
-	<context:component-scan
-		base-package="kr.spring.visitor.controller" />
+	<context:component-scan	base-package="kr.spring.note.controller" />
+	<context:component-scan	base-package="kr.spring.shelter.controller" />
+	<context:component-scan	base-package="kr.spring.member.controller" />
+	<context:component-scan	base-package="kr.spring.admin.mainpage.controller" />
+	<context:component-scan	base-package="kr.spring.admin.notice.controller" />
+	<context:component-scan	base-package="kr.spring.visitor.controller" />
 	<context:component-scan base-package="kr.spring.goods.controller" />
 	<context:component-scan base-package="kr.spring.admin.controller" />
+	<context:component-scan base-package="kr.spring.admin.mainmenu.controller" />
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -143,6 +138,7 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/admin/main.do" />
+			<mapping path="/admin/notice/**" />
 			<beans:bean
 				class="kr.spring.interceptor.AdminLoginCheckInterceptor" />
 		</interceptor>
@@ -153,6 +149,6 @@
 	<beans:bean id="uploadPath" class="java.lang.String">
 		<!-- 파일업로드 디렉토리 -->
 		<beans:constructor-arg
-			value="D:\\javaWork\\workspace_spring\\KHFinalProject\\src\\main\\webapp\\upload" />
+			value="D:\javaWork\workspace_spring\KHFinalProject\src\main\webapp\upload\" />
 	</beans:bean>
 </beans:beans>
