@@ -5,7 +5,7 @@
 <html>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sy.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/note.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/noteList.js"></script>
 <body>
 	<div class="horizontal"></div> <!-- 가로 여백 -->
 	<div style="text-align: center;">
@@ -17,7 +17,7 @@
 		<c:if test="${count > 0}">
 			<div style="width: 80%; margin: 0 auto">
 				<div style="text-align: left; margin-bottom: 10px;">
-					<input type="button" value="삭제" id="deleteBtn" onclick="deleteAction();">
+					<input type="button" value="삭제" class="btn btn-danger" id="deleteBtn" onclick="deleteAction();">
 				</div>
 				<table class="table table-hover">
 					<thead>
@@ -38,7 +38,7 @@
 									<td><input type="checkbox" name="checkRow" data-num="${note.note_num}"></td>
 									<th scope="row">${note.recipient}</th>
 									<td><a href="Javascript:;"
-										onClick="window.open('${pageContext.request.contextPath}/note/detail.do?note_num=${note.note_num}','쪽지','width=450, height=550, scrollbars=no')">
+										onClick="window.open('${pageContext.request.contextPath}/note/detail.do?note_num=${note.note_num}','쪽지','width=600, height=650, scrollbars=no')">
 											${note.note_content} </a></td>
 									<td>${note.write_date}</td>
 									<td><c:if test="${note.read_status != 'open_not'}">읽음</c:if>

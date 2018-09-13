@@ -2,37 +2,23 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<!-- bootstrap-css -->
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap2.css" rel="stylesheet" type="text/css" media="all" />
+<!--// bootstrap-css -->
+<!-- css -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css"/>
+<!--// css -->
+<!-- font-awesome icons -->
+<link href="${pageContext.request.contextPath}/resources/css/font-awesome.css" rel="stylesheet">
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sy.css">
+<script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/seyeong/note.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		// 쪽지 발송 시 팝업 꺼짐
-		$('#noteWriteForm').submit(function(event){
-			var data = $(this).serialize();
-			$.ajax({
-				type:'post',
-				data:data,
-				url:'writeAjax.do',
-				dataType:'json',
-				cache:false,
-				timeout:30000,
-				success:function(data){
-					if(data.result == 'success'){
-						self.close();
-						opener.document.location.reload();
-					}else if(data.result == 'noData'){
-						alert('누락된 내용이 있습니다.');
-					}else{
-						alert('오류 발생');
-					}
-				},
-				error:function(){
-					alert('네트워크 오류 발생');
-				}
-			});
-			event.preventDefault();
-		});
-		
 		//textarea에 내용 입력시 글자수 체크
 		$(document).on('keyup', 'textarea', function(){
 			//입력한 글자수를 구함
@@ -48,24 +34,65 @@
 			}
 			$('.letter-count').text(remain);
 		});
+		
+		$('#recipient').click(function(){
+			var index = -1;
+			$('#result').text('');
+		});
+
+		$('#search').click(function(){
+			var idArray = $('#idArray').val();
+			var recipient = $('#recipient').val();
+			index = idArray.indexOf(recipient);
+			var searchResult = index > 0;
+			
+			if(!searchResult){ // 가입한 아이디 중에 받을 사람 아이디가 없음
+				alert('없는 아이디입니다. 다시 입력해주세요.');
+				$('#recipient').val('').focus();
+				return;
+			}else{
+				$('#result').text('확인');
+				$('#note_content').focus();
+			}
+		});
+		
+		$('#noteWriteFormSubmit').click(function(){
+			if(index < 0){ // 받을 사람 아이디를 확인하지 않았음
+				alert('받을 사람의 아이디를 확인해주세요!');
+				return;
+			}
+			
+			$('#noteWriteForm').submit();
+		});
 	});
 </script>
+
 <body>
-	<div id="noteWrite" style="width:400px; height:500px;">
+	<div id="noteWrite" style="width:540px; height:600px;">
 		<div style="margin:20px;">
-			<form id="noteWriteForm">
+			<input type="hidden" id="idArray" value="${idArray}"/>
+			<form id="noteWriteForm" style="width:540px; height:600px;">
 				<input type="hidden" name="sender" value="${command.sender}"/>
-				<div class="recipient">
-					<label class="condition floatL" for="recipient">받을 사람</label>
-					<input type="text" name="recipient" class="condition floatL" size="10"/>
+				<div class="form-group recipient" style="width: 500px;">
+					<label class="condition floatL" for="recipient" style="margin-top: 13px;">받을 사람</label>
+					<input type="text" name="recipient" id="recipient" style="width: 280px;"
+							class="form-control condition floatL"/>
+					<div class="floatL" style="width: 5px; height: 30px;"></div>
+					<input type="button" class="floatL btn btn-primary" value="확인" style="margin-top: 3px;" id="search">
+					<div class="floatL" style="width: 30px; height: 30px;"></div>
+					<div class="floatL" style="width: 35px;height: 25px;margin-top: 13px;" id="result"></div>
 				</div>
 				<hr size="1" width="100%"><br>
 				<label for="note_content"></label>
-				<textarea rows="20" cols="48" style="resize:none;" name="note_content"></textarea><br>
+				<textarea rows="15" cols="85" style="border: 1.5px solid #333333; resize:none;"
+								name="note_content" id="note_content">
+				
+</textarea><br>
 				<div class="letter-count" style="text-align:right">0 / 1000</div>
+				<div class="horizontal"></div><!-- 가로 여백 -->
 				<p align="center">
-					<input type="submit" value="보내기">
-					<input type="button" value="취소" onclick="self.close()"/>
+					<input type="button" value="보내기" id="noteWriteFormSubmit" class="btn btn-primary">
+					<input type="button" value="취소" onclick="self.close()" class="btn btn-primary"/>
 				</p>
 			</form>
 		</div>

@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import kr.spring.member.domain.MemberCommand;
 import kr.spring.shelter.domain.ShelterCommand;
 
 public interface ShelterMapper {

@@ -1,5 +1,7 @@
 package kr.spring.member.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
@@ -175,5 +177,16 @@ public class MemberServiceImpl implements MemberService {
 		return null;
 	}*/
 	
-	
+
+	// 회원 전체 리스트
+	@Override
+	public List<MemberCommand> wholeList() {
+		return memberMapper.wholeList();
+	}
+
+
+	@Override
+	public int wholeCount() {
+		return memberMapper.wholeCount();
+	}
 }

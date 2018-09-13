@@ -1,5 +1,7 @@
 package kr.spring.member.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -10,6 +12,11 @@ import kr.spring.member.domain.MemberCommand;
 
 
 public interface MemberMapper {
+	// 회원 전체 리스트
+	@Select("SELECT m_id FROM member")
+	public List<MemberCommand> wholeList();
+	@Select("SELECT count(*) FROM member")
+	public int wholeCount();
 	
 	//등록
 	@Insert("INSERT INTO member (m_id,m_email) VALUES (#{m_id},#{m_email})")

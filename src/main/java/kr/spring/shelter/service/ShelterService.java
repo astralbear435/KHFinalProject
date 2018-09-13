@@ -3,6 +3,7 @@ package kr.spring.shelter.service;
 import java.util.List;
 import java.util.Map;
 
+import kr.spring.member.domain.MemberCommand;
 import kr.spring.shelter.domain.ShelterCommand;
 
 public interface ShelterService {
