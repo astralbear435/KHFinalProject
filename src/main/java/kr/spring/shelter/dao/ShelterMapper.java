@@ -26,7 +26,7 @@ public interface ShelterMapper {
 	@Update("UPDATE shelter_detail SET s_name=#{s_name}, s_passwd=#{s_passwd}, s_phone=#{s_phone}, s_email=#{s_email}, s_zipcode=#{s_zipcode}, s_address1=#{s_address1}, s_address2=#{s_address2}, s_content=#{s_content}, s_uploadfile=#{s_uploadfile}, s_filename=#{s_filename} WHERE s_id=#{s_id}")
 	public void update(ShelterCommand shelter);
 	
-	@Update("UPDATE member SET auth=0 WHERE m_id=#{s_id}")
+	@Update("UPDATE member SET auth=0,m_email='@.' WHERE m_id=#{s_id}")
 	public void delete(String id);
 	
 	@Delete("DELETE FROM shelter_detail WHERE s_id=#{s_id}")

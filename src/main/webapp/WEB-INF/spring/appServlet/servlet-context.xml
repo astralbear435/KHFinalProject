@@ -114,6 +114,8 @@
 		view-name="contact" />
 	<view-controller path="/main/single.do"
 		view-name="single" />
+	<view-controller path="/member/provision.do"
+		view-name="provision" />
 	<view-controller path="/member/login.do"
 		view-name="memberLogin" />
 	<view-controller path="/shelter/shelterWrite.do"

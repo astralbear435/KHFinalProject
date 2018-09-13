@@ -4,15 +4,15 @@ $(document).ready(function(){
 	//아이디 중복 체크
 	$('#confirmId').click(function(){
 		if($('#s_id').val()==''){
-			alert('아이디를 입력하세요!');
+			alert('아이디를 입력하세요! dd');
 			$('#s_id').focus();
 			return;
-		}
-		
+		}else{
+		var id=$('#s_id').val();
 		$('#message_id').text(''); //메세지 초기화
 		$.ajax({
 			type:'post',
-			data:{id:$('#s_id').val()},
+			data:{id:id},
 			url:'confirmId.do',
 			dataType:'json',
 			timeout:30000,
@@ -29,9 +29,11 @@ $(document).ready(function(){
 				}
 			},
 			error:function(){
-				alert('네트워크 오류 발생!!');
+				alert(id);
+				alert('네트워크 오류 발생!! 아이디 중복');
 			}
 		});
+		}
 	});
 	
 	//아이디 중복 안내 메시지 초기화 및 아이디 중복 값 초기화

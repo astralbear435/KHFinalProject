@@ -20,8 +20,8 @@
 				<li> <a href="${pageContext.request.contextPath}/ap/apMain.do">임시보호</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/shelter/shelterList.do">보호소</a> </li>
 				<c:if test="${empty user_id}">
-				<li><a href="${pageContext.request.contextPath}/shelter/write.do">회원가입</a></li>
-				<li><a href="${pageContext.request.contextPath}/shelter/shelterLogin.do">로그인</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/provision.do">회원가입</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/login.do">로그인</a></li>
 				</c:if>
 				<c:if test="${!empty user_id}">
 				<li>${user_id}님 로그인 중</li>

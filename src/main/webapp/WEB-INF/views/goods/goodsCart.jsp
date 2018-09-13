@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/cartAndOrder.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/soeun/cartAndOrder.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <style>
 img{
@@ -206,8 +206,8 @@ function deleteCart(){
 <!--End Modal-->
 
 
-<div class="page-main-style">
-	<h2>장바구니</h2>
+<div class="container">
+	<br>
 <c:if test="${cartList==null}">
 	<div class="align-center">장바구니에 담긴 물품이 없습니다.</div>
 	</c:if>
@@ -216,11 +216,11 @@ function deleteCart(){
 		<tr>
 		<!-- 전체 선택용 체크박스  -->
         <th><input type="checkbox" name="checkAll" id="th_checkAll" onclick="checkAll();" checked/></th>
-			<th>사진</th>
-			<th>상품명</th>
-			<th>수량</th>
-			<th>기부지</th>
-			<th>합계</th>	
+			<th>photo</th>
+			<th>product</th>
+			<th>amount</th>
+			<th>donation</th>
+			<th>price</th>	
 		</tr> 
 		<c:forEach var="cartList" items="${cartList}">
 			<form>
@@ -244,18 +244,18 @@ function deleteCart(){
 	</table><br>
 	<div style="float:left;">
 	
-	<button id="delete_cart">선택삭제</button>
-	<button class="test">선택결제</button>
+	<button class="btn btn-primary" id="delete_cart">DELETE</button>
+	<button class="test btn">SELECT</button>
 	</div>
 <!-- 전체 결제 버튼  -->
-<button style="float:right;" class="test">결제하기</button>
+&nbsp;<button style="float:right;" class="btn btn-danger test">PAYMENT</button>
 	<div style="float:right;"id="allTotal">
-		<span><b style="color:red">합계 : <fmt:formatNumber value="${sum}" pattern="#,###"/> 원 </b></span>
+		<span><b style="color:red">TOTAL : <fmt:formatNumber value="${sum}" pattern="#,###"/> won &nbsp;</b></span>
 	</div>
 	
 </c:if>
 <br>
 <div style="text-align:center">
-<button onclick="location.href='${pageContext.request.contextPath}/main/main.do'">홈으로</button>
+<button class="btn" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">HOME</button>
 </div>
 </div>
