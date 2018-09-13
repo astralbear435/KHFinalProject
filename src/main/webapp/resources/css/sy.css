@@ -21,7 +21,7 @@
 .recipient {
 	margin: 5px 5px 5px 0px;
 	width: 400px;
-	height: 60px;
+	height: 40px;
 }
 
 /* =====shelterList===== */
@@ -51,7 +51,7 @@ a:hover{text-decoration:underline;}
 .mainPhoto {
 	width: 100%;
 	height: 300px;
-	background-color: orange;
+	border: 10px solid orange;
 }
 
 .titleDetail{
