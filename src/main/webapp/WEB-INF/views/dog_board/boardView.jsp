@@ -39,6 +39,8 @@ img{
 	<ul>
 		<li><b>보호소 : ${board.id}</b></li>
 		<br>
+		<li>이름 : ${board.an_name}</li>
+		<br>
 		<li>묘종/견종   :  ${board.an_species}</li>
 		<br>
 		<li>모상   :  ${board.an_color}</li>
@@ -50,18 +52,6 @@ img{
 		<li>중성화  :  ${board.an_operate}</li>
 	</ul>
 		</div>
-<%-- 	<div style="displayinline-block; font-size:20px; width:48%">
-	<ul>
-		<li><b>보호소 : ${board.id}</b></li>
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;조회수 : ${board.hit}</li>
-		<li>견종:${board.species}</li>
-		<li>색상:${board.color}</li>
-		<li>성별:${board.gender}</li>
-		<li>접종여부 :${board.review}</li>
-		<li>중성화:${board.operate}</li>
-	</ul>
-	<br>
-	</div> --%>
 	<br>
 	<br>
 	<hr size="1" width="100%">
@@ -71,7 +61,7 @@ img{
 	</p>
 	<br>
 	<hr size="1" width="100%">
-	<div class="align-right">
+	<div align="right">
 		<c:if test="${!empty user_id && user_id == board.id}">
 		<input type="button" value="수정"
 		  onclick="location.href='update.do?num=${board.num}'">	
@@ -95,7 +85,7 @@ img{
 			  class="re-content"
 			  <c:if test="${empty user_id}">disabled="disabled"</c:if>
 			  >
-			  <c:if test="${empty user_id}"><font text-align="center">로그인해야 작성할 수 있습니다.</font></c:if></textarea>              
+			  <c:if test="${empty user_id}"><font align="center">로그인해야 작성할 수 있습니다.</font></c:if></textarea>              
 			<c:if test="${!empty user_id}">
 			<div id="re_first">
 				<span class="letter-count">300/300</span>

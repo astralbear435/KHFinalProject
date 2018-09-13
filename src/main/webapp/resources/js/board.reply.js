@@ -44,7 +44,7 @@ $(document).ready(function(){
 							output += '  <input type="button" data-num="'+item.re_num+'" data-id="'+item.id+'" value="수정" class="modify-btn">';
 							output += '  <input type="button" data-num="'+item.re_num+'" data-id="'+item.id+'" value="지우기" class="delete-btn">';
 						}
-						output += '   <hr size="1" noshade>';
+						output += '   <hr size width="70%" noshade>';
 						output += ' </div>';
 						output += '</div>';
 						
@@ -158,7 +158,7 @@ $(document).ready(function(){
 		   modifyUI += ' <input type="submit" value="수정">';
 		   modifyUI += ' <input type="button" value="취소" class="re-reset">';
 		   modifyUI += ' </div>';
-		   modifyUI += ' <hr size="1" noshade width="96%">';
+		   modifyUI += ' <hr size="1" noshade width="70%">';
 		   modifyUI += '</form>';
 		   
 		   //이전에 이미 수정하는 댓글이 있을 경우 

@@ -18,6 +18,7 @@ form{
 }
 </style>
 <div class="page-main-style">
+	<br>
 	<h2 align="center">입양페이지</h2>
 	<br>
 	<br>
@@ -30,8 +31,8 @@ form{
 					<option value="all">전체</option>
 				</select>
 				<input type="text" name="keyword" id="keyword">
-				<input type="submit" value="찾기">
-				<input type="button" value="새로고침" onclick="location.href='list.do'">
+				<input type="submit" value="찾기" class="btn btn-outline-info">
+				<input type="button" value="새로고침" class="btn btn-outline-info" onclick="location.href='list.do'">
 			</li>
 		</ul>
 	</form>
@@ -42,7 +43,7 @@ form{
 	<c:if test="${count > 0}"><!-- 게시물이 존재할때 -->
 		<c:forEach var="board" items="${list}">
 		<div style="display:inline-block;">
-			<a href="detail.do?num=${board.num}"><img src="imageView.do?num=${board.num}" width="230" height="150">
+			<a href="detail.do?num=${board.num}"><img src="imageView.do?num=${board.num}" width="230" height="200">
 			<br><font color="#17BEFF" size="3">${board.id}</font>&nbsp;&nbsp;${board.an_species}&nbsp;${board.an_name}<br><br>
 			<img id="message" src="../resources/images/message.png"style="max-width:10px">&nbsp;(${board.re_cnt})<br>
 			${board.reg_date} &nbsp;<font size="1">조회 ${board.an_hit}</font><br><br><br></a>
@@ -50,7 +51,7 @@ form{
 	</c:forEach> 
 	<div align="right">
 		<c:if test="${!empty user_id}">
-		<input type="button" value="글쓰기"
+		<input type="button" value="글쓰기"  class="btn btn-info"
 		       onclick="location.href='write.do'">
 		</c:if>
 	</div>
