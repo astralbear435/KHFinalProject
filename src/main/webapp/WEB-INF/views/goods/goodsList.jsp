@@ -85,6 +85,8 @@ $(document).ready(function(){
 	 });	
 });	
 </script>
+<div class="container">
+<br>
 	<h2>목록</h2>
 	<form action="list.do" id="search_form" method="get">
 		<ul style="list-style:none; margin:0;padding:0;text-align:center">
@@ -186,7 +188,7 @@ $(document).ready(function(){
 	<div class="autoplay">
 	    <c:forEach var="goodsList" items="${goodslist}">
 	    <c:if test="${goodsList.g_id.equals('standard')||goodsList.g_id.equals(as_list.as_id)}">
-		 <div style="text-align:center; display: inline-block"><img src="${pageContext.request.contextPath}/upload/goods/${goodsList.g_photo1}" alt=""><br><a href="detail.do?g_num=${goodsList.g_num}&&as_name=${as_list.as_name}">${goodsList.g_name}<br></a>${goodsList.g_price} 원</div>
+		 <div style="text-align:center; display: inline-block; width:18%"><img src="${pageContext.request.contextPath}/upload/goods/${goodsList.g_photo1}" alt=""><br><a href="detail.do?g_num=${goodsList.g_num}&&as_name=${as_list.as_name}">${goodsList.g_name}<br></a>${goodsList.g_price} 원</div>
 		</c:if></c:forEach>
 		</div>		
   <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -210,3 +212,4 @@ $(document).ready(function(){
 	<div style="text-align: center;">${pagingHtml}</div>	
 	</c:if>
 	</div>
+</div>

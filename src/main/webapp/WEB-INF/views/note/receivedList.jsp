@@ -15,20 +15,20 @@
 			<div>받은 쪽지가 없습니다.</div>
 		</c:if>
 		<c:if test="${count > 0}">
-			<div style="width: 950px; margin: 0 auto">
+			<div style="width: 80%; margin: 0 auto">
 				<div style="text-align: left; margin-bottom: 10px;">
 					<input type="button" value="삭제" id="deleteBtn" onclick="deleteAction();">
 				</div>
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th scope="col" style="width: 90px;">
+							<th scope="col" style="width: 10%;">
 								<input type="checkbox" class="checkAll" onclick="checkAll();">
 							</th>
-							<th scope="col" style="width: 140px;">보낸 사람</th>
-							<th scope="col" style="width: 390px;">내용</th>
-							<th scope="col">보낸 날짜</th>
-							<th scope="col">차단</th>
+							<th scope="col" style="width: 20%;">보낸 사람</th>
+							<th scope="col">내용</th>
+							<th scope="col" style="width: 15%;">보낸 날짜</th>
+							<th scope="col" style="width: 15%;">차단</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -39,7 +39,7 @@
 								<c:if test="${note.read_status.equals('open_not')}">
 									<tr class="table-warning">
 										<td><input type="checkbox" name="checkRow" data-num="${note.note_num}"></td>
-										<th scope="row">${note.recipient}</th>
+										<th scope="row">${note.sender}</th>
 										<td>
 											<a href="Javascript:;"
 												onClick="window.open('${pageContext.request.contextPath}/note/detail.do?note_num=${note.note_num}','쪽지','width=450, height=550, scrollbars=no')">

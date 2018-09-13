@@ -33,7 +33,7 @@
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/goodsPrice.js"></script> <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/soeun/goodsPrice.js"></script> <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/slick/slick.min.js"></script>
 
@@ -214,6 +214,8 @@ $('.slider-for').slick({
 
 
 <!-- 내용 시작 -->    
+<div class="container">
+<br>
 	<h4><a style="color:blue">${as_detail.as_name}</a>/기부하기</h4>
 	<br>
 	<h1>${goods.g_name}</h1>
@@ -265,5 +267,6 @@ $('.slider-for').slick({
 		<button onclick="location.href='${pageContext.request.contextPath}/main/main.do'">홈으로</button>
 		</div>
 	</div>
+</div>
 </div>
 
