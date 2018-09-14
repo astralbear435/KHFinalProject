@@ -1,10 +1,11 @@
 package kr.spring.mypage.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Select;
 
+import kr.spring.ap.domain.ApBoCommand;
+import kr.spring.ap.domain.ApCallCommand;
 import kr.spring.goods.domain.OrderCommand;
 import kr.spring.member.domain.MemberCommand;
 import kr.spring.recruit.domain.RecruitCommand;
@@ -23,4 +24,21 @@ public interface MypageMapper {
 	
 	@Select("SELECT * FROM donation WHERE dona_id=#{dona_id}")
 	public List<OrderCommand> selectDanaList(String dona_id);
+	
+	@Select("SELECT COUNT(*) FROM donation WHERE dona_id=#{dona_id}")
+	public int selectCountdonation(String dona_id);
+	
+	@Select("SELECT * FROM ap_call_home WHERE call_name=#{call_name}")
+	public List<ApCallCommand> selectCallList(String call_name);
+	
+	@Select("SELECT * FROM ap_bo_call WHERE bo_id=#{bo_id}")
+	public List<ApBoCommand>selectBoCallList(String bo_id);
+	
+	@Select("SELECT * FROM ap_bo_call WHERE id=#{boho_id}")
+	public List<ApBoCommand>selectBohoCallList(String boho_id);
+	
+	
+	
+	
+
 }

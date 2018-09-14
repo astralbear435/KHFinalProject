@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.ap.domain.ApBoCommand;
+import kr.spring.ap.domain.ApCallCommand;
+import kr.spring.ap.domain.ApCommand;
 import kr.spring.goods.domain.OrderCommand;
 import kr.spring.member.domain.MemberCommand;
 import kr.spring.mypage.service.MypageService;
@@ -46,7 +49,21 @@ public class MypageController {
 	public OrderCommand initCommand3() {
 		return new OrderCommand();
 	}
+	  
+	@ModelAttribute("ap")
+	public ApCommand initCommand4() {
+		return new ApCommand();
+	}
 	
+	@ModelAttribute("callHome")
+	public ApCallCommand initCommand5() {
+		return new ApCallCommand();
+	}
+	
+	@ModelAttribute("boCall")
+	public ApBoCommand initCommand6() {
+		return new ApBoCommand();
+	}
 
 	//++++++++++++++++++++메뉴에서 일반 회원 마이페이지 호출+++++++++++++++++++++++++++//
 	@RequestMapping("mypage/mypage.do")
@@ -57,21 +74,41 @@ public class MypageController {
 		
 		RecruitCommand volunteer = new RecruitCommand();
 		OrderCommand donation = new OrderCommand();
+		ApCallCommand callHome = new ApCallCommand();
+		ApBoCommand boCall = new ApBoCommand();
 		
 		volunteer.setV_id(id);
 		String v_id = volunteer.getV_id();
+		
 		donation.setDona_id(id);
-		String dona_id = donation.getDona_id();
+		String dona_id = donation.getDona_id();		
+		
+		callHome.setCall_name(id);
+		String call_name = callHome.getCall_name();
+		
+		boCall.setBo_id(id);
+		String bo_id = boCall.getBo_id();
 		
 		List<RecruitCommand> list = null;
 		list = mypageService.selectList(v_id);
 		
 		List<OrderCommand> donaList = null;
-		donaList = mypageService.selectDanaList(dona_id);		
+		donaList = mypageService.selectDanaList(dona_id);	
+		
+		int dona_count = mypageService.selectCountdonation(dona_id);
+		
+		List<ApCallCommand> callList = null;
+		callList = mypageService.selectCallList(call_name);
+		
+		List<ApBoCommand> boCallList = null;
+		boCallList = mypageService.selectBoCallList(bo_id);
 		
 		model.addAttribute("command",member);
 		model.addAttribute("volunteer",volunteer);
 		model.addAttribute("donation",donation);
+		model.addAttribute("callHome", callHome);
+		model.addAttribute("dona_count", dona_count);
+		model.addAttribute("boCall", boCall);
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<memberCommand>> : " + member);
@@ -82,6 +119,12 @@ public class MypageController {
 		if(log.isDebugEnabled()) {
 			log.debug("<<donation>> : " + donation);
 		}
+		if(log.isDebugEnabled()) {
+			log.debug("<<callHome>> : " + callHome);
+		}
+		if(log.isDebugEnabled()) {
+			log.debug("<<boCall>> : " + boCall);
+		}
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("mypage/mypage");
@@ -90,6 +133,8 @@ public class MypageController {
 		mav.addObject("volunteer", volunteer);
 		mav.addObject("donaList", donaList);
 		mav.addObject("donation", donation);
+		mav.addObject("callList", callList);
+		mav.addObject("boCallList", boCallList);
 		
 		return mav; 	
 		
@@ -105,12 +150,10 @@ public class MypageController {
 			log.debug("<<v_num>> : "+ v_num );
 		}		
 			
-		String id = (String)session.getAttribute("user_id");
-				
-		
+		String id = (String)session.getAttribute("user_id");		
+
 		RecruitCommand volunteer = volunteerService.selectBoard(v_num);
 			
-		
 		model.addAttribute("volunteer",volunteer);
 		
 		if(log.isDebugEnabled()) {

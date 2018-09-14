@@ -17,6 +17,8 @@
 	src='${pageContext.request.contextPath}/resources/js/fullcalendar-3.9.0/lib/jquery.min.js'></script>
 <script
 	src='${pageContext.request.contextPath}/resources/js/fullcalendar-3.9.0//fullcalendar.min.js'></script>
+  
+
 
 <script>
 $(document).ready(function(){
@@ -24,7 +26,7 @@ $(document).ready(function(){
 });
 
 	function ajax() {
-	var event = [];
+	var event = []; 
 	$.ajax({
 	 type:'post',
 	 data:{v_id:'${user_id}'},
@@ -34,17 +36,42 @@ $(document).ready(function(){
 	 timeout:30000,
 	 success:function(data){
 		 	var volunteer = data.volunteer; //유기견 보호소 봉사활동 신청 현황을 보여주는 캘린더
-					
+			var boCallList = data.boCallList;	
+		 	var bohoCallList = data.bohoCallList;
 				//유기견 봉사활동 일정 리스트
 				if(volunteer.length>0){ 
 					for(var i = 0; i<volunteer.length; i++){
 		 	 			event.push({ 
 		 	 				title: '[봉사활동]' + volunteer[i].r_num +','+ volunteer[i].v_num
-		 					,start: volunteer[i].v_date
+		 					,start: volunteer[i].v_date,
+		 					color: 'lightgreen'
 		 	 			});
 		 	 			console.log(event[i].title,event[i].start);
 		 			}
 				} 
+		 	
+				if(boCallList.length>0){ 
+					for(var i = 0; i<boCallList.length; i++){
+		 	 			event.push({ 
+		 	 				title: '[임시보호 신청]'+ '임시보호자'+ boCallList[i].id +'시작일'+ boCallList[i].bo_start_hour +'시'+ boCallList[i].bo_start_min+'분'+'종료일'+ boCallList[i].bo_end_hour+'시'+boCallList[i].bo_end_min+'분',
+		 	 				start: boCallList[i].bo_date_start,
+		 					end: boCallList[i].bo_date_end,
+		 					color: 'pink'
+		 	 			});
+		 	 			
+		 			}
+				}	
+				if(bohoCallList.length>0){ 
+					for(var i = 0; i<bohoCallList.length; i++){
+		 	 			event.push({ 
+		 	 				title: '[임시보호 신청]'+ '신청자'+ bohoCallList[i].bo_id +'시작일'+ bohoCallList[i].bo_start_hour +'시'+ bohoCallList[i].bo_start_min+'분'+'종료일'+ bohoCallList[i].bo_end_hour+'시'+bohoCallList[i].bo_end_min+'분',
+		 	 				start: bohoCallList[i].bo_date_start,
+		 					end: bohoCallList[i].bo_date_end,
+		 					color: 'skyblue'
+		 	 			});
+		 	 			
+		 			}
+				}	
 			
 		 	
 			//캘린더
@@ -73,8 +100,8 @@ $(document).ready(function(){
 				      }, */
 				      editable: false,//화면에서 직접 날짜 이동 불가능  
 				      eventLimit: true,				
-					events :  event,
-					eventColor: '#378006',	
+					events :  event, 
+						
 				  eventClick: function(event) {
 					 	var title = $(this).find('.fc-title').text();
 					 	var sub_title = title.split(',');
@@ -125,48 +152,14 @@ body {
 
 
 
-						<div class="col-md-6">
-							<h3>Tabs</h3>
-							<ul class="nav nav-tabs">
-							  <li class="nav-item">
-							    <a class="nav-link active show" data-toggle="tab" href="#home">Home</a>
-							  </li>
-							  <li class="nav-item">
-							    <a class="nav-link" data-toggle="tab" href="#profile">Profile</a>
-							  </li>
-							  <li class="nav-item">
-							    <a class="nav-link disabled" href="#">Disabled</a>
-							  </li>
-							  <li class="nav-item dropdown">
-							    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-							    <div class="dropdown-menu">
-							      <a class="dropdown-item" href="#">Action</a>
-							      <a class="dropdown-item" href="#">Another action</a>
-							      <a class="dropdown-item" href="#">Something else here</a>
-							      <div class="dropdown-divider"></div>
-							      <a class="dropdown-item" href="#">Separated link</a>
-							    </div>
-							  </li>
-							</ul>
-							<div id="myTabContent" class="tab-content">
-							  <div class="tab-pane fade active show" id="home">
-							    <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-							  </div>
-							  <div class="tab-pane fade" id="profile">
-							    <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
-							  </div>
-							  <div class="tab-pane fade" id="dropdown1">
-							    <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
-							  </div>
-							  <div class="tab-pane fade" id="dropdown2">
-							    <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
-							  </div>
-							</div>
-						</div>
-
 
 
 나의 후원내역
+<c:if test="${dona_count == 0}">
+	<div class="align-center">등록된 게시물이 없습니다.</div>
+	</c:if>
+	<c:if test="${dona_count > 0}">
+	추후 삭제, 도나 카운트는 ${dona_count}입니다.
 <c:forEach var="donation" items="${donaList}">
 <table>
 <tr>
@@ -208,7 +201,59 @@ body {
 </table>
 
 </c:forEach>
+</c:if>
+
+임시보호자 집에 부르기 -  쓴 글로 바로가기
+<c:forEach var="callHome" items="${callList}">
+<table>
+<tr>
+<td><a href="${pageContext.request.contextPath}/ap/apCalldetail.do?call_num=${callHome.call_num}">내가 쓴 글로 바로가기</a></td>
+<td>${callHome.call_start}</td>
+</tr>
+<td>펫시터가 신청받으면 캘린더에 표시하게 하고, 상세정보페이지 링크로 보내주기</td>
+</table>
+</c:forEach>
+
+
+<c:forEach var="boCall" items="${boCallList}">
+<table>
+<tr>
+<td>
+
+${boCall.bo_num} ${boCall.ap_num}  ${boCall.id} ${boCall.bo_end_min} ${boCall.bo_end_hour} ${boCall.bo_date_end} 
+${boCall.bo_start_min} ${boCall.bo_start_hour}  ${boCall.bo_date_start}  ${boCall.bo_id}
+
+</td>
+</tr>
+
+</table>
+</c:forEach>
+
+
+
+<c:if test="${user_auth == 2}"><!-- 펫시터 5로 수정 -->
+
+
+</c:if>
+
+<p>Click the button to display a confirm box.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var txt;
+    var r = confirm("Press a button!");
+    if (r == true) {
+        txt = "You pressed OK!";
+    } else {
+        txt = "You pressed Cancel!";
+    }
+    document.getElementById("demo").innerHTML = txt;
+}
+</script>
+
 </div>
-
-
 

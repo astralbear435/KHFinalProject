@@ -8,9 +8,15 @@
 	src='${pageContext.request.contextPath}/resources/js/fullcalendar-3.9.0/lib/jquery.min.js'></script>
 <title>보호소 봉사 활동 신청</title>
 
+
 <script>
+if("1"){
+	document.getElementById("v_date").valueAsDate = new Date();	
+}
 
 </script>
+
+
 
 	<div>
 		<h2>${recruit.r_id}보호소봉사 활동 신청</h2>
@@ -22,15 +28,22 @@
 		<h6>일일 ${recruit.r_people} 명</h6>
 		모집 날짜
 		 ${recruit.r_start_date}~${recruit.r_end_date}
-		<form
+		 <form
 			action="${pageContext.request.contextPath}/volunteer/volunteerWrite.do"
 			id="volunteerWrite_form" method="post">
 			<input type="hidden" name="r_num" value="${recruit.r_num}" />
 			<table>
 				<tr>
 					<td>봉사활동 신청 날짜</td>
-					<td><input type="date" name="v_date" id="v_date" min=${recruit.r_start_date} max=${recruit.r_end_date}></td>
-				
+					<c:if test="${recruit.r_status} == '1'">
+					
+					</c:if>
+					<c:if test="${recruit.r_status} == '2'">
+					
+					</c:if>
+					<td><input type="date" name="v_date" id="v_date" min=${recruit.r_start_date} max=${recruit.r_end_date}>
+					</td>	
+					
 				</tr>
 				<tr>
 					<td>봉사활동 신청 시간</td>
