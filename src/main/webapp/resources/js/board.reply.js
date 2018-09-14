@@ -44,7 +44,7 @@ $(document).ready(function(){
 							output += '  <input type="button" data-num="'+item.re_num+'" data-id="'+item.id+'" value="수정" class="modify-btn">';
 							output += '  <input type="button" data-num="'+item.re_num+'" data-id="'+item.id+'" value="지우기" class="delete-btn">';
 						}
-						output += '   <hr size width="70%" noshade>';
+						output += '   <hr width="70%" noshade>';
 						output += ' </div>';
 						output += '</div>';
 						
@@ -230,6 +230,106 @@ $(document).ready(function(){
 		//기본 이벤트 제거
 		event.preventDefault();
 	});
+	
+	
+	
+	
+	
+	
+	//대댓글 버튼 클릭시 수정폼 노출
+	$(document).on('click','.reply-btn',function(){
+		//댓글 글번호
+		var re_num = $(this).attr('data-num');
+		//작성자 아이디
+		var id = $(this).attr('data-id');
+		//댓글 내용
+		var re_content = $(this).parent().find('p').text();
+		
+		//대댓글UI
+		var replyUI = '<form id="are_form">';
+		   replyUI += ' <input type="hidden" name="pt_num" id="pt_num" value="'+pt_num+'">';
+		   replyUI += ' <input type="hidden" name="depth" id="depth" value="'+depth+'">';
+		   replyUI += ' <textarea rows="3" cols="50" name="re_content" id="are_content" class="rep-content">'+re_content+'</textarea>';
+		   replyUI += ' <div id="are_first"><span class="letter-count">300/300</span></div>';
+		   replyUI += ' <div id="are_second" class="align-right">';
+		   replyUI += ' <input type="submit" value="댓글">';
+		   replyUI += ' <input type="button" value="취소" class="re-reset">';
+		   replyUI += ' </div>';
+		   replyUI += ' <hr size="1" noshade width="70%">';
+		   replyUI += '</form>';
+		   
+		   //이전에 이미 댓글을 작성하는 댓글이 있을 경우 
+		   //대댓버튼을 클릭하면 숨김 sub-item을
+		   //환원시키고 댓글폼을 초기화함
+		   initReplyForm();
+		   
+		   //지금 클릭해서 댓글을 하고자 하는 데이터는 
+		   //감추기
+		   //댓글버튼을 감싸고 있는 div
+		   $(this).parent().hide();
+		   
+		   //댓글폼을 수정하고자하는 데이터가 있는
+		   //div에 노출
+		   $(this).parents('.item').append(replyUI);
+		   
+		   //입력한 글자수 셋팅
+		   var inputLength = $('#are_content').val().length;
+		   var remain = 300 - inputLength;
+		   remain += '/300';
+		   
+		   //문서 객체에 반영
+		   $('#mre_first .letter-count').text(remain);
+		
+	});
+	
+	//댓댓글 
+	$(document).on('submit','#are_form',function(event){
+		if($('#are_content').val()==''){
+			alert('내용을 입력하세요!');
+			$('#are_content').focus();
+			return false;
+		}
+		
+		//폼에 입력한 데이터 반환
+		var data = $(this).serialize();
+		
+		//대댓글
+		$.ajax({
+			type:'post',
+			url:'answerReply.do',
+			data:data,
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(data){
+				if(data.result=='logout'){
+					alert('로그인해야 수정할 수 있습니다.');
+				}else if(data.result=='success'){
+					$('#are_form').parent().find('p').text($('#are_content').val());
+					//수정폼 초기화
+					initModifyForm();
+				}else if(data.result=='wrongAccess'){
+					alert('타인의 글은 수정할 수 없습니다.');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류이다.');
+			}
+		});
+		//기본 이벤트 제거
+		event.preventDefault();
+	});
+	//댓글 수정 폼 취소 버튼 클릭시 수정폼 초기화
+	$(document).on('click','.re-reset',function(){
+		initReplyForm();
+	});
+	//댓글 수정 폼 초기화
+	function initReplyForm(){
+		$('.sub-item').show();
+		$('#are_form').remove();
+	}
+	
+	
 	//댓글 삭제
 	$(document).on('click','.delete-btn',function(){
 		//댓글 번호

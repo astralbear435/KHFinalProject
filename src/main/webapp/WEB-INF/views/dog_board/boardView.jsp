@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script> --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board.reply.js"></script>
 <script type="text/javascript">
 //삭제시 확인
@@ -71,7 +70,6 @@ img{
 		<input type="button" value="목록"
 		         onclick="location.href='list.do'">	  
 	</div>
-	
 		<div id="reply_div">
 		<br>
 		<span class="reply-title"></span>
@@ -80,17 +78,16 @@ img{
 			       value="${board.num}" id="num">
 			<input type="hidden" name="id"
 			       value="${user_id}" id="user_id">
-			<textarea rows="3" cols="60"
+			<textarea  rows="3" cols="60"
 			  name="re_content" id="re_content"
 			  class="re-content"
 			  <c:if test="${empty user_id}">disabled="disabled"</c:if>
 			  >
-			  <c:if test="${empty user_id}"><font align="center">로그인해야 작성할 수 있습니다.</font></c:if></textarea>              
+			  <c:if test="${empty user_id}">로그인해야 작성할 수 있습니다.</c:if></textarea>              
 			<c:if test="${!empty user_id}">
 			<div id="re_first">
 				<span class="letter-count">300/300</span>
 			</div>
-			
 			<div id="re_second" class="align-right">
 				<input type="submit" value="전송">
 			</div>
@@ -106,7 +103,6 @@ img{
 	<div id="loading" style="display:none;">
 		<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
 	</div>
-	
 </div>
 
 

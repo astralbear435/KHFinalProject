@@ -165,7 +165,7 @@ public class BoardReplyAjaxController {
 		
 		return map;
 	}
-	/*//´ñ±ÛÀÇ ´ñ±Û
+    //´ñ±ÛÀÇ ´ñ±Û
 	@RequestMapping("/dog_board/answerReply.do")
 	@ResponseBody
 	public Map<String,String> answerReply(
@@ -198,7 +198,6 @@ public class BoardReplyAjaxController {
 			map.put("result", "logout");
 			
 		}else{
-			
 			//´ñ±Û µî·Ï
 			boardService.insertReply(boardReplyCommand);
 			map.put("result", "success");
@@ -206,7 +205,7 @@ public class BoardReplyAjaxController {
 		
 		return map;
 	}
-	*/
+
 }
 
 
