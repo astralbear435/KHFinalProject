@@ -2,8 +2,31 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sy.css">
+<style>
+ .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+    
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%; /* Could be more or less, depending on screen size */                          
+        }
+</style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/shelter.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/seyeong/shelter.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	var OriginInputLength = $('#s_content').val().length;
@@ -26,6 +49,58 @@ $(document).ready(function(){
 		}
 		$('.letter-count').text(remain);
 	});
+	
+//따라다니는 알림창
+	var layerTopOffset =50;
+    var currentPosition = parseInt($("#openModal").css("top"));
+    $(window).scroll(function() {
+        var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
+        $("#openModal").stop().animate({"top":position+currentPosition+layerTopOffset+"px"},1000);
+    });
+  //모달창 클릭시
+    $("#openModal").click(function() {
+    	
+    
+    });
+  //모달 창 닫기
+    $("#closeModal").click(function() {
+               $('#myModal').hide();
+    }); 
+  $("#addGoods").click(function(){
+	 var pad=$('#pad').val(); 
+	 var dogfood=$('#dogfood').val(); 
+	 var catfood=$('#catfood').val(); 
+	 var shampoo=$('#shampoo').val(); 
+	 var catsand=$('#catsand').val(); 
+	 var as_id=$('#s_id').val();
+	 var as_name=$('#s_name').val();
+	 var as_location=$('#s_address1').val(); 
+		$.ajax({
+			type:'post',
+			data:{pad:pad,dogfood:dogfood,catfood:catfood,shampoo:shampoo,catsand:catsand,as_id:as_id,as_name:as_name,as_location:as_location},
+			url:'insertgoods.do',
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(data){
+				if(data.result=='success'){
+					alert('정상적으로 고객님의 후원물품 리스트에 등록되었습니다.');
+					$('#myModal').hide();
+					location.reload();
+				}else{
+					$('#myModal').hide();
+					alert('죄송합니다. 세션만료로 로그아웃 되었습니다. 다시 로그인 해주십시오.');
+					location.href="../member/login.do";	
+				}
+			},
+			error:function(){
+	      	alert('(물품등록)에러입니다.');
+	      	$('#myModal').hide();
+	      	location.reload();
+          	}
+	});
+	 
+  });
 });
 </script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -72,6 +147,47 @@ $(document).ready(function(){
         }).open();
     }
 </script>
+<!-- 등록안된 보호소만 신청하라고 뜰거에요 -->
+<c:if test="${as_did==0}">
+<!-- 물품신청하세요 모달창 -->
+ <div style="cursor:pointer;background-color:#DDDDDD;width:10%;height:15%;position: absolute;float:right;text-align:center;padding-top: 1%;" id="openModal">
+                <span class="pop_bt" style="font-size: 15pt;"> 
+                <a class="agile-icon"><i class="fa fa-bell"></i></a><br><b>후원물품<br>신청하기</b></span>
+</div>
+</c:if>
+<!-- 여는모달 -->
+    <div id="myModal" class="modal">
+ 
+<!-- 모달내용 -->
+      <div class="modal-content">
+                <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">후원 물품 신청</span></b></span></p>
+                <p style="text-align: center; line-height: 1.5;"><br/>기본 물품 5개에 대해 필요수량을 입력해 주세요.<br>
+                <a style="color:red;">*필요없는 물품은 비워두셔도 됩니다.<br>추후 추가신청을 통해 필요 물품을 신청하실 수 있습니다.</a></p>
+          <div style="text-align:center;">
+			<ul>
+				<li>배변패드: <input type="number" id="pad"></li>
+				<li>개사료 : <input type="number" id="dogfood"></li>
+				<li>고양이사료:	<input type="number" id="catfood"></li>
+				<li>샴푸(전견용): <input type="number" id="shampoo"></li>
+				<li>고양이 모래: <input type="number" id="catsand"></li>
+		   </ul></div>
+		<div style="text-align: center;">
+			<div
+				style="padding-bottom: 10px; padding-top: 10px; cursor: pointer; background-color: #DDDDDD; width: 40%; display: inline-block;"
+				id="closeModal">
+				<span class="pop_bt" style="font-size: 13pt;"><b>취소</b></span>
+			</div>
+			<div
+				style="padding-bottom: 10px; padding-top: 10px; cursor: pointer; background-color: #DDDDDD; width: 40%; display: inline-block;"
+				id="addGoods">
+				<span class="pop_bt" style="font-size: 13pt; color: black;"><b>신청</b></span>
+			</div>
+		</div>
+	</div>
+ 
+    </div>
+<!--모달닫는다~~~~~-->
+            
 <div class="page-main-style">
 	<div>
 		<div class="horizontal"></div><!-- 가로 여백 -->
@@ -93,7 +209,7 @@ $(document).ready(function(){
 						</div>
 						<div class="form-group">
 							<label for="s_name">보호소 명</label>
-							<input type="text" class="form-control" name="s_name" value="${shelter.s_name}">
+							<input type="text" class="form-control" name="s_name" id="s_name" value="${shelter.s_name}">
 						</div>
 						<div class="form-group">
 							<label for="s_license_num">사업자 등록번호</label>
@@ -112,7 +228,7 @@ $(document).ready(function(){
 						
 						<div class="w500 h72">
 							<div class="form-group floatL">
-								<label for="s_zipcode">우편번호</label>
+								<label for="s_zipcode">우편번호</label><br>
 								<input type="text" class="form-control" name="s_zipcode" id="s_zipcode"
 										 value="${shelter.s_zipcode}" style="width: 200px;" readonly>
 							</div>

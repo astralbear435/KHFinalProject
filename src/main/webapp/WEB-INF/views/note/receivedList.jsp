@@ -5,7 +5,17 @@
 <html>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sy.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/note.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/noteList.js"></script>
+<script type="text/javascript">
+	//수정 시 확인
+	$('#shelterUpdateBtn').click(function(){
+		var id = $('#s_id').val();
+		
+		if(confirm("회원 정보를 수정 하시겠습니까?")){
+			$('#shelterUpdateForm').submit();
+		}else{}
+	});
+</script>
 <body>
 	<div class="horizontal"></div><!-- 가로 여백 -->
 	<div style="text-align: center;">
@@ -17,7 +27,7 @@
 		<c:if test="${count > 0}">
 			<div style="width: 80%; margin: 0 auto">
 				<div style="text-align: left; margin-bottom: 10px;">
-					<input type="button" value="삭제" id="deleteBtn" onclick="deleteAction();">
+					<input type="button" value="삭제" id="deleteBtn" class="btn btn-danger" onclick="deleteAction();">
 				</div>
 				<table class="table table-hover">
 					<thead>
@@ -42,26 +52,26 @@
 										<th scope="row">${note.sender}</th>
 										<td>
 											<a href="Javascript:;"
-												onClick="window.open('${pageContext.request.contextPath}/note/detail.do?note_num=${note.note_num}','쪽지','width=450, height=550, scrollbars=no')">
+												onClick="window.open('${pageContext.request.contextPath}/note/detail.do?note_num=${note.note_num}','쪽지','width=600, height=650, scrollbars=no')">
 												${note.note_content}</a>
 										</td>
 										<td>${note.write_date}</td>
-										<td>차단</td>
-									</tr>
-								</c:if>
+										<td><input type="button" value="차단" id="deleteBtn" class="btn btn-danger" onclick="deleteAction();"></td>
+									</tr> 
+								</c:if> 
 
 								<!-- 읽었을 때 -->
 								<c:if test="${!note.read_status.equals('open_not')}">
 									<tr>
 										<td><input type="checkbox" name="checkRow" data-num="${note.note_num}"></td>
-										<th scope="row">${note.recipient}</th>
+										<th scope="row">${note.sender}</th>
 										<td>
 											<a href="Javascript:;"
-												onClick="window.open('${pageContext.request.contextPath}/note/detail.do?note_num=${note.note_num}','쪽지','width=450, height=550, scrollbars=no')">
+												onClick="window.open('${pageContext.request.contextPath}/note/detail.do?note_num=${note.note_num}','쪽지','width=600, height=650, scrollbars=no')">
 												${note.note_content}</a>
 										</td>
 										<td>${note.write_date}</td>
-										<td>차단</td>
+										<td><input type="button" value="차단" id="deleteBtn" class="btn btn-danger" onclick="deleteAction();"></td>
 									</tr>
 								</c:if>
 							</c:if>

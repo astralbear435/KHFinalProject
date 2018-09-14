@@ -1,9 +1,14 @@
 package kr.spring.member.service;
 
+import java.util.List;
+
 import kr.spring.member.domain.MemberCommand;
 
 
 public interface MemberService {
+	// 회원 전체 리스트
+	public List<MemberCommand> wholeList();
+	public int wholeCount();
 	
 	//회원관리
 	public void insert(MemberCommand member) throws Exception;

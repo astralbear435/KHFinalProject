@@ -17,6 +17,7 @@
 	<context:component-scan base-package="kr.spring.goods.controller" />
 	<context:component-scan base-package="kr.spring.admin.controller" />
 	<context:component-scan base-package="kr.spring.admin.mainmenu.controller" />
+	<context:component-scan base-package="kr.spring.ap.controller" />
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -46,6 +47,8 @@
 				<beans:value>/WEB-INF/tiles-def/admin.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/member.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/good.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/ap.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/apcall.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -90,48 +93,40 @@
 
 	<!-- 데이터 작업 없이 View 호출 - 메인페이지 -->
 	<view-controller path="/main/main.do" view-name="main" />
-	<view-controller path="/main/about.do"
-		view-name="about" />
-	<view-controller path="/member/deleteConfirm.do"
-		view-name="deleteConfirm" />
-	<view-controller path="/member/successSendPw.do"
-		view-name="successSendPw" />
-	<view-controller path="/main/gallery.do"
-		view-name="gallery" />
-	<view-controller path="/main/icons.do"
-		view-name="icons" />
-	<view-controller path="/main/codes2.do"
-		view-name="codes2" />
+	<view-controller path="/main/about.do" view-name="about" />
+	<view-controller path="/member/deleteConfirm.do" view-name="deleteConfirm" />
+	<view-controller path="/member/successSendPw.do" view-name="successSendPw" />
+	<view-controller path="/main/gallery.do" view-name="gallery" />
+	<view-controller path="/main/icons.do" view-name="icons" />
+	<view-controller path="/main/codes2.do"	view-name="codes2" />
 	<view-controller path="/main/blog.do" view-name="blog" />
-	<view-controller path="/main/contact.do"
-		view-name="contact" />
-	<view-controller path="/main/single.do"
-		view-name="single" />
-	<view-controller path="/member/provision.do"
-		view-name="provision" />
-	<view-controller path="/member/login.do"
-		view-name="memberLogin" />
-	<view-controller path="/shelter/shelterWrite.do"
-		view-name="shelterWrite" />
-	<view-controller path="/shelter/shelterList.do"
-		view-name="shelterList" />
-	<view-controller path="/admin/main.do"
-		view-name="admin" />
+	<view-controller path="/main/contact.do" view-name="contact" />
+	<view-controller path="/main/single.do"	view-name="single" />
+	<view-controller path="/member/provision.do" view-name="provision" />
+	<view-controller path="/member/login.do" view-name="memberLogin" />
+	<view-controller path="/shelter/shelterWrite.do" view-name="shelterWrite" />
+	<view-controller path="/shelter/shelterList.do" view-name="shelterList" />
+	<view-controller path="/admin/main.do" view-name="admin" />
 	<view-controller path="/admin/notlogin.do" view-name="notlogin" />
 	<view-controller path="/admin/noadmin.do" view-name="noadmin" />
 	<view-controller path="/admin/logout.do" view-name="logout" />
-	
+	<view-controller path="/ap/apCallList.do" view-name="apCallList"/>
+	<view-controller path="/ap/apMain.do" view-name="apMain"/>
+	<view-controller path="/ap/apForm.do" view-name="apForm"/>
+	<view-controller path="/ap/apForm1.do" view-name="apForm1"/>
+	<view-controller path="/ap/apModify.do" view-name="apModify"/>
+	<view-controller path="/ap/apList.do" view-name="apList"/>
 	<!-- 로그인 여부 체크 -->
 	<interceptors>
 		<interceptor>
+			<mapping path="/ap/apCallList.do" />
 			<mapping path="/shelter/shelterInfo.do" />
 			<mapping path="/note/receivedList.do" />
 			<mapping path="/board/sendList.do" />
 			<mapping path="/member/detail.do" />
 			<mapping path="/member/update.do" />
 			<mapping path="/member/resendEmail.do" />
-			<beans:bean
-				class="kr.spring.interceptor.LoginCheckInterceptor" />
+			<beans:bean class="kr.spring.interceptor.LoginCheckInterceptor" />
 		</interceptor>
 	</interceptors>
 

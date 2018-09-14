@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace="kr.spring.ap.dao.ApMapper">  <!-- namespace는 유니크하게 설정, sql식별자 -->
+
+	<select id="selectApList" parameterType="map" resultType="apCommand">
+  	select * from (
+  		select a.*, rownum rnum from(
+  		
+  			select * from ap_form
+  			
+	  		<where>
+		  		<if test="ap_home == 1">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 2">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 3">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 4">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 5">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 6">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 1">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 2">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 3">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 4">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 5">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 6">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 7">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 8">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 9">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 10">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  	</where>
+  			
+  			order by ap_num desc)a)
+  			
+  		<![CDATA[
+  			where rnum >= #{start} and rnum <= #{end}
+  		]]>
+  </select>
+  
+  <!-- map,interger는 Map,Integer 둘 다 상관 없음. mybatisc가 alias를 가지고 있으므로 -->
+	<select id="selectApRowCount" parameterType="map" resultType="integer">
+	  	select count(*)
+	  	from ap_form
+	  		<where>
+		  		<if test="ap_home == 1">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 2">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 3">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 4">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 5">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 6">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 1">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 2">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 3">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 4">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 5">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 6">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 7">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 8">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 9">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 10">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  	</where>
+  </select>
+  
+  <update id="update">
+		UPDATE ap_form SET id=#{id}, ap_job=#{ap_job}, ap_cer=#{ap_cer}, ap_act=#{ap_act}, ap_pet=#{ap_pet}, 
+		ap_ser=#{ap_ser}, ap_home=#{ap_home}, ap_sel=#{ap_sel}, ap_nopet=#{ap_nopet}, ap_mon=#{ap_mon}, ap_service=#{ap_service}
+		WHERE ap_num=#{ap_num}
+	</update>
+  
+</mapper>
+
+
+
+
+
+
+

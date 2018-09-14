@@ -5,6 +5,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <div class="page-main-style">
 	<div class="horizontal"></div><!-- 가로 여백 -->
+	<div class="titleText">보호소 로그인</div><br>
 	<div style="width: 500px; margin: 0 auto;" id="shelterLogin">
 
 		<form action="shelterLogin.do" id="loginForm" method="post">
@@ -20,7 +21,7 @@
 				</div>
 				<div class="horizontal"></div><!-- 가로 여백 -->
 				<div style="width: 500px; text-align:center; clear: both; margin: 0;">
-					<input type="submit"  class="btn btn-primary" value="로그인">
+					<input type="submit"  class="btn btn-warning btn-lg" value="로그인">
 				</div>
 				<div class="horizontal"></div><!-- 가로 여백 -->
 			</fieldset>
