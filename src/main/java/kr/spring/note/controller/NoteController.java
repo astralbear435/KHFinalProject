@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.member.domain.MemberCommand;
+import kr.spring.member.service.MemberService;
 import kr.spring.note.domain.NoteCommand;
 import kr.spring.note.service.NoteService;
 import kr.spring.shelter.domain.ShelterCommand;
@@ -28,13 +30,13 @@ import kr.spring.util.StringUtil;
 
 @Controller
 public class NoteController {
-	private Logger log = Logger.getLogger(this.getClass());
-	private int rowCount = 20;
-	private int pageCount = 20;
+	private int rowCount = 10;
+	private int pageCount = 10;
 
 	@Resource
 	private NoteService noteService;
-	
+	@Resource
+	private MemberService memberService;
 	@Resource
 	private ShelterService shelterService;
 
@@ -48,8 +50,11 @@ public class NoteController {
 		map.put("keyfield", "recipient");
 		map.put("keyword", recipient);
 		
-		//총 글의 갯수 또는 검색 된 글의 갯수
+		// 총 글의 갯수 또는 검색 된 글의 갯수
 		int count = noteService.selectNoteRowCount(map);
+		
+		// 안 읽은 쪽지 수 세기
+		int openNotCount = noteService.openNotCount(recipient);
 		
 		PagingUtil page = new PagingUtil("recipient", recipient, currentPage, count, rowCount, pageCount, "note/receivedList.do");
 		
@@ -60,8 +65,8 @@ public class NoteController {
 		if(count > 0) {
 			list = noteService.selectNoteList(map);
 			
-			// 쪽지 미리보기에 ...처리
 			for(NoteCommand note :  list) {
+				// 내용이 긴 쪽지 미리보기에 ...처리
 				if(note.getNote_content().length() >= 20) note.setNote_content(note.getNote_content().substring(0,20) + "...");
 			}
 		}
@@ -69,6 +74,7 @@ public class NoteController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("receivedList");
 		mav.addObject("count", count);
+		mav.addObject("openNotCount", openNotCount);
 		
 		if(list != null) {
 			mav.addObject("list", list);
@@ -90,6 +96,9 @@ public class NoteController {
 		//총 글의 갯수 또는 검색 된 글의 갯수
 		int count = noteService.selectNoteRowCount(map);
 		
+		// 안 읽은 쪽지 수 세기
+		int openNotCount = noteService.openNotCount(sender);
+		
 		PagingUtil page = new PagingUtil("sender", sender, currentPage, count, rowCount, pageCount, "note/sendList.do");
 		
 		map.put("start", page.getStartCount());
@@ -108,8 +117,12 @@ public class NoteController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("sendList");
 		mav.addObject("count", count);
-		mav.addObject("list", list);
-		mav.addObject("pagingHtml", page.getPagingHtml());
+		mav.addObject("openNotCount", openNotCount);
+		
+		if(list != null) {
+			mav.addObject("list", list);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+		}
 		
 		return mav;
 	}
@@ -119,10 +132,6 @@ public class NoteController {
 	public ModelAndView detail(@RequestParam("note_num") int note_num,
 							   HttpSession session) {
 		String id = (String)session.getAttribute("user_id");
-		
-		if(log.isDebugEnabled()) {
-			log.debug("<<note_num>> : " + note_num);
-		}
 		
 		NoteCommand note = noteService.selectNote(note_num);
 		
@@ -134,36 +143,36 @@ public class NoteController {
 		//enter에 대한 줄바꿈처리
 		note.setNote_content(StringUtil.useBrNoHtml(note.getNote_content()));
 		
-		return new ModelAndView("note/noteDetail", "note", note);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("note/noteDetail");
+		mav.addObject("note", note);
+		mav.addObject("user_id", id);
+		
+		return mav;
 	}
 
 	/* 쪽지 작성 */
-	@RequestMapping(value="/note/write.do", method=RequestMethod.GET)
-	public String form(HttpSession session, Model model) {
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("", "");
-		
-		// 총 글의 갯수 또는 검색 된 글의 갯수
-		int count = shelterService.selectRowCount(map);
+	@RequestMapping(value="/note/write.do")
+	public String formNote(HttpSession session, Model model) {
+		// 전체 회원 리스트 뽑기
+		int count = memberService.wholeCount();
 		String idArray = "";
-		
-		List<ShelterCommand> list = null;
-		
+		List<MemberCommand> list = null;
+
 		if(count > 0) {
-			list = shelterService.selectList(map);
-			
-			for(ShelterCommand s : list) {
-				idArray += s.getS_id() + ",";
+			list = memberService.wholeList();
+
+			for(MemberCommand s : list) {
+				idArray += s.getM_id() + ",";
 			}
-			
+
 			idArray = idArray.substring(0,idArray.lastIndexOf(","));
 
 			System.out.println("idArray : " + idArray);
 		}
-		
+
 		String id = (String)session.getAttribute("user_id");
-		
+
 		NoteCommand command = new NoteCommand();
 		
 		// 보내는 사람의 아이디를 접속자 아이디로 설정
@@ -176,14 +185,47 @@ public class NoteController {
 	}
 
 	//전송된 데이터 처리
-	@RequestMapping(value="/note/writeAjax.do", method=RequestMethod.POST)
+	@RequestMapping(value="/note/writeAjax.do")
 	@ResponseBody
-	public Map<String,String> submit(@ModelAttribute("command") @Valid NoteCommand noteCommand, 
+	public Map<String,String> submitNote(@ModelAttribute("command") @Valid NoteCommand noteCommand, 
 										BindingResult result) {
 
-		if(log.isDebugEnabled()) {
-			log.debug("<<NoteCommand>> : " + noteCommand);
+		Map<String,String> map = new HashMap<String,String>(); 
+		if(result.hasErrors()) {
+			map.put("result", "notData");
 		}
+
+		//글쓰기
+		noteService.insert(noteCommand);
+
+		map.put("result", "success");
+		
+		return map;
+	}
+	
+	/* 답장 작성 */
+	@RequestMapping(value="/note/reply.do")
+	public String formReply(@RequestParam("recipient") String recipient,
+							HttpSession session, Model model) {
+		String id = (String)session.getAttribute("user_id");
+		
+		NoteCommand command = new NoteCommand();
+		
+		// 접속자 아이디를 보낸 사람으로 설정
+		command.setSender(id);
+		// 쪽지를 보낸 사람을 받는 사람으로 설정
+		command.setRecipient(recipient);
+		
+		model.addAttribute("command",command);
+		
+		return "note/noteReply";
+	}
+
+	//전송된 데이터 처리
+	@RequestMapping(value="/note/replyAjax.do")
+	@ResponseBody
+	public Map<String,String> submitReply(@ModelAttribute("command") @Valid NoteCommand noteCommand, 
+										BindingResult result) {
 
 		Map<String,String> map = new HashMap<String,String>(); 
 		if(result.hasErrors()) {

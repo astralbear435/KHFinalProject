@@ -9,9 +9,54 @@
   		
   			select * from ap_form
   			
-  			<where>
-		  		<if test="keyword != '' and keyfield == 'id'">
-		  			id like '%' || #{keyword} || '%'
+	  		<where>
+		  		<if test="ap_home == 1">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 2">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 3">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 4">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 5">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 6">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 1">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 2">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 3">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 4">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 5">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 6">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 7">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 8">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 9">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 10">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
 		  		</if>
 		  	</where>
   			
@@ -26,12 +71,56 @@
 	<select id="selectApRowCount" parameterType="map" resultType="integer">
 	  	select count(*)
 	  	from ap_form
-	  	<where>
-	  		<if test="keyword != '' and keyfield == 'id'">
-	  			id like '%' || #{keyword} || '%'
-	  		</if>
-	
-	  	</where>
+	  		<where>
+		  		<if test="ap_home == 1">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 2">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 3">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 4">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 5">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_home == 6">
+		  			ap_home like '%' || #{ap_home,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 1">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 2">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 3">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 4">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 5">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 6">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 7">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 8">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 9">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  		<if test="ap_service == 10">
+		  			ap_service like '%' || #{ap_service,jdbcType=VARCHAR} || '%'
+		  		</if>
+		  	</where>
   </select>
   
   <update id="update">

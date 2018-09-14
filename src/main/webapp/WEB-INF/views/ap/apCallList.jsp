@@ -6,17 +6,21 @@
 <div class="container">
 	<br><br>
 	<div class="col-md-12">
-		<form class="form-inline my-2 my-lg-0" action="list.do" style="float:center;" id="search_form" method="get">
+		<form class="form-inline my-2 my-lg-0" action="apCallList.do" style="float:center;" id="search_form" method="get">
 			<div class="form-group">
-				<select class="custom-select" name="keyfield">
-					<option selected>Open this select menu</option>
-					<option value="all">전체</option>
-					<option value="title">제목</option>
-					<option value="content">내용</option>
+				<select class="custom-select" name="call_wei">
+					<option value="0" selected>보호 맡기는 동물 무게</option>
+					<option value="1">15kg 미만</option>
+					<option value="2">15kg 이상</option>
+				</select>
+				<select class="custom-select" name="call_re">
+					<option value="0" selected>사전 만남 신청</option>
+					<option value="1">신청함</option>
+					<option value="2">신청하지 않음</option>
 				</select>
 			</div>
-	    	<input class="form-control mr-sm-2" type="text" name="keyword" id="keyword" placeholder="Search">
-	    	<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+			<input type="submit" class="btn btn-primary btn-lg" style="height: 50px;"
+										value="검색" onclick="location:href='#'">
 	    </form>
 		<input type="button" class="btn btn-secondary" style="float:right; margin:0 0 10px 0;" 
 					value="임시보호자 메인으로" onclick="location.href='apMain.do'">

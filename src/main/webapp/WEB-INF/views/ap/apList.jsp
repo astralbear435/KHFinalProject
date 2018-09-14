@@ -5,43 +5,101 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/apCall.js"></script>
 <div class="container">
 	<br><br>
-	<div class="col-md-12">
-		<form class="form-inline my-2 my-lg-0" action="list.do" style="float:center;" id="search_form" method="get">
+	<div class="card border-primary col-md-12">
+		<form action="apList.do"  id="search_form" method="get">
 			<div class="form-group">
-				<select class="custom-select" name="keyfield">
-					<option selected="">Open this select menu</option>
-					<option value="all">전체</option>
-					<option value="title">제목</option>
-					<option value="id">ID</option>
-					<option value="content">내용</option>
-				</select>
+				<div class="floatL">&nbsp;&nbsp;</div>
+				<label class="condition floatL" style="float:center;" for="ap_home"> 거주환경 </label>
+				<div class="btn-group btn-group-toggle" data-toggle="buttons">
+				  <label class="btn btn-primary">
+				    <input type="radio" name="ap_home" value="1" autocomplete="off"> 단독주택
+				  </label>
+				  <label class="btn btn-primary">
+				    <input type="radio" name="ap_home" value="2" autocomplete="off"> 아파트
+				  </label>
+				  <label class="btn btn-primary">
+				    <input type="radio" name="ap_home" value="3" autocomplete="off"> 빌라
+				  </label>
+				  <label class="btn btn-primary">
+				    <input type="radio" name="ap_home" value="4" autocomplete="off"> 오피스텔
+				  </label>
+				  <label class="btn btn-primary">
+				    <input type="radio" name="ap_home" value="5" autocomplete="off"> 마당보유
+				  </label>
+				  <label class="btn btn-primary">
+				    <input type="radio" name="ap_home" value="6" autocomplete="off"> 주변산책로보유
+				  </label>
+				</div>
+				<div class="floatL">&nbsp;&nbsp;</div>
+				<label class="condition floatL" style="float:center;" for="ap_service"> 서비스 </label>
+				<div class="btn-group btn-group-toggle" data-toggle="buttons">
+				  <label class="btn btn-primary">
+				    <input type="radio" name="ap_service" value="1" autocomplete="off"> 집 앞 픽업
+				  </label>
+				  <label class="btn btn-primary">
+				    <input type="radio" name="ap_service" value="2" autocomplete="off"> 모발관리
+				  </label>
+				  <label class="btn btn-primary">
+				    <input type="radio" name="ap_service" value="3" autocomplete="off"> 약물복용
+				  </label>
+				  <label class="btn btn-primary">
+				    <input type="radio" name="ap_service" value="4" autocomplete="off"> 응급처치
+				  </label>
+				  <label class="btn btn-primary">
+				    <input type="radio" name="ap_service" value="6" autocomplete="off"> 야외산책
+				  </label>
+				  <label class="btn btn-primary">
+				    <input type="radio" name="ap_service" value="7" autocomplete="off"> 실내놀이
+				  </label>
+				  <label class="btn btn-primary">
+				    <input type="radio" name="ap_service" value="8" autocomplete="off"> 장기관리(14일이상)
+				  </label>
+				  <label class="btn btn-primary">
+				    <input type="radio" name="ap_service" value="9" autocomplete="off"> 노령견 케어
+				  </label>
+				  <label class="btn btn-primary">
+				    <input type="radio" name="ap_service" value="10" autocomplete="off"> 퍼피케어
+				  </label>
+				</div>
+				<input type="submit" class="btn btn-secondary my-2 my-sm-0"
+										value="검색" onclick="location:href='#'">
 			</div>
-	    	<input class="form-control mr-sm-2" type="text" name="keyword" id="keyword" placeholder="Search">
-	    	<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+	    	
 	    </form>
-		<input type="button" class="btn btn-secondary" style="float:right; margin:0 0 10px 0;" 
-					value="임시보호자 메인으로" onclick="location.href='apMain.do'">
-		<c:if test="${!empty user_id}">
-			<input type="button" class="btn btn-outline-warning" style="float:right; margin:0 10px 10px 0;" 
-					value="글쓰기" onclick="location.href='apForm.do'">
-		</c:if>
+	    
 	</div>
-	<c:if test="${count == 0}">
-	<div style="text-align:center;">등록된 게시물이 없습니다.</div>
+	
+	<div class="floatL">&nbsp;&nbsp;</div>
+	<input type="button" class="btn btn-secondary" style="float:right; margin:0 0 10px 0;" 
+			value="임시보호자 메인으로" onclick="location.href='apMain.do'">
+	<c:if test="${!empty user_id}">
+		<input type="button" class="btn btn-outline-warning" style="float:right; margin:0 10px 10px 0;" 
+				value="글쓰기" onclick="location.href='apForm.do'">
 	</c:if>
+	<div class="floatL">&nbsp;&nbsp;</div>
+	
+	<c:if test="${count == 0}">
+		<div style="text-align:center; margin: 50px 0 50px 0;">등록된 게시물이 없습니다.</div>
+	</c:if>
+	
 	<c:if test="${count > 0}">
 	<c:forEach var="article" items="${list}">
 		<div class="card border-primary col-md-12">
 			<div class="card-header">
 				<p class="card-text">
 					${article.ap_num}
-					[ ${article.id} ]<br>
+					[ ${article.id} ]
+					<span id="dbutton_heart" data-num="${article.ap_num}" data-id="${user_id}">
+						 <button type="button" id="dbutton_heart"><i class="fa fa-heart-o"></i></button>
+					</span>
+					<br>
 					<i class="fa fa-github"></i>반려동물 경험 : 
 					<c:if test="${article.ap_pet == 1}">없음</c:if>
 					<c:if test="${article.ap_pet == 2}">1년~5년미만</c:if>
 					<c:if test="${article.ap_pet == 3}">5년~10년미만</c:if>
 					<c:if test="${article.ap_pet == 4}">10년이상</c:if>
 				</p>
+				
 			</div>
 				<div class="card-body">
 					<p class="card-text">

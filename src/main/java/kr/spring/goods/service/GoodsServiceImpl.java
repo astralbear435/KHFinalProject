@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.spring.goods.dao.GoodsMapper;
+import kr.spring.goods.domain.AdminCheck;
 import kr.spring.goods.domain.CartListCommand;
 import kr.spring.goods.domain.GoodsCommand;
 import kr.spring.goods.domain.GoodsListCommand;
@@ -75,8 +76,8 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 //특수 물건 추가 등록
 	@Override
-	public void addNewGoods(GoodsListCommand goods) {
-		goodsMapper.addNewGoods(goods);
+	public void addNewGoods(AdminCheck check) {
+		goodsMapper.addNewGoods(check);
 	}
 
 	@Override
@@ -102,6 +103,24 @@ public class GoodsServiceImpl implements GoodsService {
 	public int selectDona_num() {
 		// 시퀀스 받아오기
 		return goodsMapper.selectDona_num();
+	}
+
+	@Override
+	public int selectAuth(String id) {
+		// member 데이터베이스의 auth값 받아오기
+		return goodsMapper.selectAuth(id);
+	}
+
+	@Override
+	public int selectDid(String id) {
+		//보호소 회원의 did값 받아오기
+		return goodsMapper.selectDid(id);
+	}
+
+	@Override
+	public void updateAs(GoodsCommand goods) {
+		//as_goods 갯수 업데이트
+		goodsMapper.updateAs(goods);
 	}
 
 }

@@ -1,15 +1,14 @@
 create table ap_form(
 	ap_num	number not null,
-	ap_ok number not null,
 	id varchar2(50) not null,
 	ap_job varchar2(100) not null,
-	ap_cer number,
+	ap_cer varchar2(50),
 	ap_act number,
 	ap_pet number,
 	ap_ser clob,
-	ap_home number not null,
+	ap_home varchar2(50) not null,
 	ap_sel number not null,
-	ap_nopoet number not null,
+	ap_nopoet varchar2(50) not null,
 	ap_mon number not null,
 	ap_service number not null,
 	constraint ap_form_pk primary key (ap_num)

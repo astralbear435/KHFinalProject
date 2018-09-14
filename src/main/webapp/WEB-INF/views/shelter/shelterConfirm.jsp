@@ -9,7 +9,7 @@
 	.clearB{clear: both;}
 </style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/shelter.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/seyeong/shelter.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#s_passwdInput').keydown(function(key){

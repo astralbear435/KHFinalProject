@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.goods.domain.GoodsCommand;
+import kr.spring.goods.service.GoodsService;
 import kr.spring.shelter.domain.ShelterCommand;
 import kr.spring.shelter.service.ShelterService;
 import kr.spring.util.CipherTemplate;
@@ -32,7 +34,10 @@ public class ShelterController {
 
 	@Resource
 	private CipherTemplate cipherAES;
-
+	
+	@Resource
+	private GoodsService goodsService;
+	
 	
 	@ModelAttribute("command")
 	public ShelterCommand initShelterCommand() {
@@ -56,9 +61,22 @@ public class ShelterController {
 		
 		//CipherTemplate을 이용한 암호화
 		shelterCommand.setS_passwd(cipherAES.encrypt(shelterCommand.getS_passwd()));
-
+		
 		// 회원가입
 		shelterService.insert(shelterCommand);
+		//as_goods에 임시 등록
+		GoodsCommand goods=new GoodsCommand();
+		goods.setAs_id(shelterCommand.getS_id());//아이디
+		goods.setAs_name(shelterCommand.getS_name());//보호소 명
+		goods.setAs_location(shelterCommand.getS_address1());
+		goods.setPad(0);
+		goods.setDogfood(0);
+		goods.setCatfood(0);
+		goods.setShampoo(0);
+		goods.setCatsand(0);
+		goods.setAs_did(0);
+		//임시가입
+		goodsService.insert(goods);
 
 		return "redirect:/main/main.do";
 	}
@@ -111,7 +129,6 @@ public class ShelterController {
 				
 				// 비밀번호 일치 여부 체크 > 암호화 된 비번의 일치여부 확인
 				check = shelter.isCheckedPasswd(cipherAES.encrypt(shelterCommand.getS_passwd()));
-				System.out.println(check);
 			}
 			if(check) {
 				//인증 성공, 로그인처리
@@ -158,11 +175,13 @@ public class ShelterController {
 		String id = (String)session.getAttribute("user_id");
 		
 		ShelterCommand shelter = shelterService.selectShelter(id);
+		int as_did=goodsService.selectDid(id);
 		
 		// 암호화 된 비밀번호를 복호화(db는 변동 없음)
 		shelter.setS_passwd(cipherAES.decrypt(shelter.getS_passwd()));
 		
 		model.addAttribute("shelter", shelter);
+		model.addAttribute("as_did", as_did);
 		
 		return "shelterInfo";
 	}
@@ -226,10 +245,12 @@ public class ShelterController {
 		
 		// 총 글의 갯수 또는 검색 된 글의 갯수
 		int count = shelterService.selectRowCount(map);
+		System.out.println(count);
 		
 		List<ShelterCommand> list = null;
 		if(count > 0) {
 			list = shelterService.selectList(map);
+			System.out.println(list);
 		}
 		
 		ModelAndView mav = new ModelAndView();
@@ -283,8 +304,10 @@ public class ShelterController {
 		// 주소값에서 괄호 지워서 보내기
 		String s_address1 = shelter.getS_address1();
 		int findIndexOf = s_address1.indexOf("(");
-		String address = s_address1.substring(0,findIndexOf-1);
-		shelter.setS_address1(address);
+		if(findIndexOf > 0) {
+			String address = s_address1.substring(0,findIndexOf-1);
+			shelter.setS_address1(address);
+		}
 		
 		model.addAttribute("user_id", user_id);
 		model.addAttribute("shelter", shelter);
@@ -306,4 +329,34 @@ public class ShelterController {
 
 		return mav;
 	}
+
+	//====================보호소 기본 물품 업데이트(소은)=================//
+	@RequestMapping("/shelter/insertgoods.do")
+	@ResponseBody
+	public Map<String,String> insertgoods(@RequestParam("as_id")String as_id,
+			@RequestParam("as_name")String as_name,@RequestParam("as_location")String as_location,
+			@RequestParam("pad")int pad,@RequestParam("dogfood")int dogfood,@RequestParam("catfood")int catfood
+			,@RequestParam("shampoo")int shampoo,@RequestParam("catsand")int catsand){
+		Map<String,String> map=new HashMap<String,String>();
+		int did=1;
+		GoodsCommand goods=new GoodsCommand();
+		goods.setAs_id(as_id);
+		goods.setAs_name(as_name);
+		goods.setAs_location(as_location);
+		goods.setPad(pad);
+		goods.setDogfood(dogfood);
+		goods.setCatfood(catfood);
+		goods.setShampoo(shampoo);
+		goods.setCatsand(catsand);
+		goods.setAs_did(did);
+		
+		goodsService.updateAs(goods);
+		if(log.isDebugEnabled()) {
+			log.debug("<<물건 수정 값 함 보자>> :"+goods);
+		}
+		map.put("result","success");		
+		return map;
+	}			
+	
+	
 }

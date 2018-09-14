@@ -58,6 +58,7 @@ public class NoteCommand {
 	public void setDelete_status(String delete_status) {
 		this.delete_status = delete_status;
 	}
+	
 	@Override
 	public String toString() {
 		return "NoteCommand [note_num=" + note_num + ", sender=" + sender + ", recipient=" + recipient

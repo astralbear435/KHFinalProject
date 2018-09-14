@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import kr.spring.goods.domain.AdminCheck;
 import kr.spring.goods.domain.CartListCommand;
 import kr.spring.goods.domain.GoodsCommand;
 import kr.spring.goods.domain.GoodsListCommand;
@@ -17,7 +18,7 @@ public interface GoodsMapper {
 	public int selectRowCount(Map<String,Object> map);
 	
 	public List<GoodsCommand> getASList(Map<String,Object> map);
-	@Insert("INSERT INTO AS_GOODS(as_name,as_id,as_location,pad,dogfood,catfood,shampoo,catsand,as_auth) VALUES(#{as_name},#{as_id},#{as_location},#{pad},#{dogfood},#{cattoy},#{shampoo},#{catsand},2)")
+	@Insert("INSERT INTO AS_GOODS(as_name,as_id,as_location,pad,dogfood,catfood,shampoo,catsand,as_auth,as_did) VALUES(#{as_name},#{as_id},#{as_location},#{pad},#{dogfood},#{catfood},#{shampoo},#{catsand},4,#{as_did})")
 	public void insertAS(GoodsCommand goods);
 	@Select("SELECT * FROM AS_GOODS WHERE as_name=#{as_name}")
 	public GoodsCommand selectDetailAS(String as_name);
@@ -37,8 +38,8 @@ public interface GoodsMapper {
 	public int deleteCart(Integer p_cartnum);
 	
 	//새로운 물건 등록
-	@Insert("INSERT INTO GOODS_DB(g_name,g_id,amount) VALUES(#{g_name},#{g_id},#{g_amount})")
-	public void addNewGoods(GoodsListCommand goods);
+	@Insert("INSERT INTO admin_check(ch_id,ch_name,ch_amount,ch_message,ch_url) VALUES(#{ch_id},#{ch_name},#{ch_amount},#{ch_message,jdbcType=VARCHAR},#{ch_url,jdbcType=VARCHAR})")
+	public void addNewGoods(AdminCheck check);
 	//선택한 정보 뽑아오기
 	@Select("SELECT * FROM persnal_cart WHERE p_cartnum=#{cart_num}")
 	public List<CartListCommand> getOrderPrice(Integer p_cartnum);
@@ -53,4 +54,16 @@ public interface GoodsMapper {
 	//기부성명,메세지 업데이트
 	@Update("UPDATE DONATION SET dona_username=#{dona_username},dona_message=#{dona_message} WHERE dona_num=#{dona_num}")
 	public void updateOrder(OrderCommand order);
+	//auth값 받아오기
+	@Select("SELECT auth FROM MEMBER WHERE m_id=#{id}")
+	public int selectAuth(String id);
+	//보호소의 did값 받아오기 => did값은 물품등록했는지안했는지 구분해주는 값이다.
+	@Select("SELECT as_did FROM as_goods WHERE as_id=#{id}")
+	public int selectDid(String id);
+	//as_goods 보호소 갯수 업데이트
+	@Update("UPDATE as_goods SET pad=#{pad},dogfood=#{dogfood},catfood=#{catfood},shampoo=#{shampoo},catsand=#{catsand},as_did=#{as_did} WHERE as_id=#{as_id}")
+	public void updateAs(GoodsCommand goods);
+	
+	
 }
+
