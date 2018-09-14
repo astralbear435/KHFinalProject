@@ -20,7 +20,14 @@
 		base-package="kr.spring.admin.notice.controller" />
 	<context:component-scan
 		base-package="kr.spring.visitor.controller" />
-	<context:component-scan base-package="kr.spring.goods.controller" />
+	<context:component-scan 
+		base-package="kr.spring.goods.controller" />
+	<context:component-scan
+		base-package="kr.spring.recruit.controller" />
+	<context:component-scan
+		base-package="kr.spring.volunteer.controller" />
+	<context:component-scan
+		base-package="kr.spring.mypage.controller" />
 	<context:component-scan base-package="kr.spring.ap.controller" />
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
@@ -51,6 +58,9 @@
 				<beans:value>/WEB-INF/tiles-def/admin.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/member.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/good.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/recruit.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/volunteer.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/mypage.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/ap.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/apcall.xml</beans:value>
 			</beans:list>
@@ -124,6 +134,8 @@
 		view-name="shelterList" />
 	<view-controller path="/admin/main.do"
 		view-name="admin" />
+	<view-controller path="/recruit/recruitWrite.do"
+		view-name="recruitWrite" />
 	<view-controller path="/ap/apCallList.do" view-name="apCallList"/>
 	<view-controller path="/ap/apMain.do" view-name="apMain"/>
 	<view-controller path="/ap/apForm.do" view-name="apForm"/>

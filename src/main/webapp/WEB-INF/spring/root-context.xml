@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-
     xmlns:context="http://www.springframework.org/schema/context"
-
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:p="http://www.springframework.org/schema/p"
@@ -81,6 +79,7 @@
 		                   		  kr.spring.note.domain,
 		                   		  kr.spring.shelter.domain,
 		                   		  kr.spring.goods.domain,
+		                   		  kr.spring.recruit.domain,              
 		                   		  kr.spring.ap.domain"/>               
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -91,9 +90,13 @@
 		              		 kr.spring.admin.notice.dao,
 		              		 kr.spring.tem.dao,
 		              		 kr.spring.note.dao,
-		              		 kr.spring.shelter.dao
-		              		 ,kr.spring.goods.dao,
-		              		 kr.spring.ap.dao" />
+		              		 kr.spring.shelter.dao,
+		              		 kr.spring.goods.dao,
+		              		 kr.spring.recruit.dao,
+		            		kr.spring.volunteer.dao,
+		            		kr.spring.mypage.dao,
+		              		kr.spring.ap.dao" />
+
 	</bean>
 	
 	<!-- 암호화,복호화 알고리즘 처리 -->

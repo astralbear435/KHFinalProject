@@ -32,6 +32,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		/* 일반 */
 		//로그인 모달창		
 		$('#memberLogin').click(function() {
 			
@@ -75,6 +76,45 @@
 			$('#myModal').hide();
 		});
 		
+		/* 보호소 */
+		//로그인 모달창		
+		$('#shelterLogin').click(function() {
+			
+			$('#shelterModal').show();
+		});
+		
+		$('#shelterLoginButton').click(function() {
+			
+			$.ajax({
+				url:'shelterLogin.do',
+				type:'post',
+				data:{s_id:$('#s_id').val(),s_passwd:$('#s_passwd').val()},
+				dataType:'json',
+				cache:false,
+				timeout:30000,
+				success:function(data) {
+					if(data.result == 'success') {	//로그인 성공
+						$('#shelterModal').hide();
+						location.href='${pageContext.request.contextPath}/main/main.do';
+					} else if(data.result == 'false') {
+						
+						$('#errorLogin').css('color','red').text('아이디 또는 비밀번호 불일치!');
+						$('#s_id').focus();
+						$('#s_passwd').val('');
+						
+					} else {
+						alert('네트워크 오류 발생!');
+					}
+				}
+			});
+			
+		});
+		
+		//닫기
+		$('#closeShelterLogin').click(function() {
+			
+			$('#shelterModal').hide();
+		});
 	});
 </script>
 
@@ -117,9 +157,49 @@
 		</div>
 	</div>
 	<!-- 모달창 닫기 -->
+	
+	<!-- 보호소 모달창 -->
+	<div id="shelterModal" class="modal">
+		<div class="modal-content">
+		<span style="font-size:10pt; text-align:right;">
+					<a href="#" id="closeShelterLogin">X</a>
+				</span>
+			<p style="text-align: center;">
+				<span style="font-size: 14pt;">
+					<b><span style="font-size: 20pt;">보호소 회원 로그인</span></b>
+				</span>
+				
+			</p>
+			<div style="text-align: center;"><hr color="black">
+				
+					<label for="s_id">아이디</label>
+					<br>
+					<input type="text" name="s_id" id="s_id" class="form-control" style="width: 280px;" placeholder="아이디 입력" />
+					<br><br>					
+					<label for="s_passwd">비밀번호</label>
+					<br>
+					<input type="password" name="s_passwd" id="s_passwd" class="form-control" style="width: 280px;" placeholder="비밀번호 입력" />
+					<br>
+					<div id="errorLogin"></div>
+					<br>
+					<input type="button" class="btn btn-warning btn-lg" id="shelterLoginButton" value="로그인">
+					<br><br>&nbsp;
+					<a class="agile-icon" href="${pageContext.request.contextPath}/shelter/write.do"> 
+						<i class="fa fa-user">회원가입</i>
+					</a>&nbsp;&nbsp;&nbsp;
+					<a class="agile-icon" href="${pageContext.request.contextPath}/member/findMember.do"> 
+						<i class="fa fa-unlock-alt">아이디/비밀번호 찾기</i>
+					</a>
+					<br><br>
+				
+			</div>
+		</div>
+	</div>
+	<!-- 보호소 모달창 -->
+	
 	<div style="width: 100%; height: 380px;">
 	<div class="horizontal"></div><!-- 가로 여백 -->
-	<div id="margin0a">
+	<div>
 		<div style="width: 450px; margin: 0 auto;">
 			<img src="${pageContext.request.contextPath}\resources\images\sy\보호소 줄 그림.png">
 		</div>
@@ -128,8 +208,7 @@
 	<div style="width: 25%; height: 150px; margin: 0 auto;">
 		<input type="button" id="memberLogin" class="btn btn-warning btn-lg btn-block" value="일반 로그인">
 		<div class="horizontal"></div><!-- 가로 여백 -->
-		<input type="button" id="shelterWriteBtn" class="btn btn-warning btn-lg btn-block" value="보호소 로그인"
-				onclick="location.href='${pageContext.request.contextPath}/shelter/shelterLogin.do'">
+		<input type="button" id="shelterLogin" class="btn btn-warning btn-lg btn-block" value="보호소 로그인">
 	</div>
 	</div>
 </body>
