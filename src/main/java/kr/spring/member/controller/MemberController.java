@@ -306,7 +306,7 @@ public class MemberController {
 
 	//===================================== 회원 상세 정보 =================================//
 
-	@RequestMapping("/member/detail.do")
+	@RequestMapping("/member/memberView.do")
 	public String process(HttpSession session, Model model) {	//로그인이 되어있으면 session에서 아이디를 가져옴
 
 		String id = (String)session.getAttribute("user_id");

@@ -134,6 +134,7 @@
 		<interceptor>
 			<mapping path="/admin/main.do" />
 			<mapping path="/admin/notice/**" />
+			<mapping path="/admin/mainmenu/**"/>
 			<beans:bean
 				class="kr.spring.interceptor.AdminLoginCheckInterceptor" />
 		</interceptor>

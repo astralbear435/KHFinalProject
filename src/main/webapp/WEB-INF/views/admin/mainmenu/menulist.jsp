@@ -7,7 +7,6 @@ selectbox#select_id {
 	width: 200px; /* 너비설정 */
 	z-index: 1;
 }
-
 </style>
 
 <section class="content-header">
@@ -22,141 +21,94 @@ selectbox#select_id {
 
 <!-- Main content -->
 <section class="content container-fluid">
-	<div class="box box-info">
-		<div class="box-header with-border">
-			<h3 class="box-title">메뉴 목록</h3>
-		</div>
-		<div class="box-body">
-
-			<div class="input-group">
-				<select id="select_id" name=s1 size=15>
-					<option selected="selected" value=0>-메뉴 추가-</option>
-					<c:if test="${count>0}">
-						<c:forEach var="menu" items="${list}">
-							<c:if test="${menu.menu_depth==1}">
-								<option value="${menu.menu_num}">${menu.menu_name}</option>
-							</c:if>
-							<c:if test="${menu.menu_depth>1}"> 
-								<option value="${menu.menu_num}"> ㅡ ${menu.menu_name}</option>  
-							</c:if>
-						</c:forEach>
-					</c:if>
-				</select>
-			</div>
-
-			<br>
-
-			<div class="input-group">
-				<input type="text" class="form-control"> <span
-					class="input-group-addon">.00</span>
-			</div>
-			<br>
-
-			<div class="input-group">
-				<span class="input-group-addon">$</span> <input type="text"
-					class="form-control"> <span class="input-group-addon">.00</span>
-			</div>
-
-			<h4>With icons</h4>
-
-			<div class="input-group">
-				<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-				<input type="email" class="form-control" placeholder="Email">
-			</div>
-			<br>
-
-			<div class="input-group">
-				<input type="text" class="form-control"> <span
-					class="input-group-addon"><i class="fa fa-check"></i></span>
-			</div>
-			<br>
-
-			<div class="input-group">
-				<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-				<input type="text" class="form-control"> <span
-					class="input-group-addon"><i class="fa fa-ambulance"></i></span>
-			</div>
-
-			<h4>With checkbox and radio inputs</h4>
-
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="input-group">
-						<span class="input-group-addon"> <input type="checkbox">
-						</span> <input type="text" class="form-control">
+	<section class="content">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="box box-info">
+					<div class="box-header with-border">
+						<h3 class="box-title">메뉴 목록</h3>
 					</div>
-					<!-- /input-group -->
-				</div>
-				<!-- /.col-lg-6 -->
-				<div class="col-lg-6">
-					<div class="input-group">
-						<span class="input-group-addon"> <input type="radio">
-						</span> <input type="text" class="form-control">
+					<!-- /.box-header -->
+					<div id="menu_box" class="box-body">
+						<select id="select_id1" name=s1 size=15
+							class="form-control" style="font-size: 20px;">
+							<option selected="selected" value=0>-메뉴 추가-</option>
+							<c:if test="${count>0}">
+								<c:forEach var="menu" items="${list}">
+									<c:if test="${menu.menu_depth==1}">
+										<option value="${menu.menu_num}">${menu.menu_name}</option>
+									</c:if>
+									<c:if test="${menu.menu_depth>1}">
+										<option value="${menu.menu_num}">ㅡ ${menu.menu_name}</option>
+									</c:if>
+								</c:forEach>
+							</c:if>
+						</select><br>
+
+						<button id="menu_up" class="btn btn-info">▲</button>
+						<button id="menu_down" class="btn btn-info">▼</button>
+						<button id="menu_delete" class="btn btn-info pull-right">삭제</button>
 					</div>
-					<!-- /input-group -->
 				</div>
-				<!-- /.col-lg-6 -->
 			</div>
-			<!-- /.row -->
-
-			<h4>With buttons</h4>
-
-			<p class="margin">
-				Large:
-				<code>.input-group.input-group-lg</code>
-			</p>
-
-			<div class="input-group input-group-lg">
-				<div class="input-group-btn">
-					<button type="button" class="btn btn-warning dropdown-toggle"
-						data-toggle="dropdown">
-						Action <span class="fa fa-caret-down"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li class="divider"></li>
-						<li><a href="#">Separated link</a></li>
-					</ul>
+			<div class="col-md-5">
+				<div class="box box-info">
+					<div class="box-header with-border">
+						<h3 class="box-title">메뉴 상세</h3>
+					</div>
+					<!-- /.box-header -->
+					<div id="menu_detail" class="box-body">
+						<form id="writeMenu" action="writeMenu.do">
+						<div class="form-group">
+							<label for="menu_use">메뉴 활성화</label><br> 
+							<input type="radio"	name="menu_use" id="menu_use1" value="Y" checked="checked"> 표시
+							<input type="radio" name="menu_use" id="menu_use2" value="N"> 미표시
+						</div>
+						<div class="form-group">
+							<label for="menu_name">메뉴 명</label> <input type="text" id="menu_name" name="menu_name" class="form-control" placeholder="메뉴명">
+							<span class="help-block"></span>
+						</div>
+						<div class="form-group">
+							<label for="menu_url">메뉴 주소</label> <input type="text" id="menu_url" name="menu_url" class="form-control" placeholder="/main/main.do">
+							<span class="help-block"></span>
+						</div>
+						<div class="form-group">
+							<label for="menu_order">메뉴 순서</label> <input type="number" id="menu_order" name="menu_order" class="form-control" placeholder="0">
+							<span class="help-block"></span>
+						</div>
+						<div class="form-group">
+							<label for="menu_dd">드롭다운 메뉴 사용</label><br> 
+							<input type="radio"	name="menu_dd" id="menu_dd1" value="Y"> 사용 
+							<input type="radio" name="menu_dd" id="menu_dd2" value="N" checked="checked"> 미사용
+						</div>
+						<div class="form-group">
+							<label>상위 메뉴</label> 
+							<select id="select_id2" name="parent_num" class="form-control">
+							<option selected="selected" value=null disabled="disabled">-선택-</option>
+							</select>
+						</div>
+						<input class="btn btn-info" type="submit" value="추가">
+						</form>
+					</div>
 				</div>
-				<!-- /btn-group -->
-				<input type="text" class="form-control">
 			</div>
-			<!-- /input-group -->
-			<p class="margin">Normal</p>
-
-			<div class="input-group">
-				<div class="input-group-btn">
-					<button type="button" class="btn btn-danger">Action</button>
-				</div>
-				<!-- /btn-group -->
-				<input type="text" class="form-control">
-			</div>
-			<!-- /input-group -->
-			<p class="margin">
-				Small
-				<code>.input-group.input-group-sm</code>
-			</p>
-
-			<div class="input-group input-group-sm">
-				<input type="text" class="form-control"> <span
-					class="input-group-btn">
-					<button type="button" class="btn btn-info btn-flat">Go!</button>
-				</span>
-			</div>
-			<!-- /input-group -->
 		</div>
-	</div>
+	</section>
 </section>
 <!-- /.content -->
-<script src="${pageContext.request.contextPath}/resources/admin/js/jquery-3.3.1.min.js"></script>
-<script>
-$("#select_id").change(function() {
-	var str = "";
-    $( "select option:selected" ).each(function() {
-      str += $( this ).text() + " "+$( this ).val();
-    });
-    alert(str);
-}).trigger("change");  
-</script> 
+<!-- jQuery 3 -->
+<script
+	src="${pageContext.request.contextPath}/resources/admin/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script
+	src="${pageContext.request.contextPath}/resources/admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script
+	src="${pageContext.request.contextPath}/resources/admin/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script
+	src="${pageContext.request.contextPath}/resources/admin/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script
+	src="${pageContext.request.contextPath}/resources/admin/dist/js/demo.js"></script>
+<script	src="${pageContext.request.contextPath}/resources/admin/js/mainmenu.js"></script>

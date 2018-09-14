@@ -23,7 +23,7 @@
 				<li><a href="${pageContext.request.contextPath}/member/selectLogin.do">로그인</a></li>
 				</c:if>
 				<c:if test="${!empty user_id}">
-				<li><a href="#">${user_id}님 로그인</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/memberView.do">${user_id}님 로그인</a></li>
 				<li><a href="${pageContext.request.contextPath}/shelter/shelterConfirm.do">회원정보</a></li>
 				<li><a href="${pageContext.request.contextPath}/note/receivedList.do">쪽지</a></li>
 				<li><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>

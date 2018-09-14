@@ -29,4 +29,6 @@
 <script src="${pageContext.request.contextPath}/resources/admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="${pageContext.request.contextPath}/resources/admin/dist/js/adminlte.min.js"></script>
-    
+<!-- AdminLTE for demo purposes -->
+<script
+	src="${pageContext.request.contextPath}/resources/admin/dist/js/demo.js"></script>
