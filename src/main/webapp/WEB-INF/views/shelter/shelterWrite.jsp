@@ -80,7 +80,7 @@ $(document).ready(function(){
 							<form:input path="s_id" class="form-control" id="s_id" name="s_id"
 										style="width: 278px;" placeholder="아이디 입력"/>
 						</div>
-						<div class="floatL h72" style="width: 10px;"></div>
+						<div class="floatL h72" style="width: 5px;"></div>
 						<div class="form-group floatL h72 lineh95">
 							<input type="button" id="confirmId" class="btn btn-primary" value="ID 중복확인">
 						</div>
@@ -113,11 +113,19 @@ $(document).ready(function(){
 										placeholder="전화번호 입력( - 포함)"/>
 						<form:errors path="s_phone" cssClass="error-color"/>
 					</div>
-					<div class="form-group">
-						<label for="s_email">이메일</label>
-						<form:input path="s_email" class="form-control" name="s_email"
-										placeholder="이메일 입력"/>
-						<form:errors path="s_email" cssClass="error-color"/>
+					<div class="w500 h72">
+						<div class="form-group floatL">
+							<label for="s_email">이메일</label><br>
+							<form:input path="s_email" class="form-control" id="s_email" name="s_email"
+										style="width: 278px;" placeholder="이메일 입력"/>
+						</div>
+						<div class="floatL h72" style="width: 5px;"></div>
+						<div class="form-group floatL h72 lineh95">
+							<input type="button" id="confirmEmail" class="btn btn-primary" value="이메일 확인">
+						</div>
+						<div class="floatL h72" style="width: 10px;"></div>
+						<div class="floatL h72 lineh95" id="message_email"
+								style="width: 85px; text-align: center;"></div>
 					</div>
 						
 					<div class="horizontal"></div><!-- 가로 여백 -->
@@ -129,9 +137,7 @@ $(document).ready(function(){
 											placeholder="우편번호 찾기 버튼 클릭" style="width:200px;" readonly="readonly"/>
 							<form:errors path="s_zipcode" cssClass="error-color"/>
 						</div>
-						
-						<div class="floatL h72" style="width: 10px;"></div>
-						
+						<div class="floatL h72" style="width: 5px;"></div>
 						<div class="form-group floatL h72 lineh95">
 							<input type="button"  class="btn btn-primary" value="우편번호 찾기"
 						      		onclick="DaumPostcode()">
@@ -140,7 +146,7 @@ $(document).ready(function(){
 					<div class="form-group clearB">
 						<label for="s_address1">주소</label>
 						<form:input path="s_address1" class="form-control" name="s_address1"
-									placeholder="주소 입력"/>
+									placeholder="주소 입력" readonly="readonly"/>
 					</div>	
 					<div class="form-group">
 						<label for="s_address2">상세 주소</label>

@@ -1169,7 +1169,7 @@ img.img-responsive {
     margin-top: 2em;
 }
 .wpf-demo-4 {
-    background-color: #FF9800;
+    background-color: white;
     display: block;
     overflow: hidden;
     position: relative;
@@ -1236,9 +1236,8 @@ img.img-responsive {
     bottom: -35px;
 }
 .wpf-demo-4 .view-caption p {
-    color: #fff;
-    font-size: 1em;
-    padding-right: 7px;
+    color: black;
+    padding-right: 20px;
 }
 /*-- jzBox-lightbox --*/
 #jzBox {
