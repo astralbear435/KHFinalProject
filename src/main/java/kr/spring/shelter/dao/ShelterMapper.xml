@@ -8,63 +8,63 @@
 	<select id="selectList" parameterType="map"
 		resultType="ShelterCommand">
 		select sd.*,m.auth from (
-							select * from shelter_detail 
+							select * from shelter_detail
 
 		<where>
 			<!-- if문에 들어오지 못하면 where이 생성되지 않음. -->
 			<if test="local == '서울'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '경기'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '인천'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '강원'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '충청북'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '세종'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '충청남'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '대전'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '경상북'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '대구'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '울산'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '부산'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '경남'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '전북'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '전남'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '광주'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '제주'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="name != ''">
-				and sd.s_name like '%' || #{name,jdbcType=VARCHAR} || '%'
+				and shelter_detail.s_name like '%' || #{name,jdbcType=VARCHAR} || '%'
 			</if>
 		</where>
 
@@ -82,58 +82,58 @@
 		<where>
 			<!-- if문에 들어오지 못하면 where이 생성되지 않음. -->
 			<if test="local == '서울'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '경기'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '인천'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '강원'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '충청북'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '세종'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '충청남'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '대전'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '경상북'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '대구'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '울산'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '부산'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '경남'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '전북'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '전남'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '광주'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="local == '제주'">
-				sd.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
+				shelter_detail.s_address1 like '%' || #{local,jdbcType=VARCHAR} || '%'
 			</if>
 			<if test="name != ''">
-				and sd.s_name like '%' || #{name,jdbcType=VARCHAR} || '%'
+				and shelter_detail.s_name like '%' || #{name,jdbcType=VARCHAR} || '%'
 			</if>
 		</where>
 		

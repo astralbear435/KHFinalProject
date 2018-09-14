@@ -10,7 +10,7 @@
 		<div style="width: 1300px; height:125px; clear: both; margin: 0 auto;">
 			<form action="shelterList.do" id="shelterSearchForm" method="post">
 				<div class="condition floatL">
-					<div class="search" style="width: 1200px;">
+					<div class="search margin0a" style="width: 1200px;">
 						<label class="condition floatL" for="local"> 지역으로 찾기 |</label>
 						<div class="floatL" style="width: 30px; height: 24px;"></div>
 						<div class="condition floatL">
@@ -35,7 +35,7 @@
 						</div>
 					</div>
 					<div class="clearB" style="width: 1300px; height: 50px;">
-						<div class="search floatL" style="line-height:40px;">
+						<div class="search floatL margin0a" style="line-height:40px;">
 							<label class="condition floatL" for="name"> 이름으로 찾기 |</label>
 							<div class="floatL" style="width: 30px; height: 24px;"></div>
 							<div class="floatL" style="padding-top: 9px;">
@@ -43,35 +43,45 @@
 							</div>
 						</div>
 						<div class="condition floatL searchButton">
-							<p><input type="submit" class="btn btn-primary btn-lg" style="height: 50px;"
-										value="검색" onclick="location:href='#'"></p>
+							<p><input type="submit" class="btn btn-primary btn-lg" style="height: 50px;" value="검색"></p>
 						</div>
 					</div>
 				</div>
-				
 			</form>
 		</div>
+		<c:if test="${count == 0}">
+			<div style="width: 90%; border: 2px solid black; text-align: center; margin: 0 auto;">
+				조건을 만족하는 보호소를 찾을 수 없습니다. 다시 검색해주세요.
+			</div>
+		</c:if>
 		
+		<c:if test="${count > 0}">
 		<!-- gallery -->
-	<div class="gallery">
-		<div class="container"> 
-			<div class="gallery-grids-row">
-				<c:forEach var="shelter" items="${list}">
-					<div class="col-md-4 gallery-grid">
-						<div class="wpf-demo-4">  
-							<a href="${pageContext.request.contextPath}/shelter/shelterDetail.do?id=${shelter.s_id}" class="jzBoxLink item-hover" title="Njoy Trip">  
-								<img src="${pageContext.request.contextPath}/shelter/imageView.do?id=${shelter.s_id}" alt=" " class="img-responsive" />
-								<div class="view-caption">
-									<p>${shelter.s_name}</p>
-								</div> 
-							</a>    		
+		<div class="gallery">
+			<div class="container"> 
+				<div class="gallery-grids-row">
+					<c:forEach var="shelter" items="${list}">
+						<div class="col-md-4 gallery-grid">
+							<div class="wpf-demo-4">  
+								<a href="${pageContext.request.contextPath}/shelter/shelterDetail.do?id=${shelter.s_id}" class="jzBoxLink item-hover" title="Njoy Trip">  
+									<c:if test="${shelter.s_filename == null}">
+										<img src="${pageContext.request.contextPath}\resources\images\sy\보호소 기본 썸네일.png" alt=" " class="img-responsive" />
+									</c:if>
+									<c:if test="${shelter.s_filename != null}">
+										<img src="${pageContext.request.contextPath}/shelter/imageView.do?id=${shelter.s_id}" alt=" " class="img-responsive" />
+									</c:if>
+									<div class="view-caption">
+										<p>${shelter.s_name}</p>
+									</div> 
+								</a>    		
+							</div>
 						</div>
-					</div>
-				</c:forEach>
-				<div class="clearfix"> </div>
+					</c:forEach>
+					<div class="clearfix"> </div>
+				</div>
 			</div>
 		</div>
-	</div>
+		</c:if>
 	</div>
 	<div class="horizontal"></div><!-- 가로 여백 -->
 </body>

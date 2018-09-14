@@ -23,6 +23,12 @@ $(document).ready(function(){
 <div class="page-main-style">
 	<div>
 		<div class="horizontal"></div><!-- 가로 여백 -->
+		<div id="margin0a">
+			<div style="width: 450px; margin: 0 auto;">
+				<img src="${pageContext.request.contextPath}\resources\images\sy\보호소 줄 그림.png">
+			</div>
+		</div>
+		<div class="horizontal"></div><!-- 가로 여백 -->
 		<div class="titleText">비밀번호 확인</div><br>
 		<div style="text-align: center;">
 			정확한 확인을 위해 비밀번호를 한번 더 입력해 주세요!
@@ -34,7 +40,7 @@ $(document).ready(function(){
 							<input type="hidden" id="s_passwd" value="${shelter.s_passwd}">
 							<input type="password" class="form-control" id="s_passwdInput" placeholder="비밀번호 입력">
 						</div>
-						
+						<div class="horizontal"></div><!-- 가로 여백 -->
 						<div class="w500 clearB" style="text-align:center; margin: 0;">
 							<input type="button" id="confirmBtn" class="btn btn-primary" value="확인">
 							<input type="button"  class="btn btn-primary" value="취소"

@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import kr.spring.note.domain.BlockCommand;
 import kr.spring.note.domain.NoteCommand;
 
 public interface NoteService {
@@ -29,11 +28,4 @@ public interface NoteService {
 	
 	// 쪽지 삭제
 	public void delete(int note_num);
-	
-	// 차단하기
-	public void block(String block, String be_blocked);
-	public void unblock(String block, String be_blocked);
-	
-	// 차단리스트
-	public List<BlockCommand> blockList(String id);
 }

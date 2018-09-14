@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.member.domain.MemberCommand;
 import kr.spring.member.service.MemberService;
+import kr.spring.shelter.domain.ShelterCommand;
 import kr.spring.shelter.service.ShelterService;
 import kr.spring.util.CipherTemplate;
 
@@ -46,12 +47,12 @@ public class MemberController {
 		return new MemberCommand();
 	}
 
+	/* 로그인, 회원가입 통합(세영추가) */
 	// 통합 로그인 폼 호출
 	@RequestMapping(value="/member/selectLogin.do")
 	public String selectLogin() {
 		return "selectLogin";
 	}
-	
 	// 약관 폼 호출
 	@RequestMapping(value="/member/privision.do")
 	public String privision() {
@@ -186,21 +187,29 @@ public class MemberController {
 	public String sendPw(@ModelAttribute("command") @Valid MemberCommand member, BindingResult result) throws Exception {
 
 		if(result.hasFieldErrors("m_email")) {
-
 			return find();
 		}
+		
+		System.out.println(member);
 
 		try {
 
 			MemberCommand memberIn = memberService.checkMember_e(member.getM_email());
 
-			if(memberIn != null) {
+			if(memberIn.getAuth()==1 || memberIn.getAuth()==2 || memberIn.getAuth()==5) { // 비번 찾는 사람이 일반회원(+ 임보자 회원)
 
 				memberService.updatePw(member.getM_email());
 
 				return "redirect:/member/successSendPw.do";
 
-			} else {
+			}else if(memberIn.getAuth()==3 || memberIn.getAuth()==4){ // 비번 찾는 사람이 보호소 회원
+				
+				ShelterCommand shelter = shelterService.selectShelter(member.getM_id());
+				
+				shelterService.update(shelter);
+				
+				return "redirect:/member/successSendPw.do";
+			}else {
 
 				throw new Exception();
 			}

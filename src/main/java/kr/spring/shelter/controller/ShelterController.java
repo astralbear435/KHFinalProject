@@ -21,6 +21,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.goods.domain.GoodsCommand;
 import kr.spring.goods.service.GoodsService;
+import kr.spring.member.controller.MemberController;
+import kr.spring.member.domain.MemberCommand;
+import kr.spring.member.service.MemberService;
 import kr.spring.shelter.domain.ShelterCommand;
 import kr.spring.shelter.service.ShelterService;
 import kr.spring.util.CipherTemplate;
@@ -28,6 +31,9 @@ import kr.spring.util.CipherTemplate;
 @Controller
 public class ShelterController {
 	private Logger log = Logger.getLogger(this.getClass());
+	
+	@Resource
+	private MemberService memberService;
 	
 	@Resource
 	private ShelterService shelterService;
@@ -84,13 +90,13 @@ public class ShelterController {
 	// ============= 아이디 중복 확인 ==============
 	@RequestMapping("/shelter/confirmId.do")
 	@ResponseBody
-	public Map<String,String> processShelter(@RequestParam("id") String id){
+	public Map<String,String> processShelterId(@RequestParam("id") String id){
 
 		Map<String,String> map = new HashMap<String,String>();
 		
-		ShelterCommand shelter = shelterService.selectShelter(id);
+		MemberCommand member = memberService.selectMember(id);
 		
-		if(shelter != null) {
+		if(member != null) {
 			//아이디 중복
 			map.put("result", "idDuplicated");
 		}else {
@@ -100,42 +106,57 @@ public class ShelterController {
 		
 		return map;
 	}
+	
+	// ============= 이메일 중복 확인 ==============
+		@RequestMapping("/shelter/confirmEmail.do")
+		@ResponseBody
+		public Map<String,String> processShelter(@RequestParam("email") String email){
+
+			Map<String,String> map = new HashMap<String,String>();
+			
+			MemberCommand member = memberService.checkMember_e(email);
+			System.out.println(member);
+			
+			if(member != null) {
+				// 이메일 중복
+				map.put("result", "emailDuplicated");
+			}else {
+				// 이메일 미 중복
+				map.put("result", "emailNotFound");
+			}
+			
+			return map;
+		}
 
 	//================== 로그인 =========================	
-	// 로그인 폼 호출
-	@RequestMapping(value="/shelter/shelterLogin.do", method=RequestMethod.GET)
-	public String formLoginShelter() {
-		return "shelterLogin";
-	}
-
 	// 로그인폼에서 전송된 데이터 처리
-	@RequestMapping(value="/shelter/shelterLogin.do", method=RequestMethod.POST)
-	public String submitLoginShelter(@Valid ShelterCommand shelterCommand, 
+	@RequestMapping(value="/member/shelterLogin.do")
+	@ResponseBody
+	public Map<String,String> submitLoginShelter(@Valid ShelterCommand shelterCommand, 
 								BindingResult result, HttpSession session) {
+		Map<String,String> map = new HashMap<String,String>();
 		
-		// memberCommand에 전부 체크하게 어노테이션이 선언되어 있으므로 id와 passwd의 필드만 체크
-		if(result.hasFieldErrors("id") || result.hasFieldErrors("passwd")) {
-			return formLoginShelter();
-		}
+		System.out.println(shelterCommand);
 		
 		//로그인 체크(id,비밀번호 일치 여부 체크)
 		try {
 			ShelterCommand shelter = shelterService.selectShelter(shelterCommand.getS_id());
 			boolean check = false;
 			
-			System.out.println("shelter : " + shelter);
-			
 			if(shelter != null) {//아이디가 존재하면
-				
 				// 비밀번호 일치 여부 체크 > 암호화 된 비번의 일치여부 확인
 				check = shelter.isCheckedPasswd(cipherAES.encrypt(shelterCommand.getS_passwd()));
+				System.out.println(check);
 			}
 			if(check) {
 				//인증 성공, 로그인처리
 				session.setAttribute("user_id",shelter.getS_id());
 				session.setAttribute("user_auth",shelter.getAuth());
 				
-				return "redirect:/main/main.do";
+				map.put("result", "success");
+				System.out.println(map);
+				
+				return map;
 			}else {
 				//인증 실패 : catch블록으로 넘어감
 				throw new Exception();
@@ -146,7 +167,10 @@ public class ShelterController {
 			//인증 실패로 폼 호출
 			result.reject("invalidIdOrPassword");
 			
-			return formLoginShelter();
+			map.put("result", "false");
+			System.out.println("map 반환");
+			
+			return map;
 		}
 
 	}
