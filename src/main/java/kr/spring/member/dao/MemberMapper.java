@@ -21,7 +21,7 @@ public interface MemberMapper {
 	//µî·Ï
 	@Insert("INSERT INTO member (m_id,m_email) VALUES (#{m_id},#{m_email})")
 	public void insert(MemberCommand member);
-	@Insert("INSERT INTO member_detail (m_num,m_id,m_name,m_nickname,m_passwd,m_phone,m_zipcode,m_address,m_address_detail,m_email,uploadProfile,profileFilename,m_birth,m_reg_date) VALUES (mem_seq.nextval,#{m_id},#{m_name},#{m_nickname},#{m_passwd},#{m_phone},#{m_zipcode},#{m_address},#{m_address_detail},#{m_email},#{uploadProfile},#{profileFilename},#{m_birth},SYSDATE)")
+	@Insert("INSERT INTO member_detail (m_num,m_id,m_name,m_nickname,m_passwd,m_phone,m_zipcode,m_address,m_address_detail,m_email,uploadProfile,profileFilename,m_birth,m_reg_date,m_gender) VALUES (mem_seq.nextval,#{m_id},#{m_name},#{m_nickname},#{m_passwd},#{m_phone},#{m_zipcode},#{m_address},#{m_address_detail},#{m_email},#{uploadProfile},#{profileFilename},#{m_birth},SYSDATE,#{m_gender})")
 	public void insertDetail(MemberCommand member);
 	@Insert("INSERT INTO member_email (m_email,verify_key,m_id) VALUES (#{m_email},#{verify_key},#{m_id})")
 	public void insertEmail(@Param("m_email") String m_email, @Param("verify_key") String verify_key, @Param("m_id") String m_id);
