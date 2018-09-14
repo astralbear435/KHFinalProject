@@ -24,7 +24,7 @@ public interface BoardMapper {
 	public void insert(RecruitCommand recruit);
 	
 	//���� �� �� ����
-	@Select("SELECT * FROM recruit WHERE r_num=#{r_num}")
+	@Select("SELECT * FROM (SELECT * FROM recruit, shelter_detail WHERE r_id = s_id) WHERE r_num=#{r_num}")
 	public RecruitCommand selectBoard(Integer r_num);
 
 	@Select("SELECT v_id, v_date, v_status, r_content,r_start_date,r_end_date FROM (SELECT * FROM volunteer v, recruit r WHERE v.r_num=r.r_num) vo WHERE r_id= #{r_id}")

@@ -127,7 +127,7 @@ public class MypageController {
 		}
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("mypage/mypage");
+		mav.setViewName("mypage");
 		mav.addObject("list",list);
 		mav.addObject("command", member);
 		mav.addObject("volunteer", volunteer);
@@ -181,21 +181,32 @@ public class MypageController {
 		MemberCommand member = mypageService.selectId(id);
 		
 		RecruitCommand recruit = new RecruitCommand();
+		OrderCommand donation = new OrderCommand();
 		
 		recruit.setR_id(id);
 		String r_id = recruit.getR_id();		
-	
+		donation.setDona_id(id);
+		String dona_id = donation.getDona_id();		
+		
+		
 		List<RecruitCommand> list = null;
 		list = mypageService.selectRecruitList(r_id);
 		
+		List<OrderCommand> donaList = null;
+		//donaList = mypageService.(dona_id);
+		
 		model.addAttribute("command",member);
 		model.addAttribute("recruit",recruit);
+		model.addAttribute("donation",donation);
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<memberCommand>> : " + member);
 		}	
 		if(log.isDebugEnabled()) {
 			log.debug("<<recruit>> : " + recruit);
+		}
+		if(log.isDebugEnabled()) {
+			log.debug("<<donation>> : " + donation);
 		}	
 		
 		ModelAndView mav = new ModelAndView();
@@ -203,39 +214,11 @@ public class MypageController {
 		mav.addObject("list",list);
 		mav.addObject("command", member);
 		mav.addObject("recruit", recruit);
-		
-		return mav; 	
-		
-	}
-	
-	//후원한 내역 보여주기//변경 위
-	@RequestMapping("mypage/donation.do")
-	public ModelAndView donationProcess (HttpSession session, Model model) {		
-		
-		String id = (String)session.getAttribute("user_id");
-		
-		OrderCommand donation = new OrderCommand();
-		
-		donation.setDona_id(id);
-		String dona_id = donation.getDona_id();	
-		List<OrderCommand> list = null;
-		list = mypageService.selectDanaList(dona_id);
-		
-		model.addAttribute("donation",donation);
-		
-		if(log.isDebugEnabled()) {
-			log.debug("<<donation>> : " + donation);
-		}	
-		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("mypage/mypage");
-		mav.addObject("list",list);
 		mav.addObject("donation", donation);
 		
 		return mav; 	
-	}
 		
-	
+	}
 	
 	
 	

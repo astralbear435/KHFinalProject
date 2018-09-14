@@ -114,8 +114,41 @@ body {
 	<hr class="my-4">
 
 	<div id='calendar'></div>
+<div>
+후원내역
+<div class="col-md-12">
+<table>
+<tr>
+<td scope="col">후원번호</td>
+<td scope="col">후원자</td>
+<td scope="col">후원내액</td>
+<td scope="col">후원금액</td>
+</tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 
-나의 페이지다 
+</table>
+</div>
+
+우리 보호소를 후원해주신 분들의 후원메시지입니다.
+<p></p>
+<table>
+<tr>
+<td>ID</td>
+<td>message</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+
+</table>
+</div>
+
+
+
 </div>
 
 

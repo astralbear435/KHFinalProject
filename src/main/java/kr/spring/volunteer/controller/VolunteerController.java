@@ -74,16 +74,34 @@ public class VolunteerController {
 		}
 		return "volunteer/volunteerOkay";
 	}
+	//봉사활동 일정 수정
+		@RequestMapping(value="/volunteer/volunteerUpdate.do", method=RequestMethod.GET)
+	public String form(@RequestParam("v_num") int v_num, Model model) {
 
+		RecruitCommand volunteer = volunteerService.selectBoard(v_num);
 
+		model.addAttribute("volunteer", volunteer);
 
+		return "volunteer/volunteerUpdate";
+	}
+	
+	
+		@RequestMapping(value="/volunteer/volunteerUpdate.do", method=RequestMethod.POST)
+		public String submit(@ModelAttribute("volunteer") RecruitCommand volunteer, BindingResult result, HttpSession session, HttpServletRequest request) {
 
+			if(log.isDebugEnabled()) {
+				log.debug("<<volunteer>> : " + volunteer);
+			}			
+			if(result.hasErrors()) {
+				return "redirect:/mypage/mypage.do";
+			}
+		
+			volunteerService.update(volunteer);
 
+			return "redirect:/mypage/mypage.do";
+		}	
 
-	//===============================�Խñ� �� ����===========================
-	//���� ��
-
-	//===============================�Խñ� �� ����===========================
+	//===============================봉사활동 일정 삭제==========================
 	@RequestMapping("/volunteer/volunteerDelete.do")
 	public void submit(@RequestParam("v_num") int v_num, HttpSession session) {
 		

@@ -33,14 +33,12 @@ public class VolunteerServiceImpl implements VolunteerService{
 
 	@Override
 	public void update(RecruitCommand volunteer) {
-		// TODO Auto-generated method stub
-
+		volunteerMapper.update(volunteer);
 	}
 
 	@Override
 	public void delete(Integer v_num) {
 		volunteerMapper.delete(v_num);
-
 	}
 
 

@@ -4,8 +4,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-
+	src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
+<script>
+$(document).ready(function(){
+		
+		$('#delete').click(function(){
+		
+				
+		});
+});
+</script>
 <div class="container">
 	<p>${volunteer.r_title}</p>
 
@@ -23,36 +31,27 @@
 		<p class="card-text">상시 모집 중</p>
 	</c:if>
 	
-	봉사활동 신청 날짜 : ${volunteer.v_date}
-	
+	<div id="before">	
+	봉사활동 신청 날짜 : ${volunteer.v_date} 	
 	<c:if test="${volunteer.v_status==1}">
 	 봉사활동 신청 시간 : 1~3시
 	</c:if>
 	<c:if test="${volunteer.v_status==2}">
 	 봉사활동 신청 시간 : 3~5시
 	</c:if>
-	
-	<script type="text/javascript">	
-	$(document).ready(function(){
-    $("#modify input").click(function(){
-      alert("수정 버튼 클릭");
-    });
-});
-	$(document).ready(function(){
-	    $("#delete input").click(function(){
-	    	alert("삭제 버튼 클릭");
-	    });
-	}); 
-	</script>
-
-	<div>
-		<input type="button" value="봉사활동 일정  변경" class="btn btn-success"
-			id="modify"
-			onclick="${pageContext.request.contextPath}/volunteer/volunteerUpdate.do?v_num=${volunteer.v_num}">
+		
 	</div>
+	<div id="output"></div>
+
+
+	
+	
+<div id="before2">
+<input type="button" value="봉사활동 일정  변경" class="modify-btn btn-success" id="modify-btn" onclick="location.href='${pageContext.request.contextPath}/volunteer/volunteerUpdate.do?v_num=${volunteer.v_num}'">
+</div>
+	
 	<div class="delete">
 		<input type="button" value="봉사활동 일정 취소" class="btn btn-success"
-			id="delete"
-			onclick="${pageContext.request.contextPath}/volunteer/volunteerDelete.do?v_num=${volunteer.v_num}">
+			id="delete" onclick="location.href='${pageContext.request.contextPath}/volunteer/volunteerDelete.do?v_num=${volunteer.v_num}'">
 	</div>
 </div>

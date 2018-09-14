@@ -10,7 +10,7 @@
 
  <hr class="my-4">
 	<form:form commandName="recruit" action="recruitUpdate.do"
-		id="recruitMidify_form" enctype="multipart/form-data">
+		id="recruitModify_form" enctype="multipart/form-data">
 		<form:hidden path="r_id" />
 		<form:hidden path="r_num" />
 		<form:hidden path="r_filename" />

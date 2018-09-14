@@ -5,16 +5,14 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<definition name="mypage" extends="main">
-	<put-attribute name="menu"
-			value="/WEB-INF/views/template/menu2.jsp" />
+	<definition name="volunteerMyCalendar" extends="main">
+	<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp" />
 		<put-attribute name="title" value="마이페이지"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/mypage.jsp"/>
 	</definition>
 	
 		<definition name="mypageRecruit" extends="main">
-	<put-attribute name="menu"
-			value="/WEB-INF/views/template/menu2.jsp" />
+	<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp" />
 		<put-attribute name="title" value="보호소 마이페이지"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/mypageShelter.jsp"/>
 	</definition>

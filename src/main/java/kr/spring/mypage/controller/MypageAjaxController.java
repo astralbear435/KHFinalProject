@@ -94,27 +94,27 @@ public class MypageAjaxController {
 	}
 
 
-	//봉사활동 일정 수정
-	@RequestMapping(value="/volunteer/volunteerUpdate.do", method=RequestMethod.GET)	
-	public String form(@RequestParam("v_num") int v_num, Model model) {
-		RecruitCommand volunteerCommand = volunteerService.selectBoard(v_num);		
-		model.addAttribute("volunteerCommand", volunteerCommand);
-		return "volunteerModify";
-	}
-	//봉사활동 일정 수정
-	@RequestMapping(value="/volunteer/volunteerUpdate.do", method=RequestMethod.POST)
-	public String submit(@ModelAttribute("volunteerCommand") @Valid RecruitCommand volunteerCommand, BindingResult result, HttpSession session, HttpServletRequest request) {
-
+/*//봉사활동 일정 수정
+	@RequestMapping("/volunteer/volunteerUpdate.do")
+	@ResponseBody
+	public Map<String,String> modifyReply(RecruitCommand volunteer, HttpSession session, HttpServletRequest request){
+		
 		if(log.isDebugEnabled()) {
-			log.debug("<<volunteerCommand>> : "+volunteerCommand);
+			log.debug("<<volunteer>> : "+ volunteer);
 		}
-
-		RecruitCommand volunteer  = volunteerService.selectBoard(volunteerCommand.getV_num());		
-
-		volunteerService.update(volunteer);
-		//마이페이지로 리턴
-		return "redirect:/mypage/mypage.do";
-	}
+		
+		Map<String,String> map = new HashMap<String,String>();
+		String user_id = (String)session.getAttribute("user_id");
+		if(user_id == null) {
+			map.put("result", "logout");
+			
+		}else if(user_id!=null && user_id.equals(volunteer.getV_id())){
+					
+		}		
+		return map;
+	}*/
+	
+	
 	
 	// 보호소 측 캘린더
 	@RequestMapping(value="/mypage/recruitMyCalendar.do")

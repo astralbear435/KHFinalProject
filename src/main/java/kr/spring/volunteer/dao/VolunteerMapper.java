@@ -23,7 +23,7 @@ public interface VolunteerMapper {
 	@Select("SELECT v_num, v_id, v_date, v_ip, v_status, r_id, r_title, r_content, r_status, r_start_date, r_end_date FROM (SELECT * FROM volunteer v, recruit r WHERE v.r_num=r.r_num) vo WHERE vo.v_num = #{v_num}")
 	public RecruitCommand selectBoard(Integer v_num);
 
-	@Update("UPDATE volunteer ")
+	@Update("UPDATE volunteer SET v_date=#{v_date}, v_status=#{v_status} WHERE v_num=#{v_num}")
 	public void update(RecruitCommand volunteer);
 
 	@Delete("DELETE FROM volunteer WHERE v_num=#{v_num}")

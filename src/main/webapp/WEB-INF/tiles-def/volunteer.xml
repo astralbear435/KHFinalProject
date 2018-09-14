@@ -5,10 +5,9 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<definition name="volunteerMyCalendar" extends="main">
-		<put-attribute name="title" value="마이캘린더" />
-		<put-attribute name="menu"
-			value="/WEB-INF/views/template/menu2.jsp" />
+	<definition name="mypage" extends="main">
+		<put-attribute name="title" value="마이페이지" />
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp" />
 		<put-attribute name="body" value="/WEB-INF/views/mypage/mypage.jsp" />
 	</definition>
 </tiles-definitions>
