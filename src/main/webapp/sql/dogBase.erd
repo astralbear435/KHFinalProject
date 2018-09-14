@@ -60,7 +60,7 @@
             <targetConnections/>
             <error></error>
             <linkedPath></linkedPath>
-            <tableName>re_dog</tableName>
+            <tableName>dgboard_reply</tableName>
             <logicalName>동물디테일페이지 댓글페이지</logicalName>
             <description></description>
             <columns>
