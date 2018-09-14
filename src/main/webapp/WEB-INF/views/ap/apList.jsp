@@ -145,44 +145,8 @@
 				</div>
 		</div>
 	</c:forEach>
-	<div class="col-md-12" style=" text-align:center; margin:50px 0 50px 0;">${pagingHtml}</div>
+	<div style="margin-left: 45%;">${pagingHtml}</div>
 	</c:if>
 </div>
-
-<!-- 
-<p class="card-text">봉사 : ${article.ap_ser}</p>
-					<p class="card-text">
-						임보유형 : 
-						<c:if test="${article.ap_sel == 1}">위탁/자신의 집</c:if>
-						<c:if test="${article.ap_sel == 2}">방문/고객님의 집</c:if>
-						<c:if test="${article.ap_sel == 3}">위탁&방문</c:if>
-					</p>
-					<p class="card-text">
-						케어 불가 : 
-						<c:forTokens var="list" items="${article.ap_nopet}" delims=",">
-							<c:if test="${list == 1}">중성화 안함</c:if>
-							<c:if test="${list == 2}">하울링 안함</c:if>
-							<c:if test="${list == 3}">가구/물건 파손 심함</c:if>
-							<c:if test="${list == 4}">마킹 심함</c:if>
-							<c:if test="${list == 5}">자주 짖음</c:if>
-							<c:if test="${list == 6}">노령견</c:if>
-							<c:if test="${list == 7}">퍼피(2살미만)</c:if>
-							<c:if test="${list == 8}">대형견(15kg이상)</c:if>
-						</c:forTokens>
-					</p>					
-					<p class="card-text">
-						직업 : ${article.ap_job}
-					</p>
-					<p class="card-text">
-						한달 기준 가능 한 일 수 : 
-						<c:if test="${article.ap_mon == 1}">10일 이내</c:if>
-						<c:if test="${article.ap_mon == 2}">10일 ~ 20일미만</c:if>
-						<c:if test="${article.ap_mon == 3}">20일 이상</c:if>
-					</p>
- -->
-
-
-
-
 
 

@@ -54,7 +54,7 @@
 			</div>
 		</div>
 	</c:forEach>
-	<div class="col-md-12" style=" text-align:center; margin:50px 0 50px 0;">${pagingHtml}</div>
+	<div style="margin-left: 45%;">${pagingHtml}</div>
 	</c:if>
 </div>
 
