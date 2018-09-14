@@ -3,30 +3,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-<!-- jQuery -->
-<script>
-	$(document).ready(function() {
-		var date = new Date();
-
-
-		var day = date.getDate();
-		var month = date.getMonth() + 1;
-		var year = date.getFullYear();
-
-		if (month < 10)
-			month = "0" + month;
-		if (day < 10)
-			day = "0" + day;
-
-		var today = year + "-" + month + "-" + day;
-		$("#call_re_date").attr("value", today);
-	});
-
-	var today = new Date().toISOString().split('T')[0];
-	document.getElementsByName("call_re_date")[0].setAttribute('min', today);
-</script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ap.js"></script>
 <div class="container">
-	<form:form commandName="apCommand" action="apUpdate.do" enctype="multipart/form-data">
+	<form:form commandName="apCommand" action="apUpdate.do" id="ap_update_form" enctype="multipart/form-data">
 		<form:hidden path="ap_num"/>
 		<form:hidden path="id"/>
 		<form:errors element="div" cssClass="error-color"/>	
@@ -53,10 +32,13 @@
 				<tr>
 					<th style="text-align: center;">자격증 보유시 자격증 내역</th>
 					<td>
-						<input type="checkbox" id="ap_cer" name="ap_cer" value="1" <c:if test="${apCommand.ap_cer==1}">checked</c:if>/>반려동물 관리사
+						<input type="checkbox" id="ap_cer" name="ap_cer" value="1" <c:if test="${apCommand.ap_cer==1}">checked</c:if>/>없음
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="checkbox" id="ap_cer" name="ap_cer" value="2" <c:if test="${apCommand.ap_cer==2}">checked</c:if>/>반려동물 행동교정사
+						<input type="checkbox" id="ap_cer" name="ap_cer" value="2" <c:if test="${apCommand.ap_cer==2}">checked</c:if>/>반려동물 관리사
 						&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="checkbox" id="ap_cer" name="ap_cer" value="3" <c:if test="${apCommand.ap_cer==3}">checked</c:if>/>반려동물 행동교정사
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<div id="message_ap_cer"></div>
 					</td>
 				</tr>
 				<tr>
@@ -144,7 +126,8 @@
 						<input type="checkbox" value="5" id="ap_home" name="ap_home">마당보유
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="checkbox" value="6" id="ap_home" name="ap_home">주변산책로 보유
-						
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<div id="message_ap_home"></div>
 					</td>
 				</tr>
 			<!-- ----------------------------------------------------------------- -->
@@ -154,11 +137,11 @@
 				<tr>
 					<th style="text-align: center;">임시보호 유형</th>
 					<td>
-						<input type="checkbox" value="1" id="ap_sel" name="ap_sel" <c:if test="${apCommand.ap_sel==1}">checked</c:if>/>위탁/자신집
+						<input type="radio" value="1" id="ap_sel" name="ap_sel" <c:if test="${apCommand.ap_sel==1}">checked</c:if>/>위탁/자신집
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="checkbox" value="2" id="ap_sel" name="ap_sel" <c:if test="${apCommand.ap_sel==2}">checked</c:if>/>방문/고객의 집
+						<input type="radio" value="2" id="ap_sel" name="ap_sel" <c:if test="${apCommand.ap_sel==2}">checked</c:if>/>방문/고객의 집
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="checkbox" value="3" id="ap_sel" name="ap_sel" <c:if test="${apCommand.ap_sel==3}">checked</c:if>/>위탁 & 방문 모두
+						<input type="radio" value="3" id="ap_sel" name="ap_sel" <c:if test="${apCommand.ap_sel==3}">checked</c:if>/>위탁 & 방문 모두
 					</td>
 				</tr>
 				<tr>
@@ -221,12 +204,14 @@
 						<input type="checkbox" value="7" id="ap_nopet" name="ap_nopet">퍼피(2살미만)
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="checkbox" value="8" id="ap_nopet" name="ap_nopet">대형견(15kg이상)
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<div id="message_ap_nopet"></div>
 					</td>
 				</tr>
 				<tr>
 					<th style="text-align: center;">제공 가능 서비스</th>
 					<td>선택 사항 : &nbsp;&nbsp;&nbsp;&nbsp;
-						<c:forTokens var="list" items="${apCommand.ap_nopet}" delims=",">
+						<c:forTokens var="list" items="${apCommand.ap_service}" delims=",">
 						<c:choose>
 								<c:when test="${list==1}">
 							       	집 앞 픽업
@@ -296,6 +281,8 @@
 						<input type="checkbox" value="9" id="ap_service" name="ap_service">노령견케어(만 8세이상 노령견 간호 교육 수료)
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="checkbox" value="10" id="ap_service" name="ap_service">퍼피케어(2년미만 퍼피 교육 수료)
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<div id="message_ap_service"></div>
 					</td>
 				</tr>
 				<tr>
@@ -311,7 +298,7 @@
 				
 				<tr>
 					<td colspan="3" align="center">
-						<input type="submit" class="btn btn-warning" value="등록하기">
+						<input type="submit" class="btn btn-warning" value="수정하기">
 						<input type="button" class="btn btn-primary" value="목록" onclick="location.href='apMain.do'">
 					</td>
 				</tr>

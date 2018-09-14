@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/apCall.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ap.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ap.css">
 <!-- jQuery -->
 <script>

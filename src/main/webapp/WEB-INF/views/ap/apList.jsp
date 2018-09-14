@@ -13,15 +13,15 @@
 					<div class="floatL" style="width:20px; height: 24px;"></div>
 					<div class="condition">
 						<fieldset class="form-group">
-							<input type="radio" class="form-check-input" name="ap_service" value="1">집앞픽업&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="form-check-input" name="ap_service" value="2">모발관리&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="form-check-input" name="ap_service" value="3">약물복용&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="form-check-input" name="ap_service" value="4">응급처치&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="form-check-input" name="ap_service" value="6">야외산책&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="form-check-input" name="ap_service" value="7">실내놀이&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="form-check-input" name="ap_service" value="8">장기관리(14일이상)&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="form-check-input" name="ap_service" value="9">노령견 케어&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="form-check-input" name="ap_service" value="10">퍼피케어&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="1">집앞픽업&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="2">모발관리&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="3">약물복용&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="4">응급처치&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="6">야외산책&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="7">실내놀이&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="8">장기관리(14일이상)&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="9">노령견 케어&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="10">퍼피케어&nbsp;&nbsp;&nbsp;&nbsp;
 						</fieldset>
 					</div>
 				</div>
@@ -54,7 +54,7 @@
 	<div class="floatL">&nbsp;&nbsp;</div>
 	<input type="button" class="btn btn-secondary" style="float:right; margin:20px 0 20px 0;" 
 			value="임시보호자 메인으로" onclick="location.href='apMain.do'">
-	<c:if test="${!empty user_id}">
+	<c:if test="${!empty user_id }">
 		<input type="button" class="btn btn-warning" style="float:right; margin:20px 10px 20px 0;" 
 				value="글쓰기" onclick="location.href='apForm.do'">
 	</c:if>
@@ -71,9 +71,6 @@
 				<p class="card-text">
 					${article.ap_num}
 					[ ${article.id} ]
-					<span id="dbutton_heart" data-num="${article.ap_num}" data-id="${user_id}">
-						 <button type="button" id="dbutton_heart"><i class="fa fa-heart-o"></i></button>
-					</span>
 					<br>
 					<i class="fa fa-github"></i>반려동물 경험 : 
 					<c:if test="${article.ap_pet == 1}">없음</c:if>

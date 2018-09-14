@@ -11,6 +11,6 @@ public interface ApService {
 	public void insert(ApCommand apCommand);
 	public ApCommand selectApBoard(Integer ap_num);
 	public void update(ApCommand apCommand);
-	public void apApdelete(Integer ap_num);
+	public void apdelete(Integer ap_num);
 
 }

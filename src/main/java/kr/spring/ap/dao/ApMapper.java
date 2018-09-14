@@ -3,6 +3,7 @@ package kr.spring.ap.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -17,6 +18,7 @@ public interface ApMapper {
 	@Select("SELECT * FROM ap_form WHERE ap_num=#{ap_num}")
 	public ApCommand selectApBoard(Integer ap_num);
 	public void update(ApCommand apCommand);
-	public void apApdelete(Integer ap_num);
+	@Delete("DELETE FROM ap_form WHERE ap_num=#{ap_num}")
+	public void apdelete(Integer ap_num);
 
 }
