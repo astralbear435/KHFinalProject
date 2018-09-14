@@ -13,10 +13,14 @@
 			</div>
 
 			<div id="m_nav_container" class="m_nav">
+			
+			<img style="float: left;width: 13%;margin:1%;" src="${pageContext.request.contextPath}/upload/goods/title.png" alt="">
+			
 			  <ul id="m_nav_list" class="m_nav">
 				<li> <a href="${pageContext.request.contextPath}/main/main.do">Home</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/main/gallery.do">Gallery</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/main/icons.do">Icons</a> </li>
+					    <li><a href="${pageContext.request.contextPath}/main/codes2.do">codes</a> </li>	
 				<li> <a href="${pageContext.request.contextPath}/ap/apMain.do">임시보호</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/shelter/shelterList.do">보호소</a> </li>
 				<c:if test="${empty user_id}">
@@ -35,9 +39,9 @@
 		<!-- menu -->
 		<div class="container">
 			<div class="w3l-banner-grids">
-				<h1><a href="${pageContext.request.contextPath}/main/main.do">Njoy Trip</a></h1>
+				<h1><a href="${pageContext.request.contextPath}/main/main.do">CAN</a></h1>
 				<div class="w3layouts-border"> </div>
-				<p>Nunc vel efficitur sem, sed convallis mi.</p>
+				<p></p>
 				<div class="w3-button">
 					<ul>
 						<li><a href="${pageContext.request.contextPath}/main/about.do" class="button1">About</a></li>
