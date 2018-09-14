@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.goods.domain.CartListCommand;
 import kr.spring.goods.domain.GoodsCommand;
+import kr.spring.goods.domain.GoodsListCommand;
 import kr.spring.goods.domain.OrderCommand;
 import kr.spring.goods.service.GoodsService;
 import kr.spring.member.dao.MemberMapper;
@@ -30,6 +31,7 @@ import kr.spring.note.domain.NoteCommand;
 import kr.spring.note.service.NoteService;
 import kr.spring.shelter.domain.ShelterCommand;
 import kr.spring.shelter.service.ShelterService;
+import kr.spring.util.PagingUtil;
 
 @Controller
 public class GoodsCartAjaxController {
@@ -262,4 +264,5 @@ public Map<String,String> updateMultiOrder(@RequestParam("dona_username")String 
 	map.put("result","success");
 	return map;	
 }
+
 }

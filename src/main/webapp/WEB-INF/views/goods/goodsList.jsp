@@ -6,14 +6,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/slick/slick-theme.css"/>
 
 <style>
-img {
-    width:130px;
-    height:130px;
-    border-radius: 75px; /* 이미지 반크기만큼 반경을 잡기*/
-  margin-left:auto;
-  margin-right:auto;
- 
-} 
+
 #backdiv{
 	 background-color:#e0f7ff;
 	  width:100%;
@@ -88,7 +81,11 @@ $(document).ready(function(){
 	 });	
 });	
 </script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/soeun/goodsList.js"></script>
+<!-- 본문 -->
 <div class="container">
+<div style="padding-left:6%; width:100%">
+<img style="width:96%;" src="${pageContext.request.contextPath}/upload/goods/mainme2.jpg" alt=""></div>
 <br>
 	<form action="list.do" id="search_form" method="get">
 		<ul style="list-style:none; margin:0;padding:0;text-align:center">
@@ -96,7 +93,7 @@ $(document).ready(function(){
 				<select name="keyfield">
 					<option value="as_name">name</option>
 					<option value="as_location">location</option>
-					<option value="all">all</option>
+					<option value="all" selected>all</option>
 				</select>
 			</li>
 			<li style="display:inline-block;">
@@ -107,7 +104,16 @@ $(document).ready(function(){
 			</li>
 		</ul>
 	</form>
-	
+<!-- 	<div style="display:none;">
+<form action="listTap.do" id="tap_form" method="get">
+	<input type="hidden" name="keyfield" id="keyfield" value="as_location">
+	<div id="forkey">
+	<input type="hidden" name="keyword" id="keyword" value="">
+	</div>
+	<input type="submit">
+	</form>
+</div> -->
+
   <!-- 모달 창을 여는 버튼 -->
 <!-- 보호소만 볼 수 있게 걸러주세요 (나중에 꼭) -->
 <c:if test="${m_auth==3||m_auth==4}">
@@ -121,7 +127,7 @@ $(document).ready(function(){
       <div class="modal-content">
        <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">물품 추가 신청</span></b></span></p>
                <br>
-                <div style="text-align: center;border: 1px solid gray;">
+                <div style="text-align: center;">
                 <br>
                 <form>
                 <input type="hidden" id="g_id" value=" ${user_id}">
@@ -151,9 +157,38 @@ $(document).ready(function(){
  
     </div>
         <!--End Modal-->
-
-
-	<div>
+        
+        <!-- 탭 메뉴  -->
+<div style="width:100%">
+					<ul class="nav nav-tabs">
+								<li class="nav-item" style="width:12%;text-align:center;" rel="tap1">
+							    <a class="nav-link" data-toggle="tab" href="#all">전체</a>
+							  </li>
+							  <li class="nav-item" style="width:12%;text-align:center;" rel="tap1" data-name="서울">
+							    <a class="nav-link" data-toggle="tab">서울</a>
+							  </li>
+							  <li class="nav-item" style="width:12%;text-align:center;" rel="tap1" data-name="경기">
+							    <a class="nav-link" data-toggle="tab" >경기</a>
+							  </li>
+							  <li class="nav-item" style="width:12%;text-align:center;"rel="tap1"  data-name="강원">
+							    <a class="nav-link" data-toggle="tab">강원</a>
+							  </li>
+							  <li class="nav-item" style="width:12%;text-align:center;"rel="tap1"  data-name="츙청">
+							    <a class="nav-link" data-toggle="tab">충청</a>
+							  </li>
+							  <li class="nav-item" style="width:12%;text-align:center;"rel="tap1"  data-name="전라">
+							    <a class="nav-link" data-toggle="tab">전라</a>
+							  </li>
+							  <li class="nav-item" style="width:12%;text-align:center;"rel="tap1"  data-name="경상">
+							    <a class="nav-link" data-toggle="tab">경상</a>
+							  </li>
+							  <li class="nav-item" style="width:12%;text-align:center;"rel="tap1"  data-name="부산">
+							    <a class="nav-link" data-toggle="tab">부산</a>
+							  </li>
+							</ul>
+			 <div class="tab_container">
+					 <div class="tab_content" id="tap1">
+							<div>
 	<c:if test="${count == 0}">
 	<div class="align-center">후원할 보호소가 없습니다.</div>
 	</c:if>
@@ -168,7 +203,8 @@ $(document).ready(function(){
 	<div class="autoplay">
 	    <c:forEach var="goodsList" items="${goodslist}">
 	    <c:if test="${goodsList.g_id.equals('standard')||goodsList.g_id.equals(as_list.as_id)}">
-		 <div style="text-align:center; display: inline-block; width:18%"><img src="${pageContext.request.contextPath}/upload/goods/${goodsList.g_photo1}" alt=""><br><a href="detail.do?g_num=${goodsList.g_num}&&as_name=${as_list.as_name}">${goodsList.g_name}<br></a>${goodsList.g_price} 원</div>
+		 <div style="text-align:center; display: inline-block; width:18%"><img src="${pageContext.request.contextPath}/upload/goods/${goodsList.g_photo1}" alt="" style="width:130px;
+    height:130px;border-radius: 75px;  margin-left:auto;margin-right:auto;"><br><a href="detail.do?g_num=${goodsList.g_num}&&as_name=${as_list.as_name}">${goodsList.g_name}<br></a>${goodsList.g_price} 원</div>
 		</c:if></c:forEach>
 		</div>		
   <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -192,5 +228,10 @@ $(document).ready(function(){
 
 <div style="margin-left: 45%;">${pagingHtml}</div>
 	</c:if>
-	</div><br/><br/><br/>
+	        </div>
+				 </div>
+						</div>
+						</div>
+<!-- 탭 끝 -->
+<br/><br/><br/>
 </div>
