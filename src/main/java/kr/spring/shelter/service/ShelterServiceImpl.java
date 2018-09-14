@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.spring.shelter.domain.ShelterCommand;
+import kr.spring.member.domain.MemberCommand;
 import kr.spring.shelter.dao.ShelterMapper;
 
 @Service("shelterService")

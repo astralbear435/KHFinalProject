@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.goods.domain.AdminCheck;
 import kr.spring.goods.domain.CartListCommand;
 import kr.spring.goods.domain.GoodsCommand;
 import kr.spring.goods.domain.GoodsListCommand;
@@ -29,8 +30,8 @@ import kr.spring.util.PagingUtil;
 @Controller
 public class GoodsController {
 	private Logger log = Logger.getLogger(this.getClass());
-	private int rowCount = 10;
-	private int pageCount = 10;
+	private int rowCount = 5;
+	private int pageCount = 5;
 	
 	@Resource
 	private GoodsService goodsService;
@@ -39,24 +40,6 @@ public class GoodsController {
 		@ModelAttribute("command")
 		public GoodsCommand initCommand() {
 			return new GoodsCommand();
-		}
-		//====================일단 등록=================//
-		//등록 폼 호출
-		@RequestMapping(value="/goods/write.do",method=RequestMethod.GET)
-		public String form() {
-		
-			return "goodsWrite";
-		}
-		@RequestMapping(value="/goods/write.do",method=RequestMethod.POST)
-		public String submit(@ModelAttribute("command") @Valid GoodsCommand goodsCommand,BindingResult result) {
-			if(log.isDebugEnabled()) {
-				log.debug("<<goodsCommand 내용: >>"+goodsCommand);
-			}
-			if(result.hasErrors()) {
-				return form();
-			}
-			goodsService.insert(goodsCommand);
-			return "redirect:/main/main.do";
 		}
 		//=================물건 목록 뽑기=================
 		@RequestMapping("/goods/list.do")
@@ -88,16 +71,20 @@ public class GoodsController {
 				if(log.isDebugEnabled()) {
 					log.debug("<<list>> : "+as_list);
 				}	
-			
 			}
 			int g_count=0;
 			goodsphotolist=goodsService.goodsPhotoList(photo_map);
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("goodsList");
+			if(id!=null) {
+			//회원의 auth값 받아오기
+			int m_auth = goodsService.selectAuth(id);
+			mav.addObject("m_auth",m_auth);
+			}			
 			mav.addObject("goodslist",goodsphotolist);
 			mav.addObject("count",count);
 			mav.addObject("user_id",id);
-			mav.addObject("as_list", as_list);
+			mav.addObject("as_list",as_list);		
 			mav.addObject("pagingHtml", page.getPagingHtml());
 			
 		
@@ -129,17 +116,21 @@ public class GoodsController {
 		//===============물품 추가 등록 ================
 		@RequestMapping("/goods/addInsert.do")
 		@ResponseBody
-		public Map<String,String> addGoods(@RequestParam(value="id")String id,@RequestParam(value="name")String name,@RequestParam(value="amount") int amount){
+		public Map<String,String> addGoods(@RequestParam(value="id")String id,@RequestParam(value="name")String name,@RequestParam(value="amount") int amount,@RequestParam(value="url")String url,@RequestParam(value="message")String message){
 			Map<String,String> map=new HashMap<String,String>();
 			
-			GoodsListCommand goods=new GoodsListCommand();
-			goods.setG_id(id);
-			goods.setG_name(name);
-			goods.setG_amount(amount);
+			AdminCheck check=new AdminCheck();
+			check.setCh_id(id);
+			check.setCh_amount(amount);
+			check.setCh_message(message);
+			check.setCh_name(name);
+			check.setCh_url(url);		
+			goodsService.addNewGoods(check);
+			
 			if(log.isDebugEnabled()) {
-				log.debug("<<예비 전송>> :"+goods);
+				log.debug("<<임시확인(물품 추가)>> : "+check);
 			}
-			goodsService.addNewGoods(goods);
+			
 			map.put("result","success");
 			return map;
 		}

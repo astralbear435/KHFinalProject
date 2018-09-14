@@ -23,6 +23,11 @@ public class NoteServiceImpl implements NoteService{
 		return noteMapper.selectNoteRowCount(map);
 	}
 
+	@Override
+	public int openNotCount(String recipient) {
+		return noteMapper.openNotCount(recipient);
+	}
+
 	@Resource
 	private NoteMapper noteMapper;
 	

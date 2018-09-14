@@ -14,6 +14,10 @@ public interface NoteMapper {
 	public List<NoteCommand> selectNoteList(Map<String,Object> map);
 	public int selectNoteRowCount(Map<String,Object> map);
 	
+	// 안 읽은 쪽지 수 세기
+	@Select("select count(*) from note where recipient=#{recipient} and read_status='open_not'")
+	public int openNotCount(String recipient);
+	
 	@Insert("INSERT INTO note (note_num,sender,recipient,note_content) VALUES (note_seq.nextval,#{sender},#{recipient},#{note_content})")
 	public void insert(NoteCommand note);
 	

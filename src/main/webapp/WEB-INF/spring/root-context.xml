@@ -81,8 +81,8 @@
 		                   		  kr.spring.note.domain,
 		                   		  kr.spring.shelter.domain,
 		                   		  kr.spring.goods.domain,
-		                   		  kr.spring.board.domain"
-		                   		  />               
+		                   		  kr.spring.board.domain,
+		                   		  kr.spring.ap.domain"/>               
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" 
@@ -94,7 +94,8 @@
 		              		 kr.spring.note.dao,
 		              		 kr.spring.shelter.dao,
 		              		 kr.spring.goods.dao,
-		              		 kr.spring.board.dao" />
+		              		 kr.spring.board.dao,
+		              		 kr.spring.ap.dao" />
 	</bean>
 	
 	<!-- 암호화,복호화 알고리즘 처리 -->
@@ -133,6 +134,5 @@
 		<property name="scope" value="https://www.googleapis.com/auth/plus.login" />
 		<property name="redirectUri" value="http://localhost:8080/ProjectCAN/oauth2callback" />
 	</bean> -->
-
 
 </beans>

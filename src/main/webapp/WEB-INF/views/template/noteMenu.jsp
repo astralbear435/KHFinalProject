@@ -9,9 +9,14 @@
 <div class="horizontal"></div><!-- 가로 여백 -->
 <ul class="menu" style="list-style-type: none; text-align: right;">
 	<li>
-		<input type="button" class="btn btn-primary" value=" 쪽지 작성 "
-				onclick="window.open('${pageContext.request.contextPath}/note/write.do','쪽지 작성','width=450, height=550, scrollbars=no resizable=no');"/>
+		<input type="button" class="btn btn-warning" value=" 쪽지 작성 "
+				onclick="window.open('${pageContext.request.contextPath}/note/write.do','쪽지 작성','width=600, height=650, scrollbars=no, resizable=no');"/>
 	</li>
-	<li><a href="${pageContext.request.contextPath}/note/receivedList.do">받은 쪽지함</a></li>
+	<li>
+		<c:if test="${openNotCount > 0}">
+		<span class="badge badge-pill badge-danger" > ${openNotCount} </span>
+		</c:if>
+		<a href="${pageContext.request.contextPath}/note/receivedList.do">받은 쪽지함</a>
+	</li>
 	<li><a href="${pageContext.request.contextPath}/note/sendList.do">보낸 쪽지함</a></li>
 </ul>
