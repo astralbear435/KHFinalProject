@@ -132,6 +132,7 @@
 	
 	<div class="border-styles col-md-4">
 		<form:form commandName="command" action="apBoWrite.do" enctype="multipart/form-data">
+			<input type="hidden" id="bo_auth" name="bo_auth" value="임보자 집">
 			<input type="hidden" id="bo_id" name="bo_id" value="${user_id}">
 			<input type="hidden" id="id" name="id" value="${apcommand.id}">
 			<input type="hidden" id="ap_num" name="ap_num" value="${apcommand.ap_num}">
