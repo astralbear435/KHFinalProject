@@ -99,7 +99,7 @@
 				</tr>
 				<tr>
 					<td colspan="3" align="center">
-						<input type="submit" class="btn btn-outline-danger" style="float:center; margin:0 0 10px 0;" value="등록하기">
+						<input type="submit" class="btn btn-warning" style="float:center; margin:0 0 10px 0;" value="등록하기">
 						<input type="button" class="btn btn-secondary" style="float:center; margin:0 0 10px 0;" value="목록" onclick="location.href='apCallList.do'">
 					</td>
 				</tr>
