@@ -110,21 +110,19 @@ public class GoodsController {
 			int count=goodsService.selectRowCount(map);
 			
 			List<GoodsCommand> as_list=null;
-			if(count>0) {
-				as_list = goodsService.getASList(map);
-				}
 			List<GoodsListCommand> goodsphotolist=null;
-			goodsphotolist=goodsService.goodsPhotoList(photo_map);
-		
-		if(id!=null) {
+				as_list=goodsService.getASList(map);
+				goodsphotolist=goodsService.goodsPhotoList(photo_map);
+				map.put("goodslist",goodsphotolist);
+				map.put("as_list",as_list);
+			
+		    if(id!=null) {
 			//회원의 auth값 받아오기
 			int m_auth = goodsService.selectAuth(id);
 			map.put("m_auth",m_auth);
 			}
-		
-			map.put("goodslist",goodsphotolist);
-			map.put("as_list",as_list);
-			return map;			
+			map.put("result","success");
+			return map;
 		}
 		//==============물품 상세 내용====================
 		@RequestMapping("/goods/detail.do")
