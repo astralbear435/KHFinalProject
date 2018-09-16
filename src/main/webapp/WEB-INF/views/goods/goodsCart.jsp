@@ -6,12 +6,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/soeun/cartAndOrder.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <style>
-img{
-    width: 120px;
-    height:100px;
-    border-radius:20px;
-    border:0;
-}
 td{
 border:1px solid lightgray;
     padding: 10px;
@@ -207,6 +201,7 @@ function deleteCart(){
 
 
 <div class="container">
+<img src="${pageContext.request.contextPath}/upload/goods/dori.jpg" alt="" style="width:100%">
 	<br>
 <c:if test="${cartList==null}">
 	<div class="align-center">장바구니에 담긴 물품이 없습니다.</div>
@@ -232,7 +227,10 @@ function deleteCart(){
 		    </form>
 		<tr  style="text-align: center; background-color:lightgray;">
 		   <td><input type="checkbox" name="select_me" id="select_me" value="${cartList.p_cartnum}" checked/></td>
-		   <td><img src="${pageContext.request.contextPath}/upload/goods/${cartList.p_goodsphoto}" alt=""></td>
+		   <td><img src="${pageContext.request.contextPath}/upload/goods/${cartList.p_goodsphoto}" alt="" style="    width: 120px;
+    height:100px;
+    border-radius:20px;
+    border:0;"></td>
 			<td><a href="${pageContext.request.contextPath}/goods/detail.do?g_num=${cartList.p_num}&&as_name=${cartList.p_name}">${cartList.p_goodsname}</a></td>
 			<td><fmt:formatNumber value="${cartList.p_amount}" pattern="#,###"/></td>
 			<td>${cartList.p_name}</td>

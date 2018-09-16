@@ -63,14 +63,10 @@ public class GoodsController {
 			map.put("end", page.getEndCount());
 			Map<String,Object> photo_map = new HashMap<String,Object>();
 			List<GoodsCommand> as_list=null;
-			
 	
 			if(count>0) {
 				as_list = goodsService.getASList(map);
-
-				if(log.isDebugEnabled()) {
-					log.debug("<<list>> : "+as_list);
-				}	
+	
 			}
 			int g_count=0;
 			List<GoodsListCommand> goodsphotolist=null;
@@ -92,37 +88,6 @@ public class GoodsController {
 			
 		
 			return mav;
-		}
-		//탭 검색
-		@RequestMapping("/goods/listTap.do")
-		@ResponseBody
-		public Map<String,Object> listTap(HttpSession session,@RequestParam(value="keyfield",defaultValue="")
-		String keyfield,
-		@RequestParam(value="keyword",defaultValue="")
-		String keyword){
-			
-			String id = (String)session.getAttribute("user_id");
-			Map<String,Object> map = new HashMap<String,Object>();
-			Map<String,Object> photo_map = new HashMap<String,Object>();
-			map.put("keyfield",keyfield);
-			map.put("keyword", keyword);
-			//총 글의 갯 수 또는 검색된 글의 갯수
-			int count=goodsService.selectRowCount(map);
-			
-			List<GoodsCommand> as_list=null;
-			List<GoodsListCommand> goodsphotolist=null;
-				as_list=goodsService.getASList(map);
-				goodsphotolist=goodsService.goodsPhotoList(photo_map);
-				map.put("goodslist",goodsphotolist);
-				map.put("as_list",as_list);
-			
-		    if(id!=null) {
-			//회원의 auth값 받아오기
-			int m_auth = goodsService.selectAuth(id);
-			map.put("m_auth",m_auth);
-			}
-			map.put("result","success");
-			return map;
 		}
 		//==============물품 상세 내용====================
 		@RequestMapping("/goods/detail.do")
