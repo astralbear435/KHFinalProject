@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ap.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ap/ap.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ap.css">
 <!-- jQuery -->
 <script>
@@ -32,7 +32,7 @@
 		</c:if>
 		<input type="button" class="btn btn-secondary" value="목록" onclick="location.href='apList.do'"><br><br>
 	</div>
-	<div class="border-styles col-md-4"style="float:left; margin:100px 0 50px 0;">
+	<div class="border-styles col-md-5"style="float:left; margin:100px 0 50px 0;">
 		<div style="margin:10px 0 10px 0;">
 			[${apcommand.id}] ${apcommand.ap_job}	
 		</div>
@@ -129,15 +129,22 @@
 			</c:forTokens>
 		</div>
 	</div>
+<<<<<<< HEAD
 
 	<div class="border-styles col-md-4">
 		<form:form commandName="command" action="apBoWrite.do" enctype="multipart/form-data">
+=======
+	
+	<div class="border-styles col-md-4" style="float:left; margin:100px 0 0 30px;">
+		<form:form commandName="command" action="apBoWrite.do" id="ap_bo_form" enctype="multipart/form-data">
+>>>>>>> 444602ffb44ad5d888ebeb2d23b3cb3c353bf4ed
 			<input type="hidden" id="bo_id" name="bo_id" value="${user_id}">
 			<input type="hidden" id="id" name="id" value="${apcommand.id}">
 			<input type="hidden" id="ap_num" name="ap_num" value="${apcommand.ap_num}">
-			<label>예약을 원하는 날짜를 선택해주세요.</label><br>
+			<div class="horizontal"></div><!-- 가로 여백 -->
+			<label><font size="4.0em">예약을 원하는 날짜를 선택해주세요.</font></label><br>
 			시작 날짜 : <input type="date" id="bo_date_start" name="bo_date_start" min="2013-01-01">
-			<br><br>
+			<br>
 			<select class="form-control" style="width: 80px;" name="bo_start_hour" id="bo_start_hour">
 				<option value="0">0시</option>
 				<option value="1">1시</option>
@@ -148,9 +155,10 @@
 				<option value="15">15분</option>
 				<option value="30">30분</option>
 			</select> 분
-			<br><br>
-			마침 날짜 : <input type="date" id="bo_date_end" name="bo_date_end" min="2013-01-01"><br>
-			<br><br>
+			<div class="horizontal"></div><!-- 가로 여백 -->
+			마침 날짜 : <input type="date" id="bo_date_end" name="bo_date_end" min="2013-01-01">
+					<div id="bo_date_end"></div> 
+			<br>
 			<select class="form-control" style="width: 80px;" name="bo_end_hour" id="bo_end_hour">
 				<option value="0">0시</option>
 				<option value="1">1시</option>
@@ -161,14 +169,15 @@
 				<option value="15">15분</option>
 				<option value="30">30분</option>
 			</select> 분
-			<br><br>
+			<br>
 			<script>
 				var today = new Date().toISOString().split('T')[0];
 				document.getElementsByName("bo_date_start")[0].setAttribute('min', today);
 				document.getElementsByName("bo_date_end")[0].setAttribute('min', today);
 			</script> 
+			<div class="horizontal"></div><!-- 가로 여백 -->
 			<input type="submit" class="btn btn-warning btn-lg btn-block" 
-					style="margin:10px 0 10px 0;" value="예약하기">
+					style="margin:10px 0 10px 100px; width:150px;" id="apbooking" data-num="${apcommand.ap_num}" value="예약하기">
 		</form:form>
 	</div>
 		

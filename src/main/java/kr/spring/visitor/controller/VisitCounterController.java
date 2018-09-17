@@ -20,7 +20,7 @@ import kr.spring.visitor.service.VisitorService;
 public class VisitCounterController implements HttpSessionListener {
 
 	private VisitorService visitor;
-	VisitorCommand vo = new VisitorCommand();
+	VisitorCommand visitorId = new VisitorCommand();
 	@Override
 	public void sessionCreated(HttpSessionEvent se) {
 		HttpSession session = se.getSession();
@@ -29,13 +29,16 @@ public class VisitCounterController implements HttpSessionListener {
 		HttpServletRequest req = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
 		//request를 파라미터에 넣지 않고도 사용할수 있도록 설정
 		visitor = (VisitorService)wac.getBean("visitorService");
-
+		VisitorCommand vo = new VisitorCommand();
 		vo.setVisit_ip(req.getRemoteAddr());
 		vo.setVisit_agent(req.getHeader("User-Agent"));//브라우저 정보
 		vo.setVisit_refer(req.getHeader("referer"));//접속 전 사이트 정보
-
+		if(session.getAttribute("user_id")!=null) {
+			vo.setVisit_login_id((String)session.getAttribute("user_id"));
+		}
 		System.out.println(vo);
 		visitor.insertVisitor(vo);
+		visitorId= visitor.selectVisittorId(vo);
 
 	}
 
@@ -43,10 +46,10 @@ public class VisitCounterController implements HttpSessionListener {
 
 	@Override
 	public void sessionDestroyed(HttpSessionEvent se) {
-		HttpServletRequest req = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
-		HttpSession session = req.getSession();
+		HttpSession session = se.getSession();
 		if(session.getAttribute("user_id")!=null) {
-			vo.setVisit_login_id((String)session.getAttribute("user_id"));
+			visitorId.setVisit_login_id((String)session.getAttribute("user_id"));
 		}
+		visitor.updateVisitor(visitorId);
 	}
 }

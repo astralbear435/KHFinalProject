@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/apCall.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ap/apCall.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ap.css">
 
 <div class="container">
@@ -89,8 +89,13 @@
 			<input type="hidden" id="call_name" name="call_name" value="${apcall.call_name}">
 			<input type="hidden" id="call_num" name="call_num" value="${apcall.call_num}">
 			<input type="submit" class="btn btn-warning btn-lg btn-block" 
+<<<<<<< HEAD
 					style="margin:10px 0 10px 0;" value="예약하기">
 			</form:form>
+=======
+					style="margin:10px 0 10px 0;" value="예약하기" id="apbooking" data-num="${apcall.call_num}" >
+		</form:form>
+>>>>>>> 444602ffb44ad5d888ebeb2d23b3cb3c353bf4ed
 		</div>
 	</div>
 

@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.ap.domain.ApCallCommand;
-import kr.spring.ap.domain.ApCommand;
 import kr.spring.ap.service.ApCallService;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
