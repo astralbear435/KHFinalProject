@@ -1,7 +1,3 @@
 eclipse.preferences.version=1
 encoding//src/main/java/kr/spring/mypage/controller/MypageController.java=UTF-8
-encoding//src/main/java/kr/spring/volunteer/dao/VolunteerMapper.java=MS949
-encoding//src/main/webapp/WEB-INF/views/mypage/mypage.jsp=MS949
-encoding//src/main/webapp/WEB-INF/views/mypage/mypageShelter.jsp=MS949
-encoding//src/main/webapp/WEB-INF/views/recruit=UTF-8
 encoding/<project>=MS949

@@ -33,15 +33,15 @@ $(document).ready(function(){
 	 cache:false,
 	 timeout:30000,
 	 success:function(data){
-		 	var recruit = data.recruit; //����� ��ȣ�� ����Ȱ�� ��û ��Ȳ�� �����ִ� Ķ����
+		 	var recruit = data.recruit; //유기견 보호소 봉사활동 신청 현황을 보여주는 캘린더
 		 	
 		 	console.log(recruit);
 					
-				//����� ����Ȱ�� ���� ����Ʈ
+				//유기견 봉사활동 일정 리스트
 				if(recruit.length>0){ 
 					for(var i = 0; i<recruit.length; i++){
 		 	 			event.push({ 
-		 	 				title: '[����Ȱ��]' + recruit[i].v_id +','+ recruit[i].v_status
+		 	 				title: '[봉사활동]' + recruit[i].v_id +','+ recruit[i].v_status
 		 					,start: recruit[i].v_date
 		 	 			});
 		 	 			console.log(event[i].title,event[i].start);
@@ -49,7 +49,7 @@ $(document).ready(function(){
 				} 
 			
 		 	
-			//Ķ����
+			//캘린더
 			  $('#calendar').fullCalendar({ 
 					header: {
 				    	left: '',
@@ -61,14 +61,14 @@ $(document).ready(function(){
 				  	selectable: true,
 				    selectHelper: true,
 			
-				      editable: false,//ȭ�鿡�� ���� ��¥ �̵� �Ұ���  
+				      editable: false,//화면에서 직접 날짜 이동 불가능  
 				      eventLimit: true,				
 					events :  event,
 					eventColor: '#378006',	
 				  eventClick: function(event) {
 					 	var title = $(this).find('.fc-title').text();
 					 	var sub_title = title.split(',');
-					 	//�����ؾ���
+					 	//수정해야함
 						window.open("${pageContext.request.contextPath}/volunteer/volunteerDetail.do?v_num="+sub_title[1],"volunteer","width=400, height=300, left=100, top=50");
 
 						    }
@@ -77,7 +77,7 @@ $(document).ready(function(){
 	 },
 	 
 	 error:function(){
-		 alert('��Ʈ��ũ ���� �߻�');
+		 alert('네트워크 오류 발생');
 	 }
 	});
 } 
@@ -115,14 +115,14 @@ body {
 
 	<div id='calendar'></div>
 <div>
-�Ŀ�����
+후원내역
 <div class="col-md-12">
 <table>
 <tr>
-<td scope="col">�Ŀ���ȣ</td>
-<td scope="col">�Ŀ���</td>
-<td scope="col">�Ŀ�����</td>
-<td scope="col">�Ŀ��ݾ�</td>
+<td scope="col">후원번호</td>
+<td scope="col">후원자</td>
+<td scope="col">후원내액</td>
+<td scope="col">후원금액</td>
 </tr>
 <td></td>
 <td></td>
@@ -132,7 +132,7 @@ body {
 </table>
 </div>
 
-�츮 ��ȣ�Ҹ� �Ŀ����ֽ� �е��� �Ŀ��޽����Դϴ�.
+우리 보호소를 후원해주신 분들의 후원메시지입니다.
 <p></p>
 <table>
 <tr>

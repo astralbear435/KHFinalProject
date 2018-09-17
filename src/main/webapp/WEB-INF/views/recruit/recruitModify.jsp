@@ -18,11 +18,11 @@
 		
 		<table>
 		<tr>
-		<td><label for="r_status">¸ðÁý ±â°£ ¼³Á¤</label></td>
+		<td><label for="r_status">ëª¨ì§‘ ê¸°ê°„ ì„¤ì •</label></td>
 		<td><div class="form-check-radio">
 					<label class="form-check-label"> <input type="radio"
-						name="r_status" id="r_status1" class="form-check-input" value="1">»ó½Ã
-						¸ðÁý<span class="form-check-sign"></span>
+						name="r_status" id="r_status1" class="form-check-input" value="1">ìƒì‹œ
+						ëª¨ì§‘<span class="form-check-sign"></span>
 					</label>
 				</div>
 		</td>
@@ -30,7 +30,7 @@
 		<div class="form-check-radio">
 					<label class="form-check-label"> <input type="radio"
 						name="r_status" id="r_status2" class="form-check-input" value="2"
-						checked> ³¯Â¥ ¼³Á¤ <span class="form-check-sign"></span>
+						checked> ë‚ ì§œ ì„¤ì • <span class="form-check-sign"></span>
 					</label>
 		</div> <form:errors path="r_status" cssClass="error-color" />
 		</td>
@@ -45,7 +45,7 @@
 		</td>
 		</tr>
 		<tr>
-		<td> <label for="r_people">¸ðÁý ÀÎ¿ø</label>
+		<td> <label for="r_people">ëª¨ì§‘ ì¸ì›</label>
 		</td>
 		<td> <form:input path="r_people" class="form-control"/> <form:errors path="r_people"
 					cssClass="error-color" />
@@ -53,7 +53,7 @@
 		</tr>
 		
 		</table>
-		<label for="r_title">Á¦¸ñ</label> <form:input path="r_title" class="form-control"/>
+		<label for="r_title">ì œëª©</label> <form:input path="r_title" class="form-control"/>
 				<form:errors path="r_title" cssClass="error-color" />
 				
 				<div style="height:20px;"></div>	
@@ -63,15 +63,15 @@
 							
 		<div style="height:20px;"></div>	
 			
-		<label for="r_upload">ÆÄÀÏ¾÷·Îµå</label> <input type="file" name="r_upload" id="r_upload" /> 
+		<label for="r_upload">íŒŒì¼ì—…ë¡œë“œ</label> <input type="file" name="r_upload" id="r_upload" /> 
 				<c:if test="${!empty recruit.r_filename}">
-					<span>(${recruit.r_filename})ÆÄÀÏÀÌ µî·ÏµÇ¾î ÀÖ½À´Ï´Ù. ´Ù½Ã ¾÷·ÎµåÇÏ¸é ±âÁ¸ ÆÄÀÏÀº »èÁ¦µË´Ï´Ù.</span>
+					<span>(${recruit.r_filename})íŒŒì¼ì´ ë“±ë¡ë˜ì–´ ìžˆìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì—…ë¡œë“œí•˜ë©´ ê¸°ì¡´ íŒŒì¼ì€ ì‚­ì œë©ë‹ˆë‹¤.</span>
 				</c:if>
 				
 		<div style="text-align:center;">
-			<input type="submit" class="btn btn-primary btn-lg"  value="Àü¼Û"> 
+			<input type="submit" class="btn btn-primary btn-lg"  value="ì „ì†¡"> 
 			<input type="button" class="btn btn-primary btn-lg" 
-				value="¸ñ·Ï" onclick="location.href='recruitList.do'">
+				value="ëª©ë¡" onclick="location.href='recruitList.do'">
 		</div>
 	</form:form>
 
