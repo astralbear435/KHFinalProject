@@ -3,61 +3,190 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/volunteer.js"></script>
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap2.css" 	rel="stylesheet" type="text/css" media="all"/>
+<link
+	href='${pageContext.request.contextPath}/resources/js/fullcalendar-3.9.0/fullcalendar.min.css' rel='stylesheet'/>
+<link
+	href='${pageContext.request.contextPath}/resources/js/fullcalendar-3.9.0/fullcalendar.print.min.css' rel='stylesheet' media='print'/>
+<script
+	src='${pageContext.request.contextPath}/resources/js/fullcalendar-3.9.0/lib/moment.min.js'></script>
 <script
 	src='${pageContext.request.contextPath}/resources/js/fullcalendar-3.9.0/lib/jquery.min.js'></script>
-<title>ë³´í˜¸ì†Œ ë´‰ì‚¬ í™œë™ ì‹ ì²­</title>
+<script
+	src='${pageContext.request.contextPath}/resources/js/fullcalendar-3.9.0/fullcalendar.min.js'></script>
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/volunteer.js"></script>
 
 <script>
-if("1"){
-	document.getElementById("v_date").valueAsDate = new Date();	
-}
+	$(document).ready(function() {
+
+    $('#calendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay,listMonth'
+      },
+      defaultDate : new Date(),
+      navLinks: true,
+      businessHours: true,
+      
+      dayClick: function(date, jsEvent, view) {
+    	 alert( date.format()+' ºÀ»çÈ°µ¿À» ½ÅÃ»ÇÕ´Ï´Ù.');   	   
+  	    document.getElementById("date").innerHTML = date.format();
+      },
+      selectable: true,
+      selectHelper: true,
+      editable: false,
+      events: [
+/*         {
+          title: 'Business Lunch',
+          start: '2018-9-03T13:00:00',
+          constraint: 'businessHours'
+        },
+        {
+          title: 'Meeting',
+          start: '2018-09-13T11:00:00',
+          constraint: 'availableForMeeting', // defined below
+          color: '#257e4a'
+        },
+        {
+          title: 'Conference',
+          start: '2018-09-18',
+          end: '2018-09-20'
+        },
+        {
+          title: 'Party',
+          start: '2018-09-29T20:00:00'
+        },
+
+        // areas where "Meeting" must be dropped
+        {
+          id: 'availableForMeeting',
+          start: '2018-09-11T10:00:00',
+          end: '2018-09-11T16:00:00',
+          rendering: 'background'
+        },
+        {
+          id: 'availableForMeeting',
+          start: '2018-09-13T10:00:00',
+          end: '2018-09-13T16:00:00',
+          rendering: 'background'
+        },
+
+        // red areas where no events can be dropped
+        {
+          start: '2018-09-24',
+          end: '2018-09-28',
+          overlap: false,
+          selectable: false,
+          rendering: 'background',
+          color: '#ff9f89'
+        },
+        {
+          start: '2018-09-06',
+          end: '2018-09-08',
+          overlap: false,
+          rendering: 'background',
+          color: '#ff9f89'
+        } */
+      ]
+    });
+
+  	/* var sample = document.getElementsByName('v_status');
+  	for(var i=0;i<sample.length;i++){
+  		if(sample[i].checked==true){
+  			alert(sample[i].value);
+  			
+  		}
+  	} */
+  	
+  	
+  	  	$('#volunteerWrite_form').submit(function(){
+  	  		var vdate = $('#date').text();
+	  		$('#test').text(vdate);
+  	  		var v_status = document.querySelector('input[name="v_status"]:checked').value;
+	  		var r_num = $('#r_num').val();
+	  		
+  	      	  $.ajax({
+  	      	    	type:'post',
+  	      	    	data:{v_date:vdate, v_status:v_status, r_num:r_num},
+  	      	    	url:'volunteerWrite.do',
+  	      	    	dataType:'json',
+  	      	    	cache:false,
+  	      	    	timeout:10000,
+  	      	    	success: function(data){
+  	      	    		if(data.result == 'logout'){
+  	      	    			alert('·Î±×ÀÎÀÌ ÇÊ¿äÇÕ´Ï´Ù.');
+  	      	    		}else if(data.result == 'success'){
+  	      	    			alert('ºÀ»çÈ°µ¿ ½ÅÃ»ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.');
+  	      	    		}
+  	      	    	},
+  	      	    	error: function(){
+  	      	    		alert('³×Æ®¿öÅ© ¿À·ù');
+  	      	    	}
+  	      	    });  	      	 
+  	      });       
+  });
+	
+	
 
 </script>
 
+<style>
 
+  body {
+    margin: 40px 10px;
+    padding: 0;
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+    font-size: 14px;
+  }
 
+  #calendar {
+    max-width: 450px;
+    margin: 0 auto;
+  }
+
+</style>
+	
+<title>ºÀ»ç È°µ¿ ½ÅÃ»¼­</title>
 	<div>
-		<h2>${recruit.r_id}ë³´í˜¸ì†Œë´‰ì‚¬ í™œë™ ì‹ ì²­</h2>
-		<a href="ë³´í˜¸ì†Œ ì†Œê°œ í˜ì´ì§€ë¡œ ì´ë™ë§í¬">${recruit.r_id} ë³´í˜¸ì†Œë¥¼ ì†Œê°œí˜ì´ì§€ ë°”ë¡œê°€ê¸°.</a>
-		<h5>${recruit.r_title}</h5>
-		<h5>ë´‰ì‚¬í™œë™ ë‚´ìš© ì•ˆë‚´</h5>
-		<h6>${recruit.r_content}</h6>
-		<h5>ëª¨ì§‘ ì¸ì›</h5>
-		<h6>ì¼ì¼ ${recruit.r_people} ëª…</h6>
-		ëª¨ì§‘ ë‚ ì§œ
-		 ${recruit.r_start_date}~${recruit.r_end_date}
-		 <form
-			action="${pageContext.request.contextPath}/volunteer/volunteerWrite.do"
-			id="volunteerWrite_form" method="post">
-			<input type="hidden" name="r_num" value="${recruit.r_num}" />
+		<h2>${shelterName.s_name} ºÀ»ç È°µ¿ ½ÅÃ»</h2>
+		<a href="º¸È£¼Ò ¼Ò°³ ÆäÀÌÁö·Î ÀÌµ¿¸µÅ©">${recruit.r_id} º¸È£¼Ò¸¦ ¼Ò°³ÆäÀÌÁö ¹Ù·Î°¡±â.</a>
+		<p>Á¦¸ñ ${recruit.r_title}</p>
+		<p>${recruit.r_content}</p>
+		<p>¸ğÁı ÀÎ¿ø : ÀÏÀÏ  ${recruit.r_people} ¸í</p>
+		<c:if test="${recruit.r_status==1}">
+		<p>»ó½Ã ¸ğÁı Áß</p>
+		</c:if>
+		<c:if test="${recruit.r_status==2}">
+		<p>¸ğÁı ³¯Â¥   ${recruit.r_start_date}~${recruit.r_end_date}</p>
+		</c:if>
+		<form <%-- action="${pageContext.request.contextPath}/volunteer/volunteerWrite.do" --%> id="volunteerWrite_form" method="post">
+			<input type="hidden" name="r_num" value="${recruit.r_num}" id="r_num"/>
 			<table>
 				<tr>
-					<td>ë´‰ì‚¬í™œë™ ì‹ ì²­ ë‚ ì§œ</td>
-					<c:if test="${recruit.r_status} == '1'">
+					<td>ºÀ»çÈ°µ¿ ½ÅÃ» ³¯Â¥ : </td> <td> <p id='date'>´Ş·Â¿¡¼­ ¿øÇÏ½Ã´Â ³¯Â¥¸¦ ¼±ÅÃÇÏ¼¼¿ä</p> </td>
+					<%-- <c:if test="${recruit.r_status} == '1'">
 					
 					</c:if>
 					<c:if test="${recruit.r_status} == '2'">
-					
-					</c:if>
 					<td><input type="date" name="v_date" id="v_date" min=${recruit.r_start_date} max=${recruit.r_end_date}>
-					</td>	
-					
+					</td>			</c:if> --%>		
 				</tr>
 				<tr>
-					<td>ë´‰ì‚¬í™œë™ ì‹ ì²­ ì‹œê°„</td>
+					<td>ºÀ»çÈ°µ¿ ½ÅÃ» ½Ã°£</td>
 					<td>
 						<div class="form-check-radio">
 							<label class="form-check-label"> <input type="radio"
 								name="v_status" id="v_status1" class="form-check-input"
-								value="1">1~3ì‹œ<span class="form-check-sign"></span>
+								value="1">1~3½Ã<span class="form-check-sign"></span>
 							</label>
 						</div>
 						<div class="form-check-radio">
 							<label class="form-check-label"> <input type="radio"
 								name="v_status" id="v_status2" class="form-check-input"
-								value="2" checked>3~5ì‹œ <span class="form-check-sign"></span>
+								value="2" checked>3~5½Ã <span class="form-check-sign"></span>
 							</label>
 						</div>
 					</td>
@@ -65,16 +194,13 @@ if("1"){
 			</table>
 
 			<div class="align-center">
-				<input type="submit" value="ì‹ ì²­í•˜ê¸°">
+				<input type="submit" value="½ÅÃ»ÇÏ±â" id="date_submit">
 			</div>
-				<c:if test="${!empty user_id && user_id == recruit.r_id}">		
-						<input type="button" value="ìˆ˜ì •" class="btn btn-success"
-							onclick="location.href='${pageContext.request.contextPath}/recruit/recruitUpdate.do?r_num=${recruit.r_num}'">
-				
-						<input type="button" value="ì‚­ì œ" class="btn btn-danger"
-							onclick="location.href='${pageContext.request.contextPath}/recruit/recruitDelete.do?r_num=${recruit.r_num}'">
-					</c:if>
+	
 		</form>
-	</div>
+		<div id="test"></div>
+</div>
 
+  <div id='calendar'></div>
+  
 

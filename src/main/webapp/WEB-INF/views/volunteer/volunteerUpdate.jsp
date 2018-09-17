@@ -3,6 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#v_btn').click(function(){
@@ -18,30 +19,30 @@
 
  <hr class="my-4">
 	<form:form commandName="volunteer" action="volunteerUpdate.do" id="volunteerUpdate_form" name="myForm">
-		<form:hidden path="v_id" />
-		<form:hidden path="v_num" />
-		<form:errors element="div" cssClass="error-color" />
+		<form:hidden path="v_id"/>
+		<form:hidden path="v_num"/>
+		<form:errors element="div" cssClass="error-color"/>
 		
-	<div>ë´‰ì‚¬í™œë™ ë‚ ì§œ<input type="date" name="v_date" id="v_date" min=${recruit.r_start_date} max=${recruit.r_end_date}>
+	<div>ºÀ»çÈ°µ¿ ³¯Â¥<input type="date" name="v_date" id="v_date" min=${recruit.r_start_date} max=${recruit.r_end_date}>
 		</div>
 		<div>		<div class="form-check-radio">
 							<label class="form-check-label"> <input type="radio"
 								name="v_status" id="v_status1" class="form-check-input"
-								value="1">1~3ì‹œ<span class="form-check-sign"></span>
+								value="1">1~3½Ã<span class="form-check-sign"></span>
 							</label>
 						</div>
 						<div class="form-check-radio">
 							<label class="form-check-label"> <input type="radio"
 								name="v_status" id="v_status2" class="form-check-input"
-								value="2" checked>3~5ì‹œ <span class="form-check-sign"></span>
+								value="2" checked>3~5½Ã <span class="form-check-sign"></span>
 							</label>
 						</div>
 			</div>	
 		
 		<div class="align-center">
-			<input type="button" class="btn btn-primary btn-lg" id="v_btn"  value="ì „ì†¡"> 
+			<input type="button" class="btn btn-primary btn-lg" id="v_btn"  value="Àü¼Û"> 
 			<input type="button" class="btn btn-primary btn-lg" id="del_btn" 
-				value="ëª©ë¡" onclick="${pageContext.request.contextPath}/mypage/mypage.do'">
+				value="¸ñ·Ï" onclick="${pageContext.request.contextPath}/mypage/mypage.do'">
 		</div>
 	</form:form>
 

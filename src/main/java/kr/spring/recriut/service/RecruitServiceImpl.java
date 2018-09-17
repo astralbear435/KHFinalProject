@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.spring.recruit.dao.BoardMapper;
 import kr.spring.recruit.domain.RecruitCommand;
+import kr.spring.shelter.domain.ShelterCommand;
 
 @Service("recruitService")
 public class RecruitServiceImpl implements RecruitService{
@@ -62,6 +63,17 @@ public class RecruitServiceImpl implements RecruitService{
 	public List<RecruitCommand> selectRecruitList(Map<String, Object> map) {
 		
 		return boardMapper.selectRecruitList(map);
+	}
+
+	@Override
+	public ShelterCommand selectBoName(Integer r_num) {
+		
+		return boardMapper.selectBoName(r_num);
+	}
+
+	@Override
+	public List<ShelterCommand> selectBoNameList(Map<String, Object> map) {
+		return boardMapper.selectBoNameList(map);
 	}
 
 

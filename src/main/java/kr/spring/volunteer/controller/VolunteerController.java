@@ -56,7 +56,7 @@ public class VolunteerController {
 
 
 	//봉사활동 신청글 전송
-	@RequestMapping(value="/volunteer/volunteerWrite.do", method=RequestMethod.POST)
+	/*@RequestMapping(value="/volunteer/volunteerWrite.do", method=RequestMethod.POST)
 	public String submit(@ModelAttribute("volunteer") RecruitCommand volunteer, BindingResult result, HttpServletRequest request, HttpSession session) {
 		if(log.isDebugEnabled()) {
 			log.debug("<<volunteerCommand>> : "+ volunteer);
@@ -73,7 +73,7 @@ public class VolunteerController {
 			log.debug("<<volunteer>> : "+ volunteer );
 		}
 		return "volunteer/volunteerOkay";
-	}
+	}*/
 	//봉사활동 일정 수정
 		@RequestMapping(value="/volunteer/volunteerUpdate.do", method=RequestMethod.GET)
 	public String form(@RequestParam("v_num") int v_num, Model model) {

@@ -43,7 +43,7 @@ public class MypageAjaxController {
 	@Resource
 	private RecruitService recruitService;
 	
-	//마이페이지 캘린더 호출
+	//留덉씠�럹�씠吏� 罹섎┛�뜑 �샇異�
 	@RequestMapping(value="/mypage/volunteerMyCalendar.do")
 	@ResponseBody
 	public Map<String,Object> getList(@RequestParam("v_id") String v_id, HttpSession session){
@@ -94,7 +94,7 @@ public class MypageAjaxController {
 	}
 
 
-/*//봉사활동 일정 수정
+/*//遊됱궗�솢�룞 �씪�젙 �닔�젙
 	@RequestMapping("/volunteer/volunteerUpdate.do")
 	@ResponseBody
 	public Map<String,String> modifyReply(RecruitCommand volunteer, HttpSession session, HttpServletRequest request){
@@ -116,7 +116,7 @@ public class MypageAjaxController {
 	
 	
 	
-	// 보호소 측 캘린더
+	// 蹂댄샇�냼 痢� 罹섎┛�뜑
 	@RequestMapping(value="/mypage/recruitMyCalendar.do")
 	@ResponseBody
 	public Map<String,Object> getRecruitList(@RequestParam("r_id") String r_id, HttpSession session){
@@ -141,6 +141,8 @@ public class MypageAjaxController {
 		mapJson.put("recruit", recruit);	
 		return  mapJson;
 	}	
+	
+	/*public Map<String,Object> getDonationList*/
 	
 
 	

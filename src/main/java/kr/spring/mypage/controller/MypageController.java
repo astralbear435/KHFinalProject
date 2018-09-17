@@ -34,7 +34,7 @@ public class MypageController {
 	@Resource
 	private RecruitService recruitService;
 	
-	//자바빈 초기화
+	//�옄諛붾퉰 珥덇린�솕
 	@ModelAttribute("command")
 	public MemberCommand initCommand() {
 		return new MemberCommand();
@@ -65,7 +65,7 @@ public class MypageController {
 		return new ApBoCommand();
 	}
 
-	//++++++++++++++++++++메뉴에서 일반 회원 마이페이지 호출+++++++++++++++++++++++++++//
+	//++++++++++++++++++++硫붾돱�뿉�꽌 �씪諛� �쉶�썝 留덉씠�럹�씠吏� �샇異�+++++++++++++++++++++++++++//
 	@RequestMapping("mypage/mypage.do")
 	public ModelAndView process(HttpSession session, Model model) {		
 		String id = (String)session.getAttribute("user_id");
@@ -141,7 +141,7 @@ public class MypageController {
 	}
 	
 	
-	//++++++++++++++++++++캘린더에서 선택한 봉사활동 디테일 정보보여주기+++++++++++++++++++++++++++//
+	//++++++++++++++++++++罹섎┛�뜑�뿉�꽌 �꽑�깮�븳 遊됱궗�솢�룞 �뵒�뀒�씪 �젙蹂대낫�뿬二쇨린+++++++++++++++++++++++++++//
 
 	@RequestMapping("/volunteer/volunteerDetail.do")
 	public ModelAndView process(HttpSession session, Model model,@RequestParam("v_num") int v_num) {
@@ -171,8 +171,8 @@ public class MypageController {
 		
 	}
 
-	//++++++++++++++++++++메뉴에서 보호소 회원 마이페이지 호출+++++++++++++++++++++++++++//
-	//auth 값에 따라
+	//++++++++++++++++++++硫붾돱�뿉�꽌 蹂댄샇�냼 �쉶�썝 留덉씠�럹�씠吏� �샇異�+++++++++++++++++++++++++++//
+	//auth 媛믪뿉 �뵲�씪
 	@RequestMapping("mypage/mypageShelter.do")
 	public ModelAndView shelterProcess(HttpSession session, Model model) {		
 		

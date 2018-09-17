@@ -4,49 +4,53 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/recruit.js"></script>
-
+<style>
+ul{
+   list-style:none;
+   }   
+</style>
 
 <div class="container">
 
 	<div class="w3l-heading">
-		<h3>ë´‰ì‚¬í™œë™ ëª¨ì§‘ ì•ˆë‚´</h3>
+		<h3>ºÀ»çÈ°µ¿ ¸ðÁý ¾È³»</h3>
 	</div>
 
-
-
 	<p>
-		ìœ ê¸°ê²¬ ë³´í˜¸ ì„¼í„°ì—ì„œëŠ” ë”°ëœ»í•œ ë§ˆìŒì„ ë‚˜ëˆŒ ë´‰ì‚¬ìžë¶„ë“¤ì˜ ì°¸ì—¬ë¥¼ ê¸°ë‹¤ë¦½ë‹ˆë‹¤. <br> ìžì›ë´‰ì‚¬ í™œë™ì‹œê°„ : ì˜¤í›„ 1ì‹œ
-		~ ì˜¤í›„ 5ì‹œ(1ì°¨ : 1ì‹œ~3ì‹œ / 2ì°¨ : 3~5ì‹œ, 1,2ì°¨ ë™ì‹œ ì„ íƒ ê°€ëŠ¥) <br> ë´‰ì‚¬í™œë™ : ì¤‘í•™ìƒ
-		ì´ìƒë¶€í„° ì‹ ì²­ ê°€ëŠ¥í•©ë‹ˆë‹¤. ë‹¨ì²´ë´‰ì‚¬ë¥¼ ì›í•˜ì‹œëŠ” ê²½ìš° ë™ë¬¼ë³´í˜¸ì„¼í„°(042-825-1118)ë¡œ ì‚¬ì „ ì‹ ì²­í•˜ì‹œê¸° ë°”ëžë‹ˆë‹¤. (ë‹¨,
-		ë‹¨ì²´ë´‰ì‚¬ëŠ” ì• ì™„ë™ë¬¼ê´€ë ¨ ì „ê³µìž ë˜ëŠ” ê´€ë ¨ ê¸°ìˆ ìžë§Œ ê°€ëŠ¥)<br> ë´‰ì‚¬ì‹ ì²­ : ë´‰ì‚¬ì¼ 15ì¼ì „(0ì‹œ) ~ 2ì¼ì „ê¹Œì§€
-		ë™ë¬¼ë³´í˜¸ì„¼í„° í™ˆíŽ˜ì´ì§€ì—ì„œ ì‹ ì²­ ê°€ëŠ¥í•©ë‹ˆë‹¤. <br> - 1ì¼ ë´‰ì‚¬ì¸ì›ì€ 5ëª… ê¸°ì¤€ì´ë©°, ì£¼ë§ ë° ê³µíœ´ì¼ì—ëŠ” ì‹ ì²­ìžê°€
-		ë§Žì•„ ì‹ ì²­ì´ ì–´ë ¤ìš¸ ìˆ˜ ìžˆìœ¼ë‹ˆ ì–‘í•´ë°”ëžë‹ˆë‹¤. <br> í™•ì¸ì„œ ë°œê¸‰ :
-		1365ìžì›ë´‰ì‚¬í¬í„¸(www.1365.go.kr)ì‚¬ì´íŠ¸ë¥¼ í†µí•´ ë´‰ì‚¬ì‹œê°„ í™•ì¸ ë° ì¶œë ¥ê°€ëŠ¥ <br> 1365ìžì›ë´‰ì‚¬í¬í„¸
-		íšŒì›ê°€ìž… : íšŒì›ê°€ìž… í•œ ë¶„ë“¤ì— í•œí•´ ë´‰ì‚¬ì‹œê°„ ìž…ë ¥ì´ ê°€ëŠ¥í•˜ë©°, ë´‰ì‚¬í™œë™ ì¤‘ ì‚¬ê³ ë°œìƒ ì‹œ ìƒí•´ë³´ìƒì´ ê°€ëŠ¥í•˜ë¯€ë¡œ ë°˜ë“œì‹œ ì‚¬ì „
-		ê°€ìž…í•˜ì…”ì•¼ í•©ë‹ˆë‹¤. <br>
+		À¯±â°ß º¸È£ ¼¾ÅÍ¿¡¼­´Â µû¶æÇÑ ¸¶À½À» ³ª´­ ºÀ»çÀÚºÐµéÀÇ Âü¿©¸¦ ±â´Ù¸³´Ï´Ù. <br> ÀÚ¿øºÀ»ç È°µ¿½Ã°£ : ¿ÀÈÄ 1½Ã
+		~ ¿ÀÈÄ 5½Ã(1Â÷ : 1½Ã~3½Ã / 2Â÷ : 3~5½Ã, 1,2Â÷ µ¿½Ã ¼±ÅÃ °¡´É) <br> ºÀ»çÈ°µ¿ : ÁßÇÐ»ý
+		ÀÌ»óºÎÅÍ ½ÅÃ» °¡´ÉÇÕ´Ï´Ù. ´ÜÃ¼ºÀ»ç¸¦ ¿øÇÏ½Ã´Â °æ¿ì µ¿¹°º¸È£¼¾ÅÍ(042-825-1118)·Î »çÀü ½ÅÃ»ÇÏ½Ã±â ¹Ù¶ø´Ï´Ù. (´Ü,
+		´ÜÃ¼ºÀ»ç´Â ¾Ö¿Ïµ¿¹°°ü·Ã Àü°øÀÚ ¶Ç´Â °ü·Ã ±â¼úÀÚ¸¸ °¡´É)<br> ºÀ»ç½ÅÃ» : ºÀ»çÀÏ 15ÀÏÀü(0½Ã) ~ 2ÀÏÀü±îÁö
+		µ¿¹°º¸È£¼¾ÅÍ È¨ÆäÀÌÁö¿¡¼­ ½ÅÃ» °¡´ÉÇÕ´Ï´Ù. <br> - 1ÀÏ ºÀ»çÀÎ¿øÀº 5¸í ±âÁØÀÌ¸ç, ÁÖ¸» ¹× °øÈÞÀÏ¿¡´Â ½ÅÃ»ÀÚ°¡
+		¸¹¾Æ ½ÅÃ»ÀÌ ¾î·Á¿ï ¼ö ÀÖÀ¸´Ï ¾çÇØ¹Ù¶ø´Ï´Ù. <br> È®ÀÎ¼­ ¹ß±Þ :
+		1365ÀÚ¿øºÀ»çÆ÷ÅÐ(www.1365.go.kr)»çÀÌÆ®¸¦ ÅëÇØ ºÀ»ç½Ã°£ È®ÀÎ ¹× Ãâ·Â°¡´É <br> 1365ÀÚ¿øºÀ»çÆ÷ÅÐ
+		È¸¿ø°¡ÀÔ : È¸¿ø°¡ÀÔ ÇÑ ºÐµé¿¡ ÇÑÇØ ºÀ»ç½Ã°£ ÀÔ·ÂÀÌ °¡´ÉÇÏ¸ç, ºÀ»çÈ°µ¿ Áß »ç°í¹ß»ý ½Ã »óÇØº¸»óÀÌ °¡´ÉÇÏ¹Ç·Î ¹Ýµå½Ã »çÀü
+		°¡ÀÔÇÏ¼Å¾ß ÇÕ´Ï´Ù. <br>
 	</p>
  
-<c:if test="${!empty user_id && user_auth == 3}">
-	<input type="button" value="ë´‰ì‚¬í™œë™ ëª¨ì§‘ ê¸€ ì“°ê¸°"
+<c:if test="${!empty user_id}">
+<div style="text-align: right;">
+	<input type="button" value="ºÀ»çÈ°µ¿ ¸ðÁý ±Û ¾²±â"
 		class="btn btn-primary btn-lg"
 		onclick="location.href='${pageContext.request.contextPath}/recruit/recruitWrite.do'">
+</div>
 </c:if>
 	<form action="recruitList.do" id="search_form" method="get">
 		<ul class="search">
 			<li><select name="keyfield">
-					<option value="r_title">ë´‰ì‚¬í™œë™ ì œëª©</option>
+					<option value="r_title">ºÀ»çÈ°µ¿ Á¦¸ñ</option>
 					<option value="r_id">ID</option>
-					<option value="r_content">ë‚´ìš©</option>
+					<option value="r_content">³»¿ë</option>
 			</select></li>
 			<li><input type="text" name="keyword" id="keyword"></li>
-			<li><input type="submit" value="ê²€ìƒ‰"></li>
+			<li><input type="submit" value="°Ë»ö"></li>
 		</ul>
 	</form>
 
 	<hr class="my-4">
 	<script type="text/javascript">
 function showPopup(r_num){
-	window.open("${pageContext.request.contextPath}/volunteer/volunteerWrite2.do?r_num="+r_num,"ë´‰ì‚¬í™œë™ ì‹ ì²­","width=400, height=300, left=100, top=50");
+	window.open("${pageContext.request.contextPath}/volunteer/volunteerWrite2.do?r_num="+r_num,"ºÀ»çÈ°µ¿ ½ÅÃ»","width=400, height=800, left=100, top=50");
 }
 
 </script>
@@ -78,7 +82,7 @@ function showPopup(r_num){
 						<p class="card-text">${recruit.r_start_date}~${recruit.r_end_date}</p>
 					</c:if>
 					<c:if test="${recruit.r_status==1}">
-						<p class="card-text">ìƒì‹œ ëª¨ì§‘ ì¤‘</p>
+						<p class="card-text">»ó½Ã ¸ðÁý Áß</p>
 					</c:if>
 
 
@@ -87,20 +91,21 @@ function showPopup(r_num){
 
 
 					<c:if test="${!empty user_id}">
-						<input type="button" value="ë´‰ì‚¬í™œë™ ì‹ ì²­í•˜ê¸°" class="btn btn-warning"
-							onclick="showPopup(${recruit.r_num});">
+						<input type="button" value="ºÀ»çÈ°µ¿ ½ÅÃ»ÇÏ±â" class="btn btn-warning" onclick="showPopup(${recruit.r_num});">
 					</c:if>
 					<c:if test="${empty user_id}">
-						<input type="button" value="ë´‰ì‚¬í™œë™ ì‹ ì²­í•˜ê¸°" class="btn btn-warning"
-							onclick="alert('ë¡œê·¸ì¸ì´ í•„ìš”í•œ ì„œë¹„ìŠ¤ìž…ë‹ˆë‹¤.');">
+						<input type="button" value="ºÀ»çÈ°µ¿ ½ÅÃ»ÇÏ±â" class="btn btn-warning"
+							onclick="alert('·Î±×ÀÎÀÌ ÇÊ¿äÇÑ ¼­ºñ½ºÀÔ´Ï´Ù.');">
 					</c:if>
-
-
+					<c:if test="${!empty user_id && user_id == recruit.r_id}">		
+						<input type="button" value="¼öÁ¤" class="btn btn-success"
+							onclick="location.href='${pageContext.request.contextPath}/recruit/recruitUpdate.do?r_num=${recruit.r_num}'">
 				
+						<input type="button" value="»èÁ¦" class="btn btn-danger"
+							onclick="location.href='${pageContext.request.contextPath}/recruit/recruitDelete.do?r_num=${recruit.r_num}'">
+					</c:if>
 					
 				</div>
-
-
 			</div>
 		</c:forEach>
 	</div>

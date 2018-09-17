@@ -38,14 +38,14 @@ $(document).ready(function(){
 	 cache:false,
 	 timeout:30000,
 	 success:function(data){
-		 	var volunteer = data.volunteer; //ìœ ê¸°ê²¬ ë³´í˜¸ì†Œ ë´‰ì‚¬í™œë™ ì‹ ì²­ í˜„í™©ì„ ë³´ì—¬ì£¼ëŠ” ìº˜ë¦°ë”
+		 	var volunteer = data.volunteer; //À¯±â°ß º¸È£¼Ò ºÀ»çÈ°µ¿ ½ÅÃ» ÇöÈ²À» º¸¿©ÁÖ´Â Ä¶¸°´õ
 			var boCallList = data.boCallList;	
 		 	var bohoCallList = data.bohoCallList;
-				//ìœ ê¸°ê²¬ ë´‰ì‚¬í™œë™ ì¼ì • ë¦¬ìŠ¤íŠ¸
+				//À¯±â°ß ºÀ»çÈ°µ¿ ÀÏÁ¤ ¸®½ºÆ®
 				if(volunteer.length>0){ 
 					for(var i = 0; i<volunteer.length; i++){
 		 	 			event.push({ 
-		 	 				title: '[ë´‰ì‚¬í™œë™]' + volunteer[i].r_num +','+ volunteer[i].v_num
+		 	 				title: '[ºÀ»çÈ°µ¿]' + volunteer[i].r_num +','+ volunteer[i].v_num
 		 					,start: volunteer[i].v_date,
 		 					color: 'lightgreen'
 		 	 			});
@@ -56,7 +56,7 @@ $(document).ready(function(){
 				if(boCallList.length>0){ 
 					for(var i = 0; i<boCallList.length; i++){
 		 	 			event.push({ 
-		 	 				title: '[ìž„ì‹œë³´í˜¸ ì‹ ì²­]'+ 'ìž„ì‹œë³´í˜¸ìž'+ boCallList[i].id +'ì‹œìž‘ì¼'+ boCallList[i].bo_start_hour +'ì‹œ'+ boCallList[i].bo_start_min+'ë¶„'+'ì¢…ë£Œì¼'+ boCallList[i].bo_end_hour+'ì‹œ'+boCallList[i].bo_end_min+'ë¶„',
+		 	 				title: '[ÀÓ½Ãº¸È£ ½ÅÃ»]'+ 'ÀÓ½Ãº¸È£ÀÚ'+ boCallList[i].id +'½ÃÀÛÀÏ'+ boCallList[i].bo_start_hour +'½Ã'+ boCallList[i].bo_start_min+'ºÐ'+'Á¾·áÀÏ'+ boCallList[i].bo_end_hour+'½Ã'+boCallList[i].bo_end_min+'ºÐ',
 		 	 				start: boCallList[i].bo_date_start,
 		 					end: boCallList[i].bo_date_end,
 		 					color: 'pink'
@@ -67,7 +67,7 @@ $(document).ready(function(){
 				if(bohoCallList.length>0){ 
 					for(var i = 0; i<bohoCallList.length; i++){
 		 	 			event.push({ 
-		 	 				title: '[ìž„ì‹œë³´í˜¸ ì‹ ì²­]'+ 'ì‹ ì²­ìž'+ bohoCallList[i].bo_id +'ì‹œìž‘ì¼'+ bohoCallList[i].bo_start_hour +'ì‹œ'+ bohoCallList[i].bo_start_min+'ë¶„'+'ì¢…ë£Œì¼'+ bohoCallList[i].bo_end_hour+'ì‹œ'+bohoCallList[i].bo_end_min+'ë¶„',
+		 	 				title: '[ÀÓ½Ãº¸È£ ½ÅÃ»]'+ '½ÅÃ»ÀÚ'+ bohoCallList[i].bo_id +'½ÃÀÛÀÏ'+ bohoCallList[i].bo_start_hour +'½Ã'+ bohoCallList[i].bo_start_min+'ºÐ'+'Á¾·áÀÏ'+ bohoCallList[i].bo_end_hour+'½Ã'+bohoCallList[i].bo_end_min+'ºÐ',
 		 	 				start: bohoCallList[i].bo_date_start,
 		 					end: bohoCallList[i].bo_date_end,
 		 					color: 'skyblue'
@@ -77,7 +77,7 @@ $(document).ready(function(){
 				}	
 			
 		 	
-			//ìº˜ë¦°ë”
+			//Ä¶¸°´õ
 			  $('#calendar').fullCalendar({ 
 					header: {
 				    	left: '',
@@ -101,7 +101,7 @@ $(document).ready(function(){
 				        }
 				        $('#calendar').fullCalendar('unselect');
 				      }, */
-				      editable: false,//í™”ë©´ì—ì„œ ì§ì ‘ ë‚ ì§œ ì´ë™ ë¶ˆê°€ëŠ¥  
+				      editable: false,//È­¸é¿¡¼­ Á÷Á¢ ³¯Â¥ ÀÌµ¿ ºÒ°¡´É  
 				      eventLimit: true,				
 					events :  event, 
 						
@@ -115,7 +115,7 @@ $(document).ready(function(){
 					});
 	 },
 	 error:function(){
-		 alert('ë„¤íŠ¸ì›Œí¬ ì˜¤ë¥˜ ë°œìƒ');
+		 alert('³×Æ®¿öÅ© ¿À·ù ¹ß»ý');
 	 }
 	});
 } 
@@ -165,38 +165,40 @@ body {
 <c:forEach var="callHome" items="${callList}">
 <table>
 <tr>
-<td><a href="${pageContext.request.contextPath}/ap/apCalldetail.do?call_num=${callHome.call_num}">ë‚´ê°€ ì“´ ê¸€ë¡œ ë°”ë¡œê°€ê¸°</a></td>
+<td><a href="${pageContext.request.contextPath}/ap/apCalldetail.do?call_num=${callHome.call_num}">³»°¡ ¾´ ±Û·Î ¹Ù·Î°¡±â</a></td>
 <td>${callHome.call_start}</td>
 </tr>
 
 </table>
-íŽ«ì‹œí„°ê°€ ì‹ ì²­ë°›ìœ¼ë©´ ìº˜ë¦°ë”ì— í‘œì‹œí•˜ê²Œ í•˜ê³ , ìƒì„¸ì •ë³´íŽ˜ì´ì§€ ë§í¬ë¡œ ë³´ë‚´ì£¼ê¸°
+Æê½ÃÅÍ°¡ ½ÅÃ»¹ÞÀ¸¸é Ä¶¸°´õ¿¡ Ç¥½ÃÇÏ°Ô ÇÏ°í, »ó¼¼Á¤º¸ÆäÀÌÁö ¸µÅ©·Î º¸³»ÁÖ±â
 </c:forEach>
 
 <p> ${donation.dona_asname} </p>
 
-<c:forEach var="donation" items="${donaList}">
-<h3 class="hdg">ë‚˜ì˜ í›„ì›ë‚´ì—­</h3>
-<c:if test="${dona_count == 0}">
-	<div class="align-center">ë“±ë¡ëœ ê²Œì‹œë¬¼ì´ ì—†ìŠµë‹ˆë‹¤.</div>
-	</c:if>
-	<c:if test="${dona_count > 0}">
+
+<h3 class="hdg">³ªÀÇ ÈÄ¿ø³»¿ª</h3>
+
 
 						<div class="col-md-12">
 							<table class="table table-hover">
 							  <thead>
 							    <tr>
-							      <th scope="col">í›„ì›ìž ë²ˆí˜¸</th>
-							      <th scope="col">í›„ì›ìž ë‹‰ë„¤ìž„</th>
-							      <th scope="col">í›„ì›í•œ ë³´í˜¸ì†Œ</th>
-							      <th scope="col">í›„ì› ë‚ ì§œ</th>
-							      <th scope="col">í›„ì› ë©”ì‹œì§€</th>
-							      <th scope="col">í›„ì› ê¸ˆì•¡</th>
-							      <th scope="col">í›„ì› ìƒí’ˆë²ˆí˜¸</th>
-							      <th scope="col">í›„ì› ìƒí’ˆëª…</th>
-							      <th scope="col">í›„ì› ìƒí’ˆ ê°¯ìˆ˜</th>
+							      <th scope="col">ÈÄ¿øÀÚ ¹øÈ£</th>
+							      <th scope="col">ÈÄ¿øÀÚ ´Ð³×ÀÓ</th>
+							      <th scope="col">ÈÄ¿øÇÑ º¸È£¼Ò</th>
+							      <th scope="col">ÈÄ¿ø ³¯Â¥</th>
+							      <th scope="col">ÈÄ¿ø ¸Þ½ÃÁö</th>
+							      <th scope="col">ÈÄ¿ø ±Ý¾×</th>
+							      <th scope="col">ÈÄ¿ø »óÇ°¹øÈ£</th>
+							      <th scope="col">ÈÄ¿ø »óÇ°¸í</th>
+							      <th scope="col">ÈÄ¿ø »óÇ° °¹¼ö</th>
 							    </tr>
 							  </thead>
+	<c:forEach var="donation" items="${donaList}">
+	<c:if test="${dona_count == 0}">
+	<div class="align-center">µî·ÏµÈ °Ô½Ã¹°ÀÌ ¾ø½À´Ï´Ù.</div>
+	</c:if>
+	<c:if test="${dona_count > 0}">  
 							  <tbody>							
 							    <tr class="table-info">
 							      <th scope="row">${donation.dona_num}</th>
@@ -211,20 +213,21 @@ body {
 							    </tr>
 														 
 							  </tbody>
+	 </c:if>	
+</c:forEach>
 							</table> 
 						</div>
-</c:if>	
-</c:forEach>
+
 
 
 
 <c:forEach var="boCall" items="${boCallList}">
-<h3 class="hdg">ìž„ì‹œ ë³´í˜¸ìž ì§‘ìœ¼ë¡œ ë¶€ë¥´ê¸°</h3>
+<h3 class="hdg">ÀÓ½Ã º¸È£ÀÚ ÁýÀ¸·Î ºÎ¸£±â</h3>
 		<div class="col-md-12">
 							<table class="table table-hover">
 							  <thead>
 							    <tr>
-							      <th scope="col">íšŒì›ì´ ì‹ ì²­ê¸€ ì“°ê³  íŽ«ì‹œí„°ê°€ ì˜¨ë‹¤.  </th>     
+							      <th scope="col">È¸¿øÀÌ ½ÅÃ»±Û ¾²°í Æê½ÃÅÍ°¡ ¿Â´Ù.  </th>     
 							http://localhost:8080/ProjectCAN/ap/apCalldetail.do?call_num=5	 
 							    </tr>
 							  </thead>
@@ -243,7 +246,7 @@ ${boCall.bo_start_min} ${boCall.bo_start_hour}  ${boCall.bo_date_start}  ${boCal
 
 
 </c:forEach>
-<h3 class="hdg">ìž„ì‹œ ë³´í˜¸ìž ì§‘ì— ë§¡ê¸°ê¸°</h3>
+<h3 class="hdg">ÀÓ½Ã º¸È£ÀÚ Áý¿¡ ¸Ã±â±â</h3>
 
 
 

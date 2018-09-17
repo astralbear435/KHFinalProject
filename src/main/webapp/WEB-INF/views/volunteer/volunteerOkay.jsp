@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>봉사활동 신청 완료</title>
+<title>����Ȱ�� ��û �Ϸ�</title>
 </head>
 <body>
-봉사활동 신청이 완료되었습니다.
+����Ȱ�� ��û�� �Ϸ�Ǿ����ϴ�.
 </body>
 </html>

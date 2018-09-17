@@ -17,9 +17,12 @@ public class VolunteerServiceImpl implements VolunteerService{
 	private VolunteerMapper volunteerMapper;
 
 	@Override
-	public void insert(RecruitCommand volunteer) {
-		volunteerMapper.insert(volunteer);
+	public void insert(Map<String,Object> map) {
+		volunteerMapper.insert(map);
 	}
+	
+	
+	
 	
 	@Override
 	public List<RecruitCommand> selectList(Map<String,Object> map){
