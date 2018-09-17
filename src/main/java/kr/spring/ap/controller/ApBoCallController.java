@@ -39,18 +39,7 @@ public class ApBoCallController {
 		if(log.isDebugEnabled()) {
 			log.debug("<<apBoCallCommand>> : " + apBoCallCommand);
 		}
-		
-<<<<<<< HEAD
-		if(result.hasErrors()) {
-			log.debug("예약이 실패되었습니다.");
-			return "redirect:/ap/apCalldetail?call_num="+apCallCommand.getCall_num();
-		}
-		
-		//글쓰기
-		apBoCallService.insert(apBoCallCommand);
-		
-		return "redirect:/ap/apCalldetail?call_num="+apCallCommand.getCall_num();
-=======
+
 		//글쓰기
 		apBoCallService.insert(apBoCallCommand);
 		
@@ -61,7 +50,6 @@ public class ApBoCallController {
 
 		
 		return "redirect:/ap/apCalldetail.do?call_num="+apCallCommand.getCall_num();
->>>>>>> 5a7df9190c29225c4573d55461e9b72da4f8bb45
 	}
 
 }

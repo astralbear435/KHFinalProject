@@ -27,13 +27,8 @@
 <div class="container">
 	<div class="col-md-2" style="float:right; margin:100px 0 50px 0;">
 		<c:if test="${!empty user_id && user_id == apcommand.id}">
-<<<<<<< HEAD
 			<input type="button" class="btn btn-warning" value="수정" onclick="location.href='apModify.do?ap_num=${apcommand.ap_num}'">
 			<input type="button" class="btn btn-danger" value="삭제" id="apdelete" data-num="${apcommand.ap_num}">
-=======
-			<input type="button" class="btn btn-warning" value="수정" onclick="location.href='apModify.do?ap_num=${apcommand.ap_num}'"><br><br>
-			<input type="button" class="btn btn-danger" value="삭제" id="apdelete" data-num="${apcommand.ap_num}"><br><br>
->>>>>>> 5a7df9190c29225c4573d55461e9b72da4f8bb45
 		</c:if>
 		<input type="button" class="btn btn-secondary" value="목록" onclick="location.href='apList.do'"><br><br>
 	</div>
@@ -134,12 +129,8 @@
 			</c:forTokens>
 		</div>
 	</div>
-	
-<<<<<<< HEAD
+
 	<div class="border-styles col-md-4">
-=======
-	<div class="border-styles col-md-4" style="float:left; margin:100px 0 0 30px;">
->>>>>>> 5a7df9190c29225c4573d55461e9b72da4f8bb45
 		<form:form commandName="command" action="apBoWrite.do" enctype="multipart/form-data">
 			<input type="hidden" id="bo_id" name="bo_id" value="${user_id}">
 			<input type="hidden" id="id" name="id" value="${apcommand.id}">
