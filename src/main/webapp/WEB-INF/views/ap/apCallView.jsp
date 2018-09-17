@@ -9,15 +9,26 @@
 
 <div class="container">
 
+<<<<<<< HEAD
 	<div style="float:right; margin:100px 0 50px 0;">
 		<c:if test="${!empty user_id && user_id == apcall.call_name}">
 			<input type="button" class="btn btn-warning" value="수정" onclick="location.href='apModify.do?ap_num=${apcommand.ap_num}'">
 			<input type="button" class="btn btn-danger" value="삭제" id="apdelete" data-num="${apcommand.ap_num}">
+=======
+	<div class="col-md-2" style="float:right; margin:100px 0 50px 0;">
+		<c:if test="${!empty user_id && user_id == apcall.call_name}">
+			<input type="button" class="btn btn-warning" value="수정" onclick="location.href='apModify.do?ap_num=${apcommand.ap_num}'"><br><br>
+			<input type="button" class="btn btn-danger" value="삭제" id="apdelete" data-num="${apcommand.ap_num}"><br><br>
+>>>>>>> 5a7df9190c29225c4573d55461e9b72da4f8bb45
 		</c:if>
-		<input type="button" class="btn btn-secondary" value="목록" onclick="location.href='apCallList.do'">
+		<input type="button" class="btn btn-primary" value="목록" onclick="location.href='apCallList.do'"><br><br>
 	</div>
 	
+<<<<<<< HEAD
 	<div class="border-styles col-md-7"style="float:left; margin:100px 0 50px 0;">
+=======
+	<div class="border-styles col-md-9" style="float:center; margin:100px 0 50px 0;">
+>>>>>>> 5a7df9190c29225c4573d55461e9b72da4f8bb45
 		<div style="margin:10px 0 10px 0;">
 			[${apcall.call_num}] ${apcall.call_name} 
 		</div>
@@ -68,10 +79,17 @@
 				<p>나의 반려동물 소개<br></p>
 				<p>${apcall.call_intro}</p>
 		</div>
+<<<<<<< HEAD
 	</div>
 	
 	<div class="border-styles col-md-4">
 		<form:form commandName="command" action="apBoCallWrite.do" enctype="multipart/form-data">
+=======
+		<hr>
+		
+		<div>
+			<form:form commandName="command" action="apBoCallWrite.do" enctype="multipart/form-data">
+>>>>>>> 5a7df9190c29225c4573d55461e9b72da4f8bb45
 			<input type="hidden" id="bo_call_id" name="bo_call_id" value="${user_id}">
 			<input type="hidden" id="bo_call_date_start" name="bo_call_date_start" value="${apcall.call_start}">
 			<input type="hidden" id="bo_call_date_end" name="bo_call_date_end" value="${apcall.call_end}">
@@ -81,13 +99,26 @@
 				<input type="hidden" id="bo_call_re_hour" name="bo_call_re_hour" value="${apcall.call_re_hour}">
 				<input type="hidden" id="bo_call_re_min" name="bo_call_re_min" value="${apcall.call_re_min}">
 			</c:if>
+<<<<<<< HEAD
+=======
+			<c:if test="${apcall.call_re == 2}">
+				<input type="hidden" id="bo_call_re_date" name="bo_call_re_date" value="0">
+				<input type="hidden" id="bo_call_re_hour" name="bo_call_re_hour" value="0">
+				<input type="hidden" id="bo_call_re_min" name="bo_call_re_min" value="0">
+			</c:if>
+>>>>>>> 5a7df9190c29225c4573d55461e9b72da4f8bb45
 			<input type="hidden" id="call_name" name="call_name" value="${apcall.call_name}">
 			<input type="hidden" id="call_num" name="call_num" value="${apcall.call_num}">
 			<input type="submit" class="btn btn-warning btn-lg btn-block" 
 					style="margin:10px 0 10px 0;" value="예약하기">
 		</form:form>
+<<<<<<< HEAD
 	</div>
 
+=======
+		</div>
+	</div>
+>>>>>>> 5a7df9190c29225c4573d55461e9b72da4f8bb45
 	<!-- 목록 출력 -->
 	<div id="output"></div>
 	<div class="paging-button" style="display:none;">
