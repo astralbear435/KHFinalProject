@@ -3,6 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#v_btn').click(function(){
@@ -18,9 +19,9 @@
 
  <hr class="my-4">
 	<form:form commandName="volunteer" action="volunteerUpdate.do" id="volunteerUpdate_form" name="myForm">
-		<form:hidden path="v_id" />
-		<form:hidden path="v_num" />
-		<form:errors element="div" cssClass="error-color" />
+		<form:hidden path="v_id"/>
+		<form:hidden path="v_num"/>
+		<form:errors element="div" cssClass="error-color"/>
 		
 	<div>봉사활동 날짜<input type="date" name="v_date" id="v_date" min=${recruit.r_start_date} max=${recruit.r_end_date}>
 		</div>

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -130,6 +131,56 @@ public class ShelterController {
 			
 			return map;
 		}
+
+
+	//================== 로그인 =========================	
+	// 로그인폼에서 전송된 데이터 처리
+	@RequestMapping(value="/member/shelterLogin.do")
+	@ResponseBody
+	public Map<String,String> submitLoginShelter(@Valid ShelterCommand shelterCommand, 
+								BindingResult result, HttpServletRequest request, HttpSession session) {
+		Map<String,String> map = new HashMap<String,String>();
+		
+		System.out.println(shelterCommand);
+		
+		//로그인 체크(id,비밀번호 일치 여부 체크)
+		try {
+			ShelterCommand shelter = shelterService.selectShelter(shelterCommand.getS_id());
+			boolean check = false;
+			
+			if(shelter != null) {//아이디가 존재하면
+				// 비밀번호 일치 여부 체크 > 암호화 된 비번의 일치여부 확인
+				check = shelter.isCheckedPasswd(cipherAES.encrypt(shelterCommand.getS_passwd()));
+				System.out.println(check);
+			}
+			if(check) {
+				//인증 성공, 로그인처리
+				session = request.getSession(true);
+				session.setAttribute("user_id",shelter.getS_id());
+				session.setAttribute("user_auth",shelter.getAuth());
+				
+				map.put("result", "success");
+				System.out.println(map);
+				
+				return map;
+			}else {
+				//인증 실패 : catch블록으로 넘어감
+				throw new Exception();
+			}
+			
+		}catch(Exception e) {
+			
+			//인증 실패로 폼 호출
+			result.reject("invalidIdOrPassword");
+			
+			map.put("result", "false");
+			System.out.println("map 반환");
+			
+			return map;
+		}
+
+	}
+
 	
 	//================== 회원 상세 정보 =========================
 	// 진입 전 비밀번호 확인

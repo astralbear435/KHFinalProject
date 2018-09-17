@@ -36,3 +36,9 @@
 #block-btn { 
 	display:inline-block; 
 }
+
+.horizontal { /* 가로 여백 */
+	clear: both;
+	width: 100%;
+	height: 40px;
+}
