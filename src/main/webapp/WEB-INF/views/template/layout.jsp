@@ -153,12 +153,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	}
 	.messages .message.left .avatar img{
 	  width:60px;
+	  border-radius: 50%;
 	}
-	.messages .message.left .text_wrapper {
+	.messages .message.left > .text_wrapper {
 	  background-color: #ffe6cb;
 	  margin-left: 20px;
 	}
-	.messages .message.left .text_wrapper::after, .messages .message.left .text_wrapper::before {
+	.messages .message.left > .text_wrapper::after, .messages .message.left > .text_wrapper::before {
 	  right: 100%;
 	  border-right-color: #ffe6cb;
 	}
@@ -166,15 +167,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	  color: #c48843;
 	}
 	.messages .message.right .avatar {
-	  background-color: #fdbf68;
 	  float: right;
+	  border-radius: 50%;
 	}
-	.messages .message.right .text_wrapper {
+	.messages .message.right .avatar img{
+	  width:60px;
+	}
+	.messages .message.right > .text_wrapper {
 	  background-color: #c7eafc;
-	  margin-right: 20px;
-	  float: right;
 	}
-	.messages .message.right .text_wrapper::after, .messages .message.right .text_wrapper::before {
+	.messages .message.right > .text_wrapper::after, .messages .message.right > .text_wrapper::before {
 	  left: 100%;
 	  border-left-color: #c7eafc;
 	}
@@ -277,97 +279,96 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!-- //menu -->
 </head>
-<body>
-	<div id="main">
-		<div id="main_header">
-			<tiles:insertAttribute name="header"/>
+	<body>
+		<div id="main">
+			<div id="main_header">
+				<tiles:insertAttribute name="header"/>
+			</div>
+			<div id="main_menu">
+				<tiles:insertAttribute name="menu"/>
+			</div>
+			<div id="main_body">
+				<tiles:insertAttribute name="body"/>
+			</div>
+			<div id="main_footer">
+				<tiles:insertAttribute name="footer"/>
+			</div>
 		</div>
-		<div id="main_menu">
-			<tiles:insertAttribute name="menu"/>
-		</div>
-		<div id="main_body">
-			<tiles:insertAttribute name="body"/>
-		</div>
-		<div id="main_footer">
-			<tiles:insertAttribute name="footer"/>
-		</div>
-	</div>
-	
-	<script src="${pageContext.request.contextPath}/resources/js/responsiveslides.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jarallax.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/SmoothScroll.min.js"></script>
-	<script type="text/javascript">
-        /* init Jarallax */
-        $('.jarallax').jarallax({
-            speed: 0.5,
-            imgWidth: 1366,
-            imgHeight: 768
-        })
-    </script>
-	<script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){		
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		
+		<script src="${pageContext.request.contextPath}/resources/js/responsiveslides.min.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/jarallax.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/SmoothScroll.min.js"></script>
+		<script type="text/javascript">
+	        /* init Jarallax */
+	        $('.jarallax').jarallax({
+	            speed: 0.5,
+	            imgWidth: 1366,
+	            imgHeight: 768
+	        })
+	    </script>
+		<script type="text/javascript">
+				jQuery(document).ready(function($) {
+					$(".scroll").click(function(event){		
+						event.preventDefault();
+						$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+					});
 				});
-			});
-	</script>
-	
-	<script src="${pageContext.request.contextPath}/resources/js/chatting.js"></script>
-	<!-- chat -->
-	<div id="toggle_chat">
-		<div id="m_nav_chat">
-			채팅문의
-			<div id="chat_icon">
-				<img
-					src="${pageContext.request.contextPath}/resources/images/member/chatting_icon.png">
+		</script>
+		
+		<script src="${pageContext.request.contextPath}/resources/js/chatting.js"></script>
+		<!-- chat -->
+		<div id="toggle_chat">
+			<div id="m_nav_chat">
+				채팅문의
+				<div id="chat_icon">
+					<img src="${pageContext.request.contextPath}/resources/images/member/chatting_icon.png">
+				</div>
 			</div>
 		</div>
-	</div>
-	<!-- open chatting -->
-	<!------ Include the above in your HEAD tag ---------->
-	<div id="m_chat_container">
-		<div class="chat_window">
-			<div class="top_menu">
-				<div class="button close" id="button_close"style="margin-top: 0px;"></div>
-				<div class="buttons">
-					<div class="button minimize"></div>
-					<div class="button maximize"></div>
-				</div>
-				<div class="title">고객상담 톡</div>
-			</div>
-			<ul class="messages">
-				<li class="message left appeared">
-					<div class="avatar">
-						<img src="${pageContext.request.contextPath}/resources/images/member/admin.jpg">
+		<!-- open chatting -->
+		<!------ Include the above in your HEAD tag ---------->
+		<div id="m_chat_container">
+			<div class="chat_window">
+				<div class="top_menu">
+					<div class="button close" id="button_close"style="margin-top: 0px;"></div>
+					<div class="buttons">
+						<div class="button minimize"></div>
+						<div class="button maximize"></div>
 					</div>
+					<div class="title">고객상담 톡</div>
+				</div>
+				<ul class="messages">
+					<li class="message left appeared" id="message_appear">
+						<div class="avatar">
+							<img src="${pageContext.request.contextPath}/resources/images/member/chat_admin.jpg">
+						</div>
+						<div class="text_wrapper">
+							<div class="text">안녕하세요. CAN 고객상담 톡입니다. 24시간 언제나 빠르게 안내해드리겠습니다.<br> 무엇을 도와드릴까요?</div>
+						</div>
+					</li>
+				</ul>
+				<div class="bottom_wrapper clearfix">
+					<div class="message_input_wrapper">
+						<input class="message_input" id="message_input" placeholder="메시지를 입력하세요..." />
+					</div>
+					<div class="send_message" id="send_message">
+						<div class="icon"></div>
+						<div class="text">전송</div>
+					</div>
+				</div>
+			</div>
+			<div class="message_template">
+				<ul>
+				<li class="message">
+					<div class="avatar"></div>
 					<div class="text_wrapper">
-						<div class="text">안녕하세요. CAN 고객상담 톡입니다. 24시간 언제나 빠르게 안내해드리겠습니다.<br> 무엇을 도와드릴까요?</div>
+						<div class="text"></div>
 					</div>
 				</li>
-			</ul>
-			<div class="bottom_wrapper clearfix">
-				<div class="message_input_wrapper">
-					<input class="message_input" placeholder="메시지를 입력하세요..." />
-				</div>
-				<div class="send_message">
-					<div class="icon"></div>
-					<div class="text">전송</div>
-				</div>
+				</ul>
 			</div>
 		</div>
-		<div class="message_template">
-			<ul>
-			<li class="message">
-				<div class="avatar"></div>
-				<div class="text_wrapper">
-					<div class="text"></div>
-				</div>
-			</li>
-			</ul>
-		</div>
-	</div>
-</body>
+	</body>
 </html>
 
 

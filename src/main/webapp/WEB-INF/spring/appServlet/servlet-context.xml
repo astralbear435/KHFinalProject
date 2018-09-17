@@ -4,8 +4,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	<context:component-scan
@@ -160,4 +162,10 @@
 		<beans:constructor-arg
 			value="D:\\javaWork\\workspace_spring\\KHFinalProject\\src\\main\\webapp\\upload" />
 	</beans:bean>
+	
+	<websocket:handlers>
+		<websocket:mapping handler="chatHandler" path="/chat-ws.do"/>
+	</websocket:handlers>
+	<beans:bean id="chatHandler" class="kr.spring.websocket.ws.ChatWebSocketHandler"/>
+	
 </beans:beans>

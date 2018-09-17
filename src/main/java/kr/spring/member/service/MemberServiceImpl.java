@@ -20,7 +20,8 @@ import kr.spring.util.CipherTemplate;
 public class MemberServiceImpl implements MemberService {
 	
 	@Resource
-	private MemberMapper memberMapper;	
+	private MemberMapper memberMapper;
+
 	@Resource
 	private CipherTemplate cipherAES;
 	
