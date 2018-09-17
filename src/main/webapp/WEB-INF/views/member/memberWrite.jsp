@@ -7,7 +7,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/memberConfirm.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
-<div class="w500 margin0a">
+<div class="500 margin0a">
 	<br>
 	<div id="margin0a">
 		<div style="width: 450px; margin: 0 auto;">

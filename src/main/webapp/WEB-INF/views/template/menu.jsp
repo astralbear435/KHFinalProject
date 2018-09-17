@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 	<!-- banner -->
 	<div class="banner">
 		<!-- menu -->
@@ -11,7 +12,7 @@
 				<div class="m_nav_ham" id="m_ham_3"></div>
 			  </div>
 			</div>
-
+			
 			<div id="m_nav_container" class="m_nav">
 			  <ul id="m_nav_list" class="m_nav">
 				<li> <a href="${pageContext.request.contextPath}/main/main.do">Home</a> </li>
@@ -32,6 +33,7 @@
 				<li><a href="${pageContext.request.contextPath}/goods/list.do">후원하기</a></li>
 			  </ul>
 			</div>
+			
 		<!-- menu -->
 		<div class="container">
 			<div class="w3l-banner-grids">
