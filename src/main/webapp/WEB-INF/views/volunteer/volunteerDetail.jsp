@@ -7,11 +7,11 @@
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 
-	//ajax·Î »èÁ¦ÇØ¾ß ÇÔ
+	//ajaxë¡œ ì‚­ì œí•´ì•¼ í•¨
 	function deleteVNum(){
 		var v_num = $('#v_num').text();
 		
-		if(confirm("ÀÏÁ¤À» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?")){
+		if(confirm("ì¼ì •ì„ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?")){
 			location.replace('volunteer/volunteerDelete.do?v_num=' + v_num);
 		}else{
 			return;
@@ -28,36 +28,36 @@
 	<div id="v_num" style="display: none;">${volunteer.v_num}</div>	
 	<p>${volunteer.r_title}</p>
 
-	<h5>ºÀ»çÈ°µ¿ ³»¿ë ¾È³»</h5>
+	<h5>ë´‰ì‚¬í™œë™ ë‚´ìš© ì•ˆë‚´</h5>
 	<h6>${volunteer.r_content}</h6>
 	
-	<h5>¸ğÁı ÀÎ¿ø</h5>
+	<h5>ëª¨ì§‘ ì¸ì›</h5>
 	
-	<h6>ÀÏÀÏ ${volunteer.r_people} ¸í</h6>
+	<h6>ì¼ì¼ ${volunteer.r_people} ëª…</h6>
 	
 	<c:if test="${volunteer.r_status ==2}">
-	<p class="card-text">¸ğÁı ³¯Â¥  : ${volunteer.r_start_date}~${volunteer.r_end_date}</p>
+	<p class="card-text">ëª¨ì§‘ ë‚ ì§œ  : ${volunteer.r_start_date}~${volunteer.r_end_date}</p>
 	</c:if>
 	<c:if test="${volunteer.r_status ==1}">
-		<p class="card-text">»ó½Ã ¸ğÁı Áß</p>
+		<p class="card-text">ìƒì‹œ ëª¨ì§‘ ì¤‘</p>
 	</c:if>
 	
 	<div id="before">	
-	ºÀ»çÈ°µ¿ ½ÅÃ» ³¯Â¥ : ${volunteer.v_date} 	
+	ë´‰ì‚¬í™œë™ ì‹ ì²­ ë‚ ì§œ : ${volunteer.v_date} 	
 	<c:if test="${volunteer.v_status==1}">
-	 ºÀ»çÈ°µ¿ ½ÅÃ» ½Ã°£ : 1~3½Ã
+	 ë´‰ì‚¬í™œë™ ì‹ ì²­ ì‹œê°„ : 1~3ì‹œ
 	</c:if>
 	<c:if test="${volunteer.v_status==2}">
-	 ºÀ»çÈ°µ¿ ½ÅÃ» ½Ã°£ : 3~5½Ã
+	 ë´‰ì‚¬í™œë™ ì‹ ì²­ ì‹œê°„ : 3~5ì‹œ
 	</c:if>
 
 	</div>
 	<div id="output"></div>	
 	
 <div id="before2">
-<input type="button" value="ºÀ»çÈ°µ¿ ÀÏÁ¤  º¯°æ" class="modify-btn btn-success" id="modify-btn" onclick="location.href='${pageContext.request.contextPath}/volunteer/volunteerUpdate.do?v_num=${volunteer.v_num}'">
+<input type="button" value="ë´‰ì‚¬í™œë™ ì¼ì •  ë³€ê²½" class="modify-btn btn-success" id="modify-btn" onclick="location.href='${pageContext.request.contextPath}/volunteer/volunteerUpdate.do?v_num=${volunteer.v_num}'">
 </div>
 	
-	<input type="button" value="ºÀ»çÈ°µ¿ ÀÏÁ¤ Ãë¼Ò" class="btn btn-success" id="delete"  onclick="deleteVNum();">
+	<input type="button" value="ë´‰ì‚¬í™œë™ ì¼ì • ì·¨ì†Œ" class="btn btn-success" id="delete"  onclick="deleteVNum();">
 				
 </div>

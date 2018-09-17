@@ -13,7 +13,7 @@ import kr.spring.recruit.domain.RecruitCommand;
 
 
 public interface VolunteerMapper {
-	//ë´‰ì‚¬í™œë™ ì‹ ì²­ ê¸€ ì‘ì„±
+	//ºÀ»çÈ°µ¿ ½ÅÃ» ±Û ÀÛ¼º
 	@Insert("INSERT INTO volunteer (v_num,v_id,v_date,r_num,v_ip,v_status) VALUES (volunteer_seq.nextval,#{v_id},#{v_date},#{r_num},null,#{v_status})")
 	public void insert(Map<String,Object> map);
 

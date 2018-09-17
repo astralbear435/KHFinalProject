@@ -1,73 +1,67 @@
 $(document).ready(function(){
-	//ºÀ»ç¸ğÁı±Û ÀÛ¼º À¯È¿¼º Ã¼Å©
+	//ë´‰ì‚¬ëª¨ì§‘ê¸€ ì‘ì„± ìœ íš¨ì„± ì²´í¬
 	$('#recruitWrite_form').submit(function(){
 		if($('#r_upload').val()==''){
-			alert('º¸È£¼Ò¸¦ ¼Ò°³ÇÒ ÀÌ¹ÌÁö¸¦ ¹İµå½Ã Ã·ºÎÇØÁÖ¼¼¿ä');
+			alert('ë³´í˜¸ì†Œë¥¼ ì†Œê°œí•  ì´ë¯¸ì§€ë¥¼ ë°˜ë“œì‹œ ì²¨ë¶€í•´ì£¼ì„¸ìš”');
 			$('#r_upload').focus();
 			return false;
 		}
 		if($('#r_title').val()==''){
-			alert('±Û Á¦¸ñÀ» ÀÛ¼ºÇØÁÖ¼¼¿ä');
+			alert('ê¸€ ì œëª©ì„ ì‘ì„±í•´ì£¼ì„¸ìš”');
 			$('#r_title').focus();
 			return false;
 		}
 		if($('#r_status').val()==''){
-			alert('¸ğÁı ±â°£À» ¼³Á¤ÇØÁÖ¼¼¿ä');
+			alert('ëª¨ì§‘ ê¸°ê°„ì„ ì„¤ì •í•´ì£¼ì„¸ìš”');
 			$('#r_status').focus();
 			return false;
 		}
-		//Àû¿ë ¾ÈµÊ
+		//ì ìš© ì•ˆë¨
 		if($('#r_status').val()=='1'){
 			document.getElementById("r_start_date").disabled = true;
 			document.getElementById("r_end_date").disabled = true;
 		}
 		
-		//Àû¿ë ¾ÈµÊ
+		//ì ìš© ì•ˆë¨
 		if($('#r_status').val()=='2'){
 			if($('#r_start_date').val()==''||$('#r_end_date').val()==''){
 				$('#r_end_date').val('');
 				$('#r_start_date').val('').focus();
-				alert('¸ğÁı ³¯Â¥¸¦ ÁöÁ¤ÇØÁÖ¼¼¿ä');
+				alert('ëª¨ì§‘ ë‚ ì§œë¥¼ ì§€ì •í•´ì£¼ì„¸ìš”');
 			}			
 			return false;
 		}
 		
 		if(new Date($('#r_start_date').val()) > new Date($('#r_end_date').val())){
-			alert('¸ğÁı ½ÃÀÛ ³¯Â¥ µÚ·Î ¸¶°¨ ³¯Â¥¸¦ ÁöÁ¤ÇØ¾ß ÇÕ´Ï´Ù.');
+			alert('ëª¨ì§‘ ì‹œì‘ ë‚ ì§œ ë’¤ë¡œ ë§ˆê° ë‚ ì§œë¥¼ ì§€ì •í•´ì•¼ í•©ë‹ˆë‹¤.');
 			$('#r_end_date').val('');
 			$('#r_start_date').val('').focus();
 			return false;
 		}	
 		if($('#r_people').val()==''){
-			alert('ÀÏÀÏ ¸ğÁı ÀÎ¿øÀ» ¼³Á¤ ÇØÁÖ¼¼¿ä');
+			alert('ì¼ì¼ ëª¨ì§‘ ì¸ì›ì„ ì„¤ì • í•´ì£¼ì„¸ìš”');
 			$('#r_people').focus();
 			return false;
 		}
 		if($('#r_content').val()==''){
-			alert('º¸È£¼Ò ºÀ»çÈ°µ¿ ¾È³»±ÛÀ» ÀÛ¼ºÇØÁÖ¼¼¿ä');
+			alert('ë³´í˜¸ì†Œ ë´‰ì‚¬í™œë™ ì•ˆë‚´ê¸€ì„ ì‘ì„±í•´ì£¼ì„¸ìš”');
 			$('#r_content').focus();
 			return false;
 		}	
-		alert('ºÀ»çÂü¿©ÀÚ°¡ Á¸ÀçÇÏ¸é ÇâÈÄ ±ÛÀ» ¼öÁ¤ÇÏ´Âµ¥ Á¦¾àÀÌ ÀÖÀ» ¼ö ÀÖ½À´Ï´Ù. ÀÌ´ë·Î ±ÛÀ» ¿Ã¸®½Ã°Ú½À´Ï±î?');
+		alert('ë´‰ì‚¬ì°¸ì—¬ìê°€ ì¡´ì¬í•˜ë©´ í–¥í›„ ê¸€ì„ ìˆ˜ì •í•˜ëŠ”ë° ì œì•½ì´ ìˆì„ ìˆ˜ ìˆìŠµë‹ˆë‹¤. ì´ëŒ€ë¡œ ê¸€ì„ ì˜¬ë¦¬ì‹œê² ìŠµë‹ˆê¹Œ?');
 		return true;
 	});
 
 
 
 	$('#recruitMidify_form').click(function(){
-		 //Àû¿ë ¾ÈµÊ
+		 //ì ìš© ì•ˆë¨
 		if($("#r_status").val()=='1'){
 			 $("#r_status1").prop("checked", true);
 		 }
 		 if($("#r_status").val()=='2'){
 			 $("#r_status2").prop("checked", true);
 		 }
-		 alert('ÀÌ´ë·Î ±ÛÀ» ¿Ã¸®½Ã°Ú½À´Ï±î?');
+		 alert('ì´ëŒ€ë¡œ ê¸€ì„ ì˜¬ë¦¬ì‹œê² ìŠµë‹ˆê¹Œ?');
 	});
-	
-
-	
-	
-
-
 });

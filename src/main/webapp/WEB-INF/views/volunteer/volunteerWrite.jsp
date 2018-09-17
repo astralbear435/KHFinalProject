@@ -32,7 +32,7 @@
       businessHours: true,
       
       dayClick: function(date, jsEvent, view) {
-    	 alert( date.format()+' ºÀ»çÈ°µ¿À» ½ÅÃ»ÇÕ´Ï´Ù.');   	   
+    	 alert( date.format()+' ë´‰ì‚¬í™œë™ì„ ì‹ ì²­í•©ë‹ˆë‹¤.');   	   
   	    document.getElementById("date").innerHTML = date.format();
       },
       selectable: true,
@@ -117,13 +117,13 @@
   	      	    	timeout:10000,
   	      	    	success: function(data){
   	      	    		if(data.result == 'logout'){
-  	      	    			alert('·Î±×ÀÎÀÌ ÇÊ¿äÇÕ´Ï´Ù.');
+  	      	    			alert('ë¡œê·¸ì¸ì´ í•„ìš”í•©ë‹ˆë‹¤.');
   	      	    		}else if(data.result == 'success'){
-  	      	    			alert('ºÀ»çÈ°µ¿ ½ÅÃ»ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.');
+  	      	    			alert('ë´‰ì‚¬í™œë™ ì‹ ì²­ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.');
   	      	    		}
   	      	    	},
   	      	    	error: function(){
-  	      	    		alert('³×Æ®¿öÅ© ¿À·ù');
+  	      	    		alert('ë„¤íŠ¸ì›Œí¬ ì˜¤ë¥˜');
   	      	    	}
   	      	    });  	      	 
   	      });       
@@ -149,24 +149,24 @@
 
 </style>
 	
-<title>ºÀ»ç È°µ¿ ½ÅÃ»¼­</title>
+<title>ë´‰ì‚¬ í™œë™ ì‹ ì²­ì„œ</title>
 	<div>
-		<h2>${shelterName.s_name} ºÀ»ç È°µ¿ ½ÅÃ»</h2>
-		<a href="º¸È£¼Ò ¼Ò°³ ÆäÀÌÁö·Î ÀÌµ¿¸µÅ©">${recruit.r_id} º¸È£¼Ò¸¦ ¼Ò°³ÆäÀÌÁö ¹Ù·Î°¡±â.</a>
-		<p>Á¦¸ñ ${recruit.r_title}</p>
+		<h2>${shelterName.s_name} ë´‰ì‚¬ í™œë™ ì‹ ì²­</h2>
+		<a href="ë³´í˜¸ì†Œ ì†Œê°œ í˜ì´ì§€ë¡œ ì´ë™ë§í¬">${recruit.r_id} ë³´í˜¸ì†Œë¥¼ ì†Œê°œí˜ì´ì§€ ë°”ë¡œê°€ê¸°.</a>
+		<p>ì œëª© ${recruit.r_title}</p>
 		<p>${recruit.r_content}</p>
-		<p>¸ğÁı ÀÎ¿ø : ÀÏÀÏ  ${recruit.r_people} ¸í</p>
+		<p>ëª¨ì§‘ ì¸ì› : ì¼ì¼  ${recruit.r_people} ëª…</p>
 		<c:if test="${recruit.r_status==1}">
-		<p>»ó½Ã ¸ğÁı Áß</p>
+		<p>ìƒì‹œ ëª¨ì§‘ ì¤‘</p>
 		</c:if>
 		<c:if test="${recruit.r_status==2}">
-		<p>¸ğÁı ³¯Â¥   ${recruit.r_start_date}~${recruit.r_end_date}</p>
+		<p>ëª¨ì§‘ ë‚ ì§œ   ${recruit.r_start_date}~${recruit.r_end_date}</p>
 		</c:if>
 		<form <%-- action="${pageContext.request.contextPath}/volunteer/volunteerWrite.do" --%> id="volunteerWrite_form" method="post">
 			<input type="hidden" name="r_num" value="${recruit.r_num}" id="r_num"/>
 			<table>
 				<tr>
-					<td>ºÀ»çÈ°µ¿ ½ÅÃ» ³¯Â¥ : </td> <td> <p id='date'>´Ş·Â¿¡¼­ ¿øÇÏ½Ã´Â ³¯Â¥¸¦ ¼±ÅÃÇÏ¼¼¿ä</p> </td>
+					<td>ë´‰ì‚¬í™œë™ ì‹ ì²­ ë‚ ì§œ : </td> <td> <p id='date'>ë‹¬ë ¥ì—ì„œ ì›í•˜ì‹œëŠ” ë‚ ì§œë¥¼ ì„ íƒí•˜ì„¸ìš”</p> </td>
 					<%-- <c:if test="${recruit.r_status} == '1'">
 					
 					</c:if>
@@ -175,18 +175,18 @@
 					</td>			</c:if> --%>		
 				</tr>
 				<tr>
-					<td>ºÀ»çÈ°µ¿ ½ÅÃ» ½Ã°£</td>
+					<td>ë´‰ì‚¬í™œë™ ì‹ ì²­ ì‹œê°„</td>
 					<td>
 						<div class="form-check-radio">
 							<label class="form-check-label"> <input type="radio"
 								name="v_status" id="v_status1" class="form-check-input"
-								value="1">1~3½Ã<span class="form-check-sign"></span>
+								value="1">1~3ì‹œ<span class="form-check-sign"></span>
 							</label>
 						</div>
 						<div class="form-check-radio">
 							<label class="form-check-label"> <input type="radio"
 								name="v_status" id="v_status2" class="form-check-input"
-								value="2" checked>3~5½Ã <span class="form-check-sign"></span>
+								value="2" checked>3~5ì‹œ <span class="form-check-sign"></span>
 							</label>
 						</div>
 					</td>
@@ -194,7 +194,7 @@
 			</table>
 
 			<div class="align-center">
-				<input type="submit" value="½ÅÃ»ÇÏ±â" id="date_submit">
+				<input type="submit" value="ì‹ ì²­í•˜ê¸°" id="date_submit">
 			</div>
 	
 		</form>

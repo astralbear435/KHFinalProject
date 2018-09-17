@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>�Ϸ�</title>
+<title>완료</title>
 </head>
 <body>
-	����Ȱ�� ��û�� �Ϸ�Ǿ����ϴ�.
+	봉사활동 신청이 완료되었습니다.
 	
 </body>
 </html>

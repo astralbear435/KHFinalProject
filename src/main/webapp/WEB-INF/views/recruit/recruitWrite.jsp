@@ -7,21 +7,21 @@
 <div class="container jumbotron">
 
  <hr class="my-4">	
-	<!-- 1. ¸ðÁýÀÎ¿ø µðÆúÆ®´Â 0À¸·Î ¸¸µé±â 
-	2. ¶óµð¿À ½ÅÃ»¿¡ µû¶ó ´Ù¸¥ º¸±â º¸¿©ÁÖ±â ¸·±â
+	<!-- 1. ëª¨ì§‘ì¸ì› ë””í´íŠ¸ëŠ” 0ìœ¼ë¡œ ë§Œë“¤ê¸° 
+	2. ë¼ë””ì˜¤ ì‹ ì²­ì— ë”°ë¼ ë‹¤ë¥¸ ë³´ê¸° ë³´ì—¬ì£¼ê¸° ë§‰ê¸°
 	-->
-	<!--ÇÑ±Û ÁÖ¼®  -->
+	<!--í•œê¸€ ì£¼ì„  -->
 	<form:form commandName="recruit" action="recruitWrite.do" id="recruitWrite_form" enctype="multipart/form-data">
 		<form:hidden path="r_id" />
 		<form:errors element="div" cssClass="error-color" />
 		<table>
 			<tr>
-				<td><label>¸ðÁý ±â°£ ¼³Á¤</label></td>
+				<td><label>ëª¨ì§‘ ê¸°ê°„ ì„¤ì •</label></td>
 				<td>
 					<div class="form-check-radio">
 						<label class="form-check-label"> <input type="radio"
 							name="r_status" id="r_status1" class="form-check-input"
-							value="1">»ó½Ã ¸ðÁý<span class="form-check-sign"></span>
+							value="1">ìƒì‹œ ëª¨ì§‘<span class="form-check-sign"></span>
 						</label>
 					</div>
 					</td>
@@ -29,7 +29,7 @@
 					<div class="form-check-radio">
 						<label class="form-check-label"> <input type="radio"
 							name="r_status" id="r_status2" class="form-check-input"
-							value="2" checked>³¯Â¥ ¼³Á¤ <span class="form-check-sign"></span>
+							value="2" checked>ë‚ ì§œ ì„¤ì • <span class="form-check-sign"></span>
 						</label>
 					</div>
 				</td>
@@ -42,24 +42,24 @@
 				</td>
 			</tr>			
 			<tr>
-			<td><label>(ÀÏÀÏ)¸ðÁý ÀÎ¿ø </label></td>
+			<td><label>(ì¼ì¼)ëª¨ì§‘ ì¸ì› </label></td>
 				<td><input type="number" name="r_people" id="r_people" min="0" class="form-control">
 				</td>
 			</tr>	
 			</table>	
 			 <div style="height:20px;"></div>	
-				<label for="title">Á¦¸ñ</label>
+				<label for="title">ì œëª©</label>
 				<input type="text" name="r_title" id="r_title" maxlength="50" size="10" class="form-control" >			
 			<div style="height:20px;"></div>	
 				
-			<textarea rows="15" cols="30" name="r_content" id="r_content" class="form-control" placeholder="ºÀ»çÈ°µ¿¿¡ °üÇÑ ¾È³»±ÛÀ» ½áÁÖ¼¼¿ä."></textarea>
+			<textarea rows="15" cols="30" name="r_content" id="r_content" class="form-control" placeholder="ë´‰ì‚¬í™œë™ì— ê´€í•œ ì•ˆë‚´ê¸€ì„ ì¨ì£¼ì„¸ìš”."></textarea>
 			<div style="height:5px;"></div>
-				<label>ÀÌ¹ÌÁö Ã·ºÎ</label>
+				<label>ì´ë¯¸ì§€ ì²¨ë¶€</label>
 				<input type="file" name="r_upload" id="r_upload">	
 
 		<div style="text-align:center;">
-			<input type="submit" value="Àü¼Û" class="btn btn-primary btn-lg"> 
-			<input type="button" value="¸ñ·Ï" class="btn btn-primary btn-lg" onclick="location.href='recruitList.do'">
+			<input type="submit" value="ì „ì†¡" class="btn btn-primary btn-lg"> 
+			<input type="button" value="ëª©ë¡" class="btn btn-primary btn-lg" onclick="location.href='recruitList.do'">
 		</div>
 	</form:form>
 </div>

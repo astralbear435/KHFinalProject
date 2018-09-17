@@ -32,14 +32,14 @@ public class VolunteerController {
 	@Resource
 	private RecruitService recruitService;
 
-	//ìë°”ë¹ˆ ì´ˆê¸°í™”
+	//ÀÚ¹Ùºó ÃÊ±âÈ­
 	@ModelAttribute("command")
 	public RecruitCommand initCommand() {
 		return new RecruitCommand();
 	}
 
 
-	//ë´‰ì‚¬í™œë™ ì‹ ì²­ê¸€ í¼ ì“°ê¸°
+	//ºÀ»çÈ°µ¿ ½ÅÃ»±Û Æû ¾²±â
 	@RequestMapping(value="/volunteer/volunteerWrite.do", method=RequestMethod.GET)
 	public String form(HttpSession session, Model model, @RequestParam(value="r_num")Integer r_num) {
 		String id=(String)session.getAttribute("user_id");
@@ -55,7 +55,7 @@ public class VolunteerController {
 	}
 
 
-	//ë´‰ì‚¬í™œë™ ì‹ ì²­ê¸€ ì „ì†¡
+	//ºÀ»çÈ°µ¿ ½ÅÃ»±Û Àü¼Û
 	/*@RequestMapping(value="/volunteer/volunteerWrite.do", method=RequestMethod.POST)
 	public String submit(@ModelAttribute("volunteer") RecruitCommand volunteer, BindingResult result, HttpServletRequest request, HttpSession session) {
 		if(log.isDebugEnabled()) {
@@ -64,7 +64,7 @@ public class VolunteerController {
 		if(result.hasErrors()) {
 			return "voluntaryList";	
 		}
-		//ë´‰ì‚¬í™œë™ ì‹ ì²­ê¸€ ì „ì†¡ í™•ì¸ í˜ì´ì§€ 
+		//ºÀ»çÈ°µ¿ ½ÅÃ»±Û Àü¼Û È®ÀÎ ÆäÀÌÁö 
 		String id=(String)session.getAttribute("user_id");
 		volunteer.setV_id(id);	
 		volunteerService.insert(volunteer);
@@ -74,7 +74,7 @@ public class VolunteerController {
 		}
 		return "volunteer/volunteerOkay";
 	}*/
-	//ë´‰ì‚¬í™œë™ ì¼ì • ìˆ˜ì •
+	//ºÀ»çÈ°µ¿ ÀÏÁ¤ ¼öÁ¤
 		@RequestMapping(value="/volunteer/volunteerUpdate.do", method=RequestMethod.GET)
 	public String form(@RequestParam("v_num") int v_num, Model model) {
 
@@ -101,7 +101,7 @@ public class VolunteerController {
 			return "redirect:/mypage/mypage.do";
 		}	
 
-	//===============================ë´‰ì‚¬í™œë™ ì¼ì • ì‚­ì œ==========================
+	//===============================ºÀ»çÈ°µ¿ ÀÏÁ¤ »èÁ¦==========================
 	@RequestMapping("/volunteer/volunteerDelete.do")
 	public void submit(@RequestParam("v_num") int v_num, HttpSession session) {
 		
