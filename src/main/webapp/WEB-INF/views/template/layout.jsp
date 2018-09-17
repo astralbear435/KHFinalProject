@@ -55,6 +55,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	#chat_icon img{
 		width:80%;
+		border-radius: 40%;
 	}
 	
 	#m_chat_container {

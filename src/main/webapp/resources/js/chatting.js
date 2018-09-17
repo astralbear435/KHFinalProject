@@ -46,25 +46,9 @@ $(document).ready(function() {
 	
 	//서버에서 전송된 메시지를 UI에 표시
 	function appendMessage(msg) {
-		
+		var a = 0;
 		//클라이언트 메세지
-		/*if() {
-			
-		}*/
-		var userMsg = '<br><br>';
-		userMsg += '<li class="message right appeared">';
-		userMsg += '	<div class="avatar">';
-		userMsg += '		<img src="../resources/images/member/chat_default.png">';
-		userMsg += '	</div>';
-		userMsg += '	<div class="text_wrapper">';
-		userMsg += '		<div class="text">';
-		userMsg += 				msg;
-		userMsg += '		</div>';
-		userMsg += '	</div>';
-		userMsg += '</li>';
-		
-		//관리자 메세지
-		/*else {
+		if(a==1) {
 			var userMsg = '<br><br>';
 			userMsg += '<li class="message left appeared">';
 			userMsg += '<div class="avatar">';
@@ -76,7 +60,22 @@ $(document).ready(function() {
 			userMsg += '	</div>';
 			userMsg += '</div>';
 			userMsg += '</li>';
-		}*/
+		}
+		
+		//관리자 메세지
+		else {
+			var userMsg = '<br><br>';
+			userMsg += '<li class="message right appeared">';
+			userMsg += '	<div class="avatar">';
+			userMsg += '		<img src="../resources/images/member/chat_default.png">';
+			userMsg += '	</div>';
+			userMsg += '	<div class="text_wrapper">';
+			userMsg += '		<div class="text">';
+			userMsg += 				msg;
+			userMsg += '		</div>';
+			userMsg += '	</div>';
+			userMsg += '</li>';
+		}
 		
 		$('#message_appear').append(userMsg);
 		var chatAreaHeight = $('.message').height();
