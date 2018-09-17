@@ -241,7 +241,12 @@ $('.slider-for').slick({
 		<h1>${goods.g_name}</h1><hr>
 		<p>원산지 : ${goods.g_origin}</p>
 		<p style="width:500px">상품 설명 : ${goods.g_content}</p>
-		<hr>											
+		<hr>						
+		<c:if test="${goods.g_num==1}"><p>현재 해당 보호소에서 <b style="color:orange">${as_detail.pad}</b>  개 만큼 필요로 하고 있습니다.</p></c:if>	
+		<c:if test="${goods.g_num==2}"><p>현재 해당 보호소에서 <b style="color:orange">${as_detail.dogfood}</b>  개 만큼 필요로 하고 있습니다.</p></c:if>				
+		<c:if test="${goods.g_num==3}"><p>현재 해당 보호소에서 <b style="color:orange">${as_detail.catfood}</b>  개 만큼 필요로 하고 있습니다.</p></c:if>				
+		<c:if test="${goods.g_num==4}"><p>현재 해당 보호소에서 <b style="color:orange">${as_detail.shampoo}</b>  개 만큼 필요로 하고 있습니다.</p></c:if>				
+		<c:if test="${goods.g_num==5}"><p>현재 해당 보호소에서 <b style="color:orange">${as_detail.catsand}</b>  개 만큼 필요로 하고 있습니다.</p></c:if>							
 		<form id="cart_order">
 		<p style="display: inline-block;">
 		수량 :<input type="number" class="form-control" name="p_amount" id="order_quantity"/><b><div id="total" style="display: inline-block; float:right; color:#B60000;font-size: 25px;"><span id="item_total_txt">합계 : 0원</span>
