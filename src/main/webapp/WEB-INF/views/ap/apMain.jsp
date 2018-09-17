@@ -4,7 +4,7 @@
 <div class="container">
 	<div style="margin:50px 0 0 0;">
 		<span>
-			<img src="${pageContext.request.contextPath}/resources/images/apmain.jpg" style="height:574px; width:1058px;" alt="임시보호자 메인" class="img-responsive" />
+			<img src="${pageContext.request.contextPath}/resources/images/ap/apmain.jpg" style="height:574px; width:1058px;" alt="임시보호자 메인" class="img-responsive" />
 		</span>
 	</div>
 

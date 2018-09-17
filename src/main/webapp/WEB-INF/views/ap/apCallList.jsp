@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/apCall.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ap.css">
 <div class="container">
 	<br><br>
 	<div class="col-md-12">
@@ -19,22 +18,27 @@
 					<option value="2">신청하지 않음</option>
 				</select>
 			</div>
-			<input type="submit" class="btn btn-primary btn-lg" style="height: 50px;"
+			<input type="submit" class="btn btn-secondary my-2 my-sm-0"
 										value="검색" onclick="location:href='#'">
 	    </form>
-		<input type="button" class="btn btn-secondary" style="float:right; margin:0 0 10px 0;" 
-					value="임시보호자 메인으로" onclick="location.href='apMain.do'">
-		<c:if test="${!empty user_id}">
-			<input type="button" class="btn btn-outline-warning" style="float:right; margin:0 10px 10px 0;" 
-					value="글쓰기" onclick="location.href='apCallForm.do'">
-		</c:if>
 	</div>
-	<c:if test="${count == 0}">
-	<div style="text-align:center;">등록된 게시물이 없습니다.</div>
+	
+	<div class="floatL">&nbsp;&nbsp;</div>
+	<input type="button" class="btn btn-secondary" style="float:right;  margin:20px 0 20px 0;" 
+			value="임시보호자 메인으로" onclick="location.href='apMain.do'">
+	<c:if test="${!empty user_id}">
+		<input type="button" class="btn btn-warning" style="float:right; margin:20px 10px 20px 0;" 
+				value="글쓰기" onclick="location.href='apCallForm.do'">
 	</c:if>
+	<div class="floatL">&nbsp;&nbsp;</div>
+	
+	<c:if test="${count == 0}">
+		<div style="text-align:center; margin: 50px 0 50px 0;">등록된 게시물이 없습니다.</div>
+	</c:if>
+	
 	<c:if test="${count > 0}">
 	<c:forEach var="article" items="${list}">
-		<div class="card border-primary col-md-3" style="max-width: 250px; margin:0 10px 10px 15px;">
+		<div class="card border-primary col-md-12" style="margin:10px 0 10px 0;">
 			<div class="card-header">
 				<p class="card-text">
 					${article.call_num}
@@ -54,7 +58,9 @@
 			</div>
 		</div>
 	</c:forEach>
-	<div class="col-md-12" style=" text-align:center; margin:50px 0 50px 0;">${pagingHtml}</div>
+	<div class="col-md-12" id="container">
+		<div id="block">${pagingHtml}</div>
+	</div>
 	</c:if>
 </div>
 

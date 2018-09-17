@@ -94,7 +94,7 @@
 				</tr>
 				<tr>
 					<td colspan="3" align="center">
-						<input type="submit" class="btn btn-outline-warning" value="등록하기">
+						<input type="submit" class="btn btn-warning" value="등록하기">
 						<input type="button" class="btn btn-secondary" value="목록" onclick="location.href='apCallList.do'">
 					</td>
 				</tr>

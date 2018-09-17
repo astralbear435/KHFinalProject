@@ -4,7 +4,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/apCall.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ap.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ap.css">
 <!-- jQuery -->
 <script>
 	$(document).ready(function() {
@@ -22,33 +23,23 @@
 		var today = year + "-" + month + "-" + day;
 	});
 </script>
-<style>
-	.border-styles{
-		padding: 1px 3px;
-		border-width: 2px;
-		border-color: #aaa;
-		float:left; 
-		text-align:center; 
-		margin:100px 0 0 50px; 
-		border-style: solid;
-	}
-</style>
+
 <div class="container">
-	<div style="float:right; margin:100px 0 50px 0;">
+	<div class="col-md-2" style="float:right; margin:100px 0 50px 0;">
 		<c:if test="${!empty user_id && user_id == apcommand.id}">
-			<input type="button" class="btn btn-warning" value="수정" onclick="location.href='apModify.do?ap_num=${apcommand.ap_num}'">
-			<input type="button" class="btn btn-warning" value="삭제" id="apdelete" data-num="${apcommand.ap_num}">
+			<input type="button" class="btn btn-warning" value="수정" onclick="location.href='apModify.do?ap_num=${apcommand.ap_num}'"><br><br>
+			<input type="button" class="btn btn-danger" value="삭제" id="apdelete" data-num="${apcommand.ap_num}"><br><br>
 		</c:if>
-		<input type="button" class="btn btn-secondary" value="목록" onclick="location.href='apList.do'">
+		<input type="button" class="btn btn-secondary" value="목록" onclick="location.href='apList.do'"><br><br>
 	</div>
-	<div class="border-styles col-md-5"style="float:left; margin:100px 0 50px 0;">
+	<div class="border-styles col-md-4"style="float:left; margin:100px 0 50px 0;">
 		<div style="margin:10px 0 10px 0;">
 			[${apcommand.id}] ${apcommand.ap_job}	
 		</div>
 		<hr>
 		<div>
 			<p style="margin: 50px 0 50px 0;">
-				<img src="${pageContext.request.contextPath}/resources/images/dog.png"/>
+				<img src="${pageContext.request.contextPath}/resources/images/ap/dog.png"/>
 				관련 자격증 :
 				<c:if test="${apcommand.ap_cer==null}">
 							없습니다.
@@ -61,7 +52,7 @@
 				</c:if>
 			</p>
 			<p style="margin: 50px 0 50px 0;">
-				<img src="${pageContext.request.contextPath}/resources/images/clock.png"
+				<img src="${pageContext.request.contextPath}/resources/images/ap/clock.png"
 					style="float: left; margin: 20px 0 0 50px;"/><br> 
 					체크인, 체크아웃 시간<br>
 					체 크 인 : 09:00 AM ~ 09:00 PM<br>
@@ -138,14 +129,15 @@
 			</c:forTokens>
 		</div>
 	</div>
-	<div class="border-styles col-md-4">
+	
+	<div class="border-styles col-md-4" style="float:left; margin:100px 0 0 30px;">
 		<form:form commandName="command" action="apBoWrite.do" enctype="multipart/form-data">
 			<input type="hidden" id="bo_id" name="bo_id" value="${user_id}">
 			<input type="hidden" id="id" name="id" value="${apcommand.id}">
 			<input type="hidden" id="ap_num" name="ap_num" value="${apcommand.ap_num}">
 			<label>예약을 원하는 날짜를 선택해주세요.</label><br>
 			시작 날짜 : <input type="date" id="bo_date_start" name="bo_date_start" min="2013-01-01">
-			<br>
+			<br><br>
 			<select class="form-control" style="width: 80px;" name="bo_start_hour" id="bo_start_hour">
 				<option value="0">0시</option>
 				<option value="1">1시</option>
@@ -156,9 +148,9 @@
 				<option value="15">15분</option>
 				<option value="30">30분</option>
 			</select> 분
-			<br>
+			<br><br>
 			마침 날짜 : <input type="date" id="bo_date_end" name="bo_date_end" min="2013-01-01"><br>
-			<br>
+			<br><br>
 			<select class="form-control" style="width: 80px;" name="bo_end_hour" id="bo_end_hour">
 				<option value="0">0시</option>
 				<option value="1">1시</option>
@@ -169,7 +161,7 @@
 				<option value="15">15분</option>
 				<option value="30">30분</option>
 			</select> 분
-			<br>
+			<br><br>
 			<script>
 				var today = new Date().toISOString().split('T')[0];
 				document.getElementsByName("bo_date_start")[0].setAttribute('min', today);
