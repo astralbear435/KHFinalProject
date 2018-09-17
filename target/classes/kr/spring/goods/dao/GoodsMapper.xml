@@ -38,6 +38,18 @@ ORDER BY as_id DESC
 			</if>
 		</where>
 	</select>
+<update id="minusCount" parameterType="map">
+UPDATE as_goods
+	<trim prefix="SET" suffixOverrides=",">
+	<if test="goodsnum==1">PAD=PAD-TO_NUMBER(#{dona_goodsamount}),</if>
+	<if test="goodsnum==2">DOGFOOD=DOGFOOD-TO_NUMBER(#{dona_goodsamount}),</if>
+	<if test="goodsnum==3">CATFOOD=CATFOOD-TO_NUMBER(#{dona_goodsamount}),</if>
+	<if test="goodsnum==4">SHAMPOO=SHAMPOO-TO_NUMBER(#{dona_goodsamount}),</if>
+	<if test="goodsnum==5">CATSAND=CATSAND-TO_NUMBER(#{dona_goodsamount})</if>
+	</trim>
+WHERE as_name=#{dona_asname}
+</update>	
+	
 </mapper>
 
 

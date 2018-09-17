@@ -57,8 +57,11 @@ $(document).ready(function(){
 			  p_num+=""+$('#goodsnum').val()+",";
 			  p_name+=""+$('#p_name').val()+",";
 			  p_amount+=""+$('#amount').val()+",";			  
-			  //cartnum=cartnum.substring(0,cartnum.lastIndexOf(","));
 		  });
+		  cartnum=cartnum.substring(0,cartnum.lastIndexOf(","));
+		  p_num=p_num.substring(0,p_num.lastIndexOf(","));
+		  p_name=p_name.substring(0,p_name.lastIndexOf(","));
+		  p_amount=p_amount.substring(0,p_amount.lastIndexOf(","));
 			   $.ajax({
 				   type:'post',
 			   	   data:{num:cartnum,p_num:p_num,p_name:p_name,p_amount:p_amount},
@@ -78,7 +81,7 @@ $(document).ready(function(){
 	    IMP.request_pay({ // param
 	        pg: "inicis",
 	        pay_method: "card",
-	        merchant_uid: "ORD20180131-0000100",
+	        merchant_uid: "ORD20180131-0007892",
 	        name: "<주문서>",
 	        amount:pay,
 	        buyer_email: email,
@@ -98,7 +101,6 @@ $(document).ready(function(){
 					timeout:30000,
 					success:function(data){
 						if(data.result=='success'){
-							alert(data.order_num);
 							order=data.order_num;
 						$('#myModal2').show();
 					   }
@@ -110,7 +112,7 @@ $(document).ready(function(){
 	        	
 	        }else {
 	        	 alert('결제가 취소되었습니다.');     	
-	        	 location.reload();
+	        	 //location.reload();
 	        }
 	    });
 	}
@@ -141,6 +143,7 @@ $(document).ready(function(){
 	$("#closeModal2").click(function() {
         $('#myModal2').hide();
    });
+
 });
 //결제 후 장바구니 삭제	
 function deleteCart(){
@@ -148,7 +151,6 @@ function deleteCart(){
 	  $( "input[name='select_me']:checked" ).each(function (){
 	      var selectNum=""+$(this).val()+","; //여러개선택으로 배열만들기
 		  var id=$('#id').val();
-		selectNum = selectNum.substring(0,selectNum.lastIndexOf( ","));
 				$.ajax({
 					type:'post',
 					data:{selectNum:selectNum,id:id},
@@ -157,14 +159,35 @@ function deleteCart(){
 					cache:false,
 					timeout:30000,
 					success:function(data){
-											
+						location.reload();				
 					},error:function(){
-				      	alert('(결제 후 장바구니 삭제)에러입니다.');
+						location.reload();
 		           	}					
 			     });
 	  		});
 	  location.reload();
    }
+//분할 카운팅 테스트
+function nanoCount(){
+	$.ajax({
+		type:'post',
+		url:'CountMinus.do',
+		dataType:'json',
+		cache:false,
+		timeout:30000,
+		success:function(data){
+			if(data.result=='success'){				
+			 alert('컨트롤가서 확인해보세염');				
+		   }else if(data.result=='no'){
+			 alert('결제내역없다는듯');
+			}else{
+				 alert('이해불가');
+			}
+		},error:function(){
+      	 alert('걍 실패 너');
+      	}
+  }); 
+}	
 </script>
 
 <!-- 정보전달 모달2 -->
@@ -252,8 +275,10 @@ function deleteCart(){
 	</div>
 	
 </c:if>
-<br>
+<br><br><br><br>
 <div style="text-align:center">
 <button class="btn" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">HOME</button>
+<button class="btn" onclick="nanoCount();">분할카운팅</button>
 </div>
+<br><br><br>
 </div>

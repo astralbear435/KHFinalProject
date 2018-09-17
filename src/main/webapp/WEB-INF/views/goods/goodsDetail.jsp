@@ -92,7 +92,7 @@ function requestPay(ptotal,goodsName,goodsNum,dona_id,amount,dona_name,dona_asna
     IMP.request_pay({ // param
         pg: "inicis",
         pay_method: "card",
-        merchant_uid: "ORD20180131-0000077",
+        merchant_uid: "ORD20180131-0001116",
         name: goodsName,
         amount:ptotal,
         buyer_email: "gildong@gmail.com",
@@ -113,6 +113,7 @@ function requestPay(ptotal,goodsName,goodsNum,dona_id,amount,dona_name,dona_asna
 					if(data.result=='success'){
 					 alert('결제를 성공했습니다. 마이페이지에서 확인해주세요.');
 				     $('#myModal2').hide();
+				     location.reload();
 					}
 				},
 				error:function(){

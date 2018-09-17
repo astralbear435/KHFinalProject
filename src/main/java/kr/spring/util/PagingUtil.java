@@ -108,7 +108,7 @@ public class PagingUtil {
 			pagingHtml.append("<li class=\"page-item disabled \"><a class=\"page-link\">»</a></li></ul>");
 		}
 		pagingHtml.append("</ul>");
-	}
+	} 
 	public StringBuffer getPagingHtml() {
 		return pagingHtml;
 	}

@@ -43,5 +43,7 @@ public interface GoodsService {
 	
 	//업데이트
 	public void updateAs(GoodsCommand goods);
+	//결제시 카운트 빼기
+	public void minusCount(Map<String,Object> map2);
 	
 }

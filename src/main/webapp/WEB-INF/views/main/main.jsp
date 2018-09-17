@@ -56,9 +56,9 @@
 						<div class="services-icon hvr-radial-in">
 							<i class="fa fa-heartbeat" aria-hidden="true"></i>
 						</div>
-						<div class="services-icon-info">
-							<h5>Phasellus suscipit</h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci enim, posuere sed tincidunt et, pellentesque eget mi.</p>
+						<div class="services-icon-info" onclick="location.href='http://fromcare.org/report-abuse-agree'" style="cursor:pointer;">
+							<h5>구조 지원</h5>
+							<p>부상당한 유기동물에 대하여<br>페이지가 구조 지원을 돕고있습니다.<br>[바로가기]</p>
 						</div>
 					</div>
 					<div class="clearfix"> </div>
@@ -117,15 +117,15 @@
 									<li>
 										<div class="testimonial-top">
 											<i class="fa fa-quote-right" aria-hidden="true"></i>
-											<p>Donec feugiat tellus sem, laoreet iaculis orci lobortis vel. Sed sed luctus orci, at lacinia risus. Ut porttitor ante ac tincidunt elementum. Curabitur ex dolor, condimentum vitae nunc vel, pulvinar semper justo. Vestibulum et aliquet magna, maximus dapibus enim. Vestibulum ex lectus, posuere eu viverra at, mattis et enim. Nam efficitur sem et lectus fringilla, at pharetra nulla luctus. Nunc cursus, augue ac ultricies volutpat, neque erat congue justo, ac pretium tellus eros a neque. Integer ipsum sem, consectetur a mollis ac, cursus eu ipsum.</p>
-											<h5>John Smith <span>- Founder</span></h5>
+											<p>여기엔 소개글을 쓰십시오오오</p>
+											<h5>"일조"<span>- 설립자 일동</span></h5>
 										</div>
 									</li>
 									<li>
 										<div class="testimonial-top">
 											<i class="fa fa-quote-right" aria-hidden="true"></i>
-											<p>Pellentesque urna ex, ultricies a nunc at, pretium maximus nisi. Vestibulum non auctor diam. Mauris eget consectetur mauris. Aenean leo elit, accumsan vel elit vitae, mattis ultricies lacus. Cras consectetur justo lorem, sed dictum sapien eleifend at.Donec sed orci a dui aliquam tempor. Praesent in ipsum ut nunc porttitor lacinia.Donec eu sapien et arcu dictum rutrum.Ut laoreet vitae augue at accumsan. Nam pharetra sagittis purus et condimentum. Vestibulum cursus porttitor pretium.In egestas finibus rutrum. Nulla facilisi.</p>
-											<h5>Divide Rule <span>- CEO</span></h5>
+											<p>두번째 주저리를 쓰십시오.</p>
+											<h5>"일조" <span>- 설립자 일동</span></h5>
 										</div>
 									</li>
 								</ul>
