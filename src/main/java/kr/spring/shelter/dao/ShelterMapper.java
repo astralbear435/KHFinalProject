@@ -39,4 +39,6 @@ public interface ShelterMapper {
 	//비밀번호 찾기
 	@Update("UPDATE shelter_detail SET s_passwd=#{m_passwd} WHERE s_email=#{m_email}")
 	public void updatePwShelter(@Param("m_email") String m_email, @Param("m_passwd") String m_passwd);
+	
+	
 }
