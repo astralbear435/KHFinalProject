@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ap.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ap/ap.js"></script>
 <div class="container">
 	<form:form commandName="apCommand" action="apUpdate.do" id="ap_update_form" enctype="multipart/form-data">
 		<form:hidden path="ap_num"/>
