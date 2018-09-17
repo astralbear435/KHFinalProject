@@ -35,10 +35,10 @@ public interface MypageMapper {
 	@Select("SELECT * FROM ap_call_home WHERE call_name=#{call_name}")
 	public List<ApCallCommand> selectCallList(String call_name);
 	
-	@Select("SELECT * FROM ap_bo_call WHERE bo_id=#{bo_id}")
+	@Select("SELECT * FROM ap_bo WHERE bo_id=#{bo_id}")
 	public List<ApBoCommand>selectBoCallList(String bo_id);
 	
-	@Select("SELECT * FROM ap_bo_call WHERE id=#{boho_id}")
+	@Select("SELECT * FROM ap_bo WHERE id=#{boho_id}")
 	public List<ApBoCommand>selectBohoCallList(String boho_id);
 	
 	

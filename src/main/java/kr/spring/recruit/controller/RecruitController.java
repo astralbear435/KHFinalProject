@@ -7,7 +7,6 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -19,10 +18,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.spring.member.domain.MemberCommand;
 import kr.spring.recriut.service.RecruitService;
 import kr.spring.recruit.domain.RecruitCommand;
+import kr.spring.shelter.domain.ShelterCommand;
 import kr.spring.util.PagingUtil;
+import kr.spring.util.StringUtil;
 
 
 @Controller
@@ -65,8 +65,9 @@ public class RecruitController {
 		/*if(result.hasErrors()) {
 			return "voluntaryWrite";
 		}*/
-
-		//�۾���
+		String r_content = recruit.getR_content();
+		recruit.setR_content(StringUtil.useNoHtml(r_content));
+	
 		recruitService.insert(recruit);
 
 		return "recruitList";
@@ -93,18 +94,18 @@ public class RecruitController {
 		map.put("end", page.getEndCount());
 
 		List<RecruitCommand> list = null;
+		List<ShelterCommand> shelterNameList = null;
+		
 		if(count > 0) {
 			list = recruitService.selectList(map);
-
-			if(log.isDebugEnabled()) {
-				log.debug("<<list>>:"+list);
-			}			
-		}		
-
+			shelterNameList = recruitService.selectBoNameList(map);
+		}
+				
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("recruitList");
-		mav.addObject("count",count);
+		mav.addObject("count",count);		
 		mav.addObject("list",list);
+		mav.addObject("shelterNameList",shelterNameList);
 		mav.addObject("pagingUtil",page.getPagingHtml());
 
 		return mav;
@@ -131,11 +132,21 @@ public class RecruitController {
 		}
 
 		RecruitCommand recruit = recruitService.selectBoard(r_num);	
+		ShelterCommand shelterName = recruitService.selectBoName(r_num);
+		
 		if(log.isDebugEnabled()) {
 			log.debug("<<recruit>> : "+ recruit );
 		}
-
-		return new ModelAndView("volunteer/volunteerWrite","recruit",recruit);	
+		if(log.isDebugEnabled()) {
+			log.debug("<<shelterName>> : "+ shelterName );
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("volunteer/volunteerWrite");
+		mav.addObject("recruit",recruit);
+		mav.addObject("shelterName",shelterName);
+		
+		return mav;
 	}
 	
 	//비회원 봉사활동 신청 못함

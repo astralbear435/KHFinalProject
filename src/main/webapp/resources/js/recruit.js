@@ -64,10 +64,4 @@ $(document).ready(function(){
 		 }
 		 alert('이대로 글을 올리시겠습니까?');
 	});
-	
-
-	
-	
-
-
 });

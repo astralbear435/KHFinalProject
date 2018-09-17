@@ -175,12 +175,9 @@ body {
 
 <p> ${donation.dona_asname} </p>
 
-<c:forEach var="donation" items="${donaList}">
+
 <h3 class="hdg">나의 후원내역</h3>
-<c:if test="${dona_count == 0}">
-	<div class="align-center">등록된 게시물이 없습니다.</div>
-	</c:if>
-	<c:if test="${dona_count > 0}">
+
 
 						<div class="col-md-12">
 							<table class="table table-hover">
@@ -197,6 +194,11 @@ body {
 							      <th scope="col">후원 상품 갯수</th>
 							    </tr>
 							  </thead>
+	<c:forEach var="donation" items="${donaList}">
+	<c:if test="${dona_count == 0}">
+	<div class="align-center">등록된 게시물이 없습니다.</div>
+	</c:if>
+	<c:if test="${dona_count > 0}">  
 							  <tbody>							
 							    <tr class="table-info">
 							      <th scope="row">${donation.dona_num}</th>
@@ -211,10 +213,11 @@ body {
 							    </tr>
 														 
 							  </tbody>
+	 </c:if>	
+</c:forEach>
 							</table> 
 						</div>
-</c:if>	
-</c:forEach>
+
 
 
 
