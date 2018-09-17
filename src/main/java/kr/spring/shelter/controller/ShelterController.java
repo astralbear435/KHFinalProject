@@ -22,7 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.goods.domain.GoodsCommand;
 import kr.spring.goods.service.GoodsService;
-import kr.spring.member.controller.MemberController;
 import kr.spring.member.domain.MemberCommand;
 import kr.spring.member.service.MemberService;
 import kr.spring.shelter.domain.ShelterCommand;
@@ -129,6 +128,7 @@ public class ShelterController {
 			return map;
 		}
 
+
 	//================== 로그인 =========================	
 	// 로그인폼에서 전송된 데이터 처리
 	@RequestMapping(value="/member/shelterLogin.do")
@@ -176,6 +176,7 @@ public class ShelterController {
 		}
 
 	}
+
 	
 	//================== 회원 상세 정보 =========================
 	// 진입 전 비밀번호 확인
