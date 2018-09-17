@@ -43,7 +43,7 @@ public class MypageAjaxController {
 	@Resource
 	private RecruitService recruitService;
 	
-	//마이페이지 캘린더 호출
+
 	@RequestMapping(value="/mypage/volunteerMyCalendar.do")
 	@ResponseBody
 	public Map<String,Object> getList(@RequestParam("v_id") String v_id, HttpSession session){
@@ -94,7 +94,7 @@ public class MypageAjaxController {
 	}
 
 
-/*//봉사활동 일정 수정
+/*
 	@RequestMapping("/volunteer/volunteerUpdate.do")
 	@ResponseBody
 	public Map<String,String> modifyReply(RecruitCommand volunteer, HttpSession session, HttpServletRequest request){
@@ -116,7 +116,7 @@ public class MypageAjaxController {
 	
 	
 	
-	// 보호소 측 캘린더
+	
 	@RequestMapping(value="/mypage/recruitMyCalendar.do")
 	@ResponseBody
 	public Map<String,Object> getRecruitList(@RequestParam("r_id") String r_id, HttpSession session){
@@ -142,6 +142,19 @@ public class MypageAjaxController {
 		return  mapJson;
 	}	
 	
-
+	/*public Map<String,Object> getDonationList*/
+	
+	@RequestMapping(value="/mypage/donaShelterPage.do")
+	@ResponseBody
+	public  Map<String,Object> getDonaShelterList(@RequestParam("r_id") String r_id, HttpSession session){
+		
+		Map<String, Object> map = new HashMap<String,Object>();
+		map.put("r_id", r_id);
+		
+		
+		
+		return null;
+		
+	}
 	
 }

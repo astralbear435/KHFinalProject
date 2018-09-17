@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/apCall.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ap/apCall.js"></script>
 <!-- jQuery -->
 <script>
 	$(document).ready(function() {
