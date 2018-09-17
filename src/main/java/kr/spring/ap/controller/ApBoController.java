@@ -41,7 +41,7 @@ public class ApBoController {
 		}
 		
 		if(result.hasErrors()) {
-			return "apBoWrite";
+			return "redirect:/ap/apdetail.do?ap_num="+apCommand.getAp_num();
 		}
 		
 		//±Û¾²±â

@@ -7,17 +7,20 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">	
 	<context:component-scan	base-package="kr.spring.note.controller" />
 	<context:component-scan	base-package="kr.spring.shelter.controller" />
 	<context:component-scan	base-package="kr.spring.member.controller" />
 	<context:component-scan	base-package="kr.spring.admin.mainpage.controller" />
 	<context:component-scan	base-package="kr.spring.admin.notice.controller" />
 	<context:component-scan	base-package="kr.spring.visitor.controller" />
-	<context:component-scan base-package="kr.spring.goods.controller" />
-	<context:component-scan base-package="kr.spring.admin.controller" />
-	<context:component-scan base-package="kr.spring.admin.mainmenu.controller" />
+	<context:component-scan	base-package="kr.spring.goods.controller" />
+	<context:component-scan	base-package="kr.spring.recruit.controller" />
+	<context:component-scan	base-package="kr.spring.volunteer.controller" />
+	<context:component-scan	base-package="kr.spring.mypage.controller" />
 	<context:component-scan base-package="kr.spring.ap.controller" />
+	<context:component-scan base-package="kr.spring.admin.controller"/>
+	<context:component-scan base-package="kr.spring.admin.mainmenu.controller"/>
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -47,6 +50,9 @@
 				<beans:value>/WEB-INF/tiles-def/admin.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/member.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/good.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/recruit.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/volunteer.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/mypage.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/ap.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/apcall.xml</beans:value>
 			</beans:list>
@@ -110,6 +116,7 @@
 	<view-controller path="/admin/notlogin.do" view-name="notlogin" />
 	<view-controller path="/admin/noadmin.do" view-name="noadmin" />
 	<view-controller path="/admin/logout.do" view-name="logout" />
+	<view-controller path="/recruit/recruitWrite.do" view-name="recruitWrite" />
 	<view-controller path="/ap/apCallList.do" view-name="apCallList"/>
 	<view-controller path="/ap/apMain.do" view-name="apMain"/>
 	<view-controller path="/ap/apForm.do" view-name="apForm"/>

@@ -7,14 +7,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/noteList.js"></script>
 <script type="text/javascript">
-	//수정 시 확인
-	$('#shelterUpdateBtn').click(function(){
-		var id = $('#s_id').val();
-		
-		if(confirm("회원 정보를 수정 하시겠습니까?")){
-			$('#shelterUpdateForm').submit();
-		}else{}
-	});
+	
 </script>
 <body>
 	<div class="horizontal"></div><!-- 가로 여백 -->
@@ -38,7 +31,6 @@
 							<th scope="col" style="width: 20%;">보낸 사람</th>
 							<th scope="col">내용</th>
 							<th scope="col" style="width: 15%;">보낸 날짜</th>
-							<th scope="col" style="width: 15%;">차단</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -56,7 +48,6 @@
 												${note.note_content}</a>
 										</td>
 										<td>${note.write_date}</td>
-										<td><input type="button" value="차단" id="deleteBtn" class="btn btn-danger" onclick="deleteAction();"></td>
 									</tr> 
 								</c:if> 
 
@@ -71,7 +62,6 @@
 												${note.note_content}</a>
 										</td>
 										<td>${note.write_date}</td>
-										<td><input type="button" value="차단" id="deleteBtn" class="btn btn-danger" onclick="deleteAction();"></td>
 									</tr>
 								</c:if>
 							</c:if>

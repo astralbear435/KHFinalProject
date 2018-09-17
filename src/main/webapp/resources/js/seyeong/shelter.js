@@ -1,10 +1,11 @@
 $(document).ready(function(){
 	var checkId = 0;
 	
-	//아이디 중복 체크
+	/* 아이디 */
+	// 중복 체크
 	$('#confirmId').click(function(){
 		if($('#s_id').val()==''){
-			alert('아이디를 입력하세요! dd');
+			alert('아이디를 입력하세요!');
 			$('#s_id').focus();
 			return;
 		}else{
@@ -30,24 +31,77 @@ $(document).ready(function(){
 			},
 			error:function(){
 				alert(id);
-				alert('네트워크 오류 발생!! 아이디 중복');
+				alert('네트워크 오류 발생!!');
 			}
 		});
 		}
 	});
 	
-	//아이디 중복 안내 메시지 초기화 및 아이디 중복 값 초기화
+	// 중복 안내 메시지 초기화 및 아이디 중복 값 초기화
 	$('#shelterRegisterForm #s_id').keyup(function(){
 		checkId=0;
 		$('#message_id').text('');
 	});
 	
-	//submit  이벤트 발생시 아이디 중복 체크 여부 확인
+	// submit 이벤트 발생시 아이디 중복 체크 여부 확인
 	$('#shelterRegisterForm').submit(function(){
 		if(checkId==0){
 			alert('아이디 중복 체크 필수!');
 			if($('#s_id').val()==''){
 				$('#s_id').focus();
+			}
+			return false;
+		}
+	});
+	
+	/* 이메일 */
+	// 중복 체크
+	$('#confirmEmail').click(function(){
+		if($('#s_email').val()==''){
+			alert('이메일을 입력하세요!');
+			$('#s_email').focus();
+			return;
+		}else{
+		var email=$('#s_email').val();
+		$('#message_email').text(''); //메세지 초기화
+		$.ajax({
+			type:'post',
+			data:{email:email},
+			url:'confirmEmail.do',
+			dataType:'json',
+			timeout:30000,
+			success:function(data){
+				if(data.result == 'emailNotFound'){
+					$('#message_email').css('color','#000').text('등록 가능');
+					checkId = 1;
+				}else if(data.result == 'emailDuplicated'){
+					$('#message_email').css('color','red').text('중복 이메일');
+					$('#s_email').val('').focus();
+					checkId = 0;
+				}else{
+					alert('이메일 중복 체크 오류');
+				}
+			},
+			error:function(){
+				alert(id);
+				alert('네트워크 오류 발생!!');
+			}
+		});
+		}
+	});
+	
+	// 중복 안내 메시지 초기화 및 아이디 중복 값 초기화
+	$('#shelterRegisterForm #s_email').keyup(function(){
+		checkId=0;
+		$('#message_email').text('');
+	});
+	
+	// submit 이벤트 발생시 아이디 중복 체크 여부 확인
+	$('#shelterRegisterForm').submit(function(){
+		if(checkId==0){
+			alert('이메일 중복 체크 필수!');
+			if($('#s_email').val()==''){
+				$('#s_email').focus();
 			}
 			return false;
 		}
@@ -75,12 +129,6 @@ $(document).ready(function(){
 		
 		if($('#s_phone').val()==''){
 			alert('전화번호를 입력하세요!');
-			$('#s_id').focus();
-			return;
-		}
-		
-		if($('#s_email').val()==''){
-			alert('이메일을 입력하세요!');
 			$('#s_id').focus();
 			return;
 		}

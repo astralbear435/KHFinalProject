@@ -8,7 +8,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.spring.note.dao.NoteMapper;
-import kr.spring.note.domain.BlockCommand;
 import kr.spring.note.domain.NoteCommand;
 
 @Service("noteService")
@@ -60,20 +59,5 @@ public class NoteServiceImpl implements NoteService{
 	@Override
 	public void delete(int note_num) {
 		noteMapper.delete(note_num);
-	}
-
-	@Override
-	public void block(String block, String be_blocked) {
-		noteMapper.block(block, be_blocked);
-	}
-
-	@Override
-	public void unblock(String block, String be_blocked) {
-		noteMapper.unblock(block, be_blocked);
-	}
-
-	@Override
-	public List<BlockCommand> blockList(String id) {
-		return noteMapper.blockList(id);
 	}
 }

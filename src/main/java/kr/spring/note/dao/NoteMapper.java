@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import kr.spring.note.domain.BlockCommand;
 import kr.spring.note.domain.NoteCommand;
 
 public interface NoteMapper {
@@ -37,14 +36,4 @@ public interface NoteMapper {
 	
 	@Delete("DELETE FROM note WHERE note_num=#{note_num}") // sender / recipient 상태에서 나머지 사람도 쪽지를 삭제(DB에서 아예 삭제)
 	public void delete(int note_num);
-	
-	// 차단하기
-	@Insert("INSERT INTO block VALUES (#{block},#{be_blocked})")
-	public void block(String block, String be_blocked);
-	@Delete("DELETE FROM block b WHERE b.block=#{block} AND b.be_blocked=#{be_blocked}")
-	public void unblock(String block, String be_blocked);
-	
-	// 차단리스트
-	@Select("SELECT be_blocked FROM block b WHERE b.block=#{id}")
-	public List<BlockCommand> blockList(String id);
 }

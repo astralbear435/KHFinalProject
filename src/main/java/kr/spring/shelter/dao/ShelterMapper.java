@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -34,4 +35,8 @@ public interface ShelterMapper {
 	public void delete(String id);
 	@Delete("DELETE FROM shelter_detail WHERE s_id=#{s_id}")
 	public void deleteShelterDetail(String id);
+	
+	//비밀번호 찾기
+	@Update("UPDATE shelter_detail SET s_passwd=#{m_passwd} WHERE s_email=#{m_email}")
+	public void updatePwShelter(@Param("m_email") String m_email, @Param("m_passwd") String m_passwd);
 }
