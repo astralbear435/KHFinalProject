@@ -30,11 +30,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- menu -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+
+<!--
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-
+ -->
 <!-- chatting style -->
 <style>
 	#m_nav_chat {
@@ -81,7 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	}
 	
 	body {
-	  background-color: #edeff2;
+	  /* background-color: #edeff2; */
 	  font-family: "Calibri", "Roboto", sans-serif;
 	}
 	

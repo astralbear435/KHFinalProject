@@ -21,12 +21,8 @@
 				<li> <a href="${pageContext.request.contextPath}/main/main.do">Home</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/main/gallery.do">Gallery</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/main/icons.do">Icons</a> </li>
-<<<<<<< HEAD
 				<li> <a href="${pageContext.request.contextPath}/main/codes2.do">Codes</a> </li>
 				<li><a href="${pageContext.request.contextPath}/recruit/recruitList.do">봉사활동 모집</a></li>
-=======
-					    <li><a href="${pageContext.request.contextPath}/main/codes2.do">codes</a> </li>	
->>>>>>> eaeb9531a013948ad2744e7904076067244fd02f
 				<li> <a href="${pageContext.request.contextPath}/ap/apMain.do">임시보호</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/shelter/shelterList.do">보호소</a> </li>
 				<c:if test="${empty user_id}">
@@ -34,12 +30,9 @@
 				<li><a href="${pageContext.request.contextPath}/member/selectLogin.do">로그인</a></li>
 				</c:if>
 				<c:if test="${!empty user_id}">
-<<<<<<< HEAD
 				<li><a href="#">${user_id}님 로그인</a></li>
 				<c:if test="${user_auth==3 || user_auth==4}">
-=======
 				<li><a href="${pageContext.request.contextPath}/member/memberDetail.do">${user_id}님 로그인</a></li>
->>>>>>> 55bfb18f117dda57dd48c11c72c466fd62efa098
 				<li><a href="${pageContext.request.contextPath}/shelter/shelterConfirm.do">회원정보</a></li>
 				</c:if>
 				<li><a href="${pageContext.request.contextPath}/note/receivedList.do">쪽지</a></li>

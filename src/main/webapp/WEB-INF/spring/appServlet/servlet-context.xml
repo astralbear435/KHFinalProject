@@ -133,7 +133,7 @@
 	<!-- 로그인 여부 체크 -->
 	<interceptors>
 		<interceptor>
-			<mapping path="/ap/apCallList.do" />
+			<!-- <mapping path="/ap/apCallList.do" /> -->
 			<mapping path="/shelter/shelterInfo.do" />
 			<mapping path="/note/receivedList.do" />
 			<mapping path="/board/sendList.do" />

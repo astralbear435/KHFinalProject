@@ -31,7 +31,7 @@ create table ap_call_home(
 );
 create sequence ap_call_seq;
 
-create table AP_BO_CALL(
+create table AP_BO(
 	bo_num number not null,
 	bo_id varchar2(30) not null,
 	bo_date_start varchar2(300) not null,
@@ -42,8 +42,23 @@ create table AP_BO_CALL(
 	bo_end_min varchar2(300) not null,
 	id varchar2(30) not null,
 	ap_num number not null,
-	constraint AP_BO_CALL_pk primary key (bo_id)
+	constraint AP_BO_pk primary key (bo_num)
 );
 create sequence ap_bo_seq;
+
+create table AP_BO_CALL(
+	bo_call_num number not null,
+	bo_call_id varchar2(30) not null,
+	bo_call_date_start varchar2(300) not null,
+	bo_call_date_end varchar2(300) not null,
+	bo_call_re varchar2(300) not null,
+	bo_call_re_date varchar2(300),
+	bo_call_re_hour varchar2(300),
+	bo_call_re_min varchar2(300),
+	call_name varchar2(30) not null,
+	call_num number,
+	constraint AP_BO_CALL_pk primary key (bo_call_num)
+);
+create sequence ap_bo_call_seq;
 	
 	

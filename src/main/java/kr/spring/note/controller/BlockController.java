@@ -20,7 +20,7 @@ public class BlockController {
 
 		String user_id = (String)session.getAttribute("user_id");
 		
-		noteService.block(user_id,block_id);
+		//noteService.block(user_id,block_id);
 		
 		return "note/block";
 	}
