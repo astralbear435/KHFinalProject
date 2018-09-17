@@ -76,6 +76,12 @@ public class RecruitServiceImpl implements RecruitService{
 		return boardMapper.selectBoNameList(map);
 	}
 
+	@Override
+	public int recruitCount(String r_id) {
+		// TODO Auto-generated method stub
+		return boardMapper.recruitCount(r_id);
+	}
+
 
 
 

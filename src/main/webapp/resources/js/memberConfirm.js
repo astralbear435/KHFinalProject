@@ -29,10 +29,11 @@ $(document).ready(function() {
 		});
 		
 		//이름 미입력 안내 메시지 초기화
-		$('#register_form #m_name').keyup(function () {
+		$('#register_form #m_gender').click(function () {
 
 			$('#message_name').text('');
 		});
+		
 		//비밀번호 미입력 안내 메시지 초기화
 		$('#register_form #m_passwd').keyup(function () {
 
@@ -362,6 +363,16 @@ $(document).ready(function() {
 			$('#m_name').focus();
 
 			return false;
+		}
+		
+		var man = $('#man');
+		if($(':radio[name="m_gender"]:checked').length < 1) {
+			
+			$('#message_gender').css('color','red').text('성별을 입력하세요.');
+			$('#man').focus();
+			
+			return false;
+			
 		}
 		
 		if(checkNickname == 0) {

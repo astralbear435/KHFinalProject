@@ -20,7 +20,8 @@ import kr.spring.util.CipherTemplate;
 public class MemberServiceImpl implements MemberService {
 	
 	@Resource
-	private MemberMapper memberMapper;	
+	private MemberMapper memberMapper;
+
 	@Resource
 	private CipherTemplate cipherAES;
 	
@@ -33,7 +34,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void insert(MemberCommand member) throws Exception {
 		
-		memberMapper.insert(member);
+		memberMapper.insert(member);		
 		memberMapper.insertDetail(member);
 		
 		String verify_key = new TempKey().getKey(50, false); // 인증키 생성

@@ -9,7 +9,7 @@
 	<div class="bigSquare">
 		<c:if test="${user_id == shelter.s_id}">
 		<p align="right" style="margin:0;">
-			<input type="button" value="수정하기"
+			<input type="button" value="수정하기" class="btn btn-warning"
 					onclick="location.href='${pageContext.request.contextPath}/shelter/shelterConfirm.do'">
 		</p>
 		</c:if>
@@ -106,14 +106,16 @@
 				    } 
 				});  
 			</script>
-		
+			<!-- 지도 끝 -->
+			
 			<div class="horizontal"></div><!-- 가로 여백 -->
 		</div>
-		<!-- 지도 끝 -->
+		
 		
 		<hr size="1" width="100%"><br><br>
 		
 		<!-- 링크2 시작 -->
+		<c:if test="${recruitCount == 0}">
 		<div>
 			<div style="width: 1000px; margin: 0 auto;">
 				<div style="text-align: center;">
@@ -127,7 +129,8 @@
 								여러분의 도움을<br>
 								필요로 하고 있습니다.<br>
 							</div><br>
-							<input type="button" value="보러가기 >" onclick="location.href='#'">
+							<input type="button" value="보러가기 >" class="btn btn-warning"
+									onclick="location.href='#'">
 						</div>
 					</div>
 					<div  class="link2blank" style="width: 145px;"></div>
@@ -140,16 +143,19 @@
 								필요한 물품을 <br>
 								후원하실 수 있습니다.<br>
 							</div><br>
-							<input type="button" value="후원하기 >" onclick="location.href='#'">
+							<input type="button" value="후원하기 >" class="btn btn-info"
+										onclick="location.href='${pageContext.request.contextPath}/goods/list.do?keyfield=id&keyword=${shelter.s_id}'">
 						</div>
 					</div>
 					<div class="horizontal"></div><!-- 가로 여백 -->
 				</div>
 			</div>
 		</div>
+		</c:if>
 		<!-- 링크2 끝 -->
 		
 		<!-- 링크3 시작 -->
+		<c:if test="${recruitCount > 0}">
 		<div style="width: 1000px; margin: 0 auto;">
 			<div style="float:left">
 				<img src="${pageContext.request.contextPath}\resources\images\sy\빨간강아지.png" class="square">
@@ -160,7 +166,8 @@
 						여러분의 도움을<br>
 						필요로 하고 있습니다.<br>
 					</div><br>
-					<input type="button" value="보러가기 >" onclick="location.href='#'">
+					<input type="button" value="보러가기 >" class="btn btn-danger"
+							onclick="location.href='#'">
 				</div>
 			</div>
 			<div class="link3blank"></div>
@@ -173,7 +180,8 @@
 						필요한 물품을 <br>
 						후원하실 수 있습니다.<br>
 					</div><br>
-					<input type="button" value="후원하기 >" onclick="location.href='#'">
+					<input type="button" value="후원하기 >" class="btn btn-info"
+							onclick="location.href='${pageContext.request.contextPath}/goods/list.do?keyfield=id&keyword=${shelter.s_id}'">
 				</div>
 			</div>
 			<div class="link3blank"></div>
@@ -186,10 +194,12 @@
 						도움을 주실 분들을<br>
 						모집합니다.<br>
 					</div><br>
-					<input type="button" value="참여하기 >" onclick="location.href='#'">
+					<input type="button" value="참여하기 >" class="btn btn-warning"
+							onclick="location.href='${pageContext.request.contextPath}/recruit/recruitList.do?keyfield=id&keyword=${shelter.s_id}'">
 				</div>
 			</div>
 		</div>
+		</c:if>
 		<!-- 링크3 끝 -->
 	</div>
 </body>

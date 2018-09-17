@@ -24,6 +24,11 @@
 				r_id like '%' ||#{keyword} || '%' or
 				r_content like '%' ||#{keyword} || '%'
 			</if>
+			
+			<!-- 세영 추가 -->
+			<if test="keyword != '' and keyfield =='id'">
+				r_id like '%' ||#{keyword} || '%'
+			</if>
 		</where>
 		ORDER BY r_num desc)a)
 	<![CDATA[
@@ -83,6 +88,11 @@
 				r_title like '%' ||#{keyword} || '%' or
 				r_id like '%' ||#{keyword} || '%' or
 				r_content like '%' ||#{keyword} || '%'
+			</if>
+			
+			<!-- 세영 추가 -->
+			<if test="keyword != '' and keyfield =='id'">
+				r_id like '%' ||#{keyword} || '%'
 			</if>
 		</where>		
 		</select>	
