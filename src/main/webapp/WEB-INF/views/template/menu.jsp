@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sy.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/modal.js"></script>
 
 	<!-- 모달창 열기 -->
@@ -85,6 +84,7 @@
 				<li> <a href="${pageContext.request.contextPath}/mypage/mypageShelter.do?r_id=${user_id}">보호소 마이페이지</a> </li>
 				</c:if>
 				<li><a href="${pageContext.request.contextPath}/goods/list.do">후원하기</a></li>
+				<li> <a href="${pageContext.request.contextPath}/review/reviewList.do">Review</a></li>
 			  </ul>
 			</div>
 		<!-- menu -->
