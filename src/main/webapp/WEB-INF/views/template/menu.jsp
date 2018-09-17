@@ -25,8 +25,12 @@
 				<li><a href="${pageContext.request.contextPath}/member/selectLogin.do">로그인</a></li>
 				</c:if>
 				<c:if test="${!empty user_id}">
+<<<<<<< HEAD
 				<li><a href="#">${user_id}님 로그인</a></li>
 				<c:if test="${user_auth==3 || user_auth==4}">
+=======
+				<li><a href="${pageContext.request.contextPath}/member/memberDetail.do">${user_id}님 로그인</a></li>
+>>>>>>> origin/member
 				<li><a href="${pageContext.request.contextPath}/shelter/shelterConfirm.do">회원정보</a></li>
 				</c:if>
 				<li><a href="${pageContext.request.contextPath}/note/receivedList.do">쪽지</a></li>

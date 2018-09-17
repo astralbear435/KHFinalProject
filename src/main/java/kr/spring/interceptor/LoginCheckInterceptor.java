@@ -25,7 +25,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("user_id") == null) {	//로그인이 되지 않은 상태
 			
-			response.sendRedirect(request.getContextPath() + "/member/login.do");
+			response.sendRedirect(request.getContextPath() + "/member/selectLogin.do");
 			
 			return false;
 

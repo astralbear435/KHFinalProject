@@ -3,8 +3,14 @@ $(document).ready(function() {
 	var regex= /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
 	var check = true;
 	
-	function checkEmail() {
+	//아이디 찾기
+	$('#find_Id').click(function() {
 		
+		$('#message_email').empty();
+		$('#m_email.errors').empty();
+		
+		check = true;
+
 		//이메일 입력 여부 판단
 		if($('#m_email').val() == '') {
 
@@ -24,25 +30,14 @@ $(document).ready(function() {
 			
 			return false;
 		}
-	}
-	
-	//아이디 찾기
-	$('#find_Id').click(function() {
-		
-		$('#message_email').empty();
-		$('#m_email.errors').empty();
-		
-		check = true;
-		checkEmail();
 		
 		if(check) {
 			
 			$('#message_id').text('');	//메세지 초기화
-			$('#loading').show();	//로딩 이미지 노출
 			
 			$.ajax({
 				
-				url:'find_Member.do',
+				url:'find_id.do',
 				type:'post',
 				data:{m_email:$('#m_email').val()},
 				dataType:'json',
@@ -80,8 +75,7 @@ $(document).ready(function() {
 		
 		$('#message_email').empty();
 		$('#m_email.errors').empty();
-	
-			
+		
 		check = true;
 		//이메일 입력 여부 판단
 		if($('#m_email').val() == '') {
@@ -103,10 +97,9 @@ $(document).ready(function() {
 			return false;
 		}
 
-		if(check) {
+		/*if(check) {
 			
 			$('#message_id').text('');	//메세지 초기화
-			$('#loading').show();	//로딩 이미지 노출
 			
 			$.ajax({
 
@@ -124,7 +117,7 @@ $(document).ready(function() {
 						
 						$('#message_email').css('color','red').text('등록되지 않은 이메일입니다.');
 
-					} else if(data.result == 'emailFound') {	//이메일이 존재하는 경우
+					} else if(data.result == 'success') {	//이메일이 존재하는 경우
 						
 						var output = '';
 						output += '등록된 이메일로 임시비밀번호가 전송되었습니다.';
@@ -145,7 +138,7 @@ $(document).ready(function() {
 				}
 
 			});
-		}
+		}*/
 		
 	});
 	

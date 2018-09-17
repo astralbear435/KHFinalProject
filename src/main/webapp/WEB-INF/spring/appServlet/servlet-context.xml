@@ -149,8 +149,9 @@
 			<mapping path="/shelter/shelterInfo.do" />
 			<mapping path="/note/receivedList.do" />
 			<mapping path="/board/sendList.do" />
-			<mapping path="/member/detail.do" />
-			<mapping path="/member/update.do" />
+			<mapping path="/member/memberDetail.do" />
+			<mapping path="/member/memberUpdate.do" />
+			<mapping path="/member/memberDelete.do" />
 			<mapping path="/member/resendEmail.do" />
 			<beans:bean class="kr.spring.interceptor.LoginCheckInterceptor" />
 		</interceptor>
