@@ -27,6 +27,9 @@ public interface BoardMapper {
 	public void delete(Integer num);
 	@Select("SELECT s_name FROM SHELTER_DETAIL where s_id=#{id}")
 	public String selectName(String id);
+	//보호소 이름 업데이트
+	@Update("UPDATE dog_board SET an_sheltername=#{sheltername} WHERE reg_date=(SELECT max(reg_date)from dog_board)")
+	public void updateName(String shelterName);
 	
 	//댓글
 	public List<BoardReplyCommand> selectListReply(Map<String,Object> map);

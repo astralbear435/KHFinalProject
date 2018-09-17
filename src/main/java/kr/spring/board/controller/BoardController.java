@@ -25,6 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.board.domain.BoardCommand;
 import kr.spring.board.service.BoardService;
+import kr.spring.shelter.domain.ShelterCommand;
+import kr.spring.shelter.service.ShelterService;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
 
@@ -36,18 +38,21 @@ public class BoardController {
 
 	@Resource
 	private BoardService boardService;
+	@Resource
+	private ShelterService shelterService;
 
 	//==============게시판 글 등록=============//
 	//등록 폼
 	@RequestMapping(value="/dog_board/write.do",
 			method=RequestMethod.GET)
 	public String form(HttpSession session, Model model) {
+		
 		String id = (String)session.getAttribute("user_id");
-
+		
 		BoardCommand command = new BoardCommand();
 		command.setId(id); 
 
-		model.addAttribute("boardCommand", command);
+		model.addAttribute("boardCommand", command); 
 
 		return "boardWrite";
 	}
@@ -69,28 +74,35 @@ public class BoardController {
 
 		//글쓰기
 		boardService.insert(boardCommand);
+		//보호소 이름 업데이트
+		String shelter=boardService.selectName(boardCommand.getId());
+		boardService.updateName(shelter);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<보호소 명>> : " + shelter);
+		}
 
 		return "redirect:/dog_board/list.do";
 	}
 	//==============게시판 글 목록=============//
 	@RequestMapping("/dog_board/list.do")
 	public ModelAndView process(
-			@RequestParam(value="pageNum",defaultValue="1")
+		    @RequestParam(value="pageNum",defaultValue="1")
 			int currentPage,
 			@RequestParam(value="keyfield",defaultValue="")
 			String keyfield,
 			@RequestParam(value="keyword",defaultValue="")
-			String keyword
+			String keyword			
 			) {
-
+		
 		Map<String,Object> map = 
 				new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
-
+		
 		//총 글의 갯수 또는 검색된 글의 갯수
 		int count = boardService.selectRowCount(map);
-
+   
 		if(log.isDebugEnabled()) {
 			log.debug("<<count>> : " + count);
 		}
@@ -111,7 +123,8 @@ public class BoardController {
 				log.debug("<<list>> : " + list);
 			}
 		}
-
+		
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("boardList");
 		mav.addObject("count", count);
@@ -132,12 +145,11 @@ public class BoardController {
 		//해당 글의 조회수 증가
 		boardService.updateHit(num);
 		
-
 		BoardCommand board = boardService.selectBoard(num);
 		String id=board.getId();
 		//이름 불러오기
 		String s_name=boardService.selectName(id);
-		System.out.println("조회수의 값ㅇ느? :"+board.getAn_hit());
+		
 		//줄바꿈 처리
 		//board.setAn_content(StringUtil.useBrNoHtml(board.getAn_content()));
 		ModelAndView mav = new ModelAndView();

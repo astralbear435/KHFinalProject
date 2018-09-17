@@ -82,8 +82,13 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public String selectName(String id) {
-		// TODO Auto-generated method stub
+		
 		return boardMapper.selectName(id);
+	}
+
+	@Override
+	public void updateName(String shelterName) {
+		boardMapper.updateName(shelterName);
 	}
 }
 

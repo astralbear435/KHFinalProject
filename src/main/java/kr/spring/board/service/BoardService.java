@@ -8,8 +8,7 @@ import kr.spring.board.domain.BoardReplyCommand;
 
 public interface BoardService {
 	//부모글
-	public List<BoardCommand> selectList(
-			Map<String,Object> map);
+	public List<BoardCommand> selectList(Map<String,Object> map);
 	public int selectRowCount(Map<String,Object> map);
 	public void insert(BoardCommand board);
 	public BoardCommand selectBoard(Integer num);
@@ -18,6 +17,8 @@ public interface BoardService {
 	public void delete(Integer num);
 	//보호소 이름 불러오기
 	public String selectName(String id);
+	//보호소 이름 업데이트
+	public void updateName(String shelterName);
 
 	//댓글
 	public List<BoardReplyCommand> selectListReply(Map<String,Object> map);

@@ -20,41 +20,62 @@ function delUrl(){
 ul{
    float:right;
    list-style:none;
-   text-align:center;
    }
-img{
-   
+#backdiv{
+	  float:right;
+	  border:15px solid blue; 
+	  text-align:center;
+	  border-width:3px;
+	  border-color:#e0f7ff;
+	  background-color:#e0f7ff; 
+	  width:30%;
+	  border-style:double;
 }
 </style>
 <div class="container">
 	<br><br>
 	&nbsp;&nbsp;<font style="font-size:1em;" color="#17BEFF"><b>${s_name}</b></font>&nbsp;
-	<span><b style="font-size:1em;"><a>[${board.an_species}&nbsp;&nbsp;${board.reg_date}]</a><b style="float:right;">조회수 : ${board.an_hit}</b></b></span>
+	<span><b style="font-size:1em;"><a>[${board.an_species}&nbsp;${board.an_name}&nbsp;${board.reg_date}]</a><b style="float:right;">조회수 : ${board.an_hit}</b></b></span>
 	<hr size="1" width="100%">
 	<br>
-	<div style="display:inline-block; font-size:15px; width:740px;">
-	<a href="detail.do?num=${board.num}"><img src="imageView.do?num=${board.num}" width="500" height="300">
+	<div style="padding-right: 22%; margin-left:8%; display:inline-block; font-size:15px; ">
+	<a href="detail.do?num=${board.num}"><img src="imageView.do?num=${board.num}" width=500, height=500>
 	</a>
-	<ul>
-		<li><b>보호소 : ${s_name}</b></li>
+	<ul style="font-size:20px; /* padding-right:5%; */ padding-top:8%;">
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;보호소 :${s_name}</li>
 		<br>
-		<li>이름 : ${board.an_name}</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;이름 : ${board.an_name}</li>
 		<br>
-		<li>묘종/견종   :  ${board.an_species}</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;묘종/견종   :  ${board.an_species}</li>
 		<br>
-		<li>모상   :  ${board.an_color}</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;모색   :  ${board.an_color}</li>
 		<br>
-		<li>성별   :  ${board.an_gender}</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;성별   :  ${board.an_gender}</li>
 		<br>
-		<li>접종여부  : ${board.an_review}</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;접종여부  : ${board.an_review}</li>
 		<br>
-		<li>중성화  :  ${board.an_operate}</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;중성화  :  ${board.an_operate}</li>
 	</ul>
+		<div id="backdiv" style="width:350px; height:150px;" align="right">
+			<br>
+            <span class="banner_txt01">CUSTOMER CENTER</span>
+            <br>
+            <span class="banner_txt02">대표전화</span>
+            <br>
+            <span class="banner_txt03">010-4497-0401</span>
+            <br>
+            <span class="banner_txt04">365일 연중무휴/24시간 상담가능</span>
+            <br>
+        </div>
 		</div>
 	<br>
 	<br>
 	<hr size="1" width="100%">
-	<br><br><br><br><br><br><br>
+	<div style="width: 450px; margin: 0 auto;">
+	<br><br>
+			<img src="${pageContext.request.contextPath}\resources\images\sy\보호소 줄 그림.png">
+	</div>
+	<br><br><br><br><br>
 	<p>
 		${board.an_content}
 	</p>
@@ -78,12 +99,10 @@ img{
 			       value="${board.num}" id="num">
 			<input type="hidden" name="id"
 			       value="${user_id}" id="user_id">
-			<textarea  style="width:100%; height:50%; text-align:center;"
+			<textarea style="width:100%;"
 			  name="re_content" id="re_content"
-			  class="re-content"
-			  <c:if test="${empty user_id}">disabled="disabled"</c:if>
-			  >
-			  <c:if test="${empty user_id}">로그인해야 작성할 수 있습니다.</c:if></textarea>              
+			  class="re-content" <c:if test="${empty user_id}">disabled="disabled"</c:if>
+			  ><c:if test="${empty user_id}">로그인해야 작성할 수 있습니다.</c:if></textarea>              
 			<c:if test="${!empty user_id}">
 			<div id="re_first">
 				<span class="letter-count">300/300</span>

@@ -24,8 +24,10 @@ public class BoardCommand {
 	private Date reg_date;//등록날짜
 	private int an_hit;//조회수
 	private MultipartFile upload;//업로드 파일
+	@NotEmpty
 	private byte[] uploadfile;//DB에 저장된 파일
 	private String filename;//파일명
+	private String an_sheltername;
 	
 	private int re_cnt; //댓글 수
 
@@ -40,11 +42,10 @@ public class BoardCommand {
 		setFilename(upload.getOriginalFilename());
 	}
 	
-	
-	
 	public int getNum() {
 		return num;
 	}
+
 
 
 
@@ -54,9 +55,11 @@ public class BoardCommand {
 
 
 
+
 	public String getId() {
 		return id;
 	}
+
 
 
 
@@ -66,9 +69,12 @@ public class BoardCommand {
 
 
 
+
 	public String getAn_name() {
 		return an_name;
 	}
+
+
 
 
 	public void setAn_name(String an_name) {
@@ -76,9 +82,13 @@ public class BoardCommand {
 	}
 
 
+
+
 	public String getAn_review() {
 		return an_review;
 	}
+
+
 
 
 	public void setAn_review(String an_review) {
@@ -86,9 +96,13 @@ public class BoardCommand {
 	}
 
 
+
+
 	public String getAn_content() {
 		return an_content;
 	}
+
+
 
 
 	public void setAn_content(String an_content) {
@@ -96,9 +110,13 @@ public class BoardCommand {
 	}
 
 
+
+
 	public String getAn_operate() {
 		return an_operate;
 	}
+
+
 
 
 	public void setAn_operate(String an_operate) {
@@ -106,9 +124,13 @@ public class BoardCommand {
 	}
 
 
+
+
 	public String getAn_species() {
 		return an_species;
 	}
+
+
 
 
 	public void setAn_species(String an_species) {
@@ -116,9 +138,13 @@ public class BoardCommand {
 	}
 
 
+
+
 	public String getAn_color() {
 		return an_color;
 	}
+
+
 
 
 	public void setAn_color(String an_color) {
@@ -126,9 +152,13 @@ public class BoardCommand {
 	}
 
 
+
+
 	public String getAn_gender() {
 		return an_gender;
 	}
+
+
 
 
 	public void setAn_gender(String an_gender) {
@@ -136,9 +166,13 @@ public class BoardCommand {
 	}
 
 
+
+
 	public Date getReg_date() {
 		return reg_date;
 	}
+
+
 
 
 	public void setReg_date(Date reg_date) {
@@ -146,9 +180,13 @@ public class BoardCommand {
 	}
 
 
+
+
 	public int getAn_hit() {
 		return an_hit;
 	}
+
+
 
 
 	public void setAn_hit(int an_hit) {
@@ -156,9 +194,13 @@ public class BoardCommand {
 	}
 
 
+
+
 	public byte[] getUploadfile() {
 		return uploadfile;
 	}
+
+
 
 
 	public void setUploadfile(byte[] uploadfile) {
@@ -166,9 +208,13 @@ public class BoardCommand {
 	}
 
 
+
+
 	public String getFilename() {
 		return filename;
 	}
+
+
 
 
 	public void setFilename(String filename) {
@@ -176,9 +222,27 @@ public class BoardCommand {
 	}
 
 
+
+
+	public String getAn_sheltername() {
+		return an_sheltername;
+	}
+
+
+
+
+	public void setAn_sheltername(String an_sheltername) {
+		this.an_sheltername = an_sheltername;
+	}
+
+
+
+
 	public int getRe_cnt() {
 		return re_cnt;
 	}
+
+
 
 
 	public void setRe_cnt(int re_cnt) {
@@ -186,19 +250,25 @@ public class BoardCommand {
 	}
 
 
+
+
 	public MultipartFile getUpload() {
 		return upload;
 	}
 
 
+
+
 	@Override
 	public String toString() {
-		return "BoardCommand [num=" + num + ", id=" + id + ", an_name=" + an_name + ", an_review="
-				+ an_review + ", an_content=" + an_content + ", an_operate=" + an_operate + ", an_species=" + an_species
+		return "BoardCommand [num=" + num + ", id=" + id + ", an_name=" + an_name + ", an_review=" + an_review
+				+ ", an_content=" + an_content + ", an_operate=" + an_operate + ", an_species=" + an_species
 				+ ", an_color=" + an_color + ", an_gender=" + an_gender + ", reg_date=" + reg_date + ", an_hit="
 				+ an_hit + ", upload=" + upload + ", uploadfile=" + Arrays.toString(uploadfile) + ", filename="
-				+ filename + ", re_cnt=" + re_cnt + "]";
+				+ filename + ", an_sheltername=" + an_sheltername + ", re_cnt=" + re_cnt + "]";
 	}
+
+
 	
 	
 }

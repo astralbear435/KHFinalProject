@@ -22,6 +22,7 @@
  	                   b.an_hit,
  	                   b.reg_date,
  	                   b.id,
+ 	                   b.an_sheltername,
  	                   r.re_cnt
  	                FROM dog_board b LEFT OUTER JOIN (SELECT num,COUNT(*) re_cnt
  	                                                FROM <!-- dog_board_reply -->

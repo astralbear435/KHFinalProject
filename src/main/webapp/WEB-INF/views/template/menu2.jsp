@@ -18,8 +18,7 @@
 				<li> <a href="${pageContext.request.contextPath}/main/gallery.do">Gallery</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/main/icons.do">Icons</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/ap/apMain.do">임시보호</a> </li>
-				<li> <a href="${pageContext.request.contextPath}/shelter/shelterList.do">보호소</a> </li>
-				<li><a href="${pageContext.request.contextPath}/dog_board/list.do">입양페이지(보호소)</a></li>
+				<li> <a href="${pageContext.request.contextPath}/shelter/shelterList.do">보호소</a></li>
 				<c:if test="${empty user_id}">
 				<li><a href="${pageContext.request.contextPath}/member/provision.do">회원가입</a></li>
 				<li><a href="${pageContext.request.contextPath}/member/selectLogin.do">로그인</a></li>
@@ -33,6 +32,7 @@
 				<li><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
 				</c:if>
 				<li><a href="${pageContext.request.contextPath}/goods/list.do">후원하기</a></li>
+				<li><a href="${pageContext.request.contextPath}/dog_board/list.do">입양페이지(보호소)</a></li>
 			  </ul>
 			</div>
 		<!-- menu -->
