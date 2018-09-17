@@ -71,6 +71,12 @@ public class MypageServiceImpl implements MypageService {
 		return mypageMapper.selectBohoCallList(boho_id);
 	}
 
+	@Override
+	public OrderCommand selectNowList(String dona_id) {
+		// TODO Auto-generated method stub
+		return mypageMapper.selectNowList(dona_id);
+	}
+
 
 
 	

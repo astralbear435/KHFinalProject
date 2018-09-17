@@ -92,7 +92,7 @@ function requestPay(ptotal,goodsName,goodsNum,dona_id,amount,dona_name,dona_asna
     IMP.request_pay({ // param
         pg: "inicis",
         pay_method: "card",
-        merchant_uid: "ORD20180131-0000077",
+        merchant_uid: "ORD20180131-0001116",
         name: goodsName,
         amount:ptotal,
         buyer_email: "gildong@gmail.com",
@@ -113,6 +113,7 @@ function requestPay(ptotal,goodsName,goodsNum,dona_id,amount,dona_name,dona_asna
 					if(data.result=='success'){
 					 alert('결제를 성공했습니다. 마이페이지에서 확인해주세요.');
 				     $('#myModal2').hide();
+				     location.reload();
 					}
 				},
 				error:function(){
@@ -215,31 +216,40 @@ $('.slider-for').slick({
 
 
 <!-- 내용 시작 -->    
-<div class="container">
+<div class="container"><br><br>
+<img src="${pageContext.request.contextPath}/upload/goods/mong.jpg" alt="" style="width:100%">
+
+
+<div style="width:90%;">
 <br>
-	<h4><a style="color:blue" href="${pageContext.request.contextPath}/shelter/shelterDetail.do?id=${as_detail.as_id}">${as_detail.as_name}</a><a href="${pageContext.request.contextPath}/goods/list.do">/기부하기</a></h4>
-	<br>
+	<h4><b></b><a style="color:blue" href="${pageContext.request.contextPath}/shelter/shelterDetail.do?id=${as_detail.as_id}">${as_detail.as_name}</a><a href="${pageContext.request.contextPath}/goods/list.do">/후원하기</a></b></h4>
+<br>
 <!-- 이미지 슬라이드 가자!! -->
 <div style="margin-bottom: 10%;">
-<div style="display:inline-block; width:40%">
-		<div class="slider-for">
+<div style="display:inline-block; width:40%;">
+		<div class="slider-for" style="border:1px solid gray;">
 		<img src="${pageContext.request.contextPath}/upload/goods/${goods.g_photo1}" alt="">
 		<img src="${pageContext.request.contextPath}/upload/goods/${goods.g_photo2}" alt="">
 		<img src="${pageContext.request.contextPath}/upload/goods/${goods.g_photo3}" alt="">
-		</div>
+		</div>&nbsp;&nbsp;&nbsp;
 		<div class="slider-nav">
 		<img src="${pageContext.request.contextPath}/upload/goods/${goods.g_photo1}" alt="">
 		<img src="${pageContext.request.contextPath}/upload/goods/${goods.g_photo2}" alt="">
 		<img src="${pageContext.request.contextPath}/upload/goods/${goods.g_photo3}" alt="">
 		</div></div>
-	<div style="display:inline-block">
+	<div style="display:inline-block;margin-left: 5%;">
 		<h1>${goods.g_name}</h1><hr>
 		<p>원산지 : ${goods.g_origin}</p>
 		<p style="width:500px">상품 설명 : ${goods.g_content}</p>
-		<hr>
+		<hr>						
+		<c:if test="${goods.g_num==1}"><p>현재 해당 보호소에서 <b style="color:orange">${as_detail.pad}</b>  개 만큼 필요로 하고 있습니다.</p></c:if>	
+		<c:if test="${goods.g_num==2}"><p>현재 해당 보호소에서 <b style="color:orange">${as_detail.dogfood}</b>  개 만큼 필요로 하고 있습니다.</p></c:if>				
+		<c:if test="${goods.g_num==3}"><p>현재 해당 보호소에서 <b style="color:orange">${as_detail.catfood}</b>  개 만큼 필요로 하고 있습니다.</p></c:if>				
+		<c:if test="${goods.g_num==4}"><p>현재 해당 보호소에서 <b style="color:orange">${as_detail.shampoo}</b>  개 만큼 필요로 하고 있습니다.</p></c:if>				
+		<c:if test="${goods.g_num==5}"><p>현재 해당 보호소에서 <b style="color:orange">${as_detail.catsand}</b>  개 만큼 필요로 하고 있습니다.</p></c:if>							
 		<form id="cart_order">
 		<p style="display: inline-block;">
-		수량 : <input type="number" class="form-control" name="p_amount" id="order_quantity"/><b><div id="total" style="display: inline-block; float:right; color:#B60000;font-size: 25px;"><span id="item_total_txt">합계 : 0원</span>
+		수량 :<input type="number" class="form-control" name="p_amount" id="order_quantity"/><b><div id="total" style="display: inline-block; float:right; color:#B60000;font-size: 25px;"><span id="item_total_txt">합계 : 0원</span>
 		 </div></b></p>
 		<br>
 		<!-- 장바구니 버튼 -->
@@ -276,5 +286,7 @@ $('.slider-for').slick({
 
 	</div>
 </div>
+</div>
+<br><br><br><br>
 </div>
 

@@ -17,6 +17,9 @@ public interface MemberMapper {
 	public List<MemberCommand> wholeList();
 	@Select("SELECT count(*) FROM member")
 	public int wholeCount();
+	// 권한 값 확인
+	@Select("SELECT auth FROM member WHERE m_id=#{m_id}")
+	public int selectMemberAuth(String m_id);
 	
 	//등록
 	@Insert("INSERT INTO member (m_id,m_email) VALUES (#{m_id},#{m_email})")

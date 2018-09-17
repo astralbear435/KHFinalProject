@@ -17,6 +17,7 @@ public class NoticeCommend {
 	private Integer n_hit;
 	private Date n_reg_date;
 	private Date n_last_modified;
+	
 	public Integer getN_idx() {
 		return n_idx;
 	}

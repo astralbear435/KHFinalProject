@@ -25,6 +25,10 @@ public interface MypageMapper {
 	@Select("SELECT * FROM donation WHERE dona_id=#{dona_id}")
 	public List<OrderCommand> selectDanaList(String dona_id);
 	
+	//가장 최근 나의 기부리스트 갖고오기
+	@Select("SELECT * FROM DONATION WHERE dona_id=#{dona_id} AND DONA_DATE=(select max(DONA_DATE)from DONATION)")
+	public OrderCommand selectNowList(String dona_id);
+	
 	@Select("SELECT COUNT(*) FROM donation WHERE dona_id=#{dona_id}")
 	public int selectCountdonation(String dona_id);
 	
