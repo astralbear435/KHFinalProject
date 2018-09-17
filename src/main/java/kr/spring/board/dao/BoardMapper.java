@@ -25,6 +25,8 @@ public interface BoardMapper {
 	public void update(BoardCommand board);
 	@Delete("DELETE FROM dog_board WHERE num=#{num}")
 	public void delete(Integer num);
+	@Select("SELECT s_name FROM SHELTER_DETAIL where s_id=#{id}")
+	public String selectName(String id);
 	
 	//댓글
 	public List<BoardReplyCommand> selectListReply(Map<String,Object> map);
@@ -39,7 +41,6 @@ public interface BoardMapper {
 	//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
 	@Delete("DELETE FROM dgboard_reply WHERE num=#{num}")
 	public void deleteReplyByNum(Integer num);
-	
 }
 
 

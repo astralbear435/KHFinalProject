@@ -16,14 +16,20 @@ form{
    height:10%;
    align:center;
 }
+img.abc{
+	max-width: 100%;
+	max-height: 100%;
+	width: 250px;
+	height: 300px;
+}
 </style>
-<div class="page-main-style">
+<div class="container">
 	<br>
 	<h2 align="center">입양페이지</h2>
 	<br>
 	<br>
-		<form action="list.do" id="search_form" method="get">
-		<ul class="search">
+		<form style="margin-left:25%;" action="list.do" id="search_form" method="get">
+		<ul  class="search">
 			<li>
 				<select name="keyfield">
 					<option value="id">보호소명칭</option>
@@ -43,19 +49,20 @@ form{
 	<c:if test="${count > 0}"><!-- 게시물이 존재할때 -->
 		<c:forEach var="board" items="${list}">
 		<div style="display:inline-block;">
-			<a href="detail.do?num=${board.num}"><img src="imageView.do?num=${board.num}" width="230" height="200">
-			<br><font color="#17BEFF" size="3">${board.id}</font>&nbsp;&nbsp;${board.an_species}&nbsp;${board.an_name}<br><br>
+			<a href="detail.do?num=${board.num}"><img class="abc" style="display:inline-block;" src="imageView.do?num=${board.num}"></a>
+			<br><font style="font-size:1em;" color="#17BEFF">${board.id}</font>&nbsp;&nbsp;${board.an_species}&nbsp;${board.an_name}<br><br>
 			<img id="message" src="../resources/images/message.png"style="max-width:10px">&nbsp;(${board.re_cnt})<br>
-			${board.reg_date} &nbsp;<font size="1">조회 ${board.an_hit}</font><br><br><br></a>
+			${board.reg_date} &nbsp;<font style="font-size:0.75em;">조회 ${board.an_hit}</font><br><br><br>
 		</div>
-	</c:forEach> 
+	</c:forEach>
 	<div align="right">
 		<c:if test="${!empty user_id}">
 		<input type="button" value="글쓰기"  class="btn btn-info"
 		       onclick="location.href='write.do'">
 		</c:if>
+	<div style="margin-left:45%;">${pagingHtml}</div>
 	</div>
-	<div align="center">${pagingHtml}</div>
+
 	</c:if>
 	
 </div>

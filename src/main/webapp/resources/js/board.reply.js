@@ -231,11 +231,6 @@ $(document).ready(function(){
 		event.preventDefault();
 	});
 	
-	
-	
-	
-	
-	
 	//대댓글 버튼 클릭시 수정폼 노출
 	$(document).on('click','.reply-btn',function(){
 		//댓글 글번호
@@ -306,8 +301,8 @@ $(document).ready(function(){
 					alert('로그인해야 수정할 수 있습니다.');
 				}else if(data.result=='success'){
 					$('#are_form').parent().find('p').text($('#are_content').val());
-					//수정폼 초기화
-					initModifyForm();
+					//댓글폼 초기화
+					initReplyForm();
 				}else if(data.result=='wrongAccess'){
 					alert('타인의 글은 수정할 수 없습니다.');
 				}
@@ -319,11 +314,11 @@ $(document).ready(function(){
 		//기본 이벤트 제거
 		event.preventDefault();
 	});
-	//댓글 수정 폼 취소 버튼 클릭시 수정폼 초기화
+	//댓글 폼 취소 버튼 클릭시 수정폼 초기화
 	$(document).on('click','.re-reset',function(){
 		initReplyForm();
 	});
-	//댓글 수정 폼 초기화
+	//댓글  폼 초기화
 	function initReplyForm(){
 		$('.sub-item').show();
 		$('#are_form').remove();

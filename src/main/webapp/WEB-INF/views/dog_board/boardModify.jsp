@@ -2,10 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -65,22 +63,26 @@ ul{
 				다시 업로드하면 기존 메인 이미지는 삭제됩니다.</span>
 				</c:if>       
 			</li>
+			<br>
 			<li>
 				<label for="an_name">강아지 이름</label>
 				<form:input path="an_name" class="form-control" placeholder="이름을 입력해 하세요!"/>
 				<form:errors path="an_name" 
 				             cssClass="error-an_name"/>
 			</li>
+			<br>
 			<li>
 				<label for="an_species">묘종/견종</label>
 				<form:input path="an_species" class="form-control" placeholder="묘/견종을 입력하세요!"/>
 				<form:errors path="an_species" cssClass="error-an_species"/>
 			</li>
+			<br>
 				<li>
 				<label for="an_color">모색</label>
 				<form:input path="an_color" class="form-control" placeholder="유기견/묘 의 컬러을 입력하세요!"/>
 				<form:errors path="an_color" cssClass="error-an_color"/>
 			</li>
+			<br>
 			<li>
 				<label for="an_gender">성별</label>
 				<select name="an_gender" class="form-control">
@@ -88,6 +90,7 @@ ul{
 				<option type="checkbox" value="여아">여아</option>
 				</select>
 			</li>
+			<br>
 			<li>
 				<label for="an_operate">중성화여부</label>
 				<select name="an_operate" class="form-control">
@@ -95,6 +98,7 @@ ul{
 				<option type="checkbox" value="미완료">미완료</option>
 				</select>
 			</li>
+			<br>
 			<li>
 				<label for="an_review">접종여부</label>
 				<select name="an_review" class="form-control">
@@ -102,6 +106,7 @@ ul{
 				<option type="checkbox" value="접종미완료">접종미완료</option>
 				</select>
 			</li>
+			<br>
 			<li>
 				<label for="an_content">내용</label>
 				<form:textarea path="an_content"/>

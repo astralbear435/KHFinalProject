@@ -79,6 +79,12 @@ public class BoardServiceImpl implements BoardService{
 	public void deleteReply(Integer re_num) {
 		boardMapper.deleteReply(re_num);
 	}
+
+	@Override
+	public String selectName(String id) {
+		// TODO Auto-generated method stub
+		return boardMapper.selectName(id);
+	}
 }
 
 

@@ -16,6 +16,8 @@ public interface BoardService {
 	public void updateHit(Integer num);
 	public void update(BoardCommand board);
 	public void delete(Integer num);
+	//보호소 이름 불러오기
+	public String selectName(String id);
 
 	//댓글
 	public List<BoardReplyCommand> selectListReply(Map<String,Object> map);
@@ -23,6 +25,7 @@ public interface BoardService {
 	public void insertReply(BoardReplyCommand boardReply);
 	public void updateReply(BoardReplyCommand boardReply);
 	public void deleteReply(Integer re_num);
+	
 	
 }
 

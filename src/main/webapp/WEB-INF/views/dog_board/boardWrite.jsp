@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
     $('#an_content').summernote({
-    	height:200,
+    	height:500,
     	fontNames : [ '맑은고딕', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', ],
 		fontNamesIgnoreCheck : [ '맑은고딕' ],
 		focus: true,
@@ -46,7 +44,7 @@ ul{
 }
 </style>
 <div class="page-main-style">
-	<h3 align="center">(보호소)용 동물 등록페이지</h3>
+	<h3 align="center">(보호소) 동물 등록페이지</h3>
 	<form:form commandName="boardCommand" action="write.do" id="register_form" enctype="multipart/form-data">
 	    <form:hidden path="id"/>
 		<form:errors element="div" cssClass="error-color"/>	

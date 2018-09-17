@@ -26,17 +26,17 @@ img{
    
 }
 </style>
-<div class="page-main-style">
+<div class="container">
 	<br><br>
-	<font color="#17BEFF" size="3">${board.id}</font>&nbsp;
-	<span><b><a style="font-size:20px">[${board.an_species}&nbsp;&nbsp;${board.reg_date}]</a><b style="float:right;">조회수 : ${board.an_hit}</b></b></span>
+	&nbsp;&nbsp;<font style="font-size:1em;" color="#17BEFF"><b>${s_name}</b></font>&nbsp;
+	<span><b style="font-size:1em;"><a>[${board.an_species}&nbsp;&nbsp;${board.reg_date}]</a><b style="float:right;">조회수 : ${board.an_hit}</b></b></span>
 	<hr size="1" width="100%">
 	<br>
 	<div style="display:inline-block; font-size:15px; width:740px;">
 	<a href="detail.do?num=${board.num}"><img src="imageView.do?num=${board.num}" width="500" height="300">
 	</a>
 	<ul>
-		<li><b>보호소 : ${board.id}</b></li>
+		<li><b>보호소 : ${s_name}</b></li>
 		<br>
 		<li>이름 : ${board.an_name}</li>
 		<br>
@@ -78,7 +78,7 @@ img{
 			       value="${board.num}" id="num">
 			<input type="hidden" name="id"
 			       value="${user_id}" id="user_id">
-			<textarea  rows="3" cols="60"
+			<textarea  style="width:100%; height:50%; text-align:center;"
 			  name="re_content" id="re_content"
 			  class="re-content"
 			  <c:if test="${empty user_id}">disabled="disabled"</c:if>
@@ -97,7 +97,7 @@ img{
 	</div>
 	<!-- 목록 출력 -->
 	<div id="output"></div>
-	<div class="paging-button" style="display:none;">
+	<div class="paging-button"  style="display:none;">
 		<input type="button" value="다음글 보기">
 	</div>
 	<div id="loading" style="display:none;">

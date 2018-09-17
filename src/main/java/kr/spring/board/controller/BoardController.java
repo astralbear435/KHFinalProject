@@ -31,7 +31,7 @@ import kr.spring.util.StringUtil;
 @Controller
 public class BoardController {
 	private Logger log = Logger.getLogger(this.getClass());
-	private int rowCount = 10;
+	private int rowCount = 12;
 	private int pageCount = 10;
 
 	@Resource
@@ -124,20 +124,28 @@ public class BoardController {
 	@RequestMapping("/dog_board/detail.do")
 	public ModelAndView process(@RequestParam("num") int num) {
 
+		
 		if(log.isDebugEnabled()) {
 			log.debug("<<조회수 확인용 글번호>> : " + num);
 		}
 
 		//해당 글의 조회수 증가
 		boardService.updateHit(num);
-
+		
 
 		BoardCommand board = boardService.selectBoard(num);
+		String id=board.getId();
+		//이름 불러오기
+		String s_name=boardService.selectName(id);
 		System.out.println("조회수의 값ㅇ느? :"+board.getAn_hit());
 		//줄바꿈 처리
 		//board.setAn_content(StringUtil.useBrNoHtml(board.getAn_content()));
-
-		return new ModelAndView("boardView","board",board);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("boardView");
+		mav.addObject("board",board);
+		mav.addObject("s_name",s_name);
+		
+		return mav;
 	}
 	//파일 다운로드
 	@RequestMapping("/dog_board/file.do")
