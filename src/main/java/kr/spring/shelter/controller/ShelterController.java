@@ -168,7 +168,6 @@ public class ShelterController {
 			result.reject("invalidIdOrPassword");
 			
 			map.put("result", "false");
-			System.out.println("map ¹ÝÈ¯");
 			
 			return map;
 		}
