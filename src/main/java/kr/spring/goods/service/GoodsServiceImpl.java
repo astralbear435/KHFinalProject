@@ -130,4 +130,16 @@ public class GoodsServiceImpl implements GoodsService {
 		
 	}
 
+	@Override
+	public int selectTotalPayment() {
+		// TODO Auto-generated method stub
+		return goodsMapper.selectTotalPayment();
+	}
+
+	@Override
+	public int selectTodayPayment() {
+		// TODO Auto-generated method stub
+		return goodsMapper.selectTodayPayment(); 
+	}
+
 }

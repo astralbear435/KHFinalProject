@@ -66,5 +66,12 @@ public interface GoodsMapper {
 	//결제시 해당 컬럼 수량 빼기
 	public void minusCount(Map<String,Object> map2);
 	
+	//누적 총 결제 금액
+	@Select("SELECT sum(DONA_PRICE) FROM DONATION")
+	public int selectTotalPayment();
+	//오늘 총 결제금액
+	@Select("SELECT sum(DONA_PRICE) FROM DONATION WHERE TO_DATE(DONA_DATE,'yyyy-MM-dd') = TO_DATE(sysdate,'yyyy-MM-dd')")
+	public int selectTodayPayment();
+	
 }
 

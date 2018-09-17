@@ -194,4 +194,16 @@ public class MemberServiceImpl implements MemberService {
 	public int selectMemberAuth(String m_id) {
 		return memberMapper.selectMemberAuth(m_id);
 	}
+
+	@Override
+	public int selectMemberCount() {
+		// TODO Auto-generated method stub
+		return memberMapper.selectMemberCount();
+	}
+
+	@Override
+	public int selectTodayMemberCount() {
+		// TODO Auto-generated method stub
+		return memberMapper.selectTodayMemberCount();
+	}
 }

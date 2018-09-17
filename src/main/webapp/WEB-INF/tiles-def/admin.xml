@@ -12,28 +12,33 @@
 			value="/admin/template/menu.do" />
 		<put-attribute name="header"
 			value="/admin/template/header.do" />
-		<put-attribute name="body"  
-			value="/WEB-INF/views/admin/main/main.jsp" />
 		<put-attribute name="footer"
 			value="/WEB-INF/views/admin/template/footer.jsp" />
 	</definition>
-
+	<definition name="adminMain" extends="admin">
+		<put-attribute name="title" value="관리자 메인페이지" /> 
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/main/main.jsp" />
+	</definition>
 	<definition name="mainPageSetup" extends="admin">
 		<put-attribute name="title" value="메인페이지 설정" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/pageSetup/mainPage.jsp" />
 	</definition>
 	<definition name="noticeList" extends="admin">
-		<put-attribute name="title" value="공지사항"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/notice/noticeList.jsp"/>
-	</definition>  
+		<put-attribute name="title" value="공지사항" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/notice/noticeList.jsp" />
+	</definition>
 	<definition name="noticeWrite" extends="admin">
-		<put-attribute name="title" value="공지사항 작성"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/notice/noticeWrite.jsp"/>
-	</definition>  
+		<put-attribute name="title" value="공지사항 작성" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/notice/noticeWrite.jsp" />
+	</definition>
 	<definition name="menulist" extends="admin">
-		<put-attribute name="title" value="공지사항 작성"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/mainmenu/menulist.jsp"/>
+		<put-attribute name="title" value="공지사항 작성" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/mainmenu/menulist.jsp" />
 	</definition>
 </tiles-definitions>
 

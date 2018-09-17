@@ -75,6 +75,11 @@ public interface MemberMapper {
 	@Update("UPDATE member_detail SET m_passwd=#{m_passwd} WHERE m_email=#{m_email}")
 	public void updatePw(@Param("m_email") String m_email, @Param("m_passwd") String m_passwd);
 	
+	@Select("SELECT count(m_num) FROM MEMBER_DETAIL")
+	public int selectMemberCount();
+	@Select("SELECT count(m_num) FROM MEMBER_DETAIL WHERE TO_DATE(M_REG_DATE,'yyyy-MM-dd') = TO_DATE(sysdate,'yyyy-MM-dd')")
+	public int selectTodayMemberCount();
+	
 	/*//구글 로그인
 	@Update("UPDATE google_login SET g_name=#{g_name},g_id=#{g_id} WHERE m_email=#{m_email}")
 	public void googleLogin(MemberCommand member);*/

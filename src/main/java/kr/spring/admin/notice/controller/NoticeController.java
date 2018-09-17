@@ -151,7 +151,6 @@ public class NoticeController {
 	//============================ 게시글 글 목록 ============================
 	@RequestMapping("/admin/notice/noticeList.do")
 	public ModelAndView process() {
-		Map<String,Object> map = new HashMap<String,Object>();
 
 		int count = notice.selectCountList();
 		if(log.isDebugEnabled()) {

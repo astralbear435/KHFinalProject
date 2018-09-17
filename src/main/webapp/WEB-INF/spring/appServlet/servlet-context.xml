@@ -112,7 +112,6 @@
 	<view-controller path="/member/login.do" view-name="memberLogin" />
 	<view-controller path="/shelter/shelterWrite.do" view-name="shelterWrite" />
 	<view-controller path="/shelter/shelterList.do" view-name="shelterList" />
-	<view-controller path="/admin/main.do" view-name="admin" />
 	<view-controller path="/admin/notlogin.do" view-name="notlogin" />
 	<view-controller path="/admin/noadmin.do" view-name="noadmin" />
 	<view-controller path="/admin/logout.do" view-name="logout" />
