@@ -23,6 +23,7 @@ import kr.spring.goods.domain.GoodsCommand;
 import kr.spring.goods.service.GoodsService;
 import kr.spring.member.domain.MemberCommand;
 import kr.spring.member.service.MemberService;
+import kr.spring.recriut.service.RecruitService;
 import kr.spring.shelter.domain.ShelterCommand;
 import kr.spring.shelter.service.ShelterService;
 import kr.spring.util.CipherTemplate;
@@ -38,10 +39,13 @@ public class ShelterController {
 	private ShelterService shelterService;
 
 	@Resource
-	private CipherTemplate cipherAES;
+	private RecruitService recruitService;
 	
 	@Resource
 	private GoodsService goodsService;
+	
+	@Resource
+	private CipherTemplate cipherAES;
 	
 	
 	@ModelAttribute("command")
@@ -276,6 +280,8 @@ public class ShelterController {
 		String user_id = (String)session.getAttribute("user_id");
 		
 		ShelterCommand shelter = shelterService.selectShelter(id);
+		int recruitCount = recruitService.recruitCount(id);
+		System.out.println(recruitCount);
 		
 		// 주소값에서 괄호 지워서 보내기
 		String s_address1 = shelter.getS_address1();
@@ -287,6 +293,7 @@ public class ShelterController {
 		
 		model.addAttribute("user_id", user_id);
 		model.addAttribute("shelter", shelter);
+		model.addAttribute("recruitCount", recruitCount);
 		
 		return "shelterDetail";
 	}

@@ -19,6 +19,11 @@
 				as_name like '%' || #{keyword} || '%' or
 				as_location like '%' || #{keyword} || '%'
 			</if>
+			
+			<!-- 세영추가(아이디로 검색) -->
+			<if test="keyword != '' and keyfield == 'id'">
+				as_id like '%' || #{keyword} || '%'
+			</if>
 		</where>
 ORDER BY as_id desc
  	<!-- <![CDATA[
@@ -41,6 +46,11 @@ ORDER BY as_id desc
 			<if test="keyword != '' and keyfield == 'all'">
 				as_name like '%' || #{keyword} || '%' or
 				as_location like '%' || #{keyword} || '%'
+			</if>
+			
+			<!-- 세영추가(아이디로 검색) -->
+			<if test="keyword != '' and keyfield == 'id'">
+				as_id like '%' || #{keyword} || '%'
 			</if>
 		</where>
 	</select>

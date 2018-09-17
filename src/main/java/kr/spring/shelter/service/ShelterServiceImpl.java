@@ -64,47 +64,46 @@ public class ShelterServiceImpl implements ShelterService{
 
 	@Override
 	public void updatePwShelter(String m_email) throws Exception {
-
-		int index = 0;		
-		char[] charset_num = new char[] {
-				'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-		};
-		char[] charset_eng = new char[] {
-				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 
-				'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 
-				'U', 'V', 'W', 'X', 'Y', 'Z'
-		};
-		char[] charset_sc = new char[] {
-				'`', '~', '!', '@','#', '$', '%', '^',
-				'&' ,'*' ,'(', ')', '_', '-', '+', '='	
-		};
-		
-		StringBuffer sb = new StringBuffer();
-		
-		for(int i = 0; i < 3; i++) {
+			int index = 0;		
+			char[] charset_num = new char[] {
+					'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+			};
+			char[] charset_eng = new char[] {
+					'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 
+					'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 
+					'U', 'V', 'W', 'X', 'Y', 'Z'
+			};
+			char[] charset_sc = new char[] {
+					'`', '~', '!', '@','#', '$', '%', '^',
+					'&' ,'*' ,'(', ')', '_', '-', '+', '='	
+			};
 			
-			index = (int) (charset_num.length * Math.random());
-			sb.append(charset_num[index]);
-		}
-		for(int i = 0; i < 4; i++) {
+			StringBuffer sb = new StringBuffer();
+			
+			for(int i = 0; i < 3; i++) {
+				
+				index = (int) (charset_num.length * Math.random());
+				sb.append(charset_num[index]);
+			}
+			for(int i = 0; i < 4; i++) {
 
-			index = (int) (charset_eng.length * Math.random());
-			sb.append(charset_eng[index]);
-		}
-		for(int i = 0; i < 3; i++) {
+				index = (int) (charset_eng.length * Math.random());
+				sb.append(charset_eng[index]);
+			}
+			for(int i = 0; i < 3; i++) {
 
-			index = (int) (charset_sc.length * Math.random());
-			sb.append(charset_sc[index]);
-		}
-		
-		MailHandler sendMail = new MailHandler(mailSender);
-		sendMail.setSubject("[보호소 서비스 임시비밀번호 이메일]");
-		sendMail.setText(new StringBuffer().append("<h1>임시비밀번호</h1>").append("<hr>임시비밀번호는 <span style='color:blue'><b>" + sb.toString() + "</b></span> 입니다.<br>로그인 후 비밀번호를 변경해주세요.").toString());
-		sendMail.setFrom("choisw7491@gmail.com", "보호소");
-		sendMail.setTo(m_email);
-		sendMail.send();
-		
-		shelterMapper.updatePwShelter(m_email,cipherAES.encrypt(sb.toString()));
+				index = (int) (charset_sc.length * Math.random());
+				sb.append(charset_sc[index]);
+			}
+			
+			MailHandler sendMail = new MailHandler(mailSender);
+			sendMail.setSubject("[보호소 서비스 임시비밀번호 이메일]");
+			sendMail.setText(new StringBuffer().append("<h1>임시비밀번호</h1>").append("<hr>임시비밀번호는 <span style='color:blue'><b>" + sb.toString() + "</b></span> 입니다.<br>로그인 후 비밀번호를 변경해주세요.").toString());
+			sendMail.setFrom("choisw7491@gmail.com", "보호소");
+			sendMail.setTo(m_email);
+			sendMail.send();
+			
+			shelterMapper.updatePwShelter(m_email,cipherAES.encrypt(sb.toString()));	
 	}
 
 }

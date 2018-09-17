@@ -64,7 +64,10 @@ public class RecruitServiceImpl implements RecruitService{
 		return boardMapper.selectRecruitList(map);
 	}
 
-
+	@Override
+	public int recruitCount(String r_id) {
+		return boardMapper.recruitCount(r_id);
+	}
 
 
 }
