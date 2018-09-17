@@ -129,15 +129,9 @@
 			</c:forTokens>
 		</div>
 	</div>
-<<<<<<< HEAD
-
-	<div class="border-styles col-md-4">
-		<form:form commandName="command" action="apBoWrite.do" enctype="multipart/form-data">
-=======
 	
 	<div class="border-styles col-md-4" style="float:left; margin:100px 0 0 30px;">
 		<form:form commandName="command" action="apBoWrite.do" id="ap_bo_form" enctype="multipart/form-data">
->>>>>>> 444602ffb44ad5d888ebeb2d23b3cb3c353bf4ed
 			<input type="hidden" id="bo_id" name="bo_id" value="${user_id}">
 			<input type="hidden" id="id" name="id" value="${apcommand.id}">
 			<input type="hidden" id="ap_num" name="ap_num" value="${apcommand.ap_num}">
