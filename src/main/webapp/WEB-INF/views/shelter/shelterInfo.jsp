@@ -59,12 +59,11 @@ $(document).ready(function(){
     });
   //모달창 클릭시
     $("#openModal").click(function() {
-    	
-    
+    	 $('#myModal').show();    
     });
   //모달 창 닫기
     $("#closeModal").click(function() {
-               $('#myModal').hide();
+         $('#myModal').hide();
     }); 
   $("#addGoods").click(function(){
 	 var pad=$('#pad').val(); 
@@ -260,7 +259,7 @@ $(document).ready(function(){
 							<label for="s_upload">이미지 첨부</label>
 							<input type="file" class="form-control-file" id="s_upload" name="s_upload" aria-describedby="fileHelp">
 							<small id="fileHelp" class="form-text text-muted">
-								1300px X 300px 권장<br>
+								200px X 200px 권장<br>
 								<c:if test="${empty shelter.s_filename}">
 									보호소 소개페이지에 들어갈 이미지를 첨부해주세요.<br>
 									미첨부시 기본 이미지로 표시됩니다!

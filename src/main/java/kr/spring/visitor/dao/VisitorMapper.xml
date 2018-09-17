@@ -15,22 +15,18 @@
 			VISIT_REFER,
 		</if>
 		VISIT_AGENT,
-		<if test="visit_login_id != null and visit_login_id !=''">
 		VISIT_LOGIN_ID
-		</if>
 		)
 		VALUES
 		(
-		VISITOR_SEQ.NEXTVAL,
+		TB_VISITOR_VISIT_ID_SEQ.NEXTVAL,
 		#{visit_ip},
 		SYSDATE,
 		<if test="visit_refer != null and visit_refer !=''">
 			#{visit_refer},
 		</if>
 		#{visit_agent},
-		<if test="visit_login_id != null and visit_login_id !=''">
-		#{visit_login_id}
-		</if>
+		#{visit_login_id,jdbcType=VARCHAR}
 		)
 	</insert>
 </mapper>

@@ -63,7 +63,8 @@ public interface GoodsMapper {
 	//as_goods 보호소 갯수 업데이트
 	@Update("UPDATE as_goods SET pad=#{pad},dogfood=#{dogfood},catfood=#{catfood},shampoo=#{shampoo},catsand=#{catsand},as_did=#{as_did} WHERE as_id=#{as_id}")
 	public void updateAs(GoodsCommand goods);
-	
+	//결제시 해당 컬럼 수량 빼기
+	public void minusCount(Map<String,Object> map2);
 	
 }
 

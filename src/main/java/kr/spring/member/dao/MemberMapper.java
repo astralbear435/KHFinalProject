@@ -12,11 +12,14 @@ import kr.spring.member.domain.MemberCommand;
 
 
 public interface MemberMapper {
-	// 회원 전체 리스트
+	// 회원 전체 리스트(세영)
 	@Select("SELECT m_id FROM member")
 	public List<MemberCommand> wholeList();
 	@Select("SELECT count(*) FROM member")
 	public int wholeCount();
+	// 권한 값 확인
+	@Select("SELECT auth FROM member WHERE m_id=#{m_id}")
+	public int selectMemberAuth(String m_id);
 	
 	//등록
 	@Insert("INSERT INTO member (m_id,m_email) VALUES (#{m_id},#{m_email})")
@@ -44,10 +47,12 @@ public interface MemberMapper {
 	@Select("SELECT * FROM member m LEFT OUTER JOIN member_detail d ON m.m_id=d.m_id WHERE m.m_id=#{m_id}")
 	public MemberCommand selectMember(String m_id);
 	
-	//닉네임,이메일 유무 체크
+	//닉네임 유무 체크
 	@Select("SELECT m_nickname FROM member_detail WHERE m_nickname=#{m_nickname}")
 	public MemberCommand checkMember_n(String m_nickname);
-	@Select("SELECT m_email FROM member_detail WHERE m_email=#{m_email}")
+	
+	// 이메일 유무 체크(세영 수정)
+	@Select("SELECT * FROM member WHERE m_email=#{m_email}")
 	public MemberCommand checkMember_e(String m_email);
 	
 	//수정
@@ -62,8 +67,8 @@ public interface MemberMapper {
 	@Delete("DELETE FROM member_email WHERE m_id=#{m_id}")
 	public void deleteEmail(String m_id);
 	
-	//아이디 찾기
-	@Select("SELECT m_id FROM member_detail WHERE m_email=#{m_email}")
+	// 아이디 찾기
+	@Select("SELECT m_id FROM member WHERE m_email=#{m_email}")
 	public MemberCommand findId(String m_email);
 	
 	//비밀번호 찾기

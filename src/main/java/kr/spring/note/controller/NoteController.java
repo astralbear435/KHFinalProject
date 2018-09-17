@@ -140,9 +140,6 @@ public class NoteController {
 			noteService.updateNoteStatusToOpen(note_num);
 		}
 		
-		//enter에 대한 줄바꿈처리
-		note.setNote_content(StringUtil.useBrNoHtml(note.getNote_content()));
-		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("note/noteDetail");
 		mav.addObject("note", note);
@@ -194,6 +191,9 @@ public class NoteController {
 		if(result.hasErrors()) {
 			map.put("result", "notData");
 		}
+		
+		// 글 내용 Html 제외 처리
+		noteCommand.setNote_content(StringUtil.useNoHtml(noteCommand.getNote_content()));
 
 		//글쓰기
 		noteService.insert(noteCommand);
@@ -231,6 +231,9 @@ public class NoteController {
 		if(result.hasErrors()) {
 			map.put("result", "notData");
 		}
+		
+		// 글 내용 Html 제외 처리
+		noteCommand.setNote_content(StringUtil.useNoHtml(noteCommand.getNote_content()));
 
 		//글쓰기
 		noteService.insert(noteCommand);

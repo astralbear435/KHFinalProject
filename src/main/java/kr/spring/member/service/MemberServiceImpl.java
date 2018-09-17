@@ -190,4 +190,9 @@ public class MemberServiceImpl implements MemberService {
 	public int wholeCount() {
 		return memberMapper.wholeCount();
 	}
+
+	@Override
+	public int selectMemberAuth(String m_id) {
+		return memberMapper.selectMemberAuth(m_id);
+	}
 }

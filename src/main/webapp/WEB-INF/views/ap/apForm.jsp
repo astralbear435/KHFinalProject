@@ -19,7 +19,7 @@
 <div class="container">
 	<div style="margin: 50px 0 0 0; text-align:center;">
 		<span>
-				0000과 함께라면 국내 최고의 펫시터가 될 수 있습니다<br>
+				CNA과 함께라면 국내 최고의 동물 봉사자가 될 수 있습니다<br>
 				반려동물을 향한 따뜻한 마음을 가진 분과 함께하고 싶습니다<br>
 				그 외의 다른 전문적인 부분은 국내최고 반려동물 전문가들과 함께 도와드리겠습니다<br>
 		</span>
@@ -29,6 +29,8 @@
 				&lt; 지원 전 확인 사항 &gt;
 				<br><br>
 				**********************************<font size="2.5em" color="red"> 무료봉사입니다.</font>**********************************<br>
+				********************<font size="2.5em"> 여기서 작성한 것을 기반으로 목록에 보여집니다.</font>*******************<br>
+				**********************************<font size="2.5em"> 추후 수정 가능 </font>**********************************<br>
 		</span>
 	</div>
 	<div style="margin: 50px 0 0 0; text-align:center;">
@@ -46,7 +48,7 @@
 	<div style="margin: 50px 0 0 0; text-align:center;">
 		<span>
 				<font size="4.0em">2. 우대사항</font><br>
-				반려동물 관련 자격증 소지자, 관련학과 전공, 펫시팅 경력자<br>
+				반려동물 관련 자격증 소지자, 관련학과 전공, 펫시터 경력자<br>
 		</span>
 	</div>
 	<div style="margin: 50px 0 0 0; text-align:center;">
@@ -56,7 +58,7 @@
 				2차 (대면 면접)<br>
 				3차 온라인 교육 4시간 이수 및 온라인 테스트 통과<font size="2em" color="red">(*70점 이상)</font><br>
 				4차 오프라인 교육 4시간 이수 및 계약서 작성<br>
-				5차 펫시터 최종 등록<br>
+				5차 임시보호자 최종 등록<br>
 		</span>
 	</div>
 	<div style="margin: 20px 0 0 0; text-align:center;">
@@ -70,9 +72,9 @@
 				1차 서류심사와 3차 테스트 합격자 분들에 한해 평일 기준 3일 이내에 개별 연락드립니다.<br>
 		</span>
 	</div>
-	<div style="margin: 20px 0 0 200px;">
+	<div style="margin: 20px 0 0 0; text-align:center;">
 		<span>
-				------------------------------------------------------------------------------------------------------------------<br>
+				---------------------------------------------------------------------------------------------------------------------------------------------------------------<br>
 		</span>
 	</div>
 	<div style="margin: 20px 0 50px 0; text-align:center;">
@@ -84,7 +86,7 @@
 				4. 실내 흡연자 또는 실내 흡연자와 거주하는 경우<br>
 		</span>
 	</div>
-	<div style="margin: 20px 0 0 0;">
+	<div style="margin: 20px 0 0 0; text-align:center;">
 		<span>
 				---------------------------------------------------------------------------------------------------------------------------------------------------------------<br>
 		</span>
@@ -114,7 +116,7 @@
 		<div class="custom-control custom-checkbox">
 			<input type="checkbox" class="custom-control-input" id="okCheck" name="agree" value="true">
 				<label class="custom-control-label" for="okCheck">이용 약관에 동의 합니다.</label>
-				<button type="button" class="btn btn-outline-secondary" style="float:right;" onclick="javascript:agree();">다음</button>
+				<button type="button" class="btn btn-secondary" style="float:right;" onclick="javascript:agree();">다음</button>
 		</div>
 		
 	</div>

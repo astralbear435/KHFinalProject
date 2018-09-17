@@ -63,28 +63,27 @@ public class GoodsController {
 			map.put("end", page.getEndCount());
 			Map<String,Object> photo_map = new HashMap<String,Object>();
 			List<GoodsCommand> as_list=null;
-			List<GoodsListCommand> goodsphotolist=null;
-
+	
 			if(count>0) {
 				as_list = goodsService.getASList(map);
-			
-				if(log.isDebugEnabled()) {
-					log.debug("<<list>> : "+as_list);
-				}	
+	
 			}
 			int g_count=0;
+			List<GoodsListCommand> goodsphotolist=null;
 			goodsphotolist=goodsService.goodsPhotoList(photo_map);
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("goodsList");
+			
 			if(id!=null) {
 			//회원의 auth값 받아오기
 			int m_auth = goodsService.selectAuth(id);
 			mav.addObject("m_auth",m_auth);
-			}			
+			}
+			
 			mav.addObject("goodslist",goodsphotolist);
 			mav.addObject("count",count);
 			mav.addObject("user_id",id);
-			mav.addObject("as_list",as_list);		
+			mav.addObject("as_list",as_list);
 			mav.addObject("pagingHtml", page.getPagingHtml());
 			
 		
