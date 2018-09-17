@@ -14,4 +14,8 @@ public interface ReviewService {
 	public int selectCount(Map<String,Object> map);
 	//리뷰 글 갖고오기
 	public List<ReviewCommand> getReviewList(Map<String,Object> map);
+	//리뷰글 상세보기
+	public ReviewCommand selectDetail(int re_num);
+
 }
+

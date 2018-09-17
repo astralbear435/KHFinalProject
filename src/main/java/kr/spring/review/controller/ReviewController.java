@@ -139,6 +139,17 @@ public class ReviewController {
 			mav.addObject("pagingHtml", page.getPagingHtml());
 			return mav;
 	   }
-	
-
+//======================글 상세 페이지 가자===========================	
+@RequestMapping("/review/reviewDetail.do")
+public ModelAndView process(HttpSession session,@RequestParam("re_num") int re_num) {
+	//로그인 체크
+	String id = (String)session.getAttribute("user_id");
+	//상세페이지
+	ReviewCommand review=reviewService.selectDetail(re_num);
+	ModelAndView mav = new ModelAndView();
+	mav.setViewName("reviewDetail");
+	mav.addObject("review",review);
+	mav.addObject("user_id",id);
+	return mav;
+}
 }

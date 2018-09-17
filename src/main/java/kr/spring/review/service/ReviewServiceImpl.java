@@ -41,4 +41,10 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewMapper.getReviewList(map);
 	}
 
+	@Override
+	public ReviewCommand selectDetail(int re_num) {
+		// TODO Auto-generated method stub
+		return reviewMapper.selectDetail(re_num);
+	}
+
 }

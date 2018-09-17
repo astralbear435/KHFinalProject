@@ -41,7 +41,7 @@
 <table class="table" style="width:90%;margin-left:5%">
 		<tr>
 			<th>글번호</th>
-			<th><a style="color:lightgreen">[보호소]</a></th>
+			<th><a style="color:green">[ 보호소 ]</a></th>
 			<th>제목</th>
 			<th>글쓴이</th>
 			<th>등록날짜</th>
@@ -50,8 +50,8 @@
 		<c:forEach var="review" items="${review}">
 		<tr>
 			<td>${review.re_num}</td>
-			<td><a href="#">${review.re_asname}</a></td>
-			<td><a href="#">${review.re_title}</a></td>
+			<td><a style="color:green;" href="#">[${review.re_asname}]</a></td>
+			<td><a href="${pageContext.request.contextPath}/review/reviewDetail.do?re_num=${review.re_num}">${review.re_title}</a></td>
 			<td>${review.re_id}</td>
 			<td>${review.re_date}</td>
 			<td>${review.re_hit}</td>
