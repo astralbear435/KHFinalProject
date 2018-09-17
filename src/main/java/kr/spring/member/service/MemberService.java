@@ -10,6 +10,9 @@ public interface MemberService {
 	public List<MemberCommand> wholeList();
 	public int wholeCount();
 	
+	// 권한값 구하기
+	public int selectMemberAuth(String m_id);
+	
 	//회원관리
 	public void insert(MemberCommand member) throws Exception;
 	

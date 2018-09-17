@@ -68,11 +68,10 @@
 			</if>
 		</where>
 
-		order by s_reg_date desc) sd inner join (
-												select * from member where auth=4)m on sd.s_id = m.m_id
+		order by s_reg_date desc) sd inner join member m on sd.s_id = m.m_id where m.auth=4
 	</select>
 
-	<!-- map,interger는 Map,Integer 둘 다 상관 없음. mybatisc가 alias를 가지고 있으므로 -->
+	<!-- map,interger는 Map,Integer 둘 다 상관 없음. mybatis가 alias를 가지고 있으므로 -->
 	<select id="selectRowCount" parameterType="map"
 		resultType="integer">
 		select count(*) from (
@@ -137,8 +136,7 @@
 			</if>
 		</where>
 		
-		order by s_reg_date desc) sd inner join (
-												select * from member where auth=4)m on sd.s_id = m.m_id
+		order by s_reg_date desc) sd inner join member m on sd.s_id = m.m_id where m.auth=4
 	</select>
 
 </mapper>
