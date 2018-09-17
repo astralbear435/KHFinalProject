@@ -87,7 +87,6 @@ public class MemberController {
 		//회원가입
 		memberService.insert(memberCommand);
 
-
 		return "sendEmail";
 	}
 
@@ -182,6 +181,37 @@ public class MemberController {
 
 		return "findMember";
 	}
+	
+	/*@RequestMapping(value="/member/findMember.do",method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String,String> sendPw(@RequestParam("m_email") String m_email, BindingResult result) throws Exception {
+		log.info("<<<<<<<<<<<<<<<<<<<" + m_email);
+		Map<String,String> map = new HashMap<String,String>();
+				
+		try {
+			
+			MemberCommand memberIn = memberService.checkMember_e(m_email);
+			log.info("<<<<<<<<<<<<<<<<<<<>>>>>>>>>>" + memberIn);
+			if(memberIn != null) {
+
+				memberService.updatePw(m_email);
+				
+				map.put("result", "success");
+
+				return map;
+
+			} else {
+
+				throw new Exception();
+			}
+
+		} catch(Exception e) {
+			
+			map.put("result", "emailNotFound");
+
+			return map;
+		}
+	}*/
 
 	@RequestMapping(value="/member/findMember.do",method=RequestMethod.POST)
 	public String sendPw(@ModelAttribute("command") @Valid MemberCommand member, BindingResult result) throws Exception {
@@ -237,7 +267,7 @@ public class MemberController {
 
 	//===================================== 회원 상세 정보 =================================//
 
-	@RequestMapping("/member/detail.do")
+	@RequestMapping("/member/memberDetail.do")
 	public String process(HttpSession session, Model model) {	//로그인이 되어있으면 session에서 아이디를 가져옴
 
 		String id = (String)session.getAttribute("user_id");
@@ -270,7 +300,7 @@ public class MemberController {
 	//===================================== 회원 정보 수정 =================================//
 
 	//수정폼
-	@RequestMapping(value="/member/update.do",method=RequestMethod.GET)
+	@RequestMapping(value="/member/memberUpdate.do",method=RequestMethod.GET)
 	public String formUpdate(HttpSession session, Model model) {
 
 		String id = (String)session.getAttribute("user_id");
@@ -283,7 +313,7 @@ public class MemberController {
 	}
 
 	//수정폼에 전송된 데이터 처리
-	@RequestMapping(value="/member/update.do",method=RequestMethod.POST)
+	@RequestMapping(value="/member/memberUpdate.do",method=RequestMethod.POST)
 	public String submitUpdate(@ModelAttribute("command") @Valid MemberCommand memberCommand, BindingResult result) {
 
 		/*if(log.isDebugEnabled()) {
@@ -302,13 +332,13 @@ public class MemberController {
 		//회원 정보 수정
 		memberService.updateMember(memberCommand);
 
-		return "redirect:/member/detail.do";
+		return "redirect:/member/memberDetail.do";
 	}
 
 
 	//===================================== 회원 탈퇴 =================================//
 
-	@RequestMapping(value="/member/delete.do",method=RequestMethod.GET)
+	@RequestMapping(value="/member/memberDelete.do",method=RequestMethod.GET)
 	public String formDelete(HttpSession session, Model model) {
 
 		String id = (String)session.getAttribute("user_id");
@@ -322,7 +352,7 @@ public class MemberController {
 	}
 
 	//회원 데이터 삭제
-	@RequestMapping(value="/member/delete.do",method=RequestMethod.POST)
+	@RequestMapping(value="/member/memberDelete.do",method=RequestMethod.POST)
 	public String submitDelete(@ModelAttribute("command") @Valid MemberCommand memberCommand, BindingResult result, HttpSession session) {
 
 		/*if(log.isDebugEnabled()) {

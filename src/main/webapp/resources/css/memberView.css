@@ -3,14 +3,19 @@
 .photoArea{
 	margin: 0 auto;
 	width: 450px;
-	margin-left:100px;
+	margin-left:33%;
 }
 
 .photoArea img {
 	border-radius:50%;
 }
 
+.m_text{
+	margin-left:7em;
+}
 /* =====shelterWrite===== */
+
+.w600{width: 600px};
 .w500{width: 500px;}
 .h72{height: 72px;}
 .lineh95{line-height: 95px;}
@@ -18,11 +23,10 @@
 .clearB{clear: both;}
 
 .titleText{
-		font-style: bold;
+		color:#f48a55;
 		font-size: 35px;
 		text-align: center;
 		width: 500px;
-		align: center;
 		margin: 0 auto;
 }
 
