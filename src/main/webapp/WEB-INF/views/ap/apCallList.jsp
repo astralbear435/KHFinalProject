@@ -58,13 +58,9 @@
 			</div>
 		</div>
 	</c:forEach>
-<<<<<<< HEAD
-	<div style="margin-left: 45%;">${pagingHtml}</div>
-=======
 	<div class="col-md-12" id="container">
 		<div id="block">${pagingHtml}</div>
 	</div>
->>>>>>> 080350331b544c01f94542f33110553c3a8de471
 	</c:if>
 </div>
 
