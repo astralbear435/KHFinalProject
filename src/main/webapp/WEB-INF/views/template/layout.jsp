@@ -339,7 +339,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<ul class="messages">
 				<li class="message left appeared">
 					<div class="avatar">
-						<img src="${pageContext.request.contextPath}/resources/images/member/chatting_icon.png">
+						<img src="${pageContext.request.contextPath}/resources/images/member/admin.jpg">
 					</div>
 					<div class="text_wrapper">
 						<div class="text">안녕하세요. CAN 고객상담 톡입니다. 24시간 언제나 빠르게 안내해드리겠습니다.<br> 무엇을 도와드릴까요?</div>
