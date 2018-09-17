@@ -17,5 +17,21 @@ public class VisitorServiceImpl implements VisitorService{
 		visitor.insertVisitor(vo);
 		
 	}
+	@Override
+	public VisitorCommand selectVisittorId(VisitorCommand vo) {
+		return visitor.selectVisittorId(vo);
+	}
+	@Override
+	public void updateVisitor(VisitorCommand vo) {
+		visitor.updateVisitor(vo);
+	}
+	@Override
+	public int selectCountToday() {
+		return visitor.selectCountToday();
+	}
+	@Override
+	public int selectVisitorCount() {
+		return visitor.selectVisitorCount();
+	}
 
 }

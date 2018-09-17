@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -133,7 +134,7 @@ public class ShelterController {
 	@RequestMapping(value="/member/shelterLogin.do")
 	@ResponseBody
 	public Map<String,String> submitLoginShelter(@Valid ShelterCommand shelterCommand, 
-								BindingResult result, HttpSession session) {
+								BindingResult result, HttpServletRequest request, HttpSession session) {
 		Map<String,String> map = new HashMap<String,String>();
 		
 		System.out.println(shelterCommand);
@@ -150,6 +151,7 @@ public class ShelterController {
 			}
 			if(check) {
 				//인증 성공, 로그인처리
+				session = request.getSession(true);
 				session.setAttribute("user_id",shelter.getS_id());
 				session.setAttribute("user_auth",shelter.getAuth());
 				

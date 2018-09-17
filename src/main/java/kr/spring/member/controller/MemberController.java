@@ -147,7 +147,7 @@ public class MemberController {
 			}
 			
 			if(check) {	//인증성공, 로그인 처리
-
+				session = request.getSession(true);
 				session.setAttribute("user_id", member.getM_id());
 				session.setAttribute("user_auth", member.getAuth());
 
