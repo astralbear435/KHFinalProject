@@ -22,15 +22,11 @@
 		base-package="kr.spring.admin.notice.controller" />
 	<context:component-scan
 		base-package="kr.spring.visitor.controller" />
-	<context:component-scan 
-		base-package="kr.spring.goods.controller" />
-	<context:component-scan
-		base-package="kr.spring.recruit.controller" />
-	<context:component-scan
-		base-package="kr.spring.volunteer.controller" />
-	<context:component-scan
-		base-package="kr.spring.mypage.controller" />
+	<context:component-scan base-package="kr.spring.goods.controller" />
 	<context:component-scan base-package="kr.spring.ap.controller" />
+	<context:component-scan base-package="kr.spring.recruit.controller" />
+	<context:component-scan base-package="kr.spring.volunteer.controller" />
+	<context:component-scan base-package="kr.spring.mypage.controller" />
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -136,8 +132,6 @@
 		view-name="shelterList" />
 	<view-controller path="/admin/main.do"
 		view-name="admin" />
-	<view-controller path="/recruit/recruitWrite.do"
-		view-name="recruitWrite" />
 	<view-controller path="/ap/apCallList.do" view-name="apCallList"/>
 	<view-controller path="/ap/apMain.do" view-name="apMain"/>
 	<view-controller path="/ap/apForm.do" view-name="apForm"/>
@@ -147,7 +141,7 @@
 	<!-- 로그인 여부 체크 -->
 	<interceptors>
 		<interceptor>
-			<mapping path="/ap/apCallList.do" />
+			<!-- <mapping path="/ap/apCallList.do" /> -->
 			<mapping path="/shelter/shelterInfo.do" />
 			<mapping path="/note/receivedList.do" />
 			<mapping path="/board/sendList.do" />

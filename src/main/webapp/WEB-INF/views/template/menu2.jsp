@@ -2,11 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sy.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/modal.js"></script>
 
 	<!-- 모달창 열기 -->
-	<div id="myModal" class="modal">
+	<div id="loginModal" class="modal">
 		<div class="modal-content">
 		<span style="font-size:10pt; text-align:right;">
 					<a href="#" id="closeMemberLogin">X</a>
@@ -67,7 +66,6 @@
 				<c:if test="${empty user_id}">
 				<li><a href="#" id="memberLogin">로그인</a></li>
 				</c:if>
-				
 				<c:if test="${!empty user_id}">
 					<c:if test="${user_auth==1 || user_auth==2 || user_auth==5}">
 						<li><a href="#">${user_id}님 로그인 중</a></li>

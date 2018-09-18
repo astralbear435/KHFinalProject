@@ -16,8 +16,7 @@
 		</c:if>
 		<input type="button" class="btn btn-primary" value="목록" onclick="location.href='apCallList.do'"><br><br>
 	</div>
-	
-	<div class="border-styles col-md-9" style="float:center; margin:100px 0 50px 0;">
+	<div class="border-styles col-md-7"style="float:left; margin:100px 0 50px 0;">
 		<div style="margin:10px 0 10px 0;">
 			[${apcall.call_num}] ${apcall.call_name} 
 		</div>
@@ -72,6 +71,7 @@
 		
 		<div>
 			<form:form commandName="command" action="apBoCallWrite.do" enctype="multipart/form-data">
+
 			<input type="hidden" id="bo_call_id" name="bo_call_id" value="${user_id}">
 			<input type="hidden" id="bo_call_date_start" name="bo_call_date_start" value="${apcall.call_start}">
 			<input type="hidden" id="bo_call_date_end" name="bo_call_date_end" value="${apcall.call_end}">
@@ -93,6 +93,9 @@
 		</form:form>
 		</div>
 	</div>
+
+		
+
 	<!-- 목록 출력 -->
 	<div id="output"></div>
 	<div class="paging-button" style="display:none;">
