@@ -73,7 +73,7 @@ selectbox#select_id {
 							<span class="help-block"></span>
 						</div>
 						<div class="form-group">
-							<label for="menu_order">메뉴 순서</label> <input type="number" id="menu_order" name="menu_order" class="form-control" placeholder="0">
+							<label for="menu_order">메뉴 순서</label> <input type="number" value="${count+1}" id="menu_order" name="menu_order" class="form-control" placeholder="0">
 							<span class="help-block"></span>
 						</div>
 						<div class="form-group">
@@ -84,10 +84,10 @@ selectbox#select_id {
 						<div class="form-group">
 							<label>상위 메뉴</label> 
 							<select id="select_id2" name="parent_num" class="form-control">
-							<option selected="selected" value=null disabled="disabled">-선택-</option>
+							<option selected="selected" value="0" disabled="disabled">-선택-</option>
 							</select>
-						</div>
-						<input class="btn btn-info" type="submit" value="추가">
+						</div> 
+						<input class="btn btn-info" type="submit" value="추가"> 
 					</div>
 					</form>
 				</div>

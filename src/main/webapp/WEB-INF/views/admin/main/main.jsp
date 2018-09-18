@@ -11,9 +11,12 @@
 		<li class="active">메인 페이지</li>
 	</ol>
 </section>
-
+<%
+	String user_id = (String)session.getAttribute("user_id");
+%>
 <!-- Main content -->
 <section class="content container-fluid">
+<input type="hidden" id="user_id" value="${user_id}">
 	<div class="row">
 		<div class="col-lg-3 col-xs-6">
 			<!-- small box -->
@@ -99,7 +102,7 @@
             <!-- /.box-header -->
             <div class="box-body">
               <!-- Conversations are loaded here -->
-              <div class="direct-chat-messages">
+              <div  class="direct-chat-messages">
                 <!-- Message. Default to the left -->
                 <div class="direct-chat-msg">
                   <div class="direct-chat-info clearfix">
@@ -116,7 +119,7 @@
                 <!-- /.direct-chat-msg -->
 
                 <!-- Message to the right -->
-                <div class="direct-chat-msg right">
+                <div id="message_appear"class="direct-chat-msg right">
                   <div class="direct-chat-info clearfix">
                     <span class="direct-chat-name pull-right">admin</span>
                     <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
@@ -159,9 +162,9 @@
             <div class="box-footer">
               <form action="#" method="post">
                 <div class="input-group">
-                  <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                  <input type="text" name="message"  id="message_input" placeholder="Type Message ..." class="form-control">
                       <span class="input-group-btn">
-                        <button type="submit" class="btn btn-primary btn-flat">Send</button>
+                        <button type="button" id="send_message" class="btn btn-primary btn-flat">Send</button>
                       </span>
                 </div>
               </form>
@@ -185,3 +188,4 @@
 <!-- AdminLTE for demo purposes -->
 <script
 	src="${pageContext.request.contextPath}/resources/admin/dist/js/demo.js"></script>
+<script src="${pageContext.request.contextPath}/resources/admin/js/chatting.js"></script>

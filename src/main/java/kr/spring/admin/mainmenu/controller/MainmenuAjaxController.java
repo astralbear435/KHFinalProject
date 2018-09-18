@@ -32,18 +32,22 @@ public class MainmenuAjaxController {
 		if(log.isDebugEnabled()) {
 			log.debug("<<m_num>> : "+m_num);
 		}
+		int count =0;
 		try {
 			menu =new MainmenuCommend();
 			menu=mainmenuService.selectMenu(Integer.parseInt(m_num));
+			count= mainmenuService.selectmenuCount();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<menu>> : "+menu); 
+			log.debug("<<count>> : "+count); 
 		}
 		Map<String,Object> map=new HashMap<String,Object>();
 		map.put("menu", menu);
+		map.put("count", count);
 		return map;
 	}
 }

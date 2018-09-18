@@ -1,5 +1,7 @@
 $(document).ready(function(){
+
 	var m_num='';
+	var order = $("#menu_order").val();
 	$('#select_id1').change(function() {
 		var str='';
 		$('#select_id1 option:selected').each(function() {
@@ -15,7 +17,9 @@ $(document).ready(function(){
 				cache:false,
 				timeout:30000,
 				success:function(data){
+					var count = data.count;
 					var menu= data.menu;
+					order=count+1;
 					var output =''
 						$('#menu_detail').empty();
 					output='<div class="form-group"><label for="menu_use">메뉴 활성화</label><br>'
@@ -33,9 +37,9 @@ $(document).ready(function(){
 					}else{
 						output+='<input type="radio" name="menu_dd" id="menu_dd1" value="Y" checked="checked"> 사용 <input type="radio" name="menu_dd" id="menu_dd2" value="N" > 미사용 </div>';
 					}
-					output+='<div class="form-group"><label>상위 메뉴</label><select id="select_id2" name="parent_num" class="form-control"><option selected="selected" value=null disabled="disabled">-선택-</option></select></div>'
-					output+='<button id="menu_update" class="btn btn-info" data-num="'+menu.menu_num+'">수정</button>'
-					$('#menu_detail').append(output);
+					output+='<div class="form-group"><label>상위 메뉴</label><select id="select_id2" name="parent_num" class="form-control"><option selected="selected" value="0">-선택-</option></select></div>'
+						output+='<button id="menu_update" class="btn btn-info" data-num="'+menu.menu_num+'">수정</button>'
+						$('#menu_detail').append(output);
 				},error:function(){
 					alert('네트워크 에러!!');
 				}
@@ -44,19 +48,62 @@ $(document).ready(function(){
 			var output2='';
 			$('#menu_detail').empty();
 			output2='<div class="form-group"><label for="menu_use">메뉴 활성화</label><br>'
-			output2+='<input type="radio" name="menu_use" id="menu_use1" value="Y" checked="checked"> 표시 <input type="radio" name="menu_use" id="menu_use2" value="N"> 미표시 </div>';	
+				output2+='<input type="radio" name="menu_use" id="menu_use1" value="Y" checked="checked"> 표시 <input type="radio" name="menu_use" id="menu_use2" value="N"> 미표시 </div>';	
 			output2+='<div class="form-group"><label for="menu_name">메뉴 명</label><input type="text" id="menu_name" name="menu_name" class="form-control" placeholder="메뉴명"><span class="help-block"></span></div>'
-			output2+='<div class="form-group"><label for="menu_url">메뉴 주소</label> <input type="text" id="menu_url" name="menu_url" class="form-control" placeholder="/main/main.do"><span class="help-block"></span></div>'
-			output2+='<div class="form-group"><label for="menu_order">메뉴 순서</label> <input type="number" id="menu_order" name="menu_order" class="form-control" placeholder="0"><span class="help-block"></span></div>'
-			output2+='<div class="form-group"><label for="menu_dd">드롭다운 메뉴 사용</label><br>';
+				output2+='<div class="form-group"><label for="menu_url">메뉴 주소</label> <input type="text" id="menu_url" name="menu_url" class="form-control" placeholder="/main/main.do"><span class="help-block"></span></div>'
+					output2+='<div class="form-group"><label for="menu_order">메뉴 순서</label> <input type="number" id="menu_order" name="menu_order" class="form-control" value='+order+' placeholder="0"><span class="help-block"></span></div>'
+					output2+='<div class="form-group"><label for="menu_dd">드롭다운 메뉴 사용</label><br>';
 			output2+='<input type="radio" name="menu_dd" id="menu_dd1" value="Y"> 사용 <input type="radio" name="menu_dd" id="menu_dd2" value="N" checked="checked"> 미사용</div>';	
-			output2+='<div class="form-group"><label>상위 메뉴</label><select id="select_id2" name="parent_num" class="form-control"><option selected="selected" value=null disabled="disabled">-선택-</option></select></div>'
-			output2+='<input class="btn btn-info" type="submit" value="추가">'
-			$('#menu_detail').append(output2);
-			
-		}
-	}).trigger('change');  
+			output2+='<div class="form-group"><label>상위 메뉴</label><select id="select_id2" name="parent_num" class="form-control"><option selected="selected" value="0">-선택-</option></select></div>'
+				output2+='<input class="btn btn-info" type="submit" value="추가">'
+					$('#menu_detail').append(output2);
 
+		}
+	}).trigger('change'); 
+	
+	function renewal(){
+		$.ajax({
+			type:'post',
+			url:'renewalMenu.do',
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(data){
+				var mcount = data.count;
+				var selectmenu = data.menu;
+				order=count+1;
+				var output =''
+					$('#menu_box').empty();
+				output='<div class="form-group"><label for="menu_use">메뉴 활성화</label><br>'
+					if(menu.menu_use=="Y"){
+						output+='<input type="radio" name="menu_use" id="menu_use1" value="Y" checked="checked"> 표시 <input type="radio" name="menu_use" id="menu_use2" value="N"> 미표시 </div>';	
+					}else{
+						output+='<input type="radio" name="menu_use" id="menu_use1" value="Y"> 표시 <input type="radio" name="menu_use" id="menu_use2" value="N" checked="checked"> 미표시 </div>';
+					}
+				output+='<div class="form-group"><label for="menu_name">메뉴 명</label><input type="text" id="menu_name" name="menu_name" class="form-control" value="'+menu.menu_name+'" placeholder="메뉴명"><span class="help-block"></span></div>'
+				output+='<div class="form-group"><label for="menu_url">메뉴 주소</label> <input type="text" id="menu_url" name="menu_url" class="form-control" value="'+menu.menu_url+'" placeholder="/main/main.do"><span class="help-block"></span></div>'
+				output+='<div class="form-group"><label for="menu_order">메뉴 순서</label> <input type="number" id="menu_order" name="menu_order" class="form-control" value="'+menu.menu_order+'" placeholder="0"><span class="help-block"></span></div>'
+				output+='<div class="form-group"><label for="menu_dd">드롭다운 메뉴 사용</label><br>';
+				if(menu.menu_dropdown=='N'){
+					output+='<input type="radio" name="menu_dd" id="menu_dd1" value="Y"> 사용 <input type="radio" name="menu_dd" id="menu_dd2" value="N" checked="checked"> 미사용</div>';	
+				}else{
+					output+='<input type="radio" name="menu_dd" id="menu_dd1" value="Y" checked="checked"> 사용 <input type="radio" name="menu_dd" id="menu_dd2" value="N" > 미사용 </div>';
+				}
+				output+='<div class="form-group"><label>상위 메뉴</label><select id="select_id2" name="parent_num" class="form-control"><option selected="selected" value="0">-선택-</option></select></div>'
+					output+='<button id="menu_update" class="btn btn-info" data-num="'+menu.menu_num+'">수정</button>'
+					$('#menu_detail').append(output);
+			},error:function(){
+				alert('네트워크 에러!!');
+			}
+		});
+	}
+	$('#menu_up').click(function(){
+
+	});
+
+	$('#menu_down').click(function(){
+
+	});
 
 	$('#writeMenu').submit(function(){
 		//=======오류창=======
