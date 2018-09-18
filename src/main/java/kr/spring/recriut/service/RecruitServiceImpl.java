@@ -13,76 +13,71 @@ import kr.spring.shelter.domain.ShelterCommand;
 
 @Service("recruitService")
 public class RecruitServiceImpl implements RecruitService{
-	
-	@Resource
-	private BoardMapper boardMapper;
+   
+   @Resource
+   private BoardMapper boardMapper;
 
-	@Override
-	public List<RecruitCommand> selectList(Map<String, Object> map) {
-		return boardMapper.selectList(map);
-	}
+   @Override
+   public List<RecruitCommand> selectList(Map<String, Object> map) {
+      return boardMapper.selectList(map);
+   }
 
-	@Override
-	public void insert(RecruitCommand recruit) {
-		boardMapper.insert(recruit);
-	}
-	
-	@Override
-	public int selectRowCount(Map<String, Object> map) {		
-		return boardMapper.selectRowCount(map);
-	}
+   @Override
+   public void insert(RecruitCommand recruit) {
+      boardMapper.insert(recruit);
+   }
+   
+   @Override
+   public int selectRowCount(Map<String, Object> map) {      
+      return boardMapper.selectRowCount(map);
+   }
 
-	@Override
-	public RecruitCommand selectBoard(Integer r_num) {
-		return boardMapper.selectBoard(r_num);
-	}
+   @Override
+   public RecruitCommand selectBoard(Integer r_num) {
+      return boardMapper.selectBoard(r_num);
+   }
 
-	@Override
-	public void updateHit(Integer r_num) {
-		// TODO Auto-generated method stub
-		
-	}
+   @Override
+   public void updateHit(Integer r_num) {
+      // TODO Auto-generated method stub
+      
+   }
 
-	@Override
-	public void update(RecruitCommand recruit) {
-		boardMapper.update(recruit);		
-	}
+   @Override
+   public void update(RecruitCommand recruit) {
+      boardMapper.update(recruit);      
+   }
 
-	@Override
-	public void delete(Integer r_num) {
-		boardMapper.delete(r_num);
-		
-	}
+   @Override
+   public void delete(Integer r_num) {
+      boardMapper.delete(r_num);
+      
+   }
 
-	@Override
-	public void deleteVolunteer(Integer r_num) {
-		boardMapper.deleteVolunteer(r_num);
-	}
+   @Override
+   public void deleteVolunteer(Integer r_num) {
+      boardMapper.deleteVolunteer(r_num);
+   }
 
-	@Override
-	public List<RecruitCommand> selectRecruitList(Map<String, Object> map) {
-		
-		return boardMapper.selectRecruitList(map);
-	}
+   @Override
+   public List<RecruitCommand> selectRecruitList(Map<String, Object> map) {
+      
+      return boardMapper.selectRecruitList(map);
+   }
 
-	@Override
-<<<<<<< HEAD
-	public int recruitCount(String r_id) {
-		return boardMapper.recruitCount(r_id);
-	}
-=======
-	public ShelterCommand selectBoName(Integer r_num) {
-		
-		return boardMapper.selectBoName(r_num);
-	}
+   @Override
+   public int recruitCount(String r_id) {
+      return boardMapper.recruitCount(r_id);
+   }
+   public ShelterCommand selectBoName(Integer r_num) {
+      
+      return boardMapper.selectBoName(r_num);
+   }
 
-	@Override
-	public List<ShelterCommand> selectBoNameList(Map<String, Object> map) {
-		return boardMapper.selectBoNameList(map);
-	}
-
-
->>>>>>> ab8c4c0f96ccef362ae667ea47f15553b7b31774
+   @Override
+   public List<ShelterCommand> selectBoNameList(Map<String, Object> map) {
+      return boardMapper.selectBoNameList(map);
+   }
 
 
 }

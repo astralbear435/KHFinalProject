@@ -1,9 +1,9 @@
 $(document).ready(function() {
 	
 	//로그인 모달창		
-	$('#memberLogin').click(function() {
+	$('#loginModal').click(function() {
 		
-		$('#myModal').show();
+		$('#loginModal').show();
 	});
 	
 	$('#loginButton').click(function() {
@@ -19,7 +19,7 @@ $(document).ready(function() {
 				
 				if(data.result == 'success') {	//로그인 성공
 					
-					$('#myModal').hide();
+					$('#loginModal').hide();
 					location.href='../main/main.do';
 				
 				} else if(data.result == 'false') {
@@ -40,7 +40,7 @@ $(document).ready(function() {
 	//닫기
 	$('#closeMemberLogin').click(function() {
 		
-		$('#myModal').hide();
+		$('#loginModal').hide();
 	});
 	
 });
