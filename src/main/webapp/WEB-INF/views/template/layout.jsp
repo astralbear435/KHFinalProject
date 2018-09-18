@@ -332,9 +332,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- open chatting -->
 		<!------ Include the above in your HEAD tag ---------->
 		<div id="m_chat_container">
+			<%
+				String user_id = (String)session.getAttribute("user_id");
+			%>
+			<input type="hidden" id="user_id" value="${user_id}">
 			<div class="chat_window">
 				<div class="top_menu">
-					<div class="button close" id="button_close"style="margin-top: 0px;"></div>
+					<div class="button close" id="button_close" style="margin-top: 0px; margin-right: 0px;"></div>
 					<div class="buttons">
 						<div class="button minimize"></div>
 						<div class="button maximize"></div>

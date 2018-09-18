@@ -93,6 +93,14 @@ body {
   color: #bcbdc0;
   font-size: 20px;
 }
+/* .close_button {
+    float: none;
+    opacity: 1;
+    background: url(../images/close.png) no-repeat 0px 0px;
+    display: block;
+    width: 40px;
+    margin: 1em auto 0;
+} */
 
 .messages {
   position: relative;
