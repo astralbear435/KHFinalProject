@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?><!-- XML문서임을 명시 -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="recruitWrite" extends="main">
+		<put-attribute name="title" value="글쓰기" />
+		<put-attribute name="menu"
+			value="/WEB-INF/views/template/menu2.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/recruit/recruitWrite.jsp" />
+	</definition>
+
+	<definition name="recruitList" extends="main">
+		<put-attribute name="title" value="목록 보기" />
+		<put-attribute name="menu"
+			value="/WEB-INF/views/template/menu2.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/recruit/recruitList.jsp" />
+	</definition>
+	
+	<definition name="recruitModify" extends="main">
+		<put-attribute name="title" value="수정하기" />
+		<put-attribute name="menu"
+			value="/WEB-INF/views/template/menu2.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/recruit/recruitModify.jsp" />
+	</definition>
+	
+</tiles-definitions>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

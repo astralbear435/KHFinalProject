@@ -22,6 +22,9 @@
 		base-package="kr.spring.visitor.controller" />
 	<context:component-scan base-package="kr.spring.goods.controller" />
 	<context:component-scan base-package="kr.spring.ap.controller" />
+	<context:component-scan base-package="kr.spring.recruit.controller" />
+	<context:component-scan base-package="kr.spring.volunteer.controller" />
+	<context:component-scan base-package="kr.spring.mypage.controller" />
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -51,6 +54,9 @@
 				<beans:value>/WEB-INF/tiles-def/admin.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/member.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/good.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/recruit.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/volunteer.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/mypage.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/ap.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/apcall.xml</beans:value>
 			</beans:list>

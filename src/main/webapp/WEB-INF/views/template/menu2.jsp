@@ -2,11 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sy.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/modal.js"></script>
 
 	<!-- 모달창 열기 -->
-	<div id="myModal" class="modal">
+	<div id="loginModal" class="modal">
 		<div class="modal-content">
 		<span style="font-size:10pt; text-align:right;">
 					<a href="#" id="closeMemberLogin">X</a>
@@ -67,18 +66,6 @@
 				<c:if test="${empty user_id}">
 				<li><a href="#" id="memberLogin">로그인</a></li>
 				</c:if>
-<<<<<<< HEAD
-				<c:if test="${!empty user_id}">
-				<li>${user_id}님 로그인 중</li>
-				<c:if test="${user_auth==3 || user_auth==4}">
-				<li><a href="${pageContext.request.contextPath}/member/memberDetail.do">${user_id}님 로그인 중</a></li>
-				<li><a href="${pageContext.request.contextPath}/shelter/shelterConfirm.do">회원정보</a></li>
-				</c:if>
-				<li><a href="${pageContext.request.contextPath}/note/receivedList.do">쪽지</a></li>
-				<li><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
-=======
->>>>>>> 68fc329eceae615342a3088188e15134eb599d43
-				
 				<c:if test="${!empty user_id}">
 					<c:if test="${user_auth==1 || user_auth==2 || user_auth==5}">
 						<li><a href="#">${user_id}님 로그인 중</a></li>

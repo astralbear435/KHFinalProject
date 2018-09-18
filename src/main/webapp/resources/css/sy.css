@@ -13,23 +13,6 @@
 	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
-<<<<<<< HEAD
-.photoArea{
-	margin: 0 auto;
-	width: 450px;
-	margin-left:100px;
-}
-
-.photoArea img {
-	border-radius:50%;
-}
-
-/* =====shelterWrite===== */
-.w500{width: 500px;}
-.h72{height: 72px;}
-.lineh95{line-height: 95px;}
-.margin0a{margin: 0 auto;}
-=======
 /* Modal Content/Box */
 .modal-content {
 	background-color: #fefefe;
@@ -44,7 +27,6 @@
 .h72 {height: 72px;}
 .lineh95 {line-height: 95px;}
 .margin0a {margin: 0 auto;}
->>>>>>> 444602ffb44ad5d888ebeb2d23b3cb3c353bf4ed
 .clearB{clear: both;}
 
 .titleText{

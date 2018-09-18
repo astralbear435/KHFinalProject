@@ -13,6 +13,7 @@ import kr.spring.ap.domain.ApCommand;
 import kr.spring.goods.domain.OrderCommand;
 import kr.spring.member.domain.MemberCommand;
 import kr.spring.mypage.dao.MypageMapper;
+import kr.spring.recruit.domain.RecruitCommand;
 
 @Service("mypageService")
 public class MypageServiceImpl implements MypageService {
@@ -26,7 +27,7 @@ public class MypageServiceImpl implements MypageService {
 		return mypageMapper.selectId(id);
 	}
 
-	/*@Override
+	@Override
 	public List<RecruitCommand> selectList(String v_id) {
 		
 		return mypageMapper.selectList(v_id);
@@ -36,7 +37,7 @@ public class MypageServiceImpl implements MypageService {
 	public List<RecruitCommand> selectRecruitList(String r_id) {
 		
 		return mypageMapper.selectRecruitList(r_id);
-	}*/
+	}
 
 	@Override
 	public List<OrderCommand> selectDanaList(String dona_id) {
