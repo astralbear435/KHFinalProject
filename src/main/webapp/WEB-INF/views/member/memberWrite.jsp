@@ -7,10 +7,17 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/memberConfirm.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
-<div class="page-main-style">
-	<div>
-		<div class="horizontal"></div><!-- 가로 여백 -->
+<div class="500 margin0a">
+	<div class="horizontal"></div><!-- 가로 여백 -->
+		<div id="margin0a">
+			<div style="width: 450px; margin: 0 auto;">
+				<img src="${pageContext.request.contextPath}\resources\images\sy\보호소 줄 그림.png">
+			</div>
+		</div>
+		<br>
+
 		<div class="titleText">회원가입</div><br>
+		<div class="horizontal"></div><!-- 가로 여백 -->
 		<div class="w500 margin0a">
 			<form:form commandName="command" action="sendEmail.do" id="register_form" enctype="multipart/form-data">
 				<fieldset class="clearB">
@@ -19,17 +26,30 @@
 							<label for="m_id">아이디</label><br>
 							<input type="text" name="m_id" id="m_id" class="form-control" style="width: 278px;" placeholder="아이디 입력">
 						</div>
+						<div class="floatL h72" style="width: 5px;"></div>
 						<div class="form-group floatL h72 lineh95">
 							<input type="button" id="confirmId" class="btn btn-primary" value="아이디 중복체크">
 						</div>
 					</div><br>
-					<div id="message_id"></div>
-					<br>
+					<div id="message_id"></div><br>
 					
 					<div class="form-group clearB">
 						<label for="m_name">이름</label>
 						<input type="text" name="m_name" id="m_name" class="form-control" placeholder="이름 입력">
 						<div id="message_name"></div>
+					</div><br>
+					
+					<div class="form-group clearB">
+						<label for="m_gender">성별</label><br>
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">
+							<label class="btn btn-info active">
+							<input type="radio" name="m_gender" id="man" value="남" autocomplete="off"> 남
+						</label>
+						<label class="btn btn-info active">
+							<input type="radio" name="m_gender" id="woman" value="여" autocomplete="off"> 여
+						</label><br>
+						</div>						
+						<div id="message_gender"></div>
 					</div>
 					
 					<div class="w500 h72">
@@ -37,6 +57,7 @@
 							<label for="m_nickname">닉네임</label><br>
 							<input type="text" name="m_nickname" id="m_nickname" class="form-control" style="width: 278px;"  placeholder="아이디 입력">
 						</div>
+						<div class="floatL h72" style="width: 5px;"></div>
 						<div class="form-group floatL h72 lineh95">
 							<input type="button" id="confirmNickname" class="btn btn-primary" value="닉네임 중복체크">
 						</div>
@@ -66,12 +87,11 @@
 						<label for="m_zipcode">우편번호</label><br>
 						<input type="text" name="m_zipcode" id="m_zipcode" class="form-control" style="width:200px;" placeholder="우편번호 찾기 버튼 클릭" readonly>
 					</div>
-					
+					<div class="floatL h72" style="width: 5px;"></div>
 					<div class="form-group floatL h72 lineh95">
 						<input type="button" id="selectZipcode" class="btn btn-primary" value="우편번호 찾기">
-					</div>
+					</div><br><br>				
 					<div id="message_zipcode"></div>
-					
 					<div class="form-group clearB">
 						<label for="m_address">주소</label>
 						<input type="text" name="m_address" id="m_address" class="form-control" readonly>
@@ -113,7 +133,7 @@
 					<br><hr size="1" width="100%">
 		
 					<div class="w500 clearB" style="text-align:center; margin: 0;">
-						<input type="submit" value="회원가입" class="btn btn-primary">
+						<input type="submit" value="회원가입" class="btn btn-primary">&nbsp;&nbsp;&nbsp;
 						<input type="button" value="홈으로" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 					</div>
 					
@@ -125,10 +145,3 @@
 	</div>
 	<br>
 </div>
-
-
-
-
-
-
-

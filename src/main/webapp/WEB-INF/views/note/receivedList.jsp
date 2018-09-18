@@ -4,8 +4,7 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sy.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/noteList.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/seyeong/noteList.js"></script>
 <script type="text/javascript">
 	
 </script>

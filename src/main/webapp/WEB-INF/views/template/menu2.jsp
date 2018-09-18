@@ -2,11 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sy.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/modal.js"></script>
 
 	<!-- 모달창 열기 -->
-	<div id="myModal" class="modal">
+	<div id="loginModal" class="modal">
 		<div class="modal-content">
 		<span style="font-size:10pt; text-align:right;">
 					<a href="#" id="closeMemberLogin">X</a>
@@ -21,17 +20,17 @@
 				
 					<label for="m_id">아이디</label>
 					<br>
-					<input type="text" name="m_id" id="m_id" class="form-control" style="width: 280px;" placeholder="아이디 입력" />
+					<input type="text" name="m_id" id="m_id" class="form-control" style="max-width: 280px;" placeholder="아이디 입력" />
 					<br><br>					
 					<label for="m_passwd">비밀번호</label>
 					<br>
-					<input type="password" name="m_passwd" id="m_passwd" class="form-control" style="width: 280px;" placeholder="비밀번호 입력" />
+					<input type="password" name="m_passwd" id="m_passwd" class="form-control" style="max-width: 280px;" placeholder="비밀번호 입력" />
 					<br>
 					<div id="errorLogin"></div>
 					<br><br>
 					<input type="button" class="btn btn-warning btn-lg" id="loginButton" value="로그인">
 					<br><br>&nbsp;
-					<a class="agile-icon" href="${pageContext.request.contextPath}/member/write.do"> 
+					<a class="agile-icon" href="${pageContext.request.contextPath}/member/provision.do"> 
 						<i class="fa fa-user">회원가입</i>
 					</a>&nbsp;&nbsp;&nbsp;
 					<a class="agile-icon" href="${pageContext.request.contextPath}/member/findMember.do"> 
@@ -86,7 +85,7 @@
 		<div class="container">
 			<!-- wthree-top-grid -->
 			<div class="wthree-top-grid">
-				<h1><a href="${pageContext.request.contextPath}/main/main.do">Njoy Trip</a></h1>
+				<h1><a href="${pageContext.request.contextPath}/main/main.do">CAN</a></h1>
 				<div class="w3-agileits-border"> </div>
 				<h2>About Us</h2>
 			</div>

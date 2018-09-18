@@ -2,29 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sy.css">
-<style>
- .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
-    
-        /* Modal Content/Box */
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 30%; /* Could be more or less, depending on screen size */                          
-        }
-</style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/seyeong/shelter.js"></script>
 <script type="text/javascript">
@@ -190,6 +167,12 @@ $(document).ready(function(){
 <div class="page-main-style">
 	<div>
 		<div class="horizontal"></div><!-- 가로 여백 -->
+		<div id="margin0a">
+			<div style="width: 450px; margin: 0 auto;">
+				<img src="${pageContext.request.contextPath}\resources\images\sy\보호소 줄 그림.png">
+			</div>
+		</div>
+		
 		<div class="w500 margin0a">
 			<form id="shelterDeleteForm" method="post" action="delete.do">
 				<input type="hidden" name="s_id" value="${shelter.s_id}">
