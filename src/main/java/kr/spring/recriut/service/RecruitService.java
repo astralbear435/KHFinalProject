@@ -18,13 +18,13 @@ public interface RecruitService {
 	public int selectRowCount(Map<String,Object> map);
 
 	public RecruitCommand selectBoard(Integer r_num);
-
+	
 	public ShelterCommand selectBoName(Integer r_num);
-
+	
 	public void updateHit(Integer r_num);
-
+	
 	public void update(RecruitCommand recruit);
-
+	
 	public void delete(Integer r_num);
 	
 	public void deleteVolunteer(Integer r_num);
@@ -33,3 +33,4 @@ public interface RecruitService {
 	
 	public int recruitCount(String r_id);
 }
+

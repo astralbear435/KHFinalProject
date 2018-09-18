@@ -127,7 +127,7 @@
 	<!-- 로그인 여부 체크 -->
 	<interceptors>
 		<interceptor>
-			<mapping path="/ap/apCallList.do" />
+			<!-- <mapping path="/ap/apCallList.do" /> -->
 			<mapping path="/shelter/shelterInfo.do" />
 			<mapping path="/note/receivedList.do" />
 			<mapping path="/board/sendList.do" />
@@ -159,6 +159,10 @@
 	
 	<websocket:handlers>
 		<websocket:mapping handler="chatHandler" path="/chat-ws.do"/>
+		<websocket:handshake-interceptors>
+			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+			<!-- <beans:bean class="kr.spring.websocket.ws.ChatHandshake"/> -->
+		</websocket:handshake-interceptors>
 	</websocket:handlers>
 	<beans:bean id="chatHandler" class="kr.spring.websocket.ws.ChatWebSocketHandler"/>
 	

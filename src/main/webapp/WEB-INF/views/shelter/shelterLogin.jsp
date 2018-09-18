@@ -7,7 +7,6 @@
 	<div class="horizontal"></div><!-- 가로 여백 -->
 	<div class="titleText">보호소 로그인</div><br>
 	<div style="width: 500px; margin: 0 auto;" id="shelterLogin">
-
 		<form action="shelterLogin.do" id="loginForm" method="post">
 			<fieldset>
 				<div class="form-group" style="width: 280px; margin: 0 auto;">

@@ -9,7 +9,7 @@ $(document).ready(function() {
 	
 	//WebSocket 연결
 	function connect() {
-		wsocket = new WebSocket("ws://localhost:8080/ProjectCAN/chat-ws.do");
+		wsocket = new WebSocket("ws://192.168.110.12:8080/ProjectCAN/chat-ws.do");
 		wsocket.onopen = function(evt) {
 			var msg = '';
 		};
@@ -46,9 +46,11 @@ $(document).ready(function() {
 	
 	//서버에서 전송된 메시지를 UI에 표시
 	function appendMessage(msg) {
-		var a = 0;
-		//클라이언트 메세지
-		if(a==1) {
+		
+		var user_id = $('#user_id').val();
+		
+		//관리자 메세지
+		if(user_id.indexOf('admin') != -1) {
 			var userMsg = '<br><br>';
 			userMsg += '<li class="message left appeared">';
 			userMsg += '<div class="avatar">';
@@ -62,7 +64,7 @@ $(document).ready(function() {
 			userMsg += '</li>';
 		}
 		
-		//관리자 메세지
+		//클라이언트 메세지
 		else {
 			var userMsg = '<br><br>';
 			userMsg += '<li class="message right appeared">';
