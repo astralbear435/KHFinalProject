@@ -267,14 +267,21 @@ public Map<String,Object> insertMultiOrder(@RequestParam("dona_id")String dona_i
 	String[] goodsAmount=order.getDona_goodsamount().split(",");
 
 	
-	
 	for(int i=0;i<as_name.length;i++){
 		Map<String,Object> map2=new HashMap<String,Object>();
 		map2.put("goodsnum",goodsNum[i]);
 		map2.put("dona_goodsamount",goodsAmount[i]);
 		map2.put("dona_asname",as_name[i]);
 		goodsService.minusCount(map2);
+		//쪽지보내기
+		NoteCommand note=new NoteCommand();
+		note.setSender(dona_id);
+		note.setRecipient(goodsService.comeonId(as_name[i]));
+		note.setNote_content(multiorder.getDona_message());
+		noteService.insert(note);
 		}
+
+	
 	}
 	/*	구매 만큼 카운팅 빼주는거 진행 끝*/
 	
@@ -322,14 +329,12 @@ public Map<String,Object> CountMinus(HttpSession session){
 		log.debug("<<배열체크 제대로 되있남>> :"+as_name+" / "+goodsNum+" / "+goodsAmount);
 	}
 	
-	int i=0;
-	for(String a:as_name){
+	for(int i=0;i<as_name.length;i++){
 		Map<String,Object> map2=new HashMap<String,Object>();
 		map2.put("goodsnum",goodsNum[i]);
 		map2.put("dona_goodsamount",goodsAmount[i]);
 		map2.put("dona_asname",as_name[i]);
 		goodsService.minusCount(map2);
-		i+=1;
 	}	
 	newMap.put("result","success");
 	}else {

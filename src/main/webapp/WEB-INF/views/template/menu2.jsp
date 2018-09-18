@@ -5,8 +5,13 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/modal.js"></script>
 
 	<!-- 모달창 열기 -->
+<<<<<<< HEAD
 	<div id="loginModal" class="modal">
 		<div class="modal-content">
+=======
+	<div id="loginModal" class="modalLogin">
+		<div class="modal-contentLogin">
+>>>>>>> d3f122582d0e687d12cb3d34dbd4a14f2954e329
 		<span style="font-size:10pt; text-align:right;">
 					<a href="#" id="closeMemberLogin">X</a>
 				</span>
@@ -20,17 +25,17 @@
 				
 					<label for="m_id">아이디</label>
 					<br>
-					<input type="text" name="m_id" id="m_id" class="form-control" style="width: 280px;" placeholder="아이디 입력" />
+					<input type="text" name="m_id" id="m_id" class="form-control" style="max-width: 280px;" placeholder="아이디 입력" />
 					<br><br>					
 					<label for="m_passwd">비밀번호</label>
 					<br>
-					<input type="password" name="m_passwd" id="m_passwd" class="form-control" style="width: 280px;" placeholder="비밀번호 입력" />
+					<input type="password" name="m_passwd" id="m_passwd" class="form-control" style="max-width: 280px;" placeholder="비밀번호 입력" />
 					<br>
 					<div id="errorLogin"></div>
 					<br><br>
 					<input type="button" class="btn btn-warning btn-lg" id="loginButton" value="로그인">
 					<br><br>&nbsp;
-					<a class="agile-icon" href="${pageContext.request.contextPath}/member/write.do"> 
+					<a class="agile-icon" href="${pageContext.request.contextPath}/member/provision.do"> 
 						<i class="fa fa-user">회원가입</i>
 					</a>&nbsp;&nbsp;&nbsp;
 					<a class="agile-icon" href="${pageContext.request.contextPath}/member/findMember.do"> 
@@ -78,13 +83,15 @@
 					<li><a href="${pageContext.request.contextPath}/note/receivedList.do">쪽지</a></li>
 					<li><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
 				</c:if>
+				<li><a href="${pageContext.request.contextPath}/goods/list.do">후원하기</a></li>
+				<li> <a href="${pageContext.request.contextPath}/review/reviewList.do">Review</a></li>
 			  </ul>
 			</div>
 		<!-- menu -->
 		<div class="container">
 			<!-- wthree-top-grid -->
 			<div class="wthree-top-grid">
-				<h1><a href="${pageContext.request.contextPath}/main/main.do">Njoy Trip</a></h1>
+				<h1><a href="${pageContext.request.contextPath}/main/main.do">CAN</a></h1>
 				<div class="w3-agileits-border"> </div>
 				<h2>About Us</h2>
 			</div>

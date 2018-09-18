@@ -21,17 +21,17 @@
 				
 					<label for="m_id">아이디</label>
 					<br>
-					<input type="text" name="m_id" id="m_id" class="form-control" style="width: 280px;" placeholder="아이디 입력" />
+					<input type="text" name="m_id" id="m_id" class="form-control" style="max-width: 280px;" placeholder="아이디 입력" />
 					<br><br>					
 					<label for="m_passwd">비밀번호</label>
 					<br>
-					<input type="password" name="m_passwd" id="m_passwd" class="form-control" style="width: 280px;" placeholder="비밀번호 입력" />
+					<input type="password" name="m_passwd" id="m_passwd" class="form-control" style="max-width: 280px;" placeholder="비밀번호 입력" />
 					<br>
 					<div id="errorLogin"></div>
 					<br><br>
 					<input type="button" class="btn btn-warning btn-lg" id="loginButton" value="로그인">
 					<br><br>&nbsp;
-					<a class="agile-icon" href="${pageContext.request.contextPath}/member/write.do"> 
+					<a class="agile-icon" href="${pageContext.request.contextPath}/member/provision.do"> 
 						<i class="fa fa-user">회원가입</i>
 					</a>&nbsp;&nbsp;&nbsp;
 					<a class="agile-icon" href="${pageContext.request.contextPath}/member/findMember.do"> 
@@ -74,7 +74,7 @@
 				</c:if>
 				<c:if test="${!empty user_id}">
 					<c:if test="${user_auth==1 || user_auth==2 || user_auth==5}">
-						<li><a href="#">${user_id}님 로그인 중</a></li>
+						<li><a href="${pageContext.request.contextPath}/member/memberDetail.do">${user_id}님 로그인 중</a></li>
 						<li> <a href="${pageContext.request.contextPath}/mypage/mypage.do?v_id=${user_id}">마이페이지</a> </li>
 					</c:if>
 					<c:if test="${user_auth==3 || user_auth==4}">
@@ -84,6 +84,8 @@
 					<li><a href="${pageContext.request.contextPath}/note/receivedList.do">쪽지</a></li>
 					<li><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
 				</c:if>
+				<li><a href="${pageContext.request.contextPath}/goods/list.do">후원하기</a></li>
+				<li> <a href="${pageContext.request.contextPath}/review/reviewList.do">Review</a></li>
 			  </ul>
 			</div>
 			

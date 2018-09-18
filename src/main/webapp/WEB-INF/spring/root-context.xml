@@ -81,8 +81,14 @@
 		                   		  kr.spring.note.domain,
 		                   		  kr.spring.shelter.domain,
 		                   		  kr.spring.goods.domain,
+<<<<<<< HEAD
 		                   		  kr.spring.recruit.domain,
 		                   		  kr.spring.ap.domain"/>               
+=======
+		                   		  kr.spring.recruit.domain,              
+		                   		  kr.spring.ap.domain,
+		                   		  kr.spring.review.domain"/>               
+>>>>>>> d3f122582d0e687d12cb3d34dbd4a14f2954e329
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" 
@@ -97,7 +103,12 @@
 		              		 kr.spring.recruit.dao,
 		            		kr.spring.volunteer.dao,
 		            		kr.spring.mypage.dao,
+<<<<<<< HEAD
 		              		 kr.spring.ap.dao" />
+=======
+		              		kr.spring.ap.dao, kr.spring.review.dao" />
+
+>>>>>>> d3f122582d0e687d12cb3d34dbd4a14f2954e329
 	</bean>
 	
 	<!-- 암호화,복호화 알고리즘 처리 -->

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	
-	//로그인 모달창		
+	// 로그인 모달창		
 	$('#memberLogin').click(function() {
 		
 		$('#loginModal').show();
@@ -37,10 +37,22 @@ $(document).ready(function() {
 		
 	});
 	
-	//닫기
+	// 닫기
 	$('#closeMemberLogin').click(function() {
 		
 		$('#loginModal').hide();
 	});
 	
+	// 엔터하면 로그인 처리
+	$('input[type="text"]').keydown(function(event) {
+	    if (event.keyCode == 13) {
+	    	$('#loginButton').click();
+	    }
+	});
+	
+	$('input[type="password"]').keydown(function(event) {
+	    if (event.keyCode == 13) {
+	    	$('#loginButton').click();
+	    }
+	});
 });

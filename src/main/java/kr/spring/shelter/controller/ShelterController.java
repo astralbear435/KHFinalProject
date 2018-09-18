@@ -181,7 +181,6 @@ public class ShelterController {
 
 	}
 
-	
 	//================== 회원 상세 정보 =========================
 	// 진입 전 비밀번호 확인
 	@RequestMapping("/shelter/shelterConfirm.do")

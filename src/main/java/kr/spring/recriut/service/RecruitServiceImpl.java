@@ -80,5 +80,8 @@ public class RecruitServiceImpl implements RecruitService{
 	}
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d3f122582d0e687d12cb3d34dbd4a14f2954e329
 }

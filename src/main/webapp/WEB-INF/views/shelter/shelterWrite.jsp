@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sy.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/seyeong/shelter.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
@@ -70,6 +69,13 @@ $(document).ready(function(){
 <div class="page-main-style">
 	<div>
 		<div class="horizontal"></div><!-- 가로 여백 -->
+		<div id="margin0a">
+			<div style="width: 450px; margin: 0 auto;">
+				<img src="${pageContext.request.contextPath}\resources\images\sy\보호소 줄 그림.png">
+			</div>
+		</div>
+		<br>
+
 		<div class="titleText">회원가입</div><br>
 		<div class="w500 margin0a">
 			<form:form commandName="command" id="shelterRegisterForm" method="post" action="write.do" encType="multipart/form-data">
@@ -82,12 +88,11 @@ $(document).ready(function(){
 						</div>
 						<div class="floatL h72" style="width: 5px;"></div>
 						<div class="form-group floatL h72 lineh95">
-							<input type="button" id="confirmId" class="btn btn-primary" value="ID 중복확인">
+							<input type="button" id="confirmId" class="btn btn-warning" value="ID 중복확인">
 						</div>
-						<div class="floatL h72" style="width: 10px;"></div>
-						<div class="floatL h72 lineh95" id="message_id"
-								style="width: 90px; text-align: center;"></div>
 					</div>
+					<div class="horizontal" id="message_id"></div>
+					
 					<div class="form-group clearB">
 						<label for="s_passwd">비밀번호</label>
 						<form:password path="s_passwd" class="form-control" name="s_passwd"
@@ -121,12 +126,10 @@ $(document).ready(function(){
 						</div>
 						<div class="floatL h72" style="width: 5px;"></div>
 						<div class="form-group floatL h72 lineh95">
-							<input type="button" id="confirmEmail" class="btn btn-primary" value="이메일 확인">
+							<input type="button" id="confirmEmail" class="btn btn-warning" value="이메일 확인">
 						</div>
-						<div class="floatL h72" style="width: 10px;"></div>
-						<div class="floatL h72 lineh95" id="message_email"
-								style="width: 85px; text-align: center;"></div>
 					</div>
+					<div class="horizontal" id="message_email"></div>
 						
 					<div class="horizontal"></div><!-- 가로 여백 -->
 					
@@ -134,19 +137,19 @@ $(document).ready(function(){
 						<div class="form-group floatL">
 							<label for="s_zipcode">우편번호</label><br>
 							<form:input path="s_zipcode" class="form-control" name="s_zipcode"
-											placeholder="우편번호 찾기 버튼 클릭" style="width:200px;" readonly="readonly"/>
+											placeholder="우편번호 찾기 버튼 클릭" style="width:200px;"/>
 							<form:errors path="s_zipcode" cssClass="error-color"/>
 						</div>
 						<div class="floatL h72" style="width: 5px;"></div>
 						<div class="form-group floatL h72 lineh95">
-							<input type="button"  class="btn btn-primary" value="우편번호 찾기"
+							<input type="button"  class="btn btn-warning" value="우편번호 찾기"
 						      		onclick="DaumPostcode()">
 						</div>
 					</div>
 					<div class="form-group clearB">
 						<label for="s_address1">주소</label>
 						<form:input path="s_address1" class="form-control" name="s_address1"
-									placeholder="주소 입력" readonly="readonly"/>
+									placeholder="주소 입력"/>
 					</div>	
 					<div class="form-group">
 						<label for="s_address2">상세 주소</label>
@@ -177,13 +180,10 @@ $(document).ready(function(){
 					<br><hr size="1" width="100%">
 						
 					<div class="w500 clearB" style="text-align:center; margin: 0;">
-						<input type="submit" class="btn btn-primary" value="전송">
+						<input type="submit" class="btn btn-warning" value="회원가입">
 						<input type="button"  class="btn btn-primary" value="홈으로"
 							      onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 					</div>
-					
-					
-					
 					<div class="horizontal"></div><!-- 가로 여백 -->
 					
 				</fieldset>

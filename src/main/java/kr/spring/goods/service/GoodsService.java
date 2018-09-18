@@ -45,5 +45,6 @@ public interface GoodsService {
 	public void updateAs(GoodsCommand goods);
 	//결제시 카운트 빼기
 	public void minusCount(Map<String,Object> map2);
-	
+	//보호소 아이디 가져오기
+	public String comeonId(String dona_asname);
 }
