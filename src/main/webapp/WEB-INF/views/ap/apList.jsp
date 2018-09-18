@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ap.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ap/apbook.js"></script>
 <div class="container">
 	<br><br>
 	<div class="card border-primary col-md-12">
@@ -68,6 +70,9 @@
 	<c:forEach var="article" items="${list}">
 		<div class="card border-primary col-md-12" style="margin:10px 0 10px 0;">
 			<div class="card-header">
+				<div data-num="${article.ap_num}" data-id="${user_id}" id="bookmark">
+						<button type="button" style="float:right;" class="btn btn-secondary"><i class="fa fa-bookmark-o"></i></button>
+					</div>
 				<p class="card-text">
 					${article.ap_num}
 					[ ${article.id} ]
