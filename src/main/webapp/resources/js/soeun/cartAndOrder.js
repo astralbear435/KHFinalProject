@@ -4,8 +4,9 @@ $(document).ready(function(){
 	 var selectNum="";
 		  $( "input[name='select_me']:checked" ).each(function (){
 		      var selectNum=""+$(this).val()+","; //여러개선택으로 배열만들기
-			  var id=$('#id').val();
-			selectNum = selectNum.substring(0,selectNum.lastIndexOf( ","));
+		  });
+		  selectNum=selectNum.substring(0,selectNum.lastIndexOf(","));
+		  var id=$('#id').val();
 					$.ajax({
 						type:'post',
 						data:{selectNum:selectNum,id:id},
@@ -22,10 +23,9 @@ $(document).ready(function(){
 								alert('세션이 만료되었습니다. 다시 시도해주세요.');
 							}							
 						},error:function(){
-					      	alert('(삭제)에러입니다.');
-			           	}					 	
+							location.reload();
+						}
 				     });	  
-		  		});		  
 		  });
 	
 

@@ -71,7 +71,6 @@ $(document).ready(function(){
 			dataType:'json',
 			timeout:30000,
 			success:function(data){
-				alert(data.result);
 				if(data.result == 'emailNotFound'){
 					$('#message_email').css('color','#000').text('등록 가능');
 					checkId = 1;

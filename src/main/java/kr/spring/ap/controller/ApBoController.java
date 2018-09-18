@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +42,7 @@ public class ApBoController {
 		}
 		
 		if(result.hasErrors()) {
-			return "apBoWrite";
+			return "redirect:/ap/apdetail.do?ap_num="+apCommand.getAp_num();
 		}
 		
 		//±Û¾²±â

@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sy.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
+	//삭제 안됨.
 	function detailClose(){
 		self.close();
 		opener.document.location.reload();
