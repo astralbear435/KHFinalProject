@@ -17,6 +17,8 @@ public interface BoardService {
 	public void delete(Integer num);
 	//보호소 이름 불러오기
 	public String selectName(String id);
+	//보호소 전화번호불러오기
+	public String selectNumber(String id);
 	//보호소 이름 업데이트
 	public void updateName(String shelterName);
 

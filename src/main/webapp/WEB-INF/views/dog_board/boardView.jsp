@@ -22,26 +22,47 @@ ul{
    list-style:none;
    }
 #backdiv{
+	position: relative;
+	float:right;
+  	top: 10px;
+  	left: 50px;
+  	text-align:center;
+  	border-color:#EAEAEA;
+	background-color:#BDBDBD;
+	border-style:double;
+	max-width:100%; 
+  	width: 350px;
+  	height:150px;
+	  /* position:relative;
 	  float:right;
-	  border:15px solid blue; 
 	  text-align:center;
 	  border-width:3px;
-	  border-color:#e0f7ff;
-	  background-color:#e0f7ff; 
-	  width:30%;
+	  border-color:#EAEAEA;
+	  background-color:#BDBDBD; 
 	  border-style:double;
+	  max-width:100%;
+	  width:350px;
+	  height:150px; */
+}
+img.show{
+	aling:center;
+	max-width:100%;
+	width: 500px;
+	height: 100px;
 }
 </style>
 <div class="container">
+	<br><br>
+	<h2 align="center"><b>${s_name}의 보호 동물</b></h2>
 	<br><br>
 	&nbsp;&nbsp;<font style="font-size:1em;" color="#17BEFF"><b>${s_name}</b></font>&nbsp;
 	<span><b style="font-size:1em;"><a>[${board.an_species}&nbsp;${board.an_name}&nbsp;${board.reg_date}]</a><b style="float:right;">조회수 : ${board.an_hit}</b></b></span>
 	<hr size="1" width="100%">
 	<br>
 	<div style="padding-right: 22%; margin-left:8%; display:inline-block; font-size:15px; ">
-	<a href="detail.do?num=${board.num}"><img src="imageView.do?num=${board.num}" width=500, height=500>
+	<a href="detail.do?num=${board.num}"><img src="imageView.do?num=${board.num}" width=500, height=500 onerror="this.src='../resources/images/not_image.png'">
 	</a>
-	<ul style="font-size:20px; /* padding-right:5%; */ padding-top:8%;">
+	<ul style="font-size:20px; padding-top:8%;">
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;보호소 :${s_name}</li>
 		<br>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;이름 : ${board.an_name}</li>
@@ -56,21 +77,22 @@ ul{
 		<br>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;중성화  :  ${board.an_operate}</li>
 	</ul>
-		<div id="backdiv" style="width:350px; height:150px;" align="right">
-			<br>
-            <span class="banner_txt01">CUSTOMER CENTER</span>
+		<br>
+		<div id="backdiv">
+            <span><b>${s_name}&nbsp;CENTER</b></span>
             <br>
-            <span class="banner_txt02">대표전화</span>
             <br>
-            <span class="banner_txt03">010-4497-0401</span>
+            <span>대표전화</span>
             <br>
-            <span class="banner_txt04">365일 연중무휴/24시간 상담가능</span>
+            <span>${s.phone}</span>
+            <br>
+            <span>365일 연중무휴/24시간 상담가능</span>
             <br>
         </div>
+		<br>
 		</div>
-	<br>
-	<br>
-	<hr size="1" width="100%">
+	<br><br>
+	<hr size="1" width="100%" style="display:inline-block;">
 	<div style="width: 450px; margin: 0 auto;">
 	<br><br>
 			<img src="${pageContext.request.contextPath}\resources\images\sy\보호소 줄 그림.png">
@@ -79,16 +101,20 @@ ul{
 	<p>
 		${board.an_content}
 	</p>
-	<br>
+	<br><br><br>
+	<div style="width: 450px; margin: 0 auto;">
+	<img class="show" src="${pageContext.request.contextPath}\resources\images\check.PNG">
+	</div>
+	<br><br>
 	<hr size="1" width="100%">
 	<div align="right">
 		<c:if test="${!empty user_id && user_id == board.id}">
-		<input type="button" value="수정"
+		<input type="button" value="수정" class="btn btn-info"
 		  onclick="location.href='update.do?num=${board.num}'">	
-		<input type="button" value="삭제"
+		<input type="button" value="삭제" class="btn btn-info"
 		  onclick="delUrl()">	  
 		</c:if>
-		<input type="button" value="목록"
+		<input type="button" value="목록" class="btn btn-info"
 		         onclick="location.href='list.do'">	  
 	</div>
 		<div id="reply_div">
@@ -99,6 +125,8 @@ ul{
 			       value="${board.num}" id="num">
 			<input type="hidden" name="id"
 			       value="${user_id}" id="user_id">
+			<input type="hidden" name="pt_num" value="${pt_num}">
+		    <input type="hidden" name="depth" value="${depth}">      
 			<textarea style="width:100%;"
 			  name="re_content" id="re_content"
 			  class="re-content" <c:if test="${empty user_id}">disabled="disabled"</c:if>
@@ -108,7 +136,7 @@ ul{
 				<span class="letter-count">300/300</span>
 			</div>
 			<div id="re_second" class="align-right">
-				<input type="submit" value="전송">
+				<input type="submit" value="전송" class="btn btn-outline-info">
 			</div>
 			<br>
 			</c:if>

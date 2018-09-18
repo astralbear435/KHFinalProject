@@ -90,6 +90,12 @@ public class BoardServiceImpl implements BoardService{
 	public void updateName(String shelterName) {
 		boardMapper.updateName(shelterName);
 	}
+
+	@Override
+	public String selectNumber(String id) {
+		return boardMapper.selectNumber(id);
+	}
+
 }
 
 

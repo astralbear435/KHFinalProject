@@ -135,7 +135,7 @@ public class BoardController {
 	}
 	//==============게시판 글 상세=============//
 	@RequestMapping("/dog_board/detail.do")
-	public ModelAndView process(@RequestParam("num") int num) {
+	public ModelAndView detail(@RequestParam("num") int num, @RequestParam(value="pt_num",defaultValue="0")int pt_num, @RequestParam(value="depth",defaultValue="0")int depth) {
 
 		
 		if(log.isDebugEnabled()) {
@@ -147,8 +147,10 @@ public class BoardController {
 		
 		BoardCommand board = boardService.selectBoard(num);
 		String id=board.getId();
-		//이름 불러오기
+		//보호소이름 불러오기
 		String s_name=boardService.selectName(id);
+		//보호소 전화번호 불러오기
+		String s_phone = boardService.selectNumber(id);
 		
 		//줄바꿈 처리
 		//board.setAn_content(StringUtil.useBrNoHtml(board.getAn_content()));
@@ -156,6 +158,10 @@ public class BoardController {
 		mav.setViewName("boardView");
 		mav.addObject("board",board);
 		mav.addObject("s_name",s_name);
+		mav.addObject("s_phone",s_phone);
+		//댓글 관련 정보
+		mav.addObject("pt_num", pt_num);
+		mav.addObject("depth", depth);
 		
 		return mav;
 	}
