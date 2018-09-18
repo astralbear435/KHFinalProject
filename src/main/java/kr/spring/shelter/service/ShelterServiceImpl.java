@@ -106,4 +106,24 @@ public class ShelterServiceImpl implements ShelterService{
 			shelterMapper.updatePwShelter(m_email,cipherAES.encrypt(sb.toString()));	
 	}
 
+
+	@Override
+	public int selectShelterCount() {
+		
+		return shelterMapper.selectShelterCount();
+	}
+
+
+	@Override
+	public int selectTodayShelterCount() {
+		
+		return shelterMapper.selectTodayShelterCount();
+	}
+
+
+	@Override
+	public List<ShelterCommand> selectShelterList() {
+		return shelterMapper.selectShelterList();
+	}
+
 }

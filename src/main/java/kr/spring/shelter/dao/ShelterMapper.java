@@ -40,5 +40,13 @@ public interface ShelterMapper {
 	@Update("UPDATE shelter_detail SET s_passwd=#{m_passwd} WHERE s_email=#{m_email}")
 	public void updatePwShelter(@Param("m_email") String m_email, @Param("m_passwd") String m_passwd);
 	
+	//보호소 카운터
+	@Select("SELECT count(s_id) FROM shelter_detail")
+	public int selectShelterCount();
+	//보호소 금일 카운터
+	@Select("SELECT count(*) FROM shelter_detail WHERE TO_DATE(S_REG_DATE,'yyyy-MM-dd') = TO_DATE(sysdate,'yyyy-MM-dd')")
+	public int selectTodayShelterCount();
 	
+	@Select("SELECT m.AUTH,sd.*FROM MEMBER m, SHELTER_DETAIL sd WHERE m.m_id = sd.S_ID and m.AUTH>0 order by sd.S_REG_DATE")
+	public List<ShelterCommand> selectShelterList();
 }

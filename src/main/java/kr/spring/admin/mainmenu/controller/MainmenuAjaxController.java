@@ -25,7 +25,7 @@ public class MainmenuAjaxController {
 	private MainmenuService mainmenuService;
 
 
-	@RequestMapping(value="/admin/mainmenu/selectedMenu.do", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/mainmenu/selectedMenu.do", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String,Object> selectedMenu(String m_num){
 		MainmenuCommend menu=null;
@@ -39,6 +39,9 @@ public class MainmenuAjaxController {
 			e.printStackTrace();
 		}
 		
+		if(log.isDebugEnabled()) {
+			log.debug("<<menu>> : "+menu); 
+		}
 		Map<String,Object> map=new HashMap<String,Object>();
 		map.put("menu", menu);
 		return map;

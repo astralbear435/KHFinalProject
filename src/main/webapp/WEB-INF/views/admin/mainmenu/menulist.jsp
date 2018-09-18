@@ -57,8 +57,8 @@ selectbox#select_id {
 						<h3 class="box-title">메뉴 상세</h3>
 					</div>
 					<!-- /.box-header -->
+					<form id="writeMenu" method="post" action="writeMenu.do">
 					<div id="menu_detail" class="box-body">
-						<form id="writeMenu" action="writeMenu.do">
 						<div class="form-group">
 							<label for="menu_use">메뉴 활성화</label><br> 
 							<input type="radio"	name="menu_use" id="menu_use1" value="Y" checked="checked"> 표시
@@ -88,8 +88,8 @@ selectbox#select_id {
 							</select>
 						</div>
 						<input class="btn btn-info" type="submit" value="추가">
-						</form>
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>

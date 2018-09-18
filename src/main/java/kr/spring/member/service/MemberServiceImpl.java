@@ -208,5 +208,17 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.selectTodayMemberCount();
 	}
 
+	@Override
+	public List<MemberCommand> selectTotalMember() {
+		return memberMapper.selectTotalMember();
+	}
+
+	@Override
+	public void updateAuth(int auth, String id) {
+		memberMapper.updateAuth(auth, id);
+		
+	}
+	
+
 	
 }

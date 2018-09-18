@@ -19,7 +19,7 @@
 			<!-- small box -->
 			<div class="small-box bg-aqua">
 				<div class="inner">
-					<h3>오늘 후원금 : ${todayP}</h3>
+					<h4>오늘 후원금 : ${todayP}</h4>
 
 					<p>총 후원금 : ${totalP}</p>
 				</div>
@@ -35,9 +35,9 @@
 			<!-- small box -->
 			<div class="small-box bg-green">
 				<div class="inner">
-					<h3>오늘 등록한 보호소 : ${todayM}</h3>
+					<h4>오늘 등록한 보호소 : ${todayS}</h4>
 
-					<p>총 보호소수 : ${totalM}</p>
+					<p>총 보호소수 : ${totalS}</p>
 				</div> 
 				<div class="icon">
 					<i class="fa fa-fw fa-heartbeat"></i>
@@ -52,14 +52,14 @@
 			<!-- small box -->
 			<div class="small-box bg-yellow">
 				<div class="inner">
-					<h3>오늘 가입자 : ${todayM}</h3>
+					<h4>오늘 가입자 : ${todayM}</h4>
 
 					<p>총 회원수 : ${totalM}</p>
 				</div> 
 				<div class="icon">
 					<i class="ion ion-person-add"></i>
 				</div>
-				<a href="#" class="small-box-footer">More info <i
+				<a href="${pageContext.request.contextPath}/admin/member/normalMember.do" class="small-box-footer">More info <i
 					class="fa fa-arrow-circle-right"></i></a>
 			</div>
 		</div>
@@ -68,7 +68,7 @@
 			<!-- small box -->
 			<div class="small-box bg-red">
 				<div class="inner">
-					<h3>오늘 방문자수 : ${todayV}</h3>
+					<h4>오늘 방문자수 : ${todayV}</h4>
 
 					<p>누적 방문자수 : ${totalV}</p>
 				</div>
@@ -107,7 +107,7 @@
                     <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
                   </div>
                   <!-- /.direct-chat-info -->
-                  <img class="direct-chat-img" src="../dist/img/user1-128x128.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+                  <img class="direct-chat-img" src="${pageContext.request.contextPath}/upload/1406712927.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
                   <div class="direct-chat-text">
                     Is this template really for free? That's unbelievable!
                   </div>
@@ -118,11 +118,11 @@
                 <!-- Message to the right -->
                 <div class="direct-chat-msg right">
                   <div class="direct-chat-info clearfix">
-                    <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                    <span class="direct-chat-name pull-right">admin</span>
                     <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
                   </div>
                   <!-- /.direct-chat-info -->
-                  <img class="direct-chat-img" src="../dist/img/user3-128x128.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+                  <img class="direct-chat-img" src="${pageContext.request.contextPath}/member/imageView.do?m_id=admin" alt="Message User Image"> <!-- /.direct-chat-img -->
                   <div class="direct-chat-text">
                     You better believe it!
                   </div>

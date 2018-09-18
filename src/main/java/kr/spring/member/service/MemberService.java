@@ -40,6 +40,11 @@ public interface MemberService {
 	public int selectMemberCount();
 	public int selectTodayMemberCount();
 	
+	//토탈맴버
+	public List<MemberCommand> selectTotalMember();
+	
+	//어스변경
+	public void updateAuth(int auth,String id);
 	//구글 로그인
 	//public MemberCommand googleLogin(MemberCommand member) throws Exception;
 	

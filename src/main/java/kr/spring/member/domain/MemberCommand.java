@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class MemberCommand {
 	
 	private int auth;
-	
+
 	private int m_num;
 	@NotEmpty
 	private String m_id;

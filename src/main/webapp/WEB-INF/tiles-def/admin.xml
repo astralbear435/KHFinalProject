@@ -36,9 +36,19 @@
 			value="/WEB-INF/views/admin/notice/noticeWrite.jsp" />
 	</definition>
 	<definition name="menulist" extends="admin">
-		<put-attribute name="title" value="공지사항 작성" />
+		<put-attribute name="title" value="공지사항 목록" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/mainmenu/menulist.jsp" />
+	</definition>
+	<definition name="normalMember" extends="admin">
+		<put-attribute name="title" value="회원 목록" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/member/normalMember.jsp" />
+	</definition>
+	<definition name="shelterMember" extends="admin">
+		<put-attribute name="title" value="보호소 목록" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/member/shelterMember.jsp" />
 	</definition>
 </tiles-definitions>
 

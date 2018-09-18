@@ -3,7 +3,7 @@ $(document).ready(function() {
 	//로그인 모달창		
 	$('#memberLogin').click(function() {
 		
-		$('#myModal').show();
+		$('#loginModal').show();
 	});
 	
 	$('#loginButton').click(function() {

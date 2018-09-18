@@ -16,6 +16,6 @@ public interface VisitorMapper {
 	@Select("SELECT count(DISTINCT(VISIT_IP)) FROM TB_VISITOR WHERE TO_DATE(VISIT_TIME,'yyyy-MM-dd') = TO_DATE(sysdate,'yyyy-MM-dd')")
 	public int selectCountToday();
 	//전체 방문자 수
-	@Select("SELECT count(DISTINCT(VISIT_IP)) FROM TB_VISITOR")
+	@Select("SELECT count(*) FROM TB_VISITOR") 
 	public int selectVisitorCount();
 }

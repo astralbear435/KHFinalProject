@@ -70,7 +70,7 @@ public interface GoodsMapper {
 	@Select("SELECT sum(DONA_PRICE) FROM DONATION")
 	public int selectTotalPayment();
 	//¿À´Ã ÃÑ °áÁ¦±Ý¾×
-	@Select("SELECT sum(DONA_PRICE) FROM DONATION WHERE TO_DATE(DONA_DATE,'yyyy-MM-dd') = TO_DATE(sysdate,'yyyy-MM-dd')")
+	@Select("SELECT NVL(sum(DONA_PRICE),0) FROM DONATION WHERE TO_DATE(DONA_DATE,'yyyy-MM-dd') = TO_DATE(sysdate,'yyyy-MM-dd')")
 	public int selectTodayPayment();
 	
 }
