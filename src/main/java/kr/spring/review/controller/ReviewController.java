@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.goods.domain.GoodsCommand;
+import kr.spring.goods.service.GoodsService;
 import kr.spring.review.domain.ReviewCommand;
 import kr.spring.review.service.ReviewService;
 import kr.spring.shelter.domain.ShelterCommand;
@@ -37,6 +38,9 @@ public class ReviewController {
 	
 	@Resource
 	private ReviewService reviewService;
+	
+	@Resource
+	private GoodsService goodsService;
 	
 	//자바빈 초기화
 	@ModelAttribute("command")
@@ -131,6 +135,7 @@ public class ReviewController {
 			if(count>0) {
 				review_list = reviewService.getReviewList(map);
 			}
+		
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("reviewList");
 			mav.addObject("review",review_list);
@@ -162,9 +167,9 @@ public String deleteDetail(HttpSession session,@RequestParam("re_num") int re_nu
 	
 	
 	if(id!=null) {
-		reviewService.deleteReview(re_num);
 		//댓글이 있으면 삭제
 		reviewService.deleteReplyByNum(re_num);
+		reviewService.deleteReview(re_num);	
 	}
 	return "reviewList";
 }

@@ -9,7 +9,7 @@
 		template="/WEB-INF/views/template/layout.jsp">
 		<put-attribute name="title" value="Coco And Nabi" />
 		<put-attribute name="menu"
-			value="/WEB-INF/views/template/menu.jsp" />
+			value="/WEB-INF/views/template/menu2.jsp" />
 		<put-attribute name="header"
 			value="/WEB-INF/views/template/header.jsp" />
 		<put-attribute name="body"

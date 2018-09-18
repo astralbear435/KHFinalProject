@@ -21,9 +21,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.goods.domain.GoodsCommand;
+import kr.spring.goods.domain.OrderCommand;
 import kr.spring.goods.service.GoodsService;
 import kr.spring.member.domain.MemberCommand;
 import kr.spring.member.service.MemberService;
+import kr.spring.mypage.service.MypageService;
 import kr.spring.recriut.service.RecruitService;
 import kr.spring.shelter.domain.ShelterCommand;
 import kr.spring.shelter.service.ShelterService;
@@ -44,6 +46,9 @@ public class ShelterController {
 	
 	@Resource
 	private GoodsService goodsService;
+	
+	@Resource
+	private MypageService mypageService;
 	
 	@Resource
 	private CipherTemplate cipherAES;
@@ -340,10 +345,14 @@ public class ShelterController {
 			String address = s_address1.substring(0,findIndexOf-1);
 			shelter.setS_address1(address);
 		}
+		//기부받은 리스트 불러오기
+		List<OrderCommand> donaList=mypageService.selectDanaList(user_id);
+		
 		
 		model.addAttribute("user_id", user_id);
 		model.addAttribute("shelter", shelter);
 		model.addAttribute("recruitCount", recruitCount);
+		
 		
 		return "shelterDetail";
 	}
