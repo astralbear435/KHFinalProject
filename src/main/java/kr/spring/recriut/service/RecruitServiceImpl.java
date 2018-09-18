@@ -13,7 +13,7 @@ import kr.spring.shelter.domain.ShelterCommand;
 
 @Service("recruitService")
 public class RecruitServiceImpl implements RecruitService{
-	
+
 	@Resource
 	private BoardMapper boardMapper;
 
@@ -65,12 +65,7 @@ public class RecruitServiceImpl implements RecruitService{
 		return boardMapper.selectRecruitList(map);
 	}
 
-	@Override
-<<<<<<< HEAD
-	public int recruitCount(String r_id) {
-		return boardMapper.recruitCount(r_id);
-	}
-=======
+
 	public ShelterCommand selectBoName(Integer r_num) {
 		
 		return boardMapper.selectBoName(r_num);
@@ -81,8 +76,12 @@ public class RecruitServiceImpl implements RecruitService{
 		return boardMapper.selectBoNameList(map);
 	}
 
+	@Override
+	public int recruitCount(String r_id) {
+		// TODO Auto-generated method stub
+		return boardMapper.recruitCount(r_id);
+	}
 
->>>>>>> ab8c4c0f96ccef362ae667ea47f15553b7b31774
 
 
 }

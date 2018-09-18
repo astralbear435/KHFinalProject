@@ -24,7 +24,7 @@ public interface MemberMapper {
 	//등록
 	@Insert("INSERT INTO member (m_id,m_email) VALUES (#{m_id},#{m_email})")
 	public void insert(MemberCommand member);
-	@Insert("INSERT INTO member_detail (m_num,m_id,m_name,m_nickname,m_passwd,m_phone,m_zipcode,m_address,m_address_detail,m_email,uploadProfile,profileFilename,m_birth,m_reg_date) VALUES (mem_seq.nextval,#{m_id},#{m_name},#{m_nickname},#{m_passwd},#{m_phone},#{m_zipcode},#{m_address},#{m_address_detail},#{m_email},#{uploadProfile},#{profileFilename},#{m_birth},SYSDATE)")
+	@Insert("INSERT INTO member_detail (m_num,m_id,m_name,m_nickname,m_passwd,m_phone,m_zipcode,m_address,m_address_detail,m_email,uploadProfile,profileFilename,m_birth,m_reg_date,m_gender) VALUES (mem_seq.nextval,#{m_id},#{m_name},#{m_nickname},#{m_passwd},#{m_phone},#{m_zipcode},#{m_address},#{m_address_detail},#{m_email},#{uploadProfile},#{profileFilename},#{m_birth},SYSDATE,#{m_gender})")
 	public void insertDetail(MemberCommand member);
 	@Insert("INSERT INTO member_email (m_email,verify_key,m_id) VALUES (#{m_email},#{verify_key},#{m_id})")
 	public void insertEmail(@Param("m_email") String m_email, @Param("verify_key") String verify_key, @Param("m_id") String m_id);
@@ -75,6 +75,18 @@ public interface MemberMapper {
 	@Update("UPDATE member_detail SET m_passwd=#{m_passwd} WHERE m_email=#{m_email}")
 	public void updatePw(@Param("m_email") String m_email, @Param("m_passwd") String m_passwd);
 	
+	@Select("SELECT count(m_num) FROM MEMBER_DETAIL")
+	public int selectMemberCount();
+	@Select("SELECT count(m_num) FROM MEMBER_DETAIL WHERE TO_DATE(M_REG_DATE,'yyyy-MM-dd') = TO_DATE(sysdate,'yyyy-MM-dd')")
+	public int selectTodayMemberCount();
+	
+	//전체 맴버
+	@Select("SELECT m.AUTH,md.*FROM MEMBER m, MEMBER_DETAIL md WHERE m.m_id = md.m_id and m.AUTH>0 ORDER by m_num")
+	public List<MemberCommand> selectTotalMember();
+	
+	//auth변경
+	@Update("UPDATE member SET auth=#{auth} WHERE m_id=#{id}")
+	public void updateAuth(@Param("auth")int auth,@Param("id")String id);
 	/*//구글 로그인
 	@Update("UPDATE google_login SET g_name=#{g_name},g_id=#{g_id} WHERE m_email=#{m_email}")
 	public void googleLogin(MemberCommand member);*/

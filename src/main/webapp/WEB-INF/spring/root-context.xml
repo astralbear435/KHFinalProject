@@ -80,7 +80,8 @@
 		                   		  kr.spring.shelter.domain,
 		                   		  kr.spring.goods.domain,
 		                   		  kr.spring.board.domain,
-		                   		  kr.spring.recruit.domain,
+		                   		  kr.spring.admin.mainmenu.domain,              
+		                   		  kr.spring.recruit.domain,              
 		                   		  kr.spring.ap.domain"/>               
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -94,10 +95,10 @@
 		              		 kr.spring.shelter.dao,
 		              		 kr.spring.goods.dao,
 		              		 kr.spring.board.dao,
+		              		 kr.spring.ap.dao,
 		              		 kr.spring.recruit.dao,
-		            		kr.spring.volunteer.dao,
-		            		kr.spring.mypage.dao,
-		              		kr.spring.ap.dao" />
+		            		 kr.spring.volunteer.dao,
+		            		 kr.spring.mypage.dao" />
 
 	</bean>
 	

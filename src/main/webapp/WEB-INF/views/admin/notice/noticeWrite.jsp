@@ -42,7 +42,7 @@
 
 
 				<div class="box-body pad">
-					<form:textarea path="n_content"></form:textarea>
+					<form:textarea path="n_content" onKeyup="var m=50;var s=this.scrollHeight;if(s>=m)this.style.pixelHeight=s+4"></form:textarea>
 					
 
 				</div>
@@ -78,10 +78,9 @@
 <script
 	src="${pageContext.request.contextPath}/resources/admin/bower_components/ckeditor/ckeditor.js"></script>
 <script>
-
 CKEDITOR.replace( 'n_content', {
     extraPlugins: 'easyimage',
-    cloudServices_tokenUrl: 'http://localhost:8080/ProjectCAN/admin/notice/fileUpload.do',
-    cloudServices_uploadUrl: 'http://localhost:8080/ProjectCAN/upload/notice/'
+    cloudServices_tokenUrl: 'https://34815.cke-cs.com/token/dev/iFqU8CDd4fi9zhRMafJediRsggcVol5iYV6xOOkwYiwN00nlKyRC5YN9xDzv',
+    cloudServices_uploadUrl: 'https://34815.cke-cs.com/easyimage/upload/'
 } );
 </script>

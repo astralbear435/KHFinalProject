@@ -39,7 +39,7 @@ public class ApBoCallController {
 		if(log.isDebugEnabled()) {
 			log.debug("<<apBoCallCommand>> : " + apBoCallCommand);
 		}
-		
+
 		//±Û¾²±â
 		apBoCallService.insert(apBoCallCommand);
 		
