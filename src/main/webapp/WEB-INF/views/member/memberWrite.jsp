@@ -19,7 +19,6 @@
 	</div>
 	<br>
 	<div>
-
 		<div class="titleText">회원가입</div>
 		<div class="horizontal"></div><!-- 가로 여백 -->
 		<div class="w500 margin0a">
