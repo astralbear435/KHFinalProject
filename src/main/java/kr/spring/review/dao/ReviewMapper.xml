@@ -34,5 +34,11 @@ ORDER BY re_num DESC
 			</if>
 		</where>
 </select>
+	<!-- 댓글목록 -->
+	<select id="selectReplyList" parameterType="map" resultType="reviewReplyCommand">
+		SELECT reply_mynum,reply_content,TO_CHAR(reply_date,'YYYY-MM-DD HH24:MI:SS')reply_date,reply_num,reply_id FROM (select a.*,rownum rnum FROM(SELECT *
+		FROM review_reply WHERE reply_num=#{reply_num} ORDER BY reply_mynum ASC)a)
+  <![CDATA[ WHERE rnum>=#{start} AND rnum <= #{end}]]>
+	</select>
 
 </mapper>

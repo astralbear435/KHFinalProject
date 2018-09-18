@@ -146,10 +146,46 @@ public ModelAndView process(HttpSession session,@RequestParam("re_num") int re_n
 	String id = (String)session.getAttribute("user_id");
 	//상세페이지
 	ReviewCommand review=reviewService.selectDetail(re_num);
+	//조회수 증가
+	reviewService.updateRe_hit(re_num);
 	ModelAndView mav = new ModelAndView();
 	mav.setViewName("reviewDetail");
 	mav.addObject("review",review);
 	mav.addObject("user_id",id);
 	return mav;
 }
+//==================글 삭제 ============================
+@RequestMapping("/review/reviewDelete.do")
+public String deleteDetail(HttpSession session,@RequestParam("re_num") int re_num) {
+	//로그인 체크
+	String id = (String)session.getAttribute("user_id");
+	
+	
+	if(id!=null) {
+		reviewService.deleteReview(re_num);
+		//댓글이 있으면 삭제
+		reviewService.deleteReplyByNum(re_num);
+	}
+	return "reviewList";
+}
+//=======================글 수정 ===============
+@RequestMapping(value="/review/reviewUpdate.do",method=RequestMethod.GET)
+public String updateReview(@RequestParam("re_num") int re_num,Model model) {
+	ReviewCommand review=reviewService.selectDetail(re_num);
+	model.addAttribute("review", review);
+	
+	return "reviewModify";
+}
+//수정 폼에서 전송된 데이터 처리
+@RequestMapping(value="/review/reviewUpdate.do",method=RequestMethod.POST)
+public String submitUpdate(@ModelAttribute("review") @Valid ReviewCommand reviewCommand,BindingResult result,HttpSession session,
+		 HttpServletRequest request) {
+	if(log.isDebugEnabled()) {
+		log.debug("<<수정된 리뷰>> : " + reviewCommand);
+	}
+	reviewService.updateDetail(reviewCommand);
+	return "reviewList";
+}
+
+
 }

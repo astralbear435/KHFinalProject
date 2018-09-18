@@ -44,13 +44,14 @@ $(document).ready(function() {
 
 	<div style="width:80%; margin-left:10%">
 	<h1 style="color:pink;text-align:center;">♡Review♡</h1>
-	<p style="text-align:center;">:아이들의 새로운 가족이 된 후기를 작성해주세요!</p>
+	<p style="text-align:center;">:새로 작성해 주세요</p>
 	<br><br>
-	<form:form commandName="command" action="reviewWrite.do" enctype="multipart/form-data">
+	<form:form commandName="review" action="reviewUpdate.do" enctype="multipart/form-data">
 	<form:hidden path="re_id"/>
+	<form:hidden path="re_num"/>
 		<form:errors element="div" cssClass="error-color"/>	
 	    <ul style="list-style:none;">
-			<li style="width:70%; display:inline-block;"> 제목:
+			<li style="width:70%; display:inline-block;"> 제목: 
 				<form:input path="re_title" class="form-control" style="width:70%"/>
 				<form:errors path="re_title" cssClass="error-color"/>
 			</li>
@@ -69,7 +70,7 @@ $(document).ready(function() {
 		</ul><br><br>
 		<div style="text-align:center;">
 			<input type="button" value="취소" class="btn" onclick="history.go(-1)">
-			<input class="btn btn-warning" type="submit" value="작성">
+			<input class="btn btn-warning" type="submit" value="수정">
 		</div>
 	</form:form>
 <br><br>

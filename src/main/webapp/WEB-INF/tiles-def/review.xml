@@ -16,5 +16,9 @@
 		<put-attribute name="title" value="글 상세" />
 		<put-attribute name="body" value="/WEB-INF/views/review/reviewDetail.jsp"/>	
 	</definition>
+		<definition name="reviewModify" extends="main">
+		<put-attribute name="title" value="글 수정" />
+		<put-attribute name="body" value="/WEB-INF/views/review/reviewModify.jsp"/>	
+	</definition>
 </tiles-definitions>
   
