@@ -36,11 +36,11 @@ $(document).ready(function(){
     });
   //모달창 클릭시
     $("#openModal").click(function() {
-    	 $('#myModal').show();    
+    	 $('#myModalSoeun').show();    
     });
   //모달 창 닫기
     $("#closeModal").click(function() {
-         $('#myModal').hide();
+         $('#myModalSoeun').hide();
     }); 
   $("#addGoods").click(function(){
 	 var pad=$('#pad').val(); 
@@ -132,7 +132,7 @@ $(document).ready(function(){
 </div>
 </c:if>
 <!-- 여는모달 -->
-    <div id="myModal" class="modal">
+    <div id="myModalSoeun" class="modal">
  
 <!-- 모달내용 -->
       <div class="modal-content">

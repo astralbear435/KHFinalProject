@@ -1,0 +1,25 @@
+//¸®ºä °Ô½ÃÆÇ
+
+create table review(
+    re_num  number not null primary key,
+	re_title varchar2(200) not null,
+	re_id varchar2(30) not null,
+	re_asname varchar2(100) not null,
+	re_content CLOB,
+	re_date date default SYSDATE not null,
+	re_hit number default 0 not null,
+	
+	constraint  review_fk1 foreign key (re_id) references member(m_id)
+);
+create sequence review_seq;
+
+//´ñ±Û 
+
+create table review_reply(
+    reply_mynum number not null primary key,
+	reply_id varchar2(30) not null,
+	reply_content CLOB,
+	reply_date date default SYSDATE not null,
+	reply_num number not null
+);
+create sequence review_reply_seq;

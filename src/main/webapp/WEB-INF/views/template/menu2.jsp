@@ -79,6 +79,8 @@
 					<li><a href="${pageContext.request.contextPath}/note/receivedList.do">쪽지</a></li>
 					<li><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
 				</c:if>
+				<li><a href="${pageContext.request.contextPath}/goods/list.do">후원하기</a></li>
+				<li> <a href="${pageContext.request.contextPath}/review/reviewList.do">Review</a></li>
 			  </ul>
 			</div>
 		<!-- menu -->
