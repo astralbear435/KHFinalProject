@@ -42,7 +42,7 @@
 					<div class="form-group clearB">
 						<label for="m_gender">성별</label><br>
 						<div class="btn-group btn-group-toggle" data-toggle="buttons">
-							<label class="btn btn-info active">
+							<label class="btn btn-warning active">
 							<input type="radio" name="m_gender" id="man" value="남" autocomplete="off"> 남
 						</label>
 						<label class="btn btn-info active">
@@ -133,7 +133,7 @@
 					<br><hr size="1" width="100%">
 		
 					<div class="w500 clearB" style="text-align:center; margin: 0;">
-						<input type="submit" value="회원가입" class="btn btn-primary">&nbsp;&nbsp;&nbsp;
+						<input type="submit" value="회원가입" class="btn btn-warning">&nbsp;&nbsp;&nbsp;
 						<input type="button" value="홈으로" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 					</div>
 					
