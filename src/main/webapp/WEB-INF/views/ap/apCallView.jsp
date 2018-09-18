@@ -68,7 +68,7 @@
 				<p>${apcall.call_intro}</p>
 		</div>
 		<hr>
-		
+		<c:if test="${user_auth==5}">
 		<div>
 			<form:form commandName="command" action="apBoCallWrite.do" enctype="multipart/form-data">
 
@@ -92,6 +92,7 @@
 					style="margin:10px 0 10px 0;" value="예약하기" id="apbooking" data-num="${apcall.call_num}" >
 		</form:form>
 		</div>
+		</c:if>
 	</div>
 
 		

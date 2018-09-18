@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.note.domain.NoteCommand;
-
+ 
 public interface NoteService {
 	public List<NoteCommand> selectNoteList(Map<String,Object> map);
 	public int selectNoteRowCount(Map<String,Object> map);

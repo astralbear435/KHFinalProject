@@ -173,7 +173,7 @@
 			<input type="submit" class="btn btn-warning btn-lg btn-block" 
 					style="margin:10px 0 10px 100px; width:150px;" id="apbooking" data-num="${apcommand.ap_num}" value="예약하기">
 		</form:form>
-	</div>
+	</div> 
 		
 	<!-- 목록 출력 -->
 	<div id="output"></div>
