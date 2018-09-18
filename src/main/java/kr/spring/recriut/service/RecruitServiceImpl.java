@@ -65,7 +65,6 @@ public class RecruitServiceImpl implements RecruitService{
 		return boardMapper.selectRecruitList(map);
 	}
 
-
 	public ShelterCommand selectBoName(Integer r_num) {
 		
 		return boardMapper.selectBoName(r_num);
@@ -81,7 +80,5 @@ public class RecruitServiceImpl implements RecruitService{
 		// TODO Auto-generated method stub
 		return boardMapper.recruitCount(r_id);
 	}
-
-
 
 }

@@ -314,12 +314,12 @@ $(document).ready(function() {
 				
 				if(data.result == 'emailNotFound') {	//이메일이 없는 경우
 					
-					$('#message_email').css('color','blue').text('사용가능한 이메일입니다!');
+					$('#message_email').css('color','blue').text('사용 가능한 이메일입니다!');
 					checkEmail = 1;
 					
 				} else if(data.result == 'emailDuplicated') {	//이메일이 중복된 경우
 					
-					$('#message_email').css('color','red').text('사용중인 이메일입니다!');
+					$('#message_email').css('color','red').text('사용 중인 이메일입니다!');
 					$('#m_email').val('').focus();
 					checkEmail = 0;
 					

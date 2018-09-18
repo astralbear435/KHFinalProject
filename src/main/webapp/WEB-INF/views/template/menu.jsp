@@ -100,6 +100,7 @@
 					<li><a
 						href="${pageContext.request.contextPath}/mypage/mypageShelter.do?r_id=${user_id}">마이페이지</a>
 					</li>
+
 				</c:if>
 				<li><a
 					href="${pageContext.request.contextPath}/note/receivedList.do">쪽지</a></li>

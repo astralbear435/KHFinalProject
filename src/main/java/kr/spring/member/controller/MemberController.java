@@ -49,10 +49,11 @@ public class MemberController {
 
 
 	// 통합 로그인 폼 호출
-	@RequestMapping(value="/member/selectLogin.do")
+	@RequestMapping(value="/member/login.do")
 	public String selectLogin() {
-		return "selectLogin";
+		return "member/loginPlease";
 	}
+	
 	// 약관 폼 호출
 	@RequestMapping(value="/member/privision.do")
 	public String privision() {

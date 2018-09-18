@@ -6,10 +6,12 @@
 
 	<!-- 모달창 열기 -->
 	<div id="loginModal" class="modal">
+
 		<div class="loginModal-content">
 			<span style="font-size:10pt; text-align:right;">
 				<a href="#" id="closeMemberLogin">X</a>
 			</span>
+
 			<p style="text-align: center;">
 				<span style="font-size: 14pt;">
 					<b><span style="font-size: 20pt;">로그인</span></b>
@@ -34,6 +36,7 @@
 				href="${pageContext.request.contextPath}/member/findMember.do">
 				<i class="fa fa-unlock-alt">아이디/비밀번호 찾기</i>
 			</a>
+
 			</div>
 		</div>
 	</div>
@@ -81,7 +84,7 @@
 		<div class="container">
 			<!-- wthree-top-grid -->
 			<div class="wthree-top-grid">
-				<h1><a href="${pageContext.request.contextPath}/main/main.do">Njoy Trip</a></h1>
+				<h1><a href="${pageContext.request.contextPath}/main/main.do">CAN</a></h1>
 				<div class="w3-agileits-border"> </div>
 				<h2>About Us</h2>
 			</div>
