@@ -43,7 +43,8 @@ ul{
 	align:center;
 }
 </style>
-<div class="page-main-style">
+<div class="container">
+	<br><br>
 	<h3 align="center">(보호소) 동물 등록페이지</h3>
 	<form:form commandName="boardCommand" action="write.do" id="register_form" enctype="multipart/form-data">
 	    <form:hidden path="id"/>

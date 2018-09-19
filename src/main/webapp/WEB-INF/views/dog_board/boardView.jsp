@@ -21,6 +21,29 @@ ul{
    float:right;
    list-style:none;
    }
+#backdiv{
+	position: relative;
+	float:right;
+  	top: 10px;
+  	left: 50px;
+  	text-align:center;
+  	border-color:#EAEAEA;
+	background-color:#BDBDBD;
+	border-style:double;
+	max-width:100%; 
+  	width: 350px;
+  	height:150px;
+	  /* position:relative;
+	  float:right;
+	  text-align:center;
+	  border-width:3px;
+	  border-color:#EAEAEA;
+	  background-color:#BDBDBD; 
+	  border-style:double;
+	  max-width:100%;
+	  width:350px;
+	  height:150px; */
+}
 img.show{
 	aling:center;
 	max-width:100%;
@@ -40,19 +63,37 @@ img.show{
 	<a href="detail.do?num=${board.num}"><img src="imageView.do?num=${board.num}" width=500, height=500 onerror="this.src='../resources/images/not_image.png'">
 	</a>
 	<ul style="font-size:20px; padding-top:8%;">
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;보호소 :${s_name}</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;보호소 :${s_name}</li>
 		<br>
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;이름 : ${board.an_name}</li>
+		<li>&nbsp;&nbsp;
+			&nbsp;&nbsp;
+			&nbsp;&nbsp;
+			이름 : ${board.an_name}</li>
 		<br>
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;묘종/견종   :  ${board.an_species}</li>
+		<li>&nbsp;&nbsp;
+			&nbsp;&nbsp;
+			&nbsp;&nbsp;
+			묘종/견종   :  ${board.an_species}</li>
 		<br>
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;모색   :  ${board.an_color}</li>
+		<li>&nbsp;&nbsp;
+			&nbsp;&nbsp;
+			&nbsp;&nbsp;
+			모색   :  ${board.an_color}</li>
 		<br>
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;성별   :  ${board.an_gender}</li>
+		<li>&nbsp;&nbsp;
+			&nbsp;&nbsp;
+			&nbsp;&nbsp;
+			성별   :  ${board.an_gender}</li>
 		<br>
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;접종여부  : ${board.an_review}</li>
+		<li>&nbsp;&nbsp;
+			&nbsp;&nbsp;
+			&nbsp;&nbsp;
+			접종여부  : ${board.an_review}</li>
 		<br>
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;중성화  :  ${board.an_operate}</li>
+		<li>&nbsp;&nbsp;
+			&nbsp;&nbsp;
+			&nbsp;&nbsp;
+			중성화  :  ${board.an_operate}</li>
 	</ul>
 		<br>
 		<br>

@@ -43,7 +43,8 @@ ul{
    list-style:none;
    }
 </style>
-<div class="page-main-style">
+<div class="container">
+	<br><br>
 	<h3 align="center">글수정</h3>
 	<br><br>
 	<form:form commandName="boardCommand" action="update.do" id="register_form"
