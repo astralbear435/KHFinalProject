@@ -99,20 +99,20 @@
 					<input type="text" name="recipient" id="recipient" style="width: 280px;"
 							class="form-control condition floatL"/>
 					<div class="floatL" style="width: 5px; height: 30px;"></div>
-					<input type="button" class="floatL btn btn-primary" value="확인" style="margin-top: 3px;" id="search">
+					<input type="button" class="floatL btn btn-warning" value="확인" style="margin-top: 3px;" id="search">
 					<div class="floatL" style="width: 30px; height: 30px;"></div>
 					<div class="floatL" style="width: 35px;height: 25px;margin-top: 13px;" id="result"></div>
 				</div>
 				<hr size="1" width="100%"><br>
 				<label for="note_content"></label>
-				<textarea rows="15" cols="85" style="border: 1.5px solid #333333; resize:none;"
+				<textarea rows="15" cols="85" style="border: 2px solid #333333; resize:none;"
 								name="note_content" id="note_content">
 				
 </textarea><br>
 				<div class="letter-count" style="text-align:right">0 / 1000</div>
 				<div class="horizontal"></div><!-- 가로 여백 -->
 				<p align="center">
-					<input type="button" value="보내기" id="noteWriteFormSubmit" class="btn btn-primary">
+					<input type="button" value="보내기" id="noteWriteFormSubmit" class="btn btn-warning">
 					<input type="button" value="취소" onclick="self.close()" class="btn btn-primary"/>
 				</p>
 			</form>

@@ -99,6 +99,12 @@ $(document).ready(function(){
 										placeholder="비밀번호 입력"/>
 						<form:errors path="s_passwd" cssClass="error-color"/>
 					</div>
+					<div class="form-group clearB">
+						<label>비밀번호 확인</label>
+						<form:password path="" class="form-control" name=""
+										placeholder="비밀번호확인 입력"/>
+					</div>
+					
 					<div class="form-group">
 						<label for="s_name">보호소 명</label>
 						<form:input path="s_name" class="form-control" name="s_name"
@@ -162,7 +168,7 @@ $(document).ready(function(){
 					
 					<div class="form-group">
 						<label for="s_content">보호소 소개</label>
-						<form:textarea path="s_content" rows="5" cols="80" style="border: 1.5px solid #333333; resize:none;"
+						<form:textarea path="s_content" rows="5" cols="85" style="border: 2px solid #333333; resize:none;"
 										placeholder="간단한 보호소 소개 입력"></form:textarea><br>
 						<div class="letter-count" style="text-align:right">0 / 1000</div>
 						<form:errors path="s_content" cssClass="error-color"/>
@@ -179,7 +185,7 @@ $(document).ready(function(){
 					
 					<br><hr size="1" width="100%">
 						
-					<div class="w500 clearB" style="text-align:center; margin: 0;">
+					<div class="w500 clearB margin0a" style="text-align:center;">
 						<input type="submit" class="btn btn-warning" value="회원가입">
 						<input type="button"  class="btn btn-primary" value="홈으로"
 							      onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
