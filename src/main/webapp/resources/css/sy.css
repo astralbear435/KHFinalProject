@@ -1,41 +1,66 @@
 @charset "UTF-8";
 /* modal */
-.modal {
+.modalLogin {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
+	z-index: 9999; /* Sit on top */
 	left: 0;
 	top: 0;
+	right: 0;
+	bottom: 0;
 	width: 100%; /* Full width */
 	height: 100%; /* Full height */
 	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0, 0, 0); /* Fallback color */
 	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+	box-sizing: border-box;
 }
 
 /* Modal Content/Box */
-.modal-content {
+.modal-contentLogin {
 	background-color: #fefefe;
 	margin: 15% auto; /* 15% from the top and centered */
 	padding: 20px;
 	border: 1px solid #888;
 	width: 30%; /* Could be more or less, depending on screen size */
+	min-width: 355px;
+	border-radius: 15px 5px 5px 25px/5px 25px 25px 5px;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	flex-direction: column;
+	pointer-events: auto;
+	background-clip: padding-box;
+	box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
 }
 
 /* =====shelterWrite===== */
-.w500 {width: 500px;}
-.h72 {height: 72px;}
-.lineh95 {line-height: 95px;}
-.margin0a {margin: 0 auto;}
-.clearB{clear: both;}
+.w500 {
+	width: 500px;
+}
 
-.titleText{
-		font-style: bold;
-		font-size: 35px;
-		text-align: center;
-		width: 500px;
-		align: center;
-		margin: 0 auto;
+.h72 {
+	height: 72px;
+}
+
+.lineh95 {
+	line-height: 95px;
+}
+
+.margin0a {
+	margin: 0 auto;
+}
+
+.clearB {
+	clear: both;
+}
+
+.titleText {
+	font-style: bold;
+	font-size: 35px;
+	text-align: center;
+	width: 500px;
+	align: center;
+	margin: 0 auto;
 }
 
 /* =====noteWrite===== */
@@ -46,8 +71,13 @@
 }
 
 /* =====shelterList===== */
-a{text-decoration:none;}
-a:hover{text-decoration:underline;}
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
 
 .floatL {
 	float: left;
@@ -58,13 +88,14 @@ a:hover{text-decoration:underline;}
 }
 
 .search {
-   	margin:5px 0px 5px 10px;
-   	height: 50px;
-   	line-height:40px;
+	margin: 5px 0px 5px 10px;
+	height: 50px;
+	line-height: 40px;
 }
 
 .searchButton {
-	width:70px; height:50px;
+	width: 70px;
+	height: 50px;
 }
 
 /* =====shelterDetail===== */
@@ -74,7 +105,7 @@ a:hover{text-decoration:underline;}
 	border: 10px solid orange;
 }
 
-.titleDetail{
+.titleDetail {
 	font-size: 80px;
 	text-align: center;
 	width: 1000px;
@@ -108,8 +139,8 @@ a:hover{text-decoration:underline;}
 }
 
 .bigSquare {
-	width: 1300px;
-	height: 2100px;
+	width: 80%;
+	height: 1450px;
 	margin: 0 auto;
 }
 

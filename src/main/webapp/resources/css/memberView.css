@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+.photoArea{
+	margin: 0 auto;
+	width: 450px;
+	margin-left:33%;
+}
+
+.photoArea img {
+	border-radius:50%;
+}
+
+.m_text{
+	margin-left:7em;
+}
+/* =====shelterWrite===== */
+
+.w600{width: 600px};
+.w500{width: 500px;}
+.h72{height: 72px;}
+.lineh95{line-height: 95px;}
+.margin0a{margin: 0 auto;}
+.clearB{clear: both;}
+
+.titleText{
+		color:#f48a55;
+		font-size: 35px;
+		text-align: center;
+		width: 500px;
+		margin: 0 auto;
+}
+
+/* =====noteWrite===== */
+.recipient {
+	margin: 5px 5px 5px 0px;
+	width: 400px;
+	height: 40px;
+}
+
+/* =====shelterList===== */
+a{text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+.floatL {
+	float: left;
+}
+
+.condition {
+	margin: 5px 2px 5px 8px;
+}
+
+.search {
+	background-color: #bcbcbc;
+   	margin:5px 0px 5px 10px;
+   	width:1120px; height: 50px;
+   	line-height:40px;
+}
+
+.searchButton {
+	width:70px; height:50px;
+}
+
+/* =====shelterDetail===== */
+.mainPhoto {
+	width: 100%;
+	height: 300px;
+	border: 10px solid orange;
+}
+
+.titleDetail{
+	font-size: 80px;
+	text-align: center;
+	width: 1000px;
+	margin: 0 auto;
+	line-height: 270px;
+}
+
+.shelterName {
+	width: 100%;
+	height: 300px;
+	text-align: center;
+	line-height: 280px;
+	font-size: 30px;
+}
+
+.horizontal { /* 가로 여백 */
+	clear: both;
+	width: 100%;
+	height: 40px;
+}
+
+.square { /* 링크 사각형 */
+	width: 240px;
+	height: 250px;
+}
+
+.linkSquare {
+	width: 260px;
+	height: 220px;
+	text-align: center;
+}
+
+.bigSquare {
+	width: 1300px;
+	height: 2100px;
+	margin: 0 auto;
+}
+
+.link2blank {
+	float: left;
+	height: 400px;
+}
+
+.link3blank {
+	float: left;
+	width: 10%;
+	height: 400px;
+}

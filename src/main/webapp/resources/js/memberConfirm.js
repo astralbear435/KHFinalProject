@@ -29,10 +29,11 @@ $(document).ready(function() {
 		});
 		
 		//이름 미입력 안내 메시지 초기화
-		$('#register_form #m_name').keyup(function () {
+		$('#register_form #m_gender').click(function () {
 
 			$('#message_name').text('');
 		});
+		
 		//비밀번호 미입력 안내 메시지 초기화
 		$('#register_form #m_passwd').keyup(function () {
 
@@ -111,7 +112,7 @@ $(document).ready(function() {
 			$('#message_id').css('color','red').text('아이디를 입력하세요.');
 			$('#m_id').focus();
 			
-			return;
+			return false;
 		}
 		
 		for (i = 0; i < $('#m_id').val().length; i++) {
@@ -141,6 +142,14 @@ $(document).ready(function() {
 			return false;
 		}
 		
+		if($('#m_id').val().indexOf("admin") != -1) {
+			
+			$('#message_id').css('color','red').text('이 아이디는 사용할 수 없습니다.');
+			$('#m_id').focus();
+			
+			return false;
+		}
+		
 		$('#message_id').text('');	//메세지 초기화
 		$('#loading').show();	//로딩 이미지 노출
 		
@@ -158,12 +167,12 @@ $(document).ready(function() {
 				
 				if(data.result == 'idNotFound') {	//아이디가 없는 경우
 					
-					$('#message_id').css('color','blue').text('훌륭한 아이디입니다!');
+					$('#message_id').css('color','blue').text('사용가능한 아이디입니다!');
 					checkId = 1;
 					
 				} else if(data.result == 'idDuplicated') {	//아이디가 중복된 경우
 					
-					$('#message_id').css('color','red').text('더 멋진 아이디를 입력하세요!');
+					$('#message_id').css('color','red').text('사용중인 아이디입니다!');
 					$('#m_id').val('').focus();
 					checkId = 0;
 					
@@ -241,12 +250,12 @@ $(document).ready(function() {
 				
 				if(data.result == 'nicknameNotFound') {	//닉네임이 없는 경우
 					
-					$('#message_nickname').css('color','blue').text('훌륭한 닉네임입니다!');
+					$('#message_nickname').css('color','blue').text('사용가능한 닉네임입니다!');
 					checkNickname = 1;
 					
 				} else if(data.result == 'nicknameDuplicated') {	//닉네임이 중복된 경우
 					
-					$('#message_nickname').css('color','red').text('더 멋진 닉네임을 입력하세요!');
+					$('#message_nickname').css('color','red').text('사용중인 닉네임입니다!');
 					$('#m_nickname').val('').focus();
 					checkNickname = 0;
 					
@@ -305,12 +314,12 @@ $(document).ready(function() {
 				
 				if(data.result == 'emailNotFound') {	//이메일이 없는 경우
 					
-					$('#message_email').css('color','blue').text('사용가능한 이메일입니다!');
+					$('#message_email').css('color','blue').text('사용 가능한 이메일입니다!');
 					checkEmail = 1;
 					
 				} else if(data.result == 'emailDuplicated') {	//이메일이 중복된 경우
 					
-					$('#message_email').css('color','red').text('사용중인 이메일입니다!');
+					$('#message_email').css('color','red').text('사용 중인 이메일입니다!');
 					$('#m_email').val('').focus();
 					checkEmail = 0;
 					
@@ -362,6 +371,16 @@ $(document).ready(function() {
 			$('#m_name').focus();
 
 			return false;
+		}
+		
+		var man = $('#man');
+		if($(':radio[name="m_gender"]:checked').length < 1) {
+			
+			$('#message_gender').css('color','red').text('성별을 입력하세요.');
+			$('#man').focus();
+			
+			return false;
+			
 		}
 		
 		if(checkNickname == 0) {

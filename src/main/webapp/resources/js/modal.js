@@ -1,25 +1,24 @@
 $(document).ready(function() {
 	
-	//로그인 모달창		
+	// 로그인 모달창		
 	$('#memberLogin').click(function() {
 		
-		$('#myModal').show();
+		$('#loginModal').show();
 	});
 	
 	$('#loginButton').click(function() {
-		
+		console.log($('#m_id').val()+','+ $('#m_passwd').val());
 		$.ajax({
 			url:'../member/memberLogin.do',
 			type:'post',
-			data:{m_id:$('#m_id').val(),m_passwd:$('#m_passwd').val()},
+			data:{m_id:$('#l_id').val(),m_passwd:$('#l_passwd').val()},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
 			success:function(data) {
 				
 				if(data.result == 'success') {	//로그인 성공
-					
-					$('#myModal').hide();
+					$('#loginModal').hide();
 					location.href='../main/main.do';
 				
 				} else if(data.result == 'false') {
@@ -37,10 +36,22 @@ $(document).ready(function() {
 		
 	});
 	
-	//닫기
+	// 닫기
 	$('#closeMemberLogin').click(function() {
 		
-		$('#myModal').hide();
+		$('#loginModal').hide();
 	});
 	
+	// 엔터하면 로그인 처리
+	$('input[type="text"]').keydown(function(event) {
+	    if (event.keyCode == 13) {
+	    	$('#loginButton').click();
+	    }
+	});
+	
+	$('input[type="password"]').keydown(function(event) {
+	    if (event.keyCode == 13) {
+	    	$('#loginButton').click();
+	    }
+	});
 });

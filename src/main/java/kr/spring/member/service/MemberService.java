@@ -37,6 +37,14 @@ public interface MemberService {
 	//비밀번호 찾기(임시 비밀번호 전송)
 	public void updatePw(String m_email) throws Exception;
 	
+	public int selectMemberCount();
+	public int selectTodayMemberCount();
+	
+	//토탈맴버
+	public List<MemberCommand> selectTotalMember();
+	
+	//어스변경
+	public void updateAuth(int auth,String id);
 	//구글 로그인
 	//public MemberCommand googleLogin(MemberCommand member) throws Exception;
 	

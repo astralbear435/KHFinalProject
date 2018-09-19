@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class MemberCommand {
 	
 	private int auth;
-	
+
 	private int m_num;
 	@NotEmpty
 	private String m_id;
@@ -34,30 +34,13 @@ public class MemberCommand {
 	
 	private String verify_key;
 	
-	private String g_name;
-	private String g_id;
+	private String m_gender;
 	
-	
-	public String getG_name() {
-		return g_name;
-	}
-
-	public void setG_name(String g_name) {
-		this.g_name = g_name;
-	}
-
-	public String getG_id() {
-		return g_id;
-	}
-
-	public void setG_id(String g_id) {
-		this.g_id = g_id;
-	}
 
 	//비밀번호 일치 여부 체크
 	public boolean isCheckedPasswd(String userPasswd) {
 
-		if(auth > 0 && m_passwd.equals(userPasswd)) {
+		if(auth != 0 && m_passwd.equals(userPasswd)) {
 			
 			return true;
 		}
@@ -65,6 +48,13 @@ public class MemberCommand {
 		return false;
 	}
 	
+	public String getM_gender() {
+		return m_gender;
+	}
+	public void setM_gender(String m_gender) {
+		this.m_gender = m_gender;
+	}
+
 	public String getVerify_key() {
 		return verify_key;
 	}
@@ -188,6 +178,8 @@ public class MemberCommand {
 				+ ", m_nickname=" + m_nickname + ", m_passwd=" + m_passwd + ", m_phone=" + m_phone + ", m_zipcode="
 				+ m_zipcode + ", m_address=" + m_address + ", m_address_detail=" + m_address_detail + ", m_email="
 				+ m_email + ", upload=" + upload + ", profileFilename=" + profileFilename + ", m_birth=" + m_birth
-				+ ", m_reg_date=" + m_reg_date + ", m_checked_email=" + m_checked_email + ", verify_key=" + verify_key + "]";
+				+ ", m_reg_date=" + m_reg_date + ", m_checked_email=" + m_checked_email + ", verify_key=" + verify_key
+				+ ", m_gender=" + m_gender + "]";
 	}
+	
 }

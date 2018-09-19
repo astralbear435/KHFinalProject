@@ -1,15 +1,41 @@
 $(document).ready(function(){
+	
+	/* shelterWrite */
 	var checkId = 0;
 	
 	/* 아이디 */
 	// 중복 체크
 	$('#confirmId').click(function(){
-		if($('#s_id').val()==''){
-			alert('아이디를 입력하세요!');
+		
+		if($('#s_id').val() == '') {
+			
+			$('#message_id').css('color','red').text('아이디를 입력하세요.');
 			$('#s_id').focus();
+			
 			return;
-		}else{
-		var id=$('#s_id').val();
+		}
+		
+		for (i = 0; i < $('#s_id').val().length; i++) {
+            ch = $('#s_id').val().charAt(i)
+            if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z')&&!(ch >= 'A' && ch <= 'Z')) {
+                
+            	$('#message_id').css('color','red').text('아이디는 대소문자, 숫자만 입력가능합니다.');
+                $('#s_id').focus();
+                
+                return false;
+            }
+        }
+		
+		if($('#s_id').val().length < 6 || $('#s_id').val().length > 20) {
+			
+			$('#message_id').css('color','red').text('아이디는 6~20자로 입력하세요.');
+			$('#s_id').focus();
+			
+			return false;
+		}
+
+		// 중복 확인
+		var id = $('#s_id').val();
 		$('#message_id').text(''); //메세지 초기화
 		$.ajax({
 			type:'post',
@@ -19,10 +45,10 @@ $(document).ready(function(){
 			timeout:30000,
 			success:function(data){
 				if(data.result == 'idNotFound'){
-					$('#message_id').css('color','#000').text('등록 가능');
+					$('#message_id').css('color','blue').text('훌륭한 아이디입니다!');
 					checkId = 1;
 				}else if(data.result == 'idDuplicated'){
-					$('#message_id').css('color','red').text('중복 ID');
+					$('#message_id').css('color','red').text('더 멋진 아이디를 입력하세요!');
 					$('#s_id').val('').focus();
 					checkId = 0;
 				}else{
@@ -34,7 +60,6 @@ $(document).ready(function(){
 				alert('네트워크 오류 발생!!');
 			}
 		});
-		}
 	});
 	
 	// 중복 안내 메시지 초기화 및 아이디 중복 값 초기화
@@ -57,11 +82,24 @@ $(document).ready(function(){
 	/* 이메일 */
 	// 중복 체크
 	$('#confirmEmail').click(function(){
-		if($('#s_email').val()==''){
-			alert('이메일을 입력하세요!');
+		var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+		
+		//이메일 입력 여부 판단
+		if($('#s_email').val() == '') {
+			
+			$('#message_email').css('color','red').text('이메일을 입력하세요.');
 			$('#s_email').focus();
+			
 			return;
-		}else{
+		}
+		
+		if(regex.test($('#s_email').val()) == false) {
+			
+			$('#message_email').css('color','red').text('이메일 형식이 올바르지 않습니다.');
+		    
+		    return false;
+		}
+		
 		var email=$('#s_email').val();
 		$('#message_email').text(''); //메세지 초기화
 		$.ajax({
@@ -72,10 +110,10 @@ $(document).ready(function(){
 			timeout:30000,
 			success:function(data){
 				if(data.result == 'emailNotFound'){
-					$('#message_email').css('color','#000').text('등록 가능');
+					$('#message_email').css('color','blue').text('사용 가능한 이메일입니다!');
 					checkId = 1;
 				}else if(data.result == 'emailDuplicated'){
-					$('#message_email').css('color','red').text('중복 이메일');
+					$('#message_email').css('color','red').text('사용 중인 이메일입니다!');
 					$('#s_email').val('').focus();
 					checkId = 0;
 				}else{
@@ -87,7 +125,6 @@ $(document).ready(function(){
 				alert('네트워크 오류 발생!!');
 			}
 		});
-		}
 	});
 	
 	// 중복 안내 메시지 초기화 및 아이디 중복 값 초기화
@@ -140,6 +177,8 @@ $(document).ready(function(){
 		}
 	});
 	
+	
+	/* shelterInfo */
 	// 회원 정보 확인하려면 비밀번호 확인 해야 함
 	$('#confirmBtn').click(function(){
 		if($('#s_passwd').val() == $('#s_passwdInput').val()){

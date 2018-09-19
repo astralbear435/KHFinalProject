@@ -23,7 +23,7 @@ public class MemberFindController {
 	@Resource
 	private MemberService memberService;
 	
-	@RequestMapping("/member/find_Member.do")
+	@RequestMapping("/member/find_id.do")
 	//JSON 문자열 생성
 	@ResponseBody
 	public Map<String,String> processFindId(@RequestParam("m_email") String email) throws Exception {

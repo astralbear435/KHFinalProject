@@ -18,7 +18,7 @@ import kr.spring.goods.domain.OrderCommand;
 public class GoodsServiceImpl implements GoodsService {
 	@Resource
 	private GoodsMapper goodsMapper;
-	
+
 	@Override
 	public void insert(GoodsCommand goods) {
 		// TODO Auto-generated method stub
@@ -65,7 +65,7 @@ public class GoodsServiceImpl implements GoodsService {
 
 	//장바구니 불러오기
 	public List<CartListCommand> getCart(String p_id) {
-		
+
 		return 	goodsMapper.getCart(p_id);
 	}
 
@@ -74,7 +74,7 @@ public class GoodsServiceImpl implements GoodsService {
 		//장바구니 선택삭제
 		return goodsMapper.deleteCart(p_cartnum);
 	}
-//특수 물건 추가 등록
+	//특수 물건 추가 등록
 	@Override
 	public void addNewGoods(AdminCheck check) {
 		goodsMapper.addNewGoods(check);
@@ -96,7 +96,7 @@ public class GoodsServiceImpl implements GoodsService {
 	public void updateOrder(OrderCommand order) {
 		//주문 업데이트(기부성명,메세지내용)
 		goodsMapper.updateOrder(order);	
-		
+
 	}
 
 	@Override
@@ -127,7 +127,24 @@ public class GoodsServiceImpl implements GoodsService {
 	public void minusCount(Map<String, Object> map2) {
 		// 결제시 as_goods에서 신청수량을 결제갯수만큼 뺀다
 		goodsMapper.minusCount(map2);
-		
+
+	}
+
+	@Override
+	public String comeonId(String dona_asname) {
+		// 보호소 아이디 가져오기
+		return goodsMapper.comeonId(dona_asname);
+	}
+	@Override
+	public int selectTotalPayment() {
+		// TODO Auto-generated method stub
+		return goodsMapper.selectTotalPayment();
+	}
+
+	@Override
+	public int selectTodayPayment() {
+		// TODO Auto-generated method stub
+		return goodsMapper.selectTodayPayment();
 	}
 
 }
