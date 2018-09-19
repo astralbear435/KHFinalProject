@@ -48,6 +48,7 @@
 			<th>조회수</th>
 		</tr>
 		<c:forEach var="review" items="${review}">
+		<c:if test="${review.re_auth==1||review.re_auth==2}">
 		<tr>
 			<td>${review.re_num}</td>
 			<td><a style="color:green;" href="#">[${review.re_asname}]</a></td>
@@ -56,9 +57,12 @@
 			<td>${review.re_date}</td>
 			<td>${review.re_hit}</td>
 		</tr>
+		</c:if>
 		</c:forEach>
 	</table>
 </div>
+
+
 </c:if>
 </div>
 <br><br>

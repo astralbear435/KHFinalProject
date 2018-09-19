@@ -25,7 +25,8 @@ public interface ShelterMapper {
 	
 	@Select("SELECT * FROM member m LEFT OUTER JOIN shelter_detail s ON m.m_id = s.s_id WHERE m.m_id=#{id}")
 	public ShelterCommand selectShelter(String id);
-	
+	@Select("SELECT s_name FROM shelter_detail WHERE s_id=#{re_id}")
+	public String selectAsName(String id);
 	// 회원 정보 수정
 	@Update("UPDATE shelter_detail SET s_name=#{s_name}, s_passwd=#{s_passwd}, s_phone=#{s_phone}, s_email=#{s_email}, s_zipcode=#{s_zipcode}, s_address1=#{s_address1}, s_address2=#{s_address2}, s_content=#{s_content}, s_uploadfile=#{s_uploadfile}, s_filename=#{s_filename} WHERE s_id=#{s_id}")
 	public void update(ShelterCommand shelter);

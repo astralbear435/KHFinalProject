@@ -1,5 +1,6 @@
 package kr.spring.review.service;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -7,6 +8,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import kr.spring.goods.domain.OrderCommand;
 import kr.spring.review.dao.ReviewMapper;
 import kr.spring.review.domain.ReviewCommand;
 import kr.spring.review.domain.ReviewReplyCommand;
@@ -100,6 +102,30 @@ public class ReviewServiceImpl implements ReviewService {
 	public ReviewCommand updateDetail(ReviewCommand review) {
 		// TODO Auto-generated method stub
 		return reviewMapper.updateDetail(review);
+	}
+
+	@Override
+	public int selectCountId(String re_id) {
+		// TODO Auto-generated method stub
+		return reviewMapper.selectCountId(re_id);
+	}
+
+	@Override
+	public List<ReviewCommand> shelterReviewList(String re_id) {
+		// 자기가 쓴글 전부 갖고오세염
+		return reviewMapper.shelterReviewList(re_id);
+	}
+
+	@Override
+	public Date selectBeforeDate(String re_id) {
+		//가장 최근의 데이트 값 갖고오셈
+		return reviewMapper.selectBeforeDate(re_id);
+	}
+
+	@Override
+	public List<OrderCommand> MyOrder(Map<String, Object> map) {
+		// 기부받은 목록 가져오기
+		return reviewMapper.MyOrder(map);
 	}
 
 }

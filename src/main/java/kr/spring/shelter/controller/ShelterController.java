@@ -1,11 +1,15 @@
 package kr.spring.shelter.controller;
 
+import java.io.File;
+import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.goods.domain.GoodsCommand;
@@ -27,13 +32,18 @@ import kr.spring.member.domain.MemberCommand;
 import kr.spring.member.service.MemberService;
 import kr.spring.mypage.service.MypageService;
 import kr.spring.recriut.service.RecruitService;
+import kr.spring.review.domain.ReviewCommand;
+import kr.spring.review.service.ReviewService;
 import kr.spring.shelter.domain.ShelterCommand;
 import kr.spring.shelter.service.ShelterService;
 import kr.spring.util.CipherTemplate;
+import kr.spring.util.PagingUtil;
 
 @Controller
 public class ShelterController {
 	private Logger log = Logger.getLogger(this.getClass());
+	private int rowCount = 5;
+	private int pageCount = 10;
 	
 	@Resource
 	private MemberService memberService;
@@ -51,12 +61,19 @@ public class ShelterController {
 	private MypageService mypageService;
 	
 	@Resource
+	private ReviewService reviewService;
+	
+	@Resource
 	private CipherTemplate cipherAES;
 	
 	
 	@ModelAttribute("command")
 	public ShelterCommand initShelterCommand() {
 		return new ShelterCommand();
+	}
+	@ModelAttribute("review")
+	public ReviewCommand initReviewCommand() {
+		return new ReviewCommand();
 	}
 	
 	//================== 회원가입 =========================
@@ -330,7 +347,8 @@ public class ShelterController {
 	
 	// 보호소 페이지
 	@RequestMapping(value="/shelter/shelterDetail.do", method=RequestMethod.GET)
-	public String viewShelter(@RequestParam("id") String id, Model model, HttpSession session) {
+	public String viewShelter(@RequestParam("id") String id, Model model,@RequestParam(value="pageNum",defaultValue="1")
+	int currentPage, HttpSession session) {
 		
 		String user_id = (String)session.getAttribute("user_id");
 		
@@ -345,14 +363,30 @@ public class ShelterController {
 			String address = s_address1.substring(0,findIndexOf-1);
 			shelter.setS_address1(address);
 		}
-		//기부받은 리스트 불러오기
-		List<OrderCommand> donaList=mypageService.selectDanaList(user_id);
+				
+		//해당 보호소가 쓴 글만 갖고오기
+		int count=reviewService.selectCountId(shelter.getS_id());
+		PagingUtil page= new PagingUtil(currentPage, count, rowCount, pageCount,"shelterDetail.do");
 		
+		List<ReviewCommand> review_list=null;
+		if(count>0) {
+			review_list = reviewService.shelterReviewList(shelter.getS_id());
+			model.addAttribute("review", review_list);
+			//기부받은 리스트 불러오기
+			Date beforeDate=reviewService.selectBeforeDate(shelter.getS_id());
+			Map<String,Object> map=new HashMap<String,Object>();
+			map.put("beforeDate",beforeDate);
+			map.put("re_asname", shelter.getS_name());
+			List<OrderCommand> donaList=reviewService.MyOrder(map);
+			model.addAttribute("donaList", donaList);
+		}
 		
 		model.addAttribute("user_id", user_id);
 		model.addAttribute("shelter", shelter);
 		model.addAttribute("recruitCount", recruitCount);
-		
+		model.addAttribute("count", count);
+	
+		model.addAttribute("pagingHtml", page.getPagingHtml());		
 		
 		return "shelterDetail";
 	}
@@ -399,6 +433,87 @@ public class ShelterController {
 		map.put("result","success");		
 		return map;
 	}			
-	
+//===============보호소 인증 글 쓰기 ===============
+		@RequestMapping(value="/shelter/shelterReview.do",method=RequestMethod.GET)
+		public ModelAndView reviewForm(HttpSession session, Model model) {
+			String id = (String)session.getAttribute("user_id");
+			
+			ModelAndView mav=new ModelAndView();
+			ReviewCommand review=new ReviewCommand();
+			 review.setRe_id(id);
+			//auth값 찾아오기
+			int re_auth=goodsService.selectAuth(id);
+			 review.setRe_auth(re_auth);
+			 //보호소 이름 미리 넣기
+			review.setRe_asname(shelterService.selectAsName(id));
+			
+			if(id==null) {
+				 mav.setViewName("member/memberLogin");
+				 return mav;
+			}else {
+				
+				mav.setViewName("shelterReviewWrite");
+				mav.addObject("review", review);
+				mav.addObject("id",id);	
+			}
+			return mav;
+		}
+		//전송된 데이터 처리
+		@RequestMapping(value="/shelter/shelterReview.do",method=RequestMethod.POST)
+		public String submit(@ModelAttribute("review") @Valid ReviewCommand reviewCommand,BindingResult result, HttpServletRequest request)
+		{
+			if(log.isDebugEnabled()) {
+				log.debug("<<리뷰 커맨드 - 등록된 내용>> : " + reviewCommand );
+			}
+			if(result.hasErrors()) {
+				return "shelterReviewWrite";
+			}
+			
+			//글 등록하기
+			reviewService.insertReview(reviewCommand);
+			String id=reviewCommand.getRe_id();
+			return "redirect:shelterDetail.do?id="+id+"";
+		}	
+	//============글쓰기 이미지 업로드 ===========
+		   @RequestMapping("/shelter/imageUploader.do")
+		   public void uploadImage(MultipartFile file, HttpSession session, HttpServletResponse response) throws Exception {
+		      response.setContentType("text/html;charset=utf-8");
+		      PrintWriter out = response.getWriter();
+
+		      // 업로드할 폴더 경로
+		      String realFolder = session.getServletContext().getRealPath("resources/image_upload");
+
+		      // 업로드할 파일 이름
+		      String org_filename = file.getOriginalFilename();
+		      String str_filename = System.currentTimeMillis() + org_filename;
+
+		      System.out.println("원본 파일명 : " + org_filename);
+		      System.out.println("저장할 파일명 : " + str_filename);
+
+		      String filepath = realFolder + "\\" + session.getAttribute("user_id") + "\\" + str_filename;
+		      System.out.println("파일경로 : " + filepath);
+
+		      File f = new File(filepath);
+		      if (!f.exists()) {
+		         f.mkdirs();
+		      }
+		      file.transferTo(f);
+		      out.println("../resources/image_upload/"+session.getAttribute("user_id")+"/"+str_filename);
+		      out.close();
+		   }
+//삭제하기		  
+		   @RequestMapping("/shelter/shelterReviewDelete.do")
+		   public String deleteDetail(HttpSession session,@RequestParam("re_num") int re_num) {
+		   	//로그인 체크
+		   	String id = (String)session.getAttribute("user_id");
+		   	
+		   	
+		   	if(id!=null) {
+		   		
+		   		reviewService.deleteReview(re_num);	
+		   	}
+		   	return "redirect:shelterDetail.do?id="+id+"";
+		   }	
+
 	
 }

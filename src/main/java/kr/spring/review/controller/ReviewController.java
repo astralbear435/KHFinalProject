@@ -47,7 +47,7 @@ public class ReviewController {
 	public ReviewCommand initReviewCommand() {
 		return new ReviewCommand();
 	}
-	//==============글쓰기============
+//==============글쓰기============
 	@RequestMapping(value="/review/reviewWrite.do",method=RequestMethod.GET)
 	public ModelAndView WriteForm(HttpSession session, Model model) {
 		String id = (String)session.getAttribute("user_id");
@@ -80,6 +80,9 @@ public class ReviewController {
 		if(result.hasErrors()) {
 			return "reviewWrite";
 		}
+		//auth값 찾아오기
+		int re_auth=goodsService.selectAuth(reviewCommand.getRe_id());
+		reviewCommand.setRe_auth(re_auth);
 		//글 등록하기
 		reviewService.insertReview(reviewCommand);
 		return "redirect:/review/reviewList.do";

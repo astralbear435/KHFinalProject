@@ -106,4 +106,11 @@ public class ShelterServiceImpl implements ShelterService{
 			shelterMapper.updatePwShelter(m_email,cipherAES.encrypt(sb.toString()));	
 	}
 
+
+	@Override
+	public String selectAsName(String id) {
+		//보호소 이름
+		return shelterMapper.selectAsName(id);
+	}
+
 }

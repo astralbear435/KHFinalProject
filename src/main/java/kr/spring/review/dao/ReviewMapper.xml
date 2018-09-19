@@ -40,5 +40,4 @@ ORDER BY re_num DESC
 		FROM review_reply WHERE reply_num=#{reply_num} ORDER BY reply_mynum ASC)a)
   <![CDATA[ WHERE rnum>=#{start} AND rnum <= #{end}]]>
 	</select>
-
 </mapper>
