@@ -1,10 +1,7 @@
 ﻿@charset "UTF-8";
 /* modal */
 .modalLogin {
-<<<<<<< HEAD
 
-=======
->>>>>>> shelter
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
 	z-index: 9999; /* Sit on top */
@@ -25,23 +22,6 @@
 	margin: 15% auto; /* 15% from the top and centered */
 	padding: 20px;
 	border: 1px solid #888;
-	width: 30%; /* Could be more or less, depending on screen size */
-<<<<<<< HEAD
-	min-width: 355px;
-	border-radius: 15px 5px 5px 25px/5px 25px 25px 5px;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	flex-direction: column;
-	pointer-events: auto;
-	background-clip: padding-box;
-	box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
-}
-
-/* =====shelterWrite===== */
-.w500 {
-   width: 500px;
-=======
 	border-radius: 15px 5px 5px 25px/5px 25px 25px 5px;
 	display: flex;
     -webkit-box-orient: vertical;
@@ -51,7 +31,6 @@
     background-clip: padding-box;    
     box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
     
->>>>>>> shelter
 }
 
 .h72 {

@@ -130,13 +130,7 @@ public class GoodsServiceImpl implements GoodsService {
 
 	}
 	@Override
-	public String comeonId(String dona_asname) {
-		// 보호소 아이디 가져오기
-		return goodsMapper.comeonId(dona_asname);
-	}
-
-	@Override
-	public String comeonId(String dona_asname) {
+	public String comeonId(String dona_asname){
 		// 보호소 아이디 가져오기
 		return goodsMapper.comeonId(dona_asname);
 	}

@@ -672,7 +672,7 @@
           <notNull>true</notNull>
           <primaryKey>true</primaryKey>
           <description></description>
-          <autoIncrement>false</autoIncrement>
+          <autoIncrement>true</autoIncrement>
           <defaultValue></defaultValue>
         </net.java.amateras.db.visual.model.ColumnModel>
         <net.java.amateras.db.visual.model.ColumnModel>
