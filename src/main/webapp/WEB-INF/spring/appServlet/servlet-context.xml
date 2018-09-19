@@ -140,6 +140,8 @@
 	<view-controller path="/ap/apForm1.do" view-name="apForm1"/>
 	<view-controller path="/ap/apModify.do" view-name="apModify"/>
 	<view-controller path="/ap/apList.do" view-name="apList"/>
+	<view-controller path="/admin/List.do" view-name="List"/>
+	
 	<!-- 로그인 여부 체크 -->
 	<interceptors>
 		<interceptor>

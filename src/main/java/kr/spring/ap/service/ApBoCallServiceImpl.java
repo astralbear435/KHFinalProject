@@ -30,5 +30,4 @@ public class ApBoCallServiceImpl implements ApBoCallService{
 	public int boCallCount(int call_num) {
 		return apBoCallMapper.boCallCount(call_num);
 	}
-
 }

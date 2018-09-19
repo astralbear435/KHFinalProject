@@ -3,32 +3,30 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ap.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ap/apbook.js"></script>
 <div class="container">
 	<br><br>
-	<div class="card border-primary col-md-12">
+	<div class="card border-primary col-md-12 col-sm-12">
 		<form action="apList.do"  id="search_form" method="get">
 			<div class="condition floatL">
-			
-				<div class="search col-md-12 col-sm-6">
+				<div class="search col-md-12 col-sm-12">
 					<label class="condition floatL" for="ap_service"> 서비스 |&nbsp;</label>
 					<div class="floatL" style="width:20px; height: 24px;"></div>
 					<div class="condition">
 						<fieldset class="form-group">
-							<input type="radio" class="form-check-input" name="ap_service" value="1">집앞픽업&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="form-check-input" name="ap_service" value="2">모발관리&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="form-check-input" name="ap_service" value="3">약물복용&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="form-check-input" name="ap_service" value="4">응급처치&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="form-check-input" name="ap_service" value="6">야외산책&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="form-check-input" name="ap_service" value="7">실내놀이&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="form-check-input" name="ap_service" value="8">장기관리(14일이상)&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="form-check-input" name="ap_service" value="9">노령견 케어&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="form-check-input" name="ap_service" value="10">퍼피케어&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="1">집앞픽업&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="2">모발관리&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="3">약물복용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="4">응급처치&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="6">야외산책&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="7">실내놀이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="8">장기관리(14일이상)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="9">노령견 케어&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_service" value="10">퍼피케어
 						</fieldset>
 					</div>
 				</div>
 				
-				<div class="search col-md-12 col-sm-6">
+				<div class="search col-md-12 col-sm-12">
 					<label class="condition floatL" for="ap_home"> 거주환경 |&nbsp;</label>
 					<div class="floatL" style="width:20px; height: 24px;"></div>
 					<div class="condition">
@@ -38,7 +36,7 @@
 							<input type="radio" class="form-check-input" name="ap_home" value="3"> 빌라&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="radio" class="form-check-input" name="ap_home" value="4"> 오피스텔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="radio" class="form-check-input" name="ap_home" value="5"> 마당보유&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="form-check-input" name="ap_home" value="6"> 주변산책로보유&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="form-check-input" name="ap_home" value="6"> 주변산책로보유
 						</fieldset>
 					</div>
 				</div>
@@ -70,9 +68,6 @@
 	<c:forEach var="article" items="${list}">
 		<div class="card border-primary col-md-12" style="margin:10px 0 10px 0;">
 			<div class="card-header">
-				<div data-num="${article.ap_num}" data-id="${user_id}" id="bookmark">
-						<button type="button" style="float:right;" class="btn btn-secondary"><i class="fa fa-bookmark-o"></i></button>
-					</div>
 				<p class="card-text">
 					${article.ap_num}
 					[ ${article.id} ]

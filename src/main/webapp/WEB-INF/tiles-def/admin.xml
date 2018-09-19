@@ -31,7 +31,11 @@
 		<put-attribute name="title" value="공지사항 작성"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/notice/noticeWrite.jsp"/>
 	</definition>  
-	
+	<definition name="List" extends="main">
+		<put-attribute name="title" value="공지사항"/>
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/List.jsp"/>
+	</definition>
 </tiles-definitions>
 
 

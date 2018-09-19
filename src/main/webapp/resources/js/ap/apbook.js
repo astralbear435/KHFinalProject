@@ -29,9 +29,9 @@ $(document).ready(function(){
 				}
 						
 			},error:function(){
-					alert('로드시 오류 ');
-				}
-			});
+				alert('로드시 오류');
+			}
+		});
 	}
 
 	//클릭시 변환한다.
@@ -67,5 +67,5 @@ $(document).ready(function(){
 			}
 		 });
 		});
-	 roadData();
+	roadData();
 });

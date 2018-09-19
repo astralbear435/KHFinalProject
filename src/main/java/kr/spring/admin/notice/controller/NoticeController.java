@@ -1,7 +1,6 @@
 package kr.spring.admin.notice.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -19,17 +18,21 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.admin.notice.domin.CkeditorCommand;
 import kr.spring.admin.notice.domin.NoticeCommend;
 import kr.spring.admin.notice.service.NoticeService;
+import kr.spring.util.PagingUtil;
 
 @Controller
 public class NoticeController {
 
 	private Logger log = Logger.getLogger(this.getClass());
+	private int rowCount = 10;
+	private int pageCount = 10;
 
 
 	@Resource
@@ -155,5 +158,41 @@ public class NoticeController {
 		mav.addObject("list", list);
 		return mav;
 	}
+	//==========모든 회원이 보는 글 목록==========
+		@RequestMapping("/admin/List.do")
+		public ModelAndView process(@RequestParam(value="pageNum", defaultValue="1") int currentPage) {
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			//총 글의 갯수 또는 검색 된 글의 갯수
+			int count = notice.selectCountList();
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<count>> : " + count);
+			}
+			
+			PagingUtil page = new PagingUtil(currentPage, count, rowCount, pageCount, "List.do");
+			
+			map.put("start", page.getStartCount());
+			map.put("end", page.getEndCount());
+			
+			List<NoticeCommend> list = null;
+			if(count > 0) {
+				list = notice.selectNoticeList2(map);
+				
+				if(log.isDebugEnabled()) {
+					log.debug("<<list>> : " + list);
+				}
+				
+			}
+			
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("List");
+			mav.addObject("count", count);
+			mav.addObject("list", list);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+			
+			return mav;
+		}
 
 }

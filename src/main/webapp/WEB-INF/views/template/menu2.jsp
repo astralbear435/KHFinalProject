@@ -57,7 +57,9 @@
 			  <ul id="m_nav_list" class="m_nav">
 				<li> <a href="${pageContext.request.contextPath}/main/main.do">Home</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/main/icons.do">Icons</a> </li>
-			    <li><a href="${pageContext.request.contextPath}/main/codes2.do">codes</a> </li>				
+			    <li><a href="${pageContext.request.contextPath}/main/codes2.do">codes</a> </li>	
+			    <li><a href="${pageContext.request.contextPath}/admin/List.do">공지사항</a> </li>
+			    <li><a href="${pageContext.request.contextPath}/recruit/recruitList.do">봉사활동 모집</a></li>			
 				<li> <a href="${pageContext.request.contextPath}/ap/apMain.do">임시보호</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/shelter/shelterList.do">보호소 조회</a> </li>
 				<li><a href="${pageContext.request.contextPath}/recruit/recruitList.do">봉사활동 모집</a></li>

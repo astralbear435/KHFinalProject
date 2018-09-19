@@ -26,7 +26,7 @@ public class ApBoCallAjaxController {
 	@Resource
 	private ApBoCallService apBoCallService;
 
-//==========임시보호자 집으로 부르기 ==========
+//==========임시보호자 집으로 부르기 상세보기에서 예약확인 ==========
 	@RequestMapping(value="/ap/boCheck.do")
 	@ResponseBody
 	public Map<String,Object> boCheck(@RequestParam(value="call_num")int call_num,
@@ -60,5 +60,7 @@ public class ApBoCallAjaxController {
 		
 		return map;
 	}
+	
+	
 	
 }
