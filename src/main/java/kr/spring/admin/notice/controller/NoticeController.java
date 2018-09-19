@@ -29,7 +29,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.admin.notice.domin.NoticeCommend;
 import kr.spring.admin.notice.service.NoticeService;
+import kr.spring.ap.domain.ApCommand;
 import kr.spring.util.PagingUtil;
+import kr.spring.util.StringUtil;
 
 @Controller
 public class NoticeController {
@@ -175,7 +177,7 @@ public class NoticeController {
 		mav.addObject("list", list);
 		return mav;
 	}
-	//==========모든 회원이 보는 글 목록==========
+//==========모든 회원이 보는 글 목록==========
 		@RequestMapping("/admin/List.do")
 		public ModelAndView process(@RequestParam(value="pageNum", defaultValue="1") int currentPage) {
 			
@@ -210,6 +212,24 @@ public class NoticeController {
 			mav.addObject("pagingHtml", page.getPagingHtml());
 			
 			return mav;
+		}
+		
+		@RequestMapping("/admin/detail.do")
+		public ModelAndView process2(@RequestParam("n_idx") int n_inx) {
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<n_inx>> : " + n_inx);
+			}
+			
+			//해당 글의 조회수 증가
+			notice.updateHits(n_inx);
+			
+			NoticeCommend noticeCommend = notice.selectNotice(n_inx);
+			
+			//enter에 대한 줄바꿈처리
+			noticeCommend.setN_subject(StringUtil.useBrNoHtml(noticeCommend.getN_subject()));
+			
+			return new ModelAndView("detail", "noticeCommend", noticeCommend);
 		}
 
 }

@@ -12,7 +12,7 @@
 			
 			alert('인증메일을 재발송했습니다.\n인증메일의 링크를 누르면 정회원으로 변경됩니다.');
 			
-			location = '/ProjectCAN/member/memberDetail.do';
+			location = '/ProjectCAN/main/main.do';
 			
 		</script>
 	</body>

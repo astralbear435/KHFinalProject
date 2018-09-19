@@ -45,13 +45,13 @@
 				</div>
 				<hr size="1" width="100%"><br>
 				<label for="note_content"></label>
-				<textarea rows="15" cols="85" style="border: 1.5px solid #333333; resize:none;" name="note_content">
+				<textarea rows="15" cols="85" style="border: 2px solid #333333; resize:none;" name="note_content">
 				
 </textarea><br>
 				<div class="letter-count" style="text-align:right">0 / 1000</div>
 				<div class="horizontal"></div><!-- 가로 여백 -->
 				<p align="center">
-					<input type="submit" value="보내기" class="btn btn-primary">
+					<input type="submit" value="보내기" class="btn btn-warning">
 					<input type="button" value="취소" onclick="self.close()"
 							 class="btn btn-primary"/>
 				</p>

@@ -10,7 +10,7 @@
 <ul class="menu" style="list-style-type: none; text-align: right;">
 	<li>
 		<input type="button" class="btn btn-warning" value=" 쪽지 작성 "
-				onclick="window.open('${pageContext.request.contextPath}/note/write.do','쪽지 작성','width=600, height=650, scrollbars=no, resizable=no');"/>
+				onclick="window.open('${pageContext.request.contextPath}/note/write.do','쪽지 작성','width=485, height=540, scrollbars=no, resizable=no');"/>
 	</li>
 	<li>
 		<c:if test="${openNotCount > 0}">

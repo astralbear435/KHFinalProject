@@ -57,15 +57,15 @@
 				</c:if>	
 			</div>
 			<hr size="1" width="100%"><br>
-			<textarea rows="15" cols="85" style="border: 1.5px solid #333333; resize:none;">
+			<textarea rows="15" cols="85" style="border: 2px solid #333333; resize:none;">
 				
 ${note.note_content}</textarea><br>
 			<div class="horizontal"></div><!-- 가로 여백 -->
 			<p align="center" style="width: 540px;">
-				<c:if test="${user_id == note.recipient}">
-					<input type="button" value="답장" class="btn btn-primary" onclick="reply();">
-				</c:if>
 				<input type="button" value="삭제" class="btn btn-danger" onclick="detailDelete();">
+				<c:if test="${user_id == note.recipient}">
+					<input type="button" value="답장" class="btn btn-warning" onclick="reply();">
+				</c:if>
 				<input type="button" value="닫기" class="btn btn-primary" onclick="detailClose();">
 			</p>
 		</div>

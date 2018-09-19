@@ -12,8 +12,8 @@
 
 	<div class="col-md-2" style="float:right; margin:100px 0 50px 0;">
 		<c:if test="${!empty user_id && user_id == apcall.call_name}">
-			<input type="button" class="btn btn-warning" value="수정" onclick="location.href='apModify.do?ap_num=${apcommand.ap_num}'"><br><br>
-			<input type="button" class="btn btn-danger" value="삭제" id="apdelete" data-num="${apcommand.ap_num}"><br><br>
+			<input type="button" class="btn btn-warning" value="수정" onclick="location.href='apCallupdate.do?call_num=${apcall.call_num}'"><br><br>
+			<input type="button" class="btn btn-danger" value="삭제" id="apdelete" data-num="${apcall.call_num}"><br><br>
 		</c:if>
 		<input type="button" class="btn btn-primary" value="목록" onclick="location.href='apCallList.do'"><br><br>
 	</div>

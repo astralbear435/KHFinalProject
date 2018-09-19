@@ -3,7 +3,7 @@ package kr.spring.note.domain;
 import java.sql.Date;
 
 import org.hibernate.validator.constraints.NotEmpty;
-
+ 
 public class NoteCommand {
 	private int note_num;
 	@NotEmpty

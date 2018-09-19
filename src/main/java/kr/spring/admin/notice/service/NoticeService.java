@@ -16,4 +16,5 @@ public interface NoticeService {
 	public void updateNotice(NoticeCommend nc);
 	public void updateHits(Integer n_idx);
 	public void deleteNotice(Integer n_idx);
+
 }

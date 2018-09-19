@@ -7,46 +7,43 @@
 <body>
 	<div class="container">
 		<div class="horizontal"></div><!-- 가로 여백 -->
-		<div style="width:100%; height:1000px; float:none;">
+		<div style="width:100%; float:none;">
 			<div class="card border-primary col-md-12 clearB margin0a">
-				<form action="shelterList.do" id="shelterSearchForm" method="post">
-					<div class="condition floatL">
+				<form action="shelterList.do" id="shelterSearchForm" method="post"><div></div>
+					<div class="condition floatL" style="width: 100%;">
 						<div class="search margin0a">
 							<label class="condition floatL" for="local"> 지역으로 찾기 |</label>
 							<div class="floatL" style="width: 10px; height: 24px;"></div>
 							<div class="floatL" style="padding-top: 5px;">
 								<div class="floatL">&nbsp;&nbsp;&nbsp;&nbsp;</div>
-								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="전체" checked>전체&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="서울">서울&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="경기">경기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="인천">인천&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="강원">강원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="충청북">충북&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="세종">세종&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="충청남">충남&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="대전">대전&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="경상북">경북&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="대구">대구&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="부산">부산&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="경상남">경남&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="전라북">전북&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="전라남">전남&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="광주">광주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="전체" checked>전체&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="서울">서울&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="경기">경기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="인천">인천&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="강원">강원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="충청북">충북&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="세종">세종&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="충청남">충남&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="대전">대전&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="경상북">경북&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="대구">대구&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="부산">부산&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="경상남">경남&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="전라북">전북&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="전라남">전남&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="광주">광주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
 								<div class="floatL"><input type="radio" class="form-check-input" name="local" value="제주">제주</div>
 							</div>
 						</div>
-						<div class="clearB" style="height: 50px;">
-							<div class="search floatL margin0a" style="line-height:40px; width: 85%;">
-								<label class="condition floatL" for="name"> 이름으로 찾기 |</label>
-								<div class="floatL" style="width: 10px; height: 24px;"></div>
-								<div class="floatL" style="padding-top: 7px;width: 85%;">
-									<input type="text" name="name" class="floatL form-control form-control-sm">
-								</div>
-							</div>
+						<div class="search margin0a" style="line-height:40px; width: 100%;">
+							<label class="condition floatL" for="name"> 이름으로 찾기 |</label>
 							<div class="floatL" style="width: 10px; height: 24px;"></div>
-							<div class="floatL searchButton">
-								<p><input type="submit" class="btn btn-warning" style="width: 150px; height: 50px;" value="검색"></p>
+							<div class="floatL" style="padding-top: 7px; min-width: 35%; width: 85%;">
+								<input type="text" name="name" class="form-control form-control-sm">
 							</div>
+						</div>
+						<div class="searchButton margin0a" style="width: 200px;">
+							<input type="submit" class="btn btn-warning btn-lg btn-block" style="width: 200px; height: 50px;" value="검색">
 						</div>
 					</div>
 				</form>

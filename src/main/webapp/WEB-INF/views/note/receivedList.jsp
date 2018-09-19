@@ -43,7 +43,7 @@
 										<th scope="row">${note.sender}</th>
 										<td>
 											<a href="Javascript:;"
-												onClick="window.open('${pageContext.request.contextPath}/note/detail.do?note_num=${note.note_num}','쪽지','width=600, height=650, scrollbars=no')">
+												onClick="window.open('${pageContext.request.contextPath}/note/detail.do?note_num=${note.note_num}','쪽지','width=485, height=540, scrollbars=no')">
 												${note.note_content}</a>
 										</td>
 										<td>${note.write_date}</td>

@@ -13,7 +13,7 @@ import kr.spring.note.domain.NoteCommand;
 @Service("noteService")
 public class NoteServiceImpl implements NoteService{
 
-	@Override
+	@Override 
 	public List<NoteCommand> selectNoteList(Map<String, Object> map) {
 		return noteMapper.selectNoteList(map);
 	}

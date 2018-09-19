@@ -18,7 +18,8 @@
 	<br>
 	<div>
 		<div class="titleText">회원정보 수정</div>
-		<div class="horizontal"></div><!-- 가로 여백 -->
+		<div style="text-align: center;"><span style="color: red;">*빨간부분만 수정가능</span></div><!-- 
+		<div class="horizontal"></div>가로 여백 -->
 		<div class="w500 margin0a">
 			<form:form commandName="command" action="memberUpdate.do" id="modify_form" enctype="multipart/form-data">
 				<fieldset class="clearB">
@@ -73,7 +74,7 @@
 					</div>
 					
 					<div class="form-group floatL h72 lineh95">
-						<input type="button" id="selectZipcode" class="btn btn-primary" value="우편번호 찾기">
+						<input type="button" id="selectZipcode" class="btn btn-warning" value="우편번호 찾기">
 					</div>
 					<div id="message_zipcode"></div>
 					
@@ -96,7 +97,7 @@
 							</div>
 							<div class="floatL h72" style="width: 10px;"></div>
 							<div class="form-group floatL h72 lineh95">
-								<input type="button" id="confirmEmail" class="btn btn-primary" value="이메일 중복체크">
+								<input type="button" id="confirmEmail" class="btn btn-warning" value="이메일 중복체크">
 							</div>
 						</div>
 						<div id="message_email"></div>
@@ -129,9 +130,8 @@
 					<hr size="1" width="100%">
 		
 					<div class="w500 clearB" style="text-align:center; margin: 0;">
-						<input type="submit" class="btn btn-primary" value="수정하기">&nbsp;&nbsp;
+						<input type="submit" class="btn btn-warning" value="수정하기">&nbsp;&nbsp;
 						<input type="button" value="뒤로" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/member/memberDetail.do'">&nbsp;&nbsp;
-						<input type="button" value="홈으로" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 					</div>
 					
 					<div class="horizontal"></div><!-- 가로 여백 -->
