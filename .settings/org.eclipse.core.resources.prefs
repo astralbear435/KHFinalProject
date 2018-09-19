@@ -1,3 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/java/kr/spring/mypage/controller/MypageController.java=UTF-8
+encoding//src/main/java/kr/spring/recruit/controller/RecruitController.java=UTF-8
+encoding//src/main/java/kr/spring/recruit/dao/BoardMapper.java=UTF-8
+encoding//src/main/java/kr/spring/volunteer/service/VolunteerService.java=UTF-8
 encoding/<project>=MS949

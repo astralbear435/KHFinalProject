@@ -21,6 +21,8 @@ import kr.spring.member.domain.MemberCommand;
 import kr.spring.mypage.service.MypageService;
 import kr.spring.recriut.service.RecruitService;
 import kr.spring.recruit.domain.RecruitCommand;
+import kr.spring.shelter.domain.ShelterCommand;
+import kr.spring.shelter.service.ShelterService;
 import kr.spring.volunteer.service.VolunteerService;
 
 @Controller
@@ -33,6 +35,8 @@ public class MypageController {
 	private VolunteerService volunteerService;
 	@Resource
 	private RecruitService recruitService;
+	@Resource
+	private ShelterService shelterService;
 	
 	//�옄諛붾퉰 珥덇린�솕
 	@ModelAttribute("command")
@@ -64,6 +68,12 @@ public class MypageController {
 	public ApBoCommand initCommand6() {
 		return new ApBoCommand();
 	}
+	
+	@ModelAttribute("shelter")
+	public ShelterCommand initCommand7() {
+		return new ShelterCommand();
+	}
+	
 
 	//++++++++++++++++++++硫붾돱�뿉�꽌 �씪諛� �쉶�썝 留덉씠�럹�씠吏� �샇異�+++++++++++++++++++++++++++//
 	@RequestMapping("mypage/mypage.do")
@@ -72,43 +82,75 @@ public class MypageController {
 		
 		MemberCommand member = mypageService.selectId(id);
 		
-		RecruitCommand volunteer = new RecruitCommand();
-		OrderCommand donation = new OrderCommand();
+		
+		RecruitCommand volunteer = new RecruitCommand();	
+		
+		//임시보호자 집으로 부르기
+		//일반회원 예약 신청중
 		ApCallCommand callHome = new ApCallCommand();
-		ApBoCommand boCall = new ApBoCommand();
+		//일반회원 예약 완료 //일반회원
+		ApCallCommand complete = new ApCallCommand();
+		//일반회원 예약 완료 //임시보호자
+		ApCallCommand completeBoho = new ApCallCommand();
+		
+		//임시보호자 집에 맡기기
+		ApBoCommand bo = new ApBoCommand();	
+		ApBoCommand boho = new ApBoCommand();	
+		
 		
 		volunteer.setV_id(id);
-		String v_id = volunteer.getV_id();
+		String v_id = volunteer.getV_id();			
 		
-		donation.setDona_id(id);
-		String dona_id = donation.getDona_id();		
-		
+		//임시보호자 집으로 부르기 //예약 신청중 //일반회원
 		callHome.setCall_name(id);
 		String call_name = callHome.getCall_name();
+		//일반회원 예약 완료 //일반회원
+		complete.setCall_name(id);
+		String call_name2 = complete.getCall_name();
 		
-		boCall.setBo_id(id);
-		String bo_id = boCall.getBo_id();
 		
+		bo.setBo_id(id);
+		String bo_id = bo.getBo_id();
+		
+		boho.setId(id);
+				
 		List<RecruitCommand> list = null;
-		list = mypageService.selectList(v_id);
-		
+		list = mypageService.selectList(v_id);		
+				
+		OrderCommand donation = new OrderCommand();
 		List<OrderCommand> donaList = null;
-		donaList = mypageService.selectDanaList(dona_id);	
+		donation.setDona_id(id);
+		String dona_id = donation.getDona_id();	
 		
 		int dona_count = mypageService.selectCountdonation(dona_id);
 		
+		if(dona_count > 0) {
+			donaList = mypageService.selectDanaList(dona_id);	
+			
+		}		
+		//임시보호자 집으로 부르기 //일반회원 //예약 신청 중
 		List<ApCallCommand> callList = null;
-		callList = mypageService.selectCallList(call_name);
+		callList = mypageService.selectCallList(call_name);		
 		
-		List<ApBoCommand> boCallList = null;
-		boCallList = mypageService.selectBoCallList(bo_id);
+		//일반회원 //예약 신청완료
+		List<ApCallCommand> callList2 = null;
+		callList2 = mypageService.selectCallListComplete(call_name2);
+		
+		//임시보호자 집에 맡기기
+		List<ApBoCommand> boList = null;
+		boList = mypageService.selectBoList(bo_id);
+		
+		List<ApBoCommand> bohoCallList = null;
+		bohoCallList = mypageService.selectBohoCallList(id);		
 		
 		model.addAttribute("command",member);
 		model.addAttribute("volunteer",volunteer);
 		model.addAttribute("donation",donation);
 		model.addAttribute("callHome", callHome);
 		model.addAttribute("dona_count", dona_count);
-		model.addAttribute("boCall", boCall);
+		model.addAttribute("bo", bo);
+		model.addAttribute("boho", boho);
+		model.addAttribute("complete", complete);
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<memberCommand>> : " + member);
@@ -123,7 +165,10 @@ public class MypageController {
 			log.debug("<<callHome>> : " + callHome);
 		}
 		if(log.isDebugEnabled()) {
-			log.debug("<<boCall>> : " + boCall);
+			log.debug("<<bo>> : " + bo);
+		}
+		if(log.isDebugEnabled()) {
+			log.debug("<<boho>> : " + boho);
 		}
 		
 		ModelAndView mav = new ModelAndView();
@@ -133,8 +178,18 @@ public class MypageController {
 		mav.addObject("volunteer", volunteer);
 		mav.addObject("donaList", donaList);
 		mav.addObject("donation", donation);
+		//임시보호자 집으로 부르기//일반회원//예약 신청중
+		mav.addObject("callHome", callHome);
 		mav.addObject("callList", callList);
-		mav.addObject("boCallList", boCallList);
+		//예약 완료
+		mav.addObject("complete", complete);
+		mav.addObject("callList2", callList2);
+		//임시보호자 집에 맡기기
+		mav.addObject("bo", bo);
+		mav.addObject("boList", boList);
+		mav.addObject("boho", boho);
+		mav.addObject("bohoCallList", bohoCallList);
+		
 		
 		return mav; 	
 		
@@ -181,23 +236,18 @@ public class MypageController {
 		MemberCommand member = mypageService.selectId(id);
 		
 		RecruitCommand recruit = new RecruitCommand();
-		OrderCommand donation = new OrderCommand();
-		
+					
 		recruit.setR_id(id);
 		String r_id = recruit.getR_id();		
-		donation.setDona_id(id);
-		String dona_id = donation.getDona_id();		
-		
-		
+			
 		List<RecruitCommand> list = null;
 		list = mypageService.selectRecruitList(r_id);
 		
-		List<OrderCommand> donaList = null;
-		//donaList = mypageService.(dona_id);
-		
+		ShelterCommand shelter = shelterService.selectShelter(id);
+			
 		model.addAttribute("command",member);
 		model.addAttribute("recruit",recruit);
-		model.addAttribute("donation",donation);
+		model.addAttribute("shelter",shelter);
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<memberCommand>> : " + member);
@@ -206,15 +256,15 @@ public class MypageController {
 			log.debug("<<recruit>> : " + recruit);
 		}
 		if(log.isDebugEnabled()) {
-			log.debug("<<donation>> : " + donation);
+			log.debug("<<shelter>> : " + shelter);
 		}	
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("mypage/mypageShelter");
+		mav.setViewName("mypageShelter");
 		mav.addObject("list",list);
 		mav.addObject("command", member);
 		mav.addObject("recruit", recruit);
-		mav.addObject("donation", donation);
+		mav.addObject("shelter", shelter);		
 		
 		return mav; 	
 		

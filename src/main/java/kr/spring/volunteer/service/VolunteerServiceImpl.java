@@ -35,8 +35,8 @@ public class VolunteerServiceImpl implements VolunteerService{
 	}
 
 	@Override
-	public void update(RecruitCommand volunteer) {
-		volunteerMapper.update(volunteer);
+	public void update(Map<String,Object> map) {
+		volunteerMapper.update(map);
 	}
 
 	@Override

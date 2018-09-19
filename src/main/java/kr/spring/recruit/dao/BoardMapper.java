@@ -15,9 +15,11 @@ public interface BoardMapper {
 	public List<RecruitCommand> selectList(Map<String,Object> map);
 	public int selectRowCount(Map<String,Object> map);
 	public List<ShelterCommand> selectBoNameList(Map<String, Object> map);
+
 	@Insert("INSERT INTO recruit (r_num,r_id,r_image,r_title,r_start_date,r_end_date,r_people,r_people_count,r_filename,r_content,r_status) "
 	+ "VALUES (recruit_seq.nextval,#{r_id},#{r_image},#{r_title},#{r_start_date},#{r_end_date},#{r_people},#{r_people_count},#{r_filename},#{r_content},#{r_status})")
 	public void insert(RecruitCommand recruit);
+	
 	@Select("SELECT * FROM recruit WHERE r_num=#{r_num}")
 	public RecruitCommand selectBoard(Integer r_num);
 	@Select("SELECT s_name FROM recruit, shelter_detail WHERE r_id=s_id AND r_num=#{r_num}")

@@ -204,8 +204,6 @@ public class MemberController {
 
 
 	//=================== 회원 로그인(일반, 보호소 통합) =====================
-
-
 	@RequestMapping("/member/memberLogin.do")
 	@ResponseBody
 	public Map<String,String> memberLogin(@RequestParam("m_id") String m_id, @RequestParam("m_passwd") String m_passwd, HttpServletRequest request, HttpSession session) {
@@ -213,6 +211,7 @@ public class MemberController {
 		Map<String,String> map = new HashMap<String,String>();
 		try {
 	         
+
 	         int auth = memberService.selectMemberAuth(m_id); // 권한 값을 구함
 	         boolean check = false;
 	         
@@ -289,6 +288,7 @@ public class MemberController {
 
 		return "findMember";
 	}
+
 	
 	/*@RequestMapping(value="/member/findMember.do",method=RequestMethod.POST)
 	@ResponseBody

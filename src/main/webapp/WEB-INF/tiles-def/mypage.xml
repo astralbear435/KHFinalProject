@@ -11,7 +11,7 @@
 		<put-attribute name="body" value="/WEB-INF/views/mypage/mypage.jsp"/>
 	</definition>
 	
-		<definition name="mypageRecruit" extends="main">
+		<definition name="mypageShelter" extends="main">
 	<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp" />
 		<put-attribute name="title" value="보호소 마이페이지"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/mypageShelter.jsp"/>
