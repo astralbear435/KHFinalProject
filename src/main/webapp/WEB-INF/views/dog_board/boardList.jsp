@@ -4,7 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resource/css/layout.css"></script>
 <style>
 ul{
    list-style:none;
@@ -56,10 +55,6 @@ img.abc{
 	<br><br>
 	<c:if test="${count == 0}"><!--  게시물이 없을때 -->
 	<div align=center>등록된 게시물이 없습니다.</div>
-	<c:if test="${!empty user_id} "> 
-			<input type="button" value="글쓰기"  class="btn btn-info"
-		       onclick="location.href='write.do'">
-	</c:if>
 	</c:if>
 	<c:if test="${count > 0}"><!-- 게시물이 존재할때 -->
 	<c:forEach var="board" items="${list}">	
@@ -71,11 +66,7 @@ img.abc{
 		</div>
 	</c:forEach>
 	<div align="right">
-		<%-- <c:if test="${!empty user_id && user_auth == 4}">
-		<input type="button" value="글쓰기"  class="btn btn-info"
-		       onclick="location.href='write.do'">
-		</c:if> --%>
-		<c:if test="${!empty user_id && user_auth == 4} "> 
+		<c:if test="${!empty user_id && user_auth==4}"> 
 			<input type="button" value="글쓰기"  class="btn btn-info"
 		       onclick="location.href='write.do'">
 		</c:if>

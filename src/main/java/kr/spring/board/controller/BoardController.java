@@ -46,9 +46,15 @@ public class BoardController {
 	public String form(HttpSession session, Model model) {
 		
 		String id = (String)session.getAttribute("user_id");
+		Integer auth = (Integer)session.getAttribute("user_auth");
+		
+		
+		if(id == null) {
+			return "redirect:/main/main.do#";
+		}
 		
 		BoardCommand command = new BoardCommand();
-		command.setId(id); 
+		command.setId(id);
 
 		model.addAttribute("boardCommand", command); 
 
@@ -201,8 +207,15 @@ public class BoardController {
 	@RequestMapping(value="/dog_board/update.do",
 			method=RequestMethod.GET)
 	public String form(@RequestParam("num") int num,
-			Model model) {
-
+			HttpSession session,Model model) {
+		String id = (String)session.getAttribute("user_id");
+		Integer auth = (Integer)session.getAttribute("user_auth");
+		
+		
+		if(id == null) {
+			return "redirect:/main/main.do#";
+		}
+		
 		BoardCommand boardCommand = 
 				boardService.selectBoard(num);
 
@@ -235,8 +248,16 @@ public class BoardController {
 	}
 	//==============게시판 글 삭제=============//
 	@RequestMapping("/dog_board/delete.do")
-	public String submit(@RequestParam("num") int num) {
-
+	public String submit(@RequestParam("num") int num ,HttpSession session,Model model) {
+		
+		String id = (String)session.getAttribute("user_id");
+		Integer auth = (Integer)session.getAttribute("user_auth");
+		
+		
+		if(id == null) {
+			return "redirect:/main/main.do#";
+		}
+		
 		if(log.isDebugEnabled()) {
 			log.debug("<<num>> : " + num);
 		}

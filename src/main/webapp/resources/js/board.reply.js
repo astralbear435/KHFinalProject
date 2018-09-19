@@ -46,13 +46,14 @@ $(document).ready(function(){
 						output += ' <font size="0.3">'+item.re_date+'</font>';
 						output += ' <div class="sub-item">';
 						output += '   <p>' + item.re_content + '</p>';
-						if($('#user_id').val() == item.id || $('#user_auth').val() == 3){
-							//로그인 한 id가 댓글 작성자 id와 같거나 auth번호가 4번일때
-						    output += '  <input type="button" data-num="'+$('#num').val()+'" data-ptnum="'+item.re_num+'" data-id="'+item.id+'" data-depth="'+item.depth+'" value="댓글" class="reply-btn">';
+						if($('#user_id').val() != null){
+							output += '  <input type="button" data-num="'+$('#num').val()+'" data-ptnum="'+item.re_num+'" data-id="'+$('#user_id').val()+'" data-depth="'+item.depth+'" value="댓글" class="reply-btn">';
+						if($('#user_id').val() == item.id){
+							//로그인 한 id가 댓글 작성자 id와 같을 경운
 							output += '  <input type="button" data-num="'+item.re_num+'" data-id="'+item.id+'" value="수정" class="modify-btn">';
 							output += '  <input type="button" data-num="'+item.re_num+'" data-id="'+item.id+'" value="지우기" class="delete-btn">';
+							}
 						}
-						
 						output += '   <hr width="100%" class="hr-line" noshade>';
 						output += ' </div>';
 						output += '</div>';

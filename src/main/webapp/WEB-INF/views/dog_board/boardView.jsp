@@ -21,29 +21,6 @@ ul{
    float:right;
    list-style:none;
    }
-#backdiv{
-	position: relative;
-	float:right;
-  	top: 10px;
-  	left: 50px;
-  	text-align:center;
-  	border-color:#EAEAEA;
-	background-color:#BDBDBD;
-	border-style:double;
-	max-width:100%; 
-  	width: 350px;
-  	height:150px;
-	  /* position:relative;
-	  float:right;
-	  text-align:center;
-	  border-width:3px;
-	  border-color:#EAEAEA;
-	  background-color:#BDBDBD; 
-	  border-style:double;
-	  max-width:100%;
-	  width:350px;
-	  height:150px; */
-}
 img.show{
 	aling:center;
 	max-width:100%;
@@ -78,16 +55,6 @@ img.show{
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;중성화  :  ${board.an_operate}</li>
 	</ul>
 		<br>
-		<div id="backdiv">
-            <span><b style="font-size:2.5em;">${s_name}&nbsp;CENTER</b></span>
-            <br>
-            <span>대표전화</span>
-            <br>
-            <span>${s.phone}</span>
-            <br>
-            <span>365일 연중무휴/24시간 상담가능</span>
-            <br>
-        </div>
 		<br>
 	</div>
 	<br><br>
