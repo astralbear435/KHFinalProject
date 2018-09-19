@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import kr.spring.ap.domain.ApBoCallCommand;
-import kr.spring.ap.domain.ApBookCommand;
 
 
 public interface ApBoCallMapper {

@@ -3,7 +3,6 @@ package kr.spring.ap.service;
 import java.util.List;
 import java.util.Map;
 import kr.spring.ap.domain.ApBoCallCommand;
-import kr.spring.ap.domain.ApBookCommand;
 
 public interface ApBoCallService {
 	

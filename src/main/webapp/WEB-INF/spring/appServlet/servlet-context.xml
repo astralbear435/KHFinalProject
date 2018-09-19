@@ -20,26 +20,14 @@
 		base-package="kr.spring.admin.notice.controller" />
 	<context:component-scan
 		base-package="kr.spring.visitor.controller" />
-<<<<<<< HEAD
+
 	<context:component-scan base-package="kr.spring.goods.controller" />
 	<context:component-scan base-package="kr.spring.ap.controller" />
 	<context:component-scan base-package="kr.spring.recruit.controller" />
 	<context:component-scan base-package="kr.spring.volunteer.controller" />
 	<context:component-scan base-package="kr.spring.mypage.controller" />
-=======
-	<context:component-scan 
-		base-package="kr.spring.goods.controller" />
-	<context:component-scan
-		base-package="kr.spring.recruit.controller" />
-	<context:component-scan
-		base-package="kr.spring.volunteer.controller" />
-	<context:component-scan
-		base-package="kr.spring.mypage.controller" />
-	<context:component-scan
-		base-package="kr.spring.mypage.controller" />
 	<context:component-scan base-package="kr.spring.review.controller" />
-	
->>>>>>> d3f122582d0e687d12cb3d34dbd4a14f2954e329
+
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -155,7 +143,7 @@
 	<!-- 로그인 여부 체크 -->
 	<interceptors>
 		<interceptor>
-			<!-- <mapping path="/ap/apCallList.do" /> -->
+			<mapping path="/ap/apCallList.do" />
 			<mapping path="/shelter/shelterInfo.do" />
 			<mapping path="/note/receivedList.do" />
 			<mapping path="/board/sendList.do" />

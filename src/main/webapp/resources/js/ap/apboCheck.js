@@ -2,10 +2,10 @@ $(document).ready(function(){
 	
 	//새로고침해도 상태를 유지하기위해
 	function roadData(){
-		var bo_num=$('#bookcheck').attr('data-num');//글 번호	
+		var call_num=$('#bookcheck').attr('data-num');//글 번호	
 		$.ajax({
 			type:'post',
-			data:{call_num:bo_num},
+			data:{call_num:call_num},
 			url:'boCheck.do',
 			dataType:'json',
 			cache:false,
@@ -19,6 +19,10 @@ $(document).ready(function(){
 					str+='<p>[예약 완료]</p>';
 					$('#bookcheck').empty();
 					$('#bookcheck').append(str);
+					var str2="";
+					str2+='<input type="submit" class="btn btn-warning btn-lg btn-block disabled" style="margin:10px 0 10px 0;" value="예약완료">';
+					$('#apbo').empty();
+					$('#apbo').append(str2);
 				}else{
 					//예약 미완료
 					var str="";

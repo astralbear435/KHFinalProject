@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import kr.spring.ap.dao.ApBoCallMapper;
 import kr.spring.ap.domain.ApBoCallCommand;
-import kr.spring.ap.domain.ApBookCommand;
 
 @Service("apBoCallService")
 public class ApBoCallServiceImpl implements ApBoCallService{

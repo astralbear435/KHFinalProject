@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ap.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ap/apboCheck.js"></script>
 <div class="container">
 	<br><br>
 	<div class="col-md-12">
@@ -43,10 +41,8 @@
 		<div class="card border-primary col-md-12" style="margin:10px 0 10px 0;">
 			<div class="card-header">
 				${article.call_num}
-				<div class="card-text" id="bookcheck" data-num="${article.call_num}">
-					<p>[예약 가능]</p>
-				</div>
-				신청기간 : ${article.call_start} ~ ${article.call_end}</div>
+				신청기간 : ${article.call_start} ~ ${article.call_end}
+			</div>
 			<div class="card-body">
 				<h4 class="card-title">${article.call_name}</h4>
 				<p class="card-text">

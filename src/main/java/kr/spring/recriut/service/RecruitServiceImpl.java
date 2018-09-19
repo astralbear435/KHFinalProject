@@ -79,9 +79,4 @@ public class RecruitServiceImpl implements RecruitService{
 		return boardMapper.selectBoNameList(map);
 	}
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> d3f122582d0e687d12cb3d34dbd4a14f2954e329
 }

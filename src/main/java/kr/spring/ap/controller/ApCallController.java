@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.ap.domain.ApBoCallCommand;
 import kr.spring.ap.domain.ApCallCommand;
+import kr.spring.ap.service.ApBoCallService;
 import kr.spring.ap.service.ApCallService;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
@@ -32,6 +34,9 @@ public class ApCallController {
 	
 	@Resource
 	private ApCallService apCallService;
+	
+	@Resource
+	private ApBoCallService apBoCallService;
 
 //==========임시보호자 집으로 부르기 ==========
 	//등록폼
@@ -78,13 +83,9 @@ public class ApCallController {
 		map.put("call_wei", call_wei);
 		map.put("call_re", call_re);
 		
-		if(log.isDebugEnabled()) {
-			log.debug("call_wei : "+call_wei);
-			log.debug("call_re : "+call_re);
-		}
-		
 		//총 글의 갯수 또는 검색 된 글의 갯수
 		int count = apCallService.selectCallRowCount(map);
+		
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<count>> : " + count);
@@ -98,7 +99,6 @@ public class ApCallController {
 		List<ApCallCommand> list = null;
 		if(count > 0) {
 			list = apCallService.selectCallList(map);
-			
 			if(log.isDebugEnabled()) {
 				log.debug("<<list>> : " + list);
 			}
