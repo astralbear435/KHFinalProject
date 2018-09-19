@@ -7,7 +7,7 @@ $(document).ready(function() {
 	});
 	
 	$('#loginButton').click(function() {
-		
+		console.log($('#m_id').val()+','+ $('#m_passwd').val());
 		$.ajax({
 			url:'../member/memberLogin.do',
 			type:'post',

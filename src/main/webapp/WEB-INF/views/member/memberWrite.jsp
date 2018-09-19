@@ -33,46 +33,24 @@
 						</div>
 						<div class="floatL h72" style="width: 5px;"></div>
 						<div class="form-group floatL h72 lineh95">
-							<input type="button" id="confirmId" class="btn btn-primary"
+							<input type="button" id="confirmId" class="btn btn-warning"
 								value="아이디 중복체크">
 						</div>
-
 					</div><br>
 					<div id="message_id"></div><br>
-<<<<<<< HEAD
-
-=======
-					
->>>>>>> d3f122582d0e687d12cb3d34dbd4a14f2954e329
 					<div class="form-group clearB">
 						<label for="m_name">이름</label> <input type="text" name="m_name"
 							id="m_name" class="form-control" placeholder="이름 입력">
 						<div id="message_name"></div>
-					</div><br>
-<<<<<<< HEAD
-=======
+					</div><br>							
 					
 					<div class="form-group clearB">
 						<label for="m_gender">성별</label><br>
 						<div class="btn-group btn-group-toggle" data-toggle="buttons">
-							<label class="btn btn-warning active">
+							<label class="btn btn-warning">
 							<input type="radio" name="m_gender" id="man" value="남" autocomplete="off"> 남
 						</label>
-						<label class="btn btn-info active">
-							<input type="radio" name="m_gender" id="woman" value="여" autocomplete="off"> 여
-						</label><br>
-						</div>						
-						<div id="message_gender"></div>
-					</div>
->>>>>>> d3f122582d0e687d12cb3d34dbd4a14f2954e329
-					
-					<div class="form-group clearB">
-						<label for="m_gender">성별</label><br>
-						<div class="btn-group btn-group-toggle" data-toggle="buttons">
-							<label class="btn btn-info active">
-							<input type="radio" name="m_gender" id="man" value="남" autocomplete="off"> 남
-						</label>
-						<label class="btn btn-info active">
+						<label class="btn btn-warning">
 							<input type="radio" name="m_gender" id="woman" value="여" autocomplete="off"> 여
 						</label><br>
 						</div>						
@@ -87,7 +65,7 @@
 						</div>
 						<div class="floatL h72" style="width: 5px;"></div>
 						<div class="form-group floatL h72 lineh95">
-							<input type="button" id="confirmNickname" class="btn btn-primary"
+							<input type="button" id="confirmNickname" class="btn btn-warning"
 								value="닉네임 중복체크">
 						</div>
 					</div>
@@ -121,13 +99,9 @@
 							name="m_zipcode" id="m_zipcode" class="form-control"
 							style="width: 200px;" placeholder="우편번호 찾기 버튼 클릭" readonly>
 					</div>
-<<<<<<< HEAD
-
-=======
 					<div class="floatL h72" style="width: 5px;"></div>
->>>>>>> d3f122582d0e687d12cb3d34dbd4a14f2954e329
 					<div class="form-group floatL h72 lineh95">
-						<input type="button" id="selectZipcode" class="btn btn-primary" value="우편번호 찾기">
+						<input type="button" id="selectZipcode" class="btn btn-warning" value="우편번호 찾기">
 					</div><br><br>				
 					<div id="message_zipcode"></div>
 					<div class="form-group clearB">
@@ -144,14 +118,14 @@
 
 					<div class="w500 h72">
 						<div class="form-group floatL">
-							<label for="m_email">이메일</label><br> <input type="email"
+							<label for="m_email">이메일</label><br> <input type="text"
 								name="m_email" id="m_email" style="width: 290px;"
 								value="${command.m_email}" class="form-control"
 								placeholder="test@test.com" />
 						</div>
 						<div class="floatL h72" style="width: 10px;"></div>
 						<div class="form-group floatL h72 lineh95">
-							<input type="button" id="confirmEmail" class="btn btn-primary"
+							<input type="button" id="confirmEmail" class="btn btn-warning"
 								value="이메일 중복체크">
 						</div>
 					</div>
@@ -176,11 +150,7 @@
 					<br><hr size="1" width="100%">
 		
 					<div class="w500 clearB" style="text-align:center; margin: 0;">
-<<<<<<< HEAD
-						<input type="submit" value="회원가입" class="btn btn-primary">&nbsp;&nbsp;&nbsp;
-=======
 						<input type="submit" value="회원가입" class="btn btn-warning">&nbsp;&nbsp;&nbsp;
->>>>>>> d3f122582d0e687d12cb3d34dbd4a14f2954e329
 						<input type="button" value="홈으로" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 					</div>
 

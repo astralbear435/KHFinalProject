@@ -12,7 +12,7 @@
 			
 			alert('등록된 이메일로 임시비밀번호가 전송되었습니다.\n로그인 후 비밀번호를 변경하세요.');
 			
-			location = '/ProjectCAN/member/selectLogin.do';
+			location = '/ProjectCAN/main/main.do';
 			
 		</script>
 	</body>

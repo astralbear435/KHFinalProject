@@ -43,7 +43,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		MailHandler sendMail = new MailHandler(mailSender);
 		sendMail.setSubject("[보호소 서비스 이메일 인증]");
-		sendMail.setText(new StringBuffer().append("<h1>메일인증</h1>").append("<a href='http://localhost:8080/ProjectCAN/member/emailConfirm.do?m_email=").append(member.getM_email()).append("&verify_key=").append(verify_key).append("'target='_blank'>이메일 인증 확인</a>").toString());
+		sendMail.setText(new StringBuffer().append("<h1>메일인증</h1>").append("<a href='http://localhost:8080/ProjectCAN/member/emailConfirm.do?m_email=").append(member.getM_email()).append("&verify_key=").append(verify_key).append("'target='_blank'>이메일 인증 확인</a>").append("<br>인증확인 후 로그인하여 이용해주세요.").toString());
 		sendMail.setFrom("choisw7491@gmail.com", "보호소");
 		sendMail.setTo(member.getM_email());
 		sendMail.send();
@@ -58,7 +58,7 @@ public class MemberServiceImpl implements MemberService {
 		if(verify_key != null) {
 			MailHandler sendMail = new MailHandler(mailSender);
 			sendMail.setSubject("[보호소 서비스 이메일 인증]");
-			sendMail.setText(new StringBuffer().append("<h1>메일인증</h1>").append("<a href='http://localhost:8080/ProjectCAN/member/emailConfirm.do?m_email=").append(member.getM_email()).append("&verify_key=").append(verify_key).append("'target='_blank'>이메일 인증 확인</a>").toString());
+			sendMail.setText(new StringBuffer().append("<h1>메일인증</h1>").append("<a href='http://localhost:8080/ProjectCAN/member/emailConfirm.do?m_email=").append(member.getM_email()).append("&verify_key=").append(verify_key).append("'target='_blank'>이메일 인증 확인</a>").append("<br>인증확인 후 로그인하여 이용해주세요.").toString());
 			sendMail.setFrom("choisw7491@gmail.com", "보호소");
 			sendMail.setTo(member.getM_email());
 			sendMail.send();

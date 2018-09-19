@@ -204,8 +204,6 @@ public class MemberController {
 
 
 	//=================== 회원 로그인(일반, 보호소 통합) =====================
-
-
 	@RequestMapping("/member/memberLogin.do")
 	@ResponseBody
 	public Map<String,String> memberLogin(@RequestParam("m_id") String m_id, @RequestParam("m_passwd") String m_passwd, HttpServletRequest request, HttpSession session) {
