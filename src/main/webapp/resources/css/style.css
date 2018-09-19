@@ -16,7 +16,7 @@ html, body{
 }
 /*-- banner --*/
 .banner{
-    background: url(../images/1.jpg) no-repeat 0px -200px;
+    background: url(../images/MAIN2.jpg) no-repeat 0px -200px;
     background-size: cover;
     padding: 1em 0;
 }
@@ -190,7 +190,7 @@ html, body{
 	display:block;
 }
 .w3l-welcome-img{
-	background: url(../images/2.jpg) no-repeat 0px -160px;
+	background: url(../images/MAIN2.jpg) no-repeat 0px -160px;
     background-size: cover;
     min-height: 400px;
 }
@@ -1924,7 +1924,7 @@ ul.bs-glyphicons-list {
 /*-- responsive --*/
 @media(max-width:1366px){
 	.banner {
-		background: url(../images/1.jpg) no-repeat 0px -140px;
+		background: url(../images/MAIN2.jpg) no-repeat 0px -140px;
 	}
 	.w3l-welcome-img {
 		background: url(../images/2.jpg) no-repeat 0px 0px;
@@ -1932,7 +1932,7 @@ ul.bs-glyphicons-list {
 }
 @media(max-width:1280px){
 	.banner {
-		background: url(../images/1.jpg) no-repeat 0px -100px;
+		background: url(../images/MAIN2.jpg) no-repeat 0px -100px;
 	}
 }
 @media(max-width:1080px){
@@ -2207,7 +2207,7 @@ ul.bs-glyphicons-list {
 		margin: 4em 0 2em 0;
 	}
 	.banner {
-		background: url(../images/1.jpg) no-repeat -490px -150px;
+		background: url(../images/MAIN2.jpg) no-repeat -490px -150px;
 	}
 	.welcome, .services, .testimonial, .news-section, .news-letter, .w3-agile-footer, .agile-about-top, .team, .w3-agileits-choose, .gallery, .blog, .codes, .typography, .contact {
 		padding: 2em 0;
@@ -2330,7 +2330,7 @@ ul.bs-glyphicons-list {
 		right: 28px !important;
 	}
 	.banner {
-		background: url(../images/1.jpg) no-repeat -550px -150px;
+		background: url(../images/MAIN2.jpg) no-repeat -550px -150px;
 	}
 	.agileinfo-social-grids ul li a i.fa {
 		height: 30px;

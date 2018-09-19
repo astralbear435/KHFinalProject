@@ -82,7 +82,7 @@
 			<div class="wthree-top-grid">
 				<h1><a href="${pageContext.request.contextPath}/main/main.do">CAN</a></h1>
 				<div class="w3-agileits-border"> </div>
-				<h2>About Us</h2>
+				<h2>세상 모든 '코코와 나비'를 위해</h2>
 			</div>
 			<!-- //wthree-top-grid -->
 		</div>
