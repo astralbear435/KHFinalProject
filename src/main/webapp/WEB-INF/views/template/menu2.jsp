@@ -5,8 +5,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/modal.js"></script>
 
 	<!-- 모달창 열기 -->
-	<div id="loginModal" class="modal">
-		<div class="loginModal-content">
+	<div id="loginModal" class="modalLogin">
+		<div class="modal-contentLogin">
 			<span style="font-size:10pt; text-align:right;">
 				<a href="#" id="closeMemberLogin">X</a>
 			</span>

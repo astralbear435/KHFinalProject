@@ -11,7 +11,7 @@ $(document).ready(function() {
 	function connect() {
 		wsocket = new WebSocket("ws://192.168.110.12.:8080/ProjectCAN/chat-ws.do");
 		wsocket.onopen = function(evt) {
-			alert('채팅 입장');
+			
 		};
 		
 		//서버로부터 메시지를 받으면 호출되는 함수 지정
