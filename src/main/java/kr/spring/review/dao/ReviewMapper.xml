@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.review.dao.ReviewMapper">
+<select id="getReviewList" parameterType="map" resultType="reviewCommand">
+		SELECT * FROM review
+	<where>
+			<if test="keyword != '' and keyfield == 're_title'">
+				re_title like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 're_asname'">
+				re_asname like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'all'">
+				re_title like '%' || #{keyword} || '%' or
+				re_asname like '%' || #{keyword} || '%'
+			</if>
+	</where>
+ORDER BY re_num DESC
+</select>
+<select id="selectCount" parameterType="map" resultType="integer">
+		SELECT count(*) FROM review
+		<where>
+			<if test="keyword != '' and keyfield == 're_title'">
+				re_title like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 're_asname'">
+				re_asname like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'all'">
+				re_title like '%' || #{keyword} || '%' or
+				re_asname like '%' || #{keyword} || '%'
+			</if>
+		</where>
+</select>
+	<!-- 댓글목록 -->
+	<select id="selectReplyList" parameterType="map" resultType="reviewReplyCommand">
+		SELECT reply_mynum,reply_content,TO_CHAR(reply_date,'YYYY-MM-DD HH24:MI:SS')reply_date,reply_num,reply_id FROM (select a.*,rownum rnum FROM(SELECT *
+		FROM review_reply WHERE reply_num=#{reply_num} ORDER BY reply_mynum ASC)a)
+  <![CDATA[ WHERE rnum>=#{start} AND rnum <= #{end}]]>
+	</select>
+
+</mapper>

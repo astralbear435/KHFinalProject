@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ap/ap.js"></script>
 <div class="container">
-	<form:form commandName="command" action="apWrite.do" id="register_form" enctype="multipart/form-data">
+	<form:form commandName="command" action="apWrite.do" id="ap_form" enctype="multipart/form-data">
 	    <form:hidden path="id"/>
 		<form:errors element="div" cssClass="error-color"/>	
 			<table class="table table-hover" style="margin:50px 0 50px 0;">
@@ -19,6 +21,7 @@
 						<input type="radio" value="프리랜서" id="ap_job" name="ap_job">프리랜서
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="radio" value="무직" id="ap_job" name="ap_job">무직
+						<div id="message_ap_job"></div>
 					</td>
 				</tr>
 		<!-- ----------------------------------------------------------------- -->
@@ -33,6 +36,7 @@
 						<input type="checkbox" value="2" id="ap_cer" name="ap_cer">반려동물 관리사
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="checkbox" value="3" id="ap_cer" name="ap_cer">반려동물 행동교정사
+						<div id="message_ap_cer"></div>
 					</td>
 				</tr>
 				<tr>
@@ -47,6 +51,7 @@
 						<input type="radio" value="4" id="ap_act" name="ap_act">2년~3년미만
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="radio" value="5" id="ap_act" name="ap_act">3년이상
+						<div id="message_ap_act"></div>
 					</td>
 				</tr>
 				<tr>
@@ -59,6 +64,7 @@
 						<input type="radio" value="3" id="ap_pet" name="ap_pet">5년~10년미만
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="radio" value="4" id="ap_pet" name="ap_pet">10년이상
+						<div id="message_ap_pet"></div>
 					</td>
 				</tr>
 				<tr>
@@ -67,6 +73,7 @@
 						<div class="form-group">
 						<textarea class="form-control" id="ap_ser" name="ap_ser" rows="4" cols="30"></textarea>
 						</div>
+						<div id="message_ap_ser"></div>
 					</td>
 				</tr>
 		<!-- ----------------------------------------------------------------- -->
@@ -87,6 +94,7 @@
 						<input type="checkbox" value="5" id="ap_home" name="ap_home">마당보유
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="checkbox" value="6" id="ap_home" name="ap_home">주변산책로 보유
+						<div id="message_ap_home"></div>
 					</td>
 				</tr>
 			<!-- ----------------------------------------------------------------- -->
@@ -101,6 +109,7 @@
 						<input type="checkbox" value="2" id="ap_sel" name="ap_sel">방문/고객의 집
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="checkbox" value="3" id="ap_sel" name="ap_sel">위탁 & 방문 모두
+						<div id="message_ap_sel"></div>
 					</td>
 				</tr>
 				<tr>
@@ -121,6 +130,7 @@
 						<input type="checkbox" value="7" id="ap_nopet" name="ap_nopet">퍼피(2살미만)
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="checkbox" value="8" id="ap_nopet" name="ap_nopet">대형견(15kg이상)
+						<div id="message_ap_nopet"></div>
 					</td>
 				</tr>
 				<tr>
@@ -145,6 +155,7 @@
 						<input type="checkbox" value="9" id="ap_service" name="ap_service">노령견케어(만 8세이상 노령견 간호 교육 수료)
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="checkbox" value="10" id="ap_service" name="ap_service">퍼피케어(2년미만 퍼피 교육 수료)
+						<div id="message_ap_service"></div>
 					</td>
 				</tr>
 				<tr>
@@ -155,6 +166,7 @@
 						<input type="radio" value="2" id="ap_mon" name="ap_mon">10일 ~ 20일 미만
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="radio" value="3" id="ap_mon" name="ap_mon">20일 이상
+						<div id="message_ap_mon"></div>
 					</td>
 				</tr>
 				

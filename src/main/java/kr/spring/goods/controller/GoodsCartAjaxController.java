@@ -27,6 +27,7 @@ import kr.spring.goods.service.GoodsService;
 import kr.spring.member.dao.MemberMapper;
 import kr.spring.member.domain.MemberCommand;
 import kr.spring.member.service.MemberService;
+import kr.spring.mypage.service.MypageService;
 import kr.spring.note.domain.NoteCommand;
 import kr.spring.note.service.NoteService;
 import kr.spring.shelter.domain.ShelterCommand;
@@ -43,6 +44,9 @@ public class GoodsCartAjaxController {
 	private GoodsService goodsService;
 	@Resource
 	private NoteService noteService;
+	@Resource
+	private MypageService mypageService;
+	
 
 	//======================장바구니등록==================
 	
@@ -109,14 +113,13 @@ public class GoodsCartAjaxController {
 	//====================장바구니 삭제====================
 	@RequestMapping("/goods/deleteCart.do")
 	@ResponseBody
-	public Map<String,String> deleteCart(@RequestParam("selectNum") String selectNum,@RequestParam("id") String id,HttpSession session){
+	public Map<String,String> deleteCart(@RequestParam("selectNum")String selectNum,@RequestParam("id") String id,HttpSession session){
 //콤마를 구분자로 배열에 저장하기
 		String[] temp= selectNum.split(",");
-		
+
 		if(log.isDebugEnabled()) {
 			 log.debug("<<selectNum>> : "+selectNum);
 			 log.debug("<<id>>:"+id);
-			 
 			 }
 
 	 Map<String,String> map=new HashMap<String, String>();
@@ -194,6 +197,8 @@ public Map<String,Object>priceCart(@RequestParam("num") String price,@RequestPar
 @ResponseBody
 public Map<String,String> insertOrder(@RequestParam("as_id")String as_id,@RequestParam("dona_id")String dona_id,@RequestParam("dona_name") String dona_name,@RequestParam("dona_asname") String dona_asname,@RequestParam("goodsNum") String goodsnum,@RequestParam("ptotal") int dona_price,@RequestParam("amount") String dona_goodsamount,@RequestParam("dona_message")String dona_message,HttpSession session){
 	Map<String,String> map=new HashMap<String,String>();
+	//결제 카운트 빼기용 맵
+	Map<String,Object> map2=new HashMap<String,Object>();
 	String user_id=(String)session.getAttribute("user_id");
 	if(user_id==null) {
 		//로그인 안됨.
@@ -213,7 +218,13 @@ public Map<String,String> insertOrder(@RequestParam("as_id")String as_id,@Reques
 		}
 		//결제DB에 등록하기
 		goodsService.insertOrder(order);
-	
+		//결제된 수 만큼 as_goods에서 제거하기
+		map2.put("goodsnum",goodsnum);
+		map2.put("dona_goodsamount",dona_goodsamount);
+		map2.put("dona_asname",dona_asname);
+
+		goodsService.minusCount(map2);
+		
 		NoteCommand note=new NoteCommand();
 		note.setSender(dona_id);
 		note.setRecipient(as_id);
@@ -238,8 +249,41 @@ public Map<String,Object> insertMultiOrder(@RequestParam("dona_id")String dona_i
 	if(log.isDebugEnabled()) {
 		log.debug("<<멀티 결제내역 함 보자>> :"+multiorder);
 	}
+	//멀티 주문 저장
 	goodsService.insertOrder(multiorder);
+	//방금저장 주문 시퀀스 값 받아오기
 	int order_num=goodsService.selectDona_num();
+	
+/*	구매 만큼 카운팅 빼주는거 진행 시작*/
+	
+	OrderCommand order=new OrderCommand();
+	int count2=mypageService.selectCountdonation(dona_id);
+	//0개가 넘으면 진행
+	if(count2>0) {
+	order=mypageService.selectNowList(dona_id);
+	
+	String[] as_name= order.getDona_asname().split(",");
+	String[] goodsNum=order.getDona_goodsnum().split(",");
+	String[] goodsAmount=order.getDona_goodsamount().split(",");
+
+	
+	for(int i=0;i<as_name.length;i++){
+		Map<String,Object> map2=new HashMap<String,Object>();
+		map2.put("goodsnum",goodsNum[i]);
+		map2.put("dona_goodsamount",goodsAmount[i]);
+		map2.put("dona_asname",as_name[i]);
+		goodsService.minusCount(map2);
+		//쪽지보내기
+		NoteCommand note=new NoteCommand();
+		note.setSender(dona_id);
+		note.setRecipient(goodsService.comeonId(as_name[i]));
+		note.setNote_content(multiorder.getDona_message());
+		noteService.insert(note);
+		}
+
+	
+	}
+	/*	구매 만큼 카운팅 빼주는거 진행 끝*/
 	
 	map.put("result","success");
 	map.put("order_num",order_num);
@@ -265,4 +309,37 @@ public Map<String,String> updateMultiOrder(@RequestParam("dona_username")String 
 	return map;	
 }
 
+//여러결제 카운트 빼기 테스트입니다.
+@RequestMapping("/goods/CountMinus.do")
+@ResponseBody
+public Map<String,Object> CountMinus(HttpSession session){
+	String id=(String)session.getAttribute("user_id");
+	Map<String,Object> newMap=new HashMap<String,Object>();
+	OrderCommand order=new OrderCommand();
+	int count2=mypageService.selectCountdonation(id);
+	//0개가 넘으면 진행
+	if(count2>0) {
+	order=mypageService.selectNowList(id);
+	
+	String[] as_name= order.getDona_asname().split(",");
+	String[] goodsNum=order.getDona_goodsnum().split(",");
+	String[] goodsAmount=order.getDona_goodsamount().split(",");
+	if(log.isDebugEnabled()) {
+		log.debug("<<리스트 어떻게 오나 보자아아>> :"+order);
+		log.debug("<<배열체크 제대로 되있남>> :"+as_name+" / "+goodsNum+" / "+goodsAmount);
+	}
+	
+	for(int i=0;i<as_name.length;i++){
+		Map<String,Object> map2=new HashMap<String,Object>();
+		map2.put("goodsnum",goodsNum[i]);
+		map2.put("dona_goodsamount",goodsAmount[i]);
+		map2.put("dona_asname",as_name[i]);
+		goodsService.minusCount(map2);
+	}	
+	newMap.put("result","success");
+	}else {
+		newMap.put("result","no");
+	}	
+	return newMap;
+ }
 }

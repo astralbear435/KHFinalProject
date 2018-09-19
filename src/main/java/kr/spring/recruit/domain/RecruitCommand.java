@@ -10,7 +10,7 @@ public class RecruitCommand {
 	private int r_num;
 	private String r_id;
 	private MultipartFile r_upload;
-	//toString ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ byte[] ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	//toString
 	private byte[] r_image;
 	private String r_filename;
 	private String r_title;
@@ -21,7 +21,7 @@ public class RecruitCommand {
 	private String r_content;
 	private int r_status;
 	
-	//ë´‰ì‚¬í™œë™ ì‹ ì²­ì ë³€ìˆ˜
+	//ºÀ»çÈ°µ¿ ½ÅÃ»ÀÚ º¯¼ö
 	private int v_num;
 	private String v_id;
 	private String v_date;
@@ -61,9 +61,9 @@ public class RecruitCommand {
 	public void setR_upload(MultipartFile r_upload) throws IOException {
 		this.r_upload = r_upload;
 
-		//byte[] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		//byte[] 
 		setR_image(r_upload.getBytes());
-		//ï¿½ï¿½ï¿½Ï¸ï¿½
+		//
 		setR_filename(r_upload.getOriginalFilename());
 	}
 

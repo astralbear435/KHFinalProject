@@ -4,15 +4,17 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/recruit.js"></script>
-
+<style>
+ul{
+   list-style:none;
+   }   
+</style>
 
 <div class="container">
 
 	<div class="w3l-heading">
 		<h3>봉사활동 모집 안내</h3>
 	</div>
-
-
 
 	<p>
 		유기견 보호 센터에서는 따뜻한 마음을 나눌 봉사자분들의 참여를 기다립니다. <br> 자원봉사 활동시간 : 오후 1시
@@ -26,10 +28,12 @@
 		가입하셔야 합니다. <br>
 	</p>
  
-<c:if test="${!empty user_id && user_auth == 3}">
+<c:if test="${!empty user_id}">
+<div style="text-align: right;">
 	<input type="button" value="봉사활동 모집 글 쓰기"
 		class="btn btn-primary btn-lg"
 		onclick="location.href='${pageContext.request.contextPath}/recruit/recruitWrite.do'">
+</div>
 </c:if>
 	<form action="recruitList.do" id="search_form" method="get">
 		<ul class="search">
@@ -46,7 +50,7 @@
 	<hr class="my-4">
 	<script type="text/javascript">
 function showPopup(r_num){
-	window.open("${pageContext.request.contextPath}/volunteer/volunteerWrite2.do?r_num="+r_num,"봉사활동 신청","width=400, height=300, left=100, top=50");
+	window.open("${pageContext.request.contextPath}/volunteer/volunteerWrite2.do?r_num="+r_num,"봉사활동 신청","width=400, height=800, left=100, top=50");
 }
 
 </script>
@@ -87,32 +91,23 @@ function showPopup(r_num){
 
 
 					<c:if test="${!empty user_id}">
-						<input type="button" value="봉사활동 신청하기" class="btn btn-warning"
-							onclick="showPopup(${recruit.r_num});">
+						<input type="button" value="봉사활동 신청하기" class="btn btn-warning" onclick="showPopup(${recruit.r_num});">
 					</c:if>
 					<c:if test="${empty user_id}">
 						<input type="button" value="봉사활동 신청하기" class="btn btn-warning"
 							onclick="alert('로그인이 필요한 서비스입니다.');">
 					</c:if>
-
-
+					<c:if test="${!empty user_id && user_id == recruit.r_id}">		
+						<input type="button" value="수정" class="btn btn-success"
+							onclick="location.href='${pageContext.request.contextPath}/recruit/recruitUpdate.do?r_num=${recruit.r_num}'">
 				
+						<input type="button" value="삭제" class="btn btn-danger"
+							onclick="location.href='${pageContext.request.contextPath}/recruit/recruitDelete.do?r_num=${recruit.r_num}'">
+					</c:if>
 					
 				</div>
-
-
 			</div>
 		</c:forEach>
 	</div>
 
 </div>
-
-
-
-
-
-
-
-
-
-

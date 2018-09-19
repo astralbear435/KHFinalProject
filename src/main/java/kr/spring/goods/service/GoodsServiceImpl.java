@@ -123,4 +123,17 @@ public class GoodsServiceImpl implements GoodsService {
 		goodsMapper.updateAs(goods);
 	}
 
+	@Override
+	public void minusCount(Map<String, Object> map2) {
+		// 결제시 as_goods에서 신청수량을 결제갯수만큼 뺀다
+		goodsMapper.minusCount(map2);
+		
+	}
+
+	@Override
+	public String comeonId(String dona_asname) {
+		// 보호소 아이디 가져오기
+		return goodsMapper.comeonId(dona_asname);
+	}
+
 }

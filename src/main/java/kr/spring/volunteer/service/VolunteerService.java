@@ -8,7 +8,7 @@ import kr.spring.recruit.domain.RecruitCommand;
 
 public interface VolunteerService {
 	//봉사활동 신청 글 작성
-	public void insert(RecruitCommand volunteer);
+	public void insert(Map<String,Object> map);
 	//봉사활동 신청 글 확인 
 	//마이페이지 캘린더에서 상세 확인 
 	//아이디와 일치하면 전부 보여주기
