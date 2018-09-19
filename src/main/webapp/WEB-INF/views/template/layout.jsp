@@ -40,6 +40,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  -->
 <!-- chatting style -->
 <style>
+	@media screen and (max-width: 1000px) {
+		#m_nav_chat {
+			display:none;
+		}
+	}
 	#m_nav_chat {
 		width: 120px;
 		position: fixed;
