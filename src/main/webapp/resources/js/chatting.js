@@ -8,7 +8,7 @@ $(document).ready(function() {
 	
 	//WebSocket 연결
 	function connect() {
-		wsocket = new WebSocket("ws://192.168.110.12.:8080/ProjectCAN/chat-ws.do");
+		wsocket = new WebSocket("ws://192.168.10.27:8080/ProjectCAN/chat-ws.do");
 		wsocket.onopen = function(evt) {
 			alert('채팅 입장');
 		};

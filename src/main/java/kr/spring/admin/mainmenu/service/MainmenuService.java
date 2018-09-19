@@ -15,5 +15,6 @@ public interface MainmenuService {
 	public void insertMenu(MainmenuCommend mainmenuCommend);
 	public void updateMenuOrder(MainmenuCommend mainmenuCommend);
 	public void updateMenuDd(MainmenuCommend mainmenuCommend);
+	public void updateMenu(MainmenuCommend mainmenuCommend);
 	public void deleteMenu(int menu_num);
 }

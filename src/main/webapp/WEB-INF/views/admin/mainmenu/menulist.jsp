@@ -29,9 +29,10 @@ selectbox#select_id {
 						<h3 class="box-title">메뉴 목록</h3>
 					</div>
 					<!-- /.box-header -->
-					<div id="menu_box" class="box-body">
+					<div class="box-body">
+					<div id="menu_box">
 						<select id="select_id1" name=s1 size=15
-							class="form-control" style="font-size: 20px;">
+							class="form-control select_id1" style="font-size: 20px;">
 							<option selected="selected" value=0>-메뉴 추가-</option>
 							<c:if test="${count>0}">
 								<c:forEach var="menu" items="${list}">
@@ -43,8 +44,9 @@ selectbox#select_id {
 									</c:if>
 								</c:forEach>
 							</c:if>
-						</select><br>
-
+						</select>
+					</div>
+					<br>
 						<button id="menu_up" class="btn btn-info">▲</button>
 						<button id="menu_down" class="btn btn-info">▼</button>
 						<button id="menu_delete" class="btn btn-info pull-right">삭제</button>

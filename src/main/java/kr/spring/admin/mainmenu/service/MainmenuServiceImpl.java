@@ -15,6 +15,7 @@ public class MainmenuServiceImpl implements MainmenuService{
 	@Resource
 	private MainmenuMapper mainmenuMapper;
 	
+	
 	@Override
 	public int selectmenuCount() {
 		
@@ -56,7 +57,17 @@ public class MainmenuServiceImpl implements MainmenuService{
 
 	@Override
 	public void deleteMenu(int menu_num) {
-		mainmenuMapper.deleteMenu(menu_num);
+		MainmenuCommend menu = mainmenuMapper.selectMenu(menu_num);
+		List<MainmenuCommend> list = mainmenuMapper.selectMenuList();
+		for(MainmenuCommend m : list) {
+			if(menu.getMenu_order()<m.getMenu_order()) {
+				m.setMenu_order((m.getMenu_order()-1));
+				System.out.println("--------->"+m);
+				mainmenuMapper.updateMenuOrder(m);
+			}
+		}
+		mainmenuMapper.deleteMenu(menu_num); 
+		
 	}
 
 	@Override
@@ -69,6 +80,21 @@ public class MainmenuServiceImpl implements MainmenuService{
 	public MainmenuCommend selectMenu(int menu_num) {
 		
 		return mainmenuMapper.selectMenu(menu_num);
+	}
+
+	@Override
+	public void updateMenu(MainmenuCommend mainmenuCommend) {
+		List<MainmenuCommend> list = mainmenuMapper.selectMenuList();
+		for(MainmenuCommend m : list) {
+			if(mainmenuCommend.getMenu_order()==m.getMenu_order()&&mainmenuCommend.getMenu_num()!=m.getMenu_num()) {
+				System.out.println("--------->"+m);
+				m.setMenu_order((mainmenuCommend.getMenu_order()));
+				System.out.println("--------->"+m);
+				mainmenuMapper.updateMenuOrder(m);
+			}
+			mainmenuMapper.updateMenu(mainmenuCommend);
+		}
+		
 	}
 
 }

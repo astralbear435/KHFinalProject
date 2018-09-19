@@ -58,7 +58,9 @@ $(document).ready(function() {
 		//브라우저 종료시 채팅 종료
 		wsocket.onclose();
 	}
-	
+	$("#exitButton").click(function(){
+		disconnect();
+	})
 	//서버에 메시지 전송
 	   function send() {
 	      var msg = $('#message_input').val();
@@ -81,12 +83,12 @@ $(document).ready(function() {
 		
 		//관리자 메세지
 		if(user.indexOf('admin') != -1) {
-			var userMsg = '<br><br>';
+			var userMsg = '<div class="direct-chat-msg right">';
 			userMsg += '<div class="direct-chat-info clearfix">';
 			userMsg += '<span class="direct-chat-name pull-right">admin</span>';
 			userMsg += '	<span class="direct-chat-timestamp pull-left">'+nowTime+'</span>';
 			userMsg += '</div>';
-			userMsg += '<img class="direct-chat-img" src="${pageContext.request.contextPath}/member/imageView.do?m_id=admin" alt="Message User Image">';
+			userMsg += '<img class="direct-chat-img" src="/ProjectCAN/member/imageView.do?m_id=admin" alt="Message User Image">';
 			userMsg += '	<div class="direct-chat-text">';
 			userMsg += msg;
 			userMsg += '	</div>';
@@ -95,17 +97,16 @@ $(document).ready(function() {
 		
 		//클라이언트 메세지
 		else {
-			var userMsg = '<br><br>';
-			userMsg += '<li class="message right appeared">';
-			userMsg += '	<div class="avatar">';
-			userMsg += '		<img src="../resources/images/member/chat_default.png">';
-			userMsg += '	</div>';
-			userMsg += '	<div class="text_wrapper">';
-			userMsg += '		<div class="text">';
+			var userMsg = '<div class="direct-chat-msg">';
+			userMsg += '<div class="direct-chat-info clearfix">';
+			userMsg += '	<span class="direct-chat-name pull-left">USER</span>';
+			userMsg += '		<span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span> </div>';
+			userMsg += '	<img class="direct-chat-img" src="../resources/images/member/chat_default.png" alt="Message User Image">';
+			userMsg += '		<div class="direct-chat-text">';
 			userMsg += 				msg;
 			userMsg += '		</div>';
 			userMsg += '	</div>';
-			userMsg += '</li>';
+			userMsg += '</div>';
 		}
 		
 		$('#message_appear').append(userMsg);
