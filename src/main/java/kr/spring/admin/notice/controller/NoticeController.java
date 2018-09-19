@@ -2,6 +2,8 @@ package kr.spring.admin.notice.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +11,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -19,88 +22,106 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.spring.admin.notice.domin.CkeditorCommand;
 import kr.spring.admin.notice.domin.NoticeCommend;
 import kr.spring.admin.notice.service.NoticeService;
+import kr.spring.util.PagingUtil;
 
 @Controller
 public class NoticeController {
 
 	private Logger log = Logger.getLogger(this.getClass());
 
+	@Resource(name="uploadPath")
+	    String uploadPath;
+
+	private int rowCount = 10;
+	private int pageCount = 10;
 
 	@Resource
 	private NoticeService notice;
 
 	//============글쓰기 이미지 업로드 ===========//
-	@RequestMapping(value = "/admin/notice/fileUpload.do")
-	public String fileUpload(final HttpServletRequest request,CkeditorCommand ckeditorCommand , Model model){
-		Date date = new Date();
-		int year = date.getYear();
-		int month = date.getMonth();
-		String monthStr = "";
-		if(month<10) monthStr = "0"+month;
-		else monthStr = ""+month;
-
-		String defaultPath = request.getRealPath("/");
+	@RequestMapping(value = "/admin/notice/fileUpload.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String,Object> imageUpload(HttpServletRequest request, HttpServletResponse response,
+			 @RequestParam MultipartFile upload) throws IOException {
+		OutputStream out = null;
+		//PrintWriter printWriter = null;
+		Map<String,Object> map=new HashMap<String,Object>();
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		
+		Calendar today = Calendar.getInstance();  
+		int year = today.get(Calendar.YEAR);
+		int month = today.get(Calendar.MONTH);
+		String monthStr="";
+		
+		
+		if(month<10) monthStr ="0"+month;
+		else monthStr =""+month;
+			
+		
+		String defaultPath = request.getSession().getServletContext().getRealPath("/");
 		String contextPath = request.getSession().getServletContext().getContextPath();
-		String fileUploadPathTail = "notice/"+ year +monthStr;
-		String fileUploadPath = defaultPath +"/"+fileUploadPathTail;
+		String fileUploadPathTail = "upload\\notice\\"+year+"" +monthStr+"\\";
+		String fileUploadPath = defaultPath+fileUploadPathTail;
+		String fileUrl="";
+		String fileName="";
+		System.out.println("defaultPath : " + defaultPath);
+		System.out.println("contextPath : " + contextPath);
+		System.out.println("fileUploadPathTail : " + fileUploadPathTail);
+		System.out.println("fileUploadPath : " + fileUploadPath);
+		String test="";
+		try{
+			if( upload!=null) {
+	            fileName = upload.getOriginalFilename();
+	            System.out.println("fileName : " + fileName);
+	            String fileNameExt = fileName.substring(fileName.indexOf(".")+1);
+	            System.out.println("fileNameExt : " + fileNameExt);
+	            
+	            if(!"".equals(fileName)) {
+	            	File destD = new File(fileUploadPath);
+	            	
+	            	if(!destD.exists()) {
+	            		destD.mkdirs();
+	            	}
+	            	File destination = File.createTempFile("ckeditor_","."+fileNameExt,destD);
+	            	upload.transferTo(destination);
+	            	fileUrl=contextPath+"/upload/notice/"+year+"" +monthStr+"/"+destination.getName();
+	            	System.out.println("fileUrl : " + fileUrl );
+	            	System.out.println("destination : " + destination.getName());
+	            	String tmp = destination.getName();
+	            	test = tmp.substring(9, tmp.length()-4);
+	            	System.out.println("test : " + test);
+	            	//printWriter = response.getWriter();
 
-		/*HttpSession session = request.getSession();
-		String rootPath = session.getServletContext().getRealPath("/");
-
-		String attachPath = "upload/notice/";
-
-		MultipartFile upload = ckeditorCommand.getN_upload();
-		String filename = "";
-		String CKEditorFuncNum = "";
-		System.out.println("들어옴");
-		if(upload != null){
-			filename = upload.getOriginalFilename();
-			System.out.println(filename);
-			ckeditorCommand.setN_filename(filename);
-			CKEditorFuncNum = ckeditorCommand.getCKEditorFuncNum();
-			try{
-				File file = new File(rootPath + attachPath + filename);
-				upload.transferTo(file);
-			}catch(IOException e){
-				e.printStackTrace();
-			}  
-		}
-		model.addAttribute("filePath",attachPath + filename);          //결과값을
-		model.addAttribute("CKEditorFuncNum",CKEditorFuncNum);//jsp ckeditor 콜백함수로 보내줘야함
-		return "admin/notice/fileUpload";
-		 */
-		try {
-			MultipartFile file =ckeditorCommand.getN_upload();
-			if(file != null) {
-				String fileName = file.getOriginalFilename();
-				String fileNameExt = fileName.substring(fileName.indexOf(".")+1);
-				if(!"".equals(fileName)) {
-					File destD = new File(fileUploadPath);
-					
-					//임시 엑셀디렉토리 생성
-					if(!destD.exists()) {
-						//없으면 생성
-						destD.mkdirs();
-					}
-					File destination =File.createTempFile("ckeditor_","."+fileNameExt,destD);
-					file.transferTo(destination);
-					
-					ckeditorCommand.setN_filename(destination.getName());
-					ckeditorCommand.setN_attach_path(contextPath+"/"+fileUploadPathTail+"/"+destination.getName());
-					
-				}
+	                //printWriter.println("{\"filename\" : \""+fileName+"\", \"uploaded\" : 1, \"url\":\""+fileUrl+"\"}");
+	                //printWriter.flush();
+	            }
 			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		model.addAttribute("ckedit",ckeditorCommand);//jsp ckeditor 콜백함수로 보내줘야함
-		return "admin/notice/fileUpload";
+       }catch(IOException e){
+           e.printStackTrace();
+       } finally {
+           try {
+               if (out != null) {
+                   out.close();
+               }
+/*               if (printWriter != null) {
+                   printWriter.close();
+               }*/
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+       }
+	   map.put("filename",fileName);
+	   map.put("uploaded", 1);
+	   map.put("url", fileUrl);
+       return map;
 	}
 	//==============게시판 글 등록=============//
 	//등록 폼
@@ -136,7 +157,6 @@ public class NoticeController {
 	//============================ 게시글 글 목록 ============================
 	@RequestMapping("/admin/notice/noticeList.do")
 	public ModelAndView process() {
-		Map<String,Object> map = new HashMap<String,Object>();
 
 		int count = notice.selectCountList();
 		if(log.isDebugEnabled()) {
@@ -155,5 +175,41 @@ public class NoticeController {
 		mav.addObject("list", list);
 		return mav;
 	}
+	//==========모든 회원이 보는 글 목록==========
+		@RequestMapping("/admin/List.do")
+		public ModelAndView process(@RequestParam(value="pageNum", defaultValue="1") int currentPage) {
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			//총 글의 갯수 또는 검색 된 글의 갯수
+			int count = notice.selectCountList();
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<count>> : " + count);
+			}
+			
+			PagingUtil page = new PagingUtil(currentPage, count, rowCount, pageCount, "List.do");
+			
+			map.put("start", page.getStartCount());
+			map.put("end", page.getEndCount());
+			
+			List<NoticeCommend> list = null;
+			if(count > 0) {
+				list = notice.selectNoticeList2(map);
+				
+				if(log.isDebugEnabled()) {
+					log.debug("<<list>> : " + list);
+				}
+				
+			}
+			
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("List");
+			mav.addObject("count", count);
+			mav.addObject("list", list);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+			
+			return mav;
+		}
 
 }

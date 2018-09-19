@@ -81,7 +81,11 @@ $(document).ready(function(){
 	    IMP.request_pay({ // param
 	        pg: "inicis",
 	        pay_method: "card",
+<<<<<<< HEAD
+	        merchant_uid: "ORD20180131-0000042",
+=======
 	        merchant_uid: "ORD20180131-0007892",
+>>>>>>> 444602ffb44ad5d888ebeb2d23b3cb3c353bf4ed
 	        name: "<주문서>",
 	        amount:pay,
 	        buyer_email: email,

@@ -47,7 +47,7 @@ public class MemberController {
 		return new MemberCommand();
 	}
 
-	/* 로그인, 회원가입 통합(세영추가) */
+
 	// 통합 로그인 폼 호출
 	@RequestMapping(value="/member/login.do")
 	public String selectLogin() {
@@ -60,6 +60,82 @@ public class MemberController {
 		return "member/provision";
 	}
 
+	//=========================admin 로그인========================
+	@RequestMapping(value="/admin/login.do",method=RequestMethod.GET)
+	public String adminlogin() {
+		return "admin/login";
+	}
+
+	@RequestMapping(value="/admin/login.do",method=RequestMethod.POST)
+	public String adminsubmit(@ModelAttribute("command") @Valid MemberCommand memberCommand, BindingResult result, Model model, HttpServletRequest request, HttpSession session) throws Exception{
+		if(log.isDebugEnabled()) {
+
+			log.debug("<<memberCommand>> : " + memberCommand);
+		}
+
+
+		//로그인 체크(id,비밀번호 일치 여부 체크)
+		try {
+			MemberCommand member = memberService.selectMember(memberCommand.getM_id());
+			boolean check = false;
+
+			if(member != null) {
+
+				//비밀번호 일치 여부 체크
+				check = member.isCheckedPasswd(cipherAES.encrypt(memberCommand.getM_passwd()));
+
+			}
+			log.debug("<<check>> - "+check);
+			if(check) {	//인증성공, 로그인 처리
+
+				session.setAttribute("user_id", member.getM_id());
+				session.setAttribute("user_auth", member.getAuth());
+
+				if(log.isDebugEnabled()) {
+					log.debug("<<인증 성공>>");
+					log.debug("<<user_id>> : " + member.getM_id());
+					log.debug("<<user_auth>> : " + member.getAuth());
+				}
+
+				return "redirect:/admin/main.do";
+
+			} else {	//인증실패
+
+				throw new Exception();
+			}
+
+		} catch(Exception e) {	//인증실패로 폼 호출
+
+			result.reject("invalidIdOrPasswd");
+			if(log.isDebugEnabled()) {
+				log.debug("<<인증 실패>>");
+			}
+			return "admin/login";
+		}
+
+	}
+	@RequestMapping(value="/admin/notlogin.do",method=RequestMethod.GET)
+	public String notlogin() {
+
+		return "/admin/waring/notlogin";
+	}
+	@RequestMapping(value="/admin/noadmin.do",method=RequestMethod.GET)
+	public String noadmin() {
+
+		return "/admin/waring/noadmin";
+	}
+
+	//=========================admin 로그인========================
+	//=========================admin 로그아웃========================
+	@RequestMapping("/admin/logout.do")
+	public String adminLogout(HttpSession session) {
+
+		//로그아웃
+		session.invalidate();
+
+		return "redirect:/admin/main.do";
+	}
+	//=========================admin 로그아웃========================
 	//=================== 회 원 가 입 ====================
 
 	//회원등록 폼 호출
@@ -126,82 +202,83 @@ public class MemberController {
 	}
 
 
+
 	//=================== 회원 로그인(일반, 보호소 통합) =====================
+
 
 	@RequestMapping("/member/memberLogin.do")
 	@ResponseBody
 	public Map<String,String> memberLogin(@RequestParam("m_id") String m_id, @RequestParam("m_passwd") String m_passwd, HttpServletRequest request, HttpSession session) {
 
 		Map<String,String> map = new HashMap<String,String>();
-
 		try {
+	         
+	         int auth = memberService.selectMemberAuth(m_id); // 권한 값을 구함
+	         boolean check = false;
+	         
+	         if(auth==1 || auth==2 || auth==5) {
+	            MemberCommand member = memberService.selectMember(m_id);
+	            log.info(member.getM_id());
+	            
+	            check = member.isCheckedPasswd(cipherAES.encrypt(m_passwd));
+	            log.info(member.getM_passwd());
+	            
+	            if(check) {   //인증성공, 로그인 처리
 
-			int auth = memberService.selectMemberAuth(m_id); // 권한 값을 구함
-			boolean check = false;
+	               session.setAttribute("user_id", member.getM_id());
+	               session.setAttribute("user_auth", member.getAuth());
 
-			if(auth==1 || auth==2 || auth==5) {
-				MemberCommand member = memberService.selectMember(m_id);
-				log.info(member.getM_id());
+	               if(log.isDebugEnabled()) {
+	                  log.debug("<<인증 성공>>");
+	                  log.debug("<<user_id>> : " + member.getM_id());
+	                  log.debug("<<user_auth>> : " + member.getAuth());
+	               }
+	               
+	               map.put("result", "success");
+	               
+	               return map;
 
-				check = member.isCheckedPasswd(cipherAES.encrypt(m_passwd));
-				log.info(member.getM_passwd());
+	            } else { // 인증실패
+	               System.out.println("일반 회원 로그인 오류");
+	               throw new Exception();
+	            }
+	         }else if(auth==3 || auth==4) {
+	            ShelterCommand shelter = shelterService.selectShelter(m_id);
+	            log.info(shelter.getS_id());
+	            
+	            check = shelter.isCheckedPasswd(cipherAES.encrypt(m_passwd));
+	            log.info(shelter.getS_passwd());
+	            
+	            if(check) {   //인증성공, 로그인 처리
 
-				if(check) {	//인증성공, 로그인 처리
+	               session.setAttribute("user_id", shelter.getS_id());
+	               session.setAttribute("user_auth", shelter.getAuth());
 
-					session.setAttribute("user_id", member.getM_id());
-					session.setAttribute("user_auth", member.getAuth());
+	               if(log.isDebugEnabled()) {
+	                  log.debug("<<인증 성공>>");
+	                  log.debug("<<user_id>> : " + shelter.getS_id());
+	                  log.debug("<<user_auth>> : " + shelter.getAuth());
+	               }
+	               
+	               map.put("result", "success");
+	               
+	               return map;
 
-					if(log.isDebugEnabled()) {
-						log.debug("<<인증 성공>>");
-						log.debug("<<user_id>> : " + member.getM_id());
-						log.debug("<<user_auth>> : " + member.getAuth());
-					}
-
-					map.put("result", "success");
-
-					return map;
-
-				} else { // 인증실패
-					System.out.println("일반 회원 로그인 오류");
-					throw new Exception();
-				}
-			}else if(auth==3 || auth==4) {
-				ShelterCommand shelter = shelterService.selectShelter(m_id);
-				log.info(shelter.getS_id());
-
-				check = shelter.isCheckedPasswd(cipherAES.encrypt(m_passwd));
-				log.info(shelter.getS_passwd());
-
-				if(check) {	//인증성공, 로그인 처리
-
-					session.setAttribute("user_id", shelter.getS_id());
-					session.setAttribute("user_auth", shelter.getAuth());
-
-					if(log.isDebugEnabled()) {
-						log.debug("<<인증 성공>>");
-						log.debug("<<user_id>> : " + shelter.getS_id());
-						log.debug("<<user_auth>> : " + shelter.getAuth());
-					}
-
-					map.put("result", "success");
-
-					return map;
-
-				} else { // 인증실패
-					System.out.println("보호소 회원 로그인 오류");
-					throw new Exception();
-				}
-			}else {
-				System.out.println("권한 값 오류");
-				throw new Exception();
-			}
-
-		} catch(Exception e) {
-
-			map.put("result", "false");
-
-			return map;
-		}
+	            } else { // 인증실패
+	               System.out.println("보호소 회원 로그인 오류");
+	               throw new Exception();
+	            }
+	         }else {
+	            System.out.println("권한 값 오류");
+	            throw new Exception();
+	         }
+	         
+	      } catch(Exception e) {
+	         
+	         map.put("result", "false");
+	         
+	         return map;
+	      }
 	}
 
 
@@ -297,6 +374,7 @@ public class MemberController {
 
 
 	//===================================== 회원 상세 정보 =================================//
+
 
 	@RequestMapping("/member/memberDetail.do")
 	public String process(HttpSession session, Model model) {	//로그인이 되어있으면 session에서 아이디를 가져옴

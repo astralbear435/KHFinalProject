@@ -27,12 +27,12 @@ public class AdminLoginCheckInterceptor extends
 		if(session.getAttribute("user_id")==null) {
 			//로그인이 되지 않은 상태
 			response.sendRedirect(
-					request.getContextPath()+"/admin/login.do");
+					request.getContextPath()+"/admin/notlogin.do");
 			return false;
 		}else {
-			if((Integer)session.getAttribute("user_auth")!=2) {
+			if((Integer)session.getAttribute("user_auth")!=-1) {
 				//관리자가 아니면
-				response.sendRedirect(request.getContextPath()+"/admin/login.do");
+				response.sendRedirect(request.getContextPath()+"/admin/noadmin.do");
 				session.invalidate();
 				return false;
 			}

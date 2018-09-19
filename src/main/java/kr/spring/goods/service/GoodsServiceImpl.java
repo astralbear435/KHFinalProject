@@ -130,10 +130,19 @@ public class GoodsServiceImpl implements GoodsService {
 		
 	}
 
-	@Override
 	public String comeonId(String dona_asname) {
 		// 보호소 아이디 가져오기
 		return goodsMapper.comeonId(dona_asname);
 	}
 
+	@Override
+	public int selectTotalPayment() {
+		// TODO Auto-generated method stub
+		return goodsMapper.selectTotalPayment();
+	}
+	@Override
+	public int selectTodayPayment() {
+		// TODO Auto-generated method stub
+		return goodsMapper.selectTodayPayment(); 
+	}
 }

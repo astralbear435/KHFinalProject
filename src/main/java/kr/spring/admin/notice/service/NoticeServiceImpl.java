@@ -1,6 +1,7 @@
 package kr.spring.admin.notice.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -50,6 +51,11 @@ public class NoticeServiceImpl implements NoticeService {
 	public Integer selectCountList() {
 		// TODO Auto-generated method stub
 		return notice.selectCountList();
+	}
+
+	@Override
+	public List<NoticeCommend> selectNoticeList2(Map<String, Object> map) {
+		return notice.selectNoticeList2(map);
 	}
 
 }

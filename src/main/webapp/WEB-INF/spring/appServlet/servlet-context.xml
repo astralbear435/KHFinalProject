@@ -4,34 +4,27 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-	<context:component-scan
-		base-package="kr.spring.note.controller" />
-	<context:component-scan
-		base-package="kr.spring.shelter.controller" />
-	<context:component-scan
-		base-package="kr.spring.member.controller" />
-	<context:component-scan
-		base-package="kr.spring.admin.mainpage.controller" />
-	<context:component-scan
-		base-package="kr.spring.admin.notice.controller" />
-	<context:component-scan
-		base-package="kr.spring.visitor.controller" />
-	<context:component-scan 
-		base-package="kr.spring.goods.controller" />
-	<context:component-scan
-		base-package="kr.spring.recruit.controller" />
-	<context:component-scan
-		base-package="kr.spring.volunteer.controller" />
-	<context:component-scan
-		base-package="kr.spring.mypage.controller" />
-	<context:component-scan
-		base-package="kr.spring.mypage.controller" />
-	<context:component-scan base-package="kr.spring.review.controller" />
-	
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">	
+	<context:component-scan	base-package="kr.spring.note.controller" />
+	<context:component-scan	base-package="kr.spring.shelter.controller" />
+	<context:component-scan	base-package="kr.spring.member.controller" />
+	<context:component-scan	base-package="kr.spring.admin.mainpage.controller" />
+	<context:component-scan	base-package="kr.spring.admin.notice.controller" />
+	<context:component-scan	base-package="kr.spring.visitor.controller" />
+	<context:component-scan	base-package="kr.spring.goods.controller" />
+	<context:component-scan	base-package="kr.spring.recruit.controller" />
+	<context:component-scan	base-package="kr.spring.volunteer.controller" />
+	<context:component-scan	base-package="kr.spring.mypage.controller" />
+	<context:component-scan base-package="kr.spring.ap.controller" />
+	<context:component-scan base-package="kr.spring.admin.controller"/>
+	<context:component-scan base-package="kr.spring.admin.mainmenu.controller"/>
+	<context:component-scan base-package="kr.spring.board.controller"/>
+
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -61,6 +54,7 @@
 				<beans:value>/WEB-INF/tiles-def/admin.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/member.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/good.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/dog_board.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/recruit.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/volunteer.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/mypage.xml</beans:value>
@@ -111,41 +105,31 @@
 
 	<!-- 데이터 작업 없이 View 호출 - 메인페이지 -->
 	<view-controller path="/main/main.do" view-name="main" />
-	<view-controller path="/main/about.do"
-		view-name="about" />
-	<view-controller path="/member/deleteConfirm.do"
-		view-name="deleteConfirm" />
-	<view-controller path="/member/successSendPw.do"
-		view-name="successSendPw" />
-	<view-controller path="/main/gallery.do"
-		view-name="gallery" />
-	<view-controller path="/main/icons.do"
-		view-name="icons" />
-	<view-controller path="/main/codes2.do"
-		view-name="codes2" />
+	<view-controller path="/main/about.do" view-name="about" />
+	<view-controller path="/member/deleteConfirm.do" view-name="deleteConfirm" />
+	<view-controller path="/member/successSendPw.do" view-name="successSendPw" />
+	<view-controller path="/main/gallery.do" view-name="gallery" />
+	<view-controller path="/main/icons.do" view-name="icons" />
+	<view-controller path="/main/codes2.do"	view-name="codes2" />
 	<view-controller path="/main/blog.do" view-name="blog" />
-	<view-controller path="/main/contact.do"
-		view-name="contact" />
-	<view-controller path="/main/single.do"
-		view-name="single" />
-	<view-controller path="/member/provision.do"
-		view-name="provision" />
-	<view-controller path="/member/login.do"
-		view-name="memberLogin" />
-	<view-controller path="/shelter/shelterWrite.do"
-		view-name="shelterWrite" />
-	<view-controller path="/shelter/shelterList.do"
-		view-name="shelterList" />
-	<view-controller path="/admin/main.do"
-		view-name="admin" />
-	<view-controller path="/recruit/recruitWrite.do"
-		view-name="recruitWrite" />
+	<view-controller path="/main/contact.do" view-name="contact" />
+	<view-controller path="/main/single.do"	view-name="single" />
+	<view-controller path="/member/provision.do" view-name="provision" />
+	<view-controller path="/member/login.do" view-name="memberLogin" />
+	<view-controller path="/shelter/shelterWrite.do" view-name="shelterWrite" />
+	<view-controller path="/shelter/shelterList.do" view-name="shelterList" />
+	<view-controller path="/admin/notlogin.do" view-name="notlogin" />
+	<view-controller path="/admin/noadmin.do" view-name="noadmin" />
+	<view-controller path="/admin/logout.do" view-name="logout" />
+	<view-controller path="/recruit/recruitWrite.do" view-name="recruitWrite" />
 	<view-controller path="/ap/apCallList.do" view-name="apCallList"/>
 	<view-controller path="/ap/apMain.do" view-name="apMain"/>
 	<view-controller path="/ap/apForm.do" view-name="apForm"/>
 	<view-controller path="/ap/apForm1.do" view-name="apForm1"/>
 	<view-controller path="/ap/apModify.do" view-name="apModify"/>
 	<view-controller path="/ap/apList.do" view-name="apList"/>
+	<view-controller path="/admin/List.do" view-name="List"/>
+	
 	<!-- 로그인 여부 체크 -->
 	<interceptors>
 		<interceptor>
@@ -164,6 +148,8 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/admin/main.do" />
+			<mapping path="/admin/notice/**" />
+			<mapping path="/admin/mainmenu/**"/>
 			<beans:bean
 				class="kr.spring.interceptor.AdminLoginCheckInterceptor" />
 		</interceptor>
@@ -174,6 +160,16 @@
 	<beans:bean id="uploadPath" class="java.lang.String">
 		<!-- 파일업로드 디렉토리 -->
 		<beans:constructor-arg
-			value="D:\\javaWork\\workspace_spring\\KHFinalProject\\src\\main\\webapp\\upload" />
+			value="D:\javaWork\workspace_spring\KHFinalProject\src\main\webapp\upload\" />
 	</beans:bean>
+	
+	<websocket:handlers>
+		<websocket:mapping handler="chatHandler" path="/chat-ws.do"/>
+		<websocket:handshake-interceptors>
+			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+			<!-- <beans:bean class="kr.spring.websocket.ws.ChatHandshake"/> -->
+		</websocket:handshake-interceptors>
+	</websocket:handlers>
+	<beans:bean id="chatHandler" class="kr.spring.websocket.ws.ChatWebSocketHandler"/>
+	
 </beans:beans>

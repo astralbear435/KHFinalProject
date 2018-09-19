@@ -11,7 +11,7 @@ $(document).ready(function() {
 		$.ajax({
 			url:'../member/memberLogin.do',
 			type:'post',
-			data:{m_id:$('#m_id').val(),m_passwd:$('#m_passwd').val()},
+			data:{m_id:$('#l_id').val(),m_passwd:$('#l_passwd').val()},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
@@ -19,6 +19,8 @@ $(document).ready(function() {
 				
 				if(data.result == 'success') {	//로그인 성공
 					
+					alert('환영합니다!');
+
 					$('#loginModal').hide();
 					location.href='../main/main.do';
 				

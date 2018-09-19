@@ -1,6 +1,7 @@
 package kr.spring.admin.notice.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -11,6 +12,10 @@ import kr.spring.admin.notice.domin.NoticeCommend;
 public interface NoticeMapper {
 	@Select("SELECT * FROM admin_notice order by n_idx desc")
 	public List<NoticeCommend> selectNoticeList();
+	
+	@Select("SELECT * FROM admin_notice order by n_idx desc")
+	public List<NoticeCommend> selectNoticeList2(Map<String,Object> map);
+	
 	@Select("SELECT * FROM admin_notice WHERE n_idx")
 	public NoticeCommend selectNotice(Integer n_inx);
 	@Select("SELECT COUNT(*) FROM admin_notice")

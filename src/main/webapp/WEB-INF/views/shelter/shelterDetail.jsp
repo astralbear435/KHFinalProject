@@ -129,8 +129,8 @@
 								여러분의 도움을<br>
 								필요로 하고 있습니다.<br>
 							</div><br>
-							<input type="button" value="보러가기 >" class="btn btn-warning"
-									onclick="location.href='#'">
+							<input type="button" value="보러가기 >" onclick="location.href='${pageContext.request.contextPath}/dog_board/list.do?keyfield=id&keyword=${shelter.s_id}'">
+
 						</div>
 					</div>
 					<div  class="link2blank" style="width: 145px;"></div>

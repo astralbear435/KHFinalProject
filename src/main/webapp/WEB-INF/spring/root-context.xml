@@ -79,7 +79,9 @@
 		                   		  kr.spring.note.domain,
 		                   		  kr.spring.shelter.domain,
 		                   		  kr.spring.goods.domain,
-		                   		  kr.spring.recruit.domain,              
+		                   		  kr.spring.board.domain,
+		                   		  kr.spring.admin.mainmenu.domain,              
+		                   		  kr.spring.recruit.domain,                        
 		                   		  kr.spring.ap.domain,
 		                   		  kr.spring.review.domain"/>               
 	</bean>
@@ -93,11 +95,13 @@
 		              		 kr.spring.note.dao,
 		              		 kr.spring.shelter.dao,
 		              		 kr.spring.goods.dao,
+		              		 kr.spring.board.dao,
+		              		 kr.spring.ap.dao,
 		              		 kr.spring.recruit.dao,
-		            		kr.spring.volunteer.dao,
-		            		kr.spring.mypage.dao,
-		              		kr.spring.ap.dao, kr.spring.review.dao" />
-
+		            		 kr.spring.volunteer.dao,
+		            		 kr.spring.mypage.dao,
+		            		 kr.spring.admin.mainmenu.dao,
+		            		 kr.spring.review.dao" />
 	</bean>
 	
 	<!-- 암호화,복호화 알고리즘 처리 -->
@@ -136,6 +140,5 @@
 		<property name="scope" value="https://www.googleapis.com/auth/plus.login" />
 		<property name="redirectUri" value="http://localhost:8080/ProjectCAN/oauth2callback" />
 	</bean> -->
-
 
 </beans>

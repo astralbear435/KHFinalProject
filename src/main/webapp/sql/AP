@@ -60,5 +60,9 @@ create table AP_BO_CALL(
 	constraint AP_BO_CALL_pk primary key (bo_call_num)
 );
 create sequence ap_bo_call_seq;
-	
+
+create table ap_book(
+	ap_book_num number not null,
+	ap_book_id number not null
+);
 	

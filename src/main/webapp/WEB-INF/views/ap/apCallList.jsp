@@ -40,12 +40,11 @@
 	<c:forEach var="article" items="${list}">
 		<div class="card border-primary col-md-12" style="margin:10px 0 10px 0;">
 			<div class="card-header">
-				<p class="card-text">
-					${article.call_num}
-				</p>
-				신청기간 : ${article.call_start} ~ ${article.call_end}</div>
+				${article.call_num}
+				신청기간 : ${article.call_start} ~ ${article.call_end}
+			</div>
 			<div class="card-body">
-				<h4 class="card-title">작성자 : ${article.call_name}</h4>
+				<h4 class="card-title">${article.call_name}</h4>
 				<p class="card-text">
 					<c:if test="${article.call_wei == 1}"> 15kg 미만</c:if>
 					<c:if test="${article.call_wei == 2}"> 15kg 이상</c:if>

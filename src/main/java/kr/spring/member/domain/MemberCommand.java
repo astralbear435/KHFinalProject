@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class MemberCommand {
 	
 	private int auth;
-	
+
 	private int m_num;
 	@NotEmpty
 	private String m_id;
@@ -40,7 +40,7 @@ public class MemberCommand {
 	//비밀번호 일치 여부 체크
 	public boolean isCheckedPasswd(String userPasswd) {
 
-		if(auth > 0 && m_passwd.equals(userPasswd)) {
+		if(auth != 0 && m_passwd.equals(userPasswd)) {
 			
 			return true;
 		}
