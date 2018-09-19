@@ -65,7 +65,10 @@ public interface GoodsMapper {
 	public void updateAs(GoodsCommand goods);
 	//결제시 해당 컬럼 수량 빼기
 	public void minusCount(Map<String,Object> map2);
-
+	
+	//보호소 아이디 가져오기
+	@Select("SELECT s_id FROM shelter_detail WHERE s_name=#{dona_asname}")
+	public String comeonId(String dona_asname);
 	//누적 총 결제 금액
 	@Select("SELECT sum(DONA_PRICE) FROM DONATION")
 	public int selectTotalPayment();
