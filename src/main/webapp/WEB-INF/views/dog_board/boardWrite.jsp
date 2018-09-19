@@ -7,7 +7,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('#an_content').summernote({
-    	height:500,
+    	height:800,
     	fontNames : [ '맑은고딕', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', ],
 		fontNamesIgnoreCheck : [ '맑은고딕' ],
 		focus: true,

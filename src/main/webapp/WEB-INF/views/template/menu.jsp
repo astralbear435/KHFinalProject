@@ -18,13 +18,13 @@
 			</p>
 			<div style="text-align: center;"><hr color="black">
 				
-					<label for="m_id">아이디</label>
+					<label for="l_id">아이디</label>
 					<br>
-					<input type="text" name="m_id" id="m_id" class="form-control" style="max-width: 280px;" placeholder="아이디 입력" />
+					<input type="text" name="m_id" id="l_id" class="form-control" style="max-width: 280px;" placeholder="아이디 입력" />
 					<br><br>					
-					<label for="m_passwd">비밀번호</label>
+					<label for="l_passwd">비밀번호</label>
 					<br>
-					<input type="password" name="m_passwd" id="m_passwd" class="form-control" style="max-width: 280px;" placeholder="비밀번호 입력" />
+					<input type="password" name="m_passwd" id="l_passwd" class="form-control" style="max-width: 280px;" placeholder="비밀번호 입력" />
 					<br>
 					<div id="errorLogin"></div>
 					<br><br>
@@ -80,6 +80,7 @@
 				</c:if>
 				<li><a href="${pageContext.request.contextPath}/goods/list.do">후원하기</a></li>
 				<li> <a href="${pageContext.request.contextPath}/review/reviewList.do">Review</a></li>
+
 			  </ul>
 			</div>
 		<!-- menu -->

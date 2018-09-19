@@ -63,7 +63,7 @@ img.show{
 	<a href="detail.do?num=${board.num}"><img src="imageView.do?num=${board.num}" width=500, height=500 onerror="this.src='../resources/images/not_image.png'">
 	</a>
 	<ul style="font-size:20px; padding-top:8%;">
-		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;보호소 :${s_name}</li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;보호소 :${s_name}</li>
 		<br>
 		<li>&nbsp;&nbsp;
 			&nbsp;&nbsp;
@@ -104,7 +104,7 @@ img.show{
 	<br><br>
 			<img src="${pageContext.request.contextPath}\resources\images\sy\보호소 줄 그림.png">
 	</div>
-	<br><br><br><br><br>
+	<br><br>
 	<p>
 		${board.an_content}
 	</p>

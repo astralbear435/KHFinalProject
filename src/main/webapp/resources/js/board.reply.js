@@ -33,25 +33,26 @@ $(document).ready(function(){
 				}else {
 					$(list).each(function(index,item){
 						var wid=0;
-						var output = '<div class="item">';
+						var output = '';
 						
 						if(item.depth > 0){
-							wid = 50*item.depth;
-							output += '<img src="../resources/images/level.gif" width="'+wid+'" height="16"><img src="../resources/images/re.gif"> '
+							wid = 30*item.depth;
+							output += '<div class="item" style="margin-left:'+wid+'px">';
+							output += '<img src="../resources/images/re.gif"> '
 							
 						}else if(item.depth <= 0){
-							output += '<img src="../resources/images/level.gif" width="'+wid+'" height="16">';
+							output += '<div class="item">';
 						}
 						output += item.id+'<br>';
 						output += ' <font size="0.3">'+item.re_date+'</font>';
 						output += ' <div class="sub-item">';
 						output += '   <p>' + item.re_content + '</p>';
 						if($('#user_id').val() != null){
-							output += '  <input type="button" data-num="'+$('#num').val()+'" data-ptnum="'+item.re_num+'" data-id="'+$('#user_id').val()+'" data-depth="'+item.depth+'" value="댓글" class="reply-btn">';
+							output += '  <input type="button" data-num="'+$('#num').val()+'" data-ptnum="'+item.re_num+'" data-id="'+$('#user_id').val()+'" data-depth="'+item.depth+'" value="댓글" class="reply-btn btn btn-success">';
 						if($('#user_id').val() == item.id){
 							//로그인 한 id가 댓글 작성자 id와 같을 경운
-							output += '  <input type="button" data-num="'+item.re_num+'" data-id="'+item.id+'" value="수정" class="modify-btn">';
-							output += '  <input type="button" data-num="'+item.re_num+'" data-id="'+item.id+'" value="지우기" class="delete-btn">';
+							output += '  <input type="button" data-num="'+item.re_num+'" data-id="'+item.id+'" value="수정" class="modify-btn btn btn-danger">';
+							output += '  <input type="button" data-num="'+item.re_num+'" data-id="'+item.id+'" value="지우기" class="delete-btn btn btn-danger">';
 							}
 						}
 						output += '   <hr width="100%" class="hr-line" noshade>';
