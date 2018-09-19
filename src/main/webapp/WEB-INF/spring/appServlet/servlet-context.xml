@@ -141,11 +141,15 @@
 	<view-controller path="/ap/apModify.do" view-name="apModify"/>
 	<view-controller path="/ap/apList.do" view-name="apList"/>
 	<view-controller path="/admin/List.do" view-name="List"/>
+	<view-controller path="/admin/dedtail.do" view-name="dedtail"/>
+	<view-controller path="/admin/faq.do" view-name="faq"/>
 	
 	<!-- 로그인 여부 체크 -->
 	<interceptors>
 		<interceptor>
 			<mapping path="/ap/apCallList.do" />
+			<mapping path="/ap/apList.do" />
+			<mapping path="/ap/apForm.do" />
 			<mapping path="/shelter/shelterInfo.do" />
 			<mapping path="/note/receivedList.do" />
 			<mapping path="/board/sendList.do" />

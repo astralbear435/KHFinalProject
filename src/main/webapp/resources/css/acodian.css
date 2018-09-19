@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+ a {
+   text-decoration: none;
+ }
+ 
+ .group,
+ .box {
+   margin: 0 auto;
+ }
+ 
+ .box .title {
+   display: block;
+ }
+ 
+ .box .title a {
+   display: block;
+   padding: 10px;
+   border-bottom: 1px solid black;
+ }
+ 
+ .box .cont {
+   padding: 10px;
+   border-bottom: 1px solid black;
+ }

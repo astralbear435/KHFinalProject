@@ -3,7 +3,7 @@ package kr.spring.note.domain;
 public class BlockCommand {
 	private String block; // 차단한 사람
 	private String be_blocked; // 차단 당한 사람
-	
+	 
 	public String getBlock() {
 		return block;
 	}

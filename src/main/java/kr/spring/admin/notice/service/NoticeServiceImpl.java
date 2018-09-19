@@ -55,7 +55,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public List<NoticeCommend> selectNoticeList2(Map<String, Object> map) {
-		return notice.selectNoticeList2(map);
+		return notice.selectNoticeList2(map); 
 	}
 
 }

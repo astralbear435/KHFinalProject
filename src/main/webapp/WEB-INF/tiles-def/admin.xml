@@ -36,6 +36,16 @@
 		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/List.jsp"/>
 	</definition>
+	<definition name="detail" extends="main">
+		<put-attribute name="title" value="공지사항 상세보기"/>
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/detail.jsp"/>
+	</definition>
+	<definition name="faq" extends="main">
+		<put-attribute name="title" value="FAQ"/>
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/faq.jsp"/>
+	</definition>
 </tiles-definitions>
 
 
