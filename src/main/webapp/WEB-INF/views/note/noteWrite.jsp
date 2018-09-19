@@ -15,7 +15,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sy.css">
 <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/seyeong/note.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -35,8 +34,12 @@
 			$('.letter-count').text(remain);
 		});
 		
+		var index = -1;
+		
+		// 쪽지 받을 사람 확인하기
 		$('#recipient').click(function(){
-			var index = -1;
+			index = -1;
+			$('#recipient').val('');
 			$('#result').text('');
 		});
 
@@ -45,6 +48,12 @@
 			var recipient = $('#recipient').val();
 			index = idArray.indexOf(recipient);
 			var searchResult = index > 0;
+			
+			if(recipient == 'admin'){ // 관리자에게 쪽지를 보낼 수 없음
+				alert('쪽지를 보낼 수 없는 아이디입니다. 다시 입력해주세요.');
+				$('#recipient').val('').focus();
+				return;
+			}
 			
 			if(!searchResult){ // 가입한 아이디 중에 받을 사람 아이디가 없음
 				alert('없는 아이디입니다. 다시 입력해주세요.');
@@ -62,7 +71,19 @@
 				return;
 			}
 			
+			if($('#note_content').val().length < 10){
+				alert('10자 이상부터 쪽지 발송이 가능합니다.');
+				return;
+			}
+			
 			$('#noteWriteForm').submit();
+		});
+		
+		// 엔터키 이벤트 막기
+		$('input[type="text"]').keydown(function() {
+		    if (event.keyCode == 13) {
+		        event.preventDefault();
+		    }
 		});
 	});
 </script>

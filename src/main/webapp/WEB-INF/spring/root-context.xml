@@ -83,7 +83,8 @@
 		                   		  kr.spring.goods.domain,
 		                   		  kr.spring.admin.mainmenu.domain,              
 		                   		  kr.spring.recruit.domain,              
-		                   		  kr.spring.ap.domain"/>               
+		                   		  kr.spring.ap.domain,
+		                   		  kr.spring.review.domain"/>               
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" 
@@ -98,9 +99,9 @@
 		              		 kr.spring.admin.mainmenu.dao,
 		              		 kr.spring.ap.dao,
 		              		 kr.spring.recruit.dao,
-		            		 kr.spring.volunteer.dao,
-		            		 kr.spring.mypage.dao" />
-
+		            		kr.spring.volunteer.dao,
+		            		kr.spring.mypage.dao,
+		              		kr.spring.ap.dao, kr.spring.review.dao" />
 	</bean>
 	
 	<!-- 암호화,복호화 알고리즘 처리 -->

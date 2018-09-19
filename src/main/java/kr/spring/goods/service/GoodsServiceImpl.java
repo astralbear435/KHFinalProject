@@ -139,7 +139,7 @@ public class GoodsServiceImpl implements GoodsService {
 	@Override
 	public int selectTodayPayment() {
 		// TODO Auto-generated method stub
-		return goodsMapper.selectTodayPayment(); 
+		return goodsMapper.selectTodayPayment();
 	}
 
 }

@@ -65,7 +65,10 @@ public class RecruitServiceImpl implements RecruitService{
 		return boardMapper.selectRecruitList(map);
 	}
 
-
+	@Override
+	public int recruitCount(String r_id) {
+		return boardMapper.recruitCount(r_id);
+	}
 	public ShelterCommand selectBoName(Integer r_num) {
 		
 		return boardMapper.selectBoName(r_num);
@@ -75,13 +78,5 @@ public class RecruitServiceImpl implements RecruitService{
 	public List<ShelterCommand> selectBoNameList(Map<String, Object> map) {
 		return boardMapper.selectBoNameList(map);
 	}
-
-	@Override
-	public int recruitCount(String r_id) {
-		// TODO Auto-generated method stub
-		return boardMapper.recruitCount(r_id);
-	}
-
-
 
 }

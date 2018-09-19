@@ -7,6 +7,7 @@
 	<!-- 모달창 열기 -->
 	<div id="loginModal" class="modalLogin">
 		<div class="modal-contentLogin">
+
 		<span style="font-size:10pt; text-align:right;">
 					<a href="#" id="closeMemberLogin">X</a>
 				</span>
@@ -69,7 +70,7 @@
 				
 				<c:if test="${!empty user_id}">
 					<c:if test="${user_auth==1 || user_auth==2 || user_auth==5}">
-						<li><a href="#">${user_id}님 로그인 중</a></li>
+						<li><a href="${pageContext.request.contextPath}/member/memberDetail.do">${user_id}님 로그인 중</a></li>
 						<li> <a href="${pageContext.request.contextPath}/mypage/mypage.do?v_id=${user_id}">마이페이지</a> </li>
 					</c:if>
 					<c:if test="${user_auth==3 || user_auth==4}">

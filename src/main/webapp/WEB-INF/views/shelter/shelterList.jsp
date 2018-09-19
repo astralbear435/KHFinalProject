@@ -8,7 +8,7 @@
 	<div class="container">
 		<div class="horizontal"></div><!-- 가로 여백 -->
 		<div style="width:100%; height:1000px; float:none;">
-			<div class="card border-primary col-md-12" style="clear: both; margin: 0 auto;">
+			<div class="card border-primary col-md-12 clearB margin0a">
 				<form action="shelterList.do" id="shelterSearchForm" method="post">
 					<div class="condition floatL">
 						<div class="search margin0a">
