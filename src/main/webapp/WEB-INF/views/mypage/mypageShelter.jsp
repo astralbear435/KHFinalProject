@@ -21,9 +21,10 @@
 <script>
 $(document).ready(function(){
 	  ajax(); 
-});
+	  ajax2();
 
-	function ajax() {
+ 
+ function ajax() {
 	var event = [];
 	$.ajax({
 	 type:'post',
@@ -47,8 +48,7 @@ $(document).ready(function(){
 		 	 			console.log(event[i].title,event[i].start);
 		 			}
 				} 
-			
-		 	
+					 	
 			//캘린더
 			  $('#calendar').fullCalendar({ 
 					header: {
@@ -70,18 +70,87 @@ $(document).ready(function(){
 					 	var sub_title = title.split(',');
 					 	//수정해야함
 						window.open("${pageContext.request.contextPath}/volunteer/volunteerDetail.do?v_num="+sub_title[1],"volunteer","width=400, height=300, left=100, top=50");
-
-						    }
-						  	  				
+						    }						  	  				
 					});
-	 },
-	 
+	 },	 
 	 error:function(){
 		 alert('네트워크 오류 발생');
-	 }
+	 }	 
 	});
-} 
+ }
+ 
+ function ajax2(){
+	 var dona_asname = $('#sname').text();
+	  $.ajax({
+		 type:'post',
+		 data:{s_id:'${user_id}', dona_asname:dona_asname},//보호소이름 출력
+		 url:'${pageContext.request.contextPath}/mypage/donaShelterPage.do',
+		 dataType:'json',
+		 cache:false,
+		 timeout:30000,
+		 success:function(data){
+			 var list = data.list;
+			 	
+			 	console.log(list);
+			 	
+					 $(list).each(function(index,donaS){
+						 		var output = '<tr class="table-info">'; 
+								output += ' <th scope="row">' + donaS.dona_num + '</th>';
+								output += ' <th>' + donaS.dona_username+ donaS.dona_id + '</th>';
+								output += ' <th>' + donaS.dona_date + '</th>';
+								
+								var dona_asnames = donaS.dona_asname.split(',');
+								var dona_num;
+								for(var i=0;i<dona_asnames.length;i++){
+									if(dona_asname == dona_asnames[i]){
+										dona_num = i;
+										console.log('dona_num : ' + i);
+									}
+								}								
+								var goodsnums = donaS.dona_goodsnum.split(',');
+								
+								var g_name,g_price;
+								$.ajax({
+									 type:'post',
+									 data:{g_num:goodsnums[dona_num]},
+									 url:'${pageContext.request.contextPath}/mypage/getProductNameNPrice.do',
+									 dataType:'json',
+									 cache:false,
+									 async:false,
+									 timeout:30000,
+									 success:function(data){
+										 g_name = data.goods.g_name;
+										 g_price = data.goods.g_price;
+									 },
+									 error:function(){
+										 alert('네트워크 오류 발생');
+									 }
+								 });
 
+								output += ' <th>' + goodsnums[dona_num] + '</th>';
+								
+								output += ' <th>' + g_name + '</th>';
+								
+								var goodsamounts = donaS.dona_goodsamount.split(',');
+								
+								output += ' <th>' + goodsamounts[dona_num] + '</th>';
+								output += ' <th>' + donaS.dona_message + '</th>';
+								output += ' <th>' + g_price + '</th>';
+								output += ' </tr>';	
+						 
+								//문서 객체에 추가
+								$('#output').append(output);
+							 });
+		 },
+		 error:function(data){
+			 alert('네트워크 오류 발생');
+		 }
+	  });
+	  
+}
+}); 
+	
+	
 
 </script>
 
@@ -108,48 +177,48 @@ body {
 
 <div class="container">
 
+
 	
-		<h2 class="hdg">${user_id}'s  MYPAGE</h2>
-
+		<h2 class="hdg"><span id="sname">${shelter.s_name}</span> MYPAGE</h2>
+<div style="text-align:right;">
+<input type="button" class="btn btn-outline-primary" onclick="location.href='${pageContext.request.contextPath}/shelter/shelterDetail.do?id=${user_id}'" value="${shelter.s_name} 페이지 바로 가기">
+	<input type="button" class="btn btn-outline-primary" onclick="location.href='${pageContext.request.contextPath}/member/detail.do?${user_id}'" value="${user_id}님 로그인">
+</div>
 	<hr class="my-4">
-
+	
 	<div id='calendar'></div>
-<div>
-후원내역
+	
+<div style="height:35px;"></div>
+	
 <div class="col-md-12">
-<table>
-<tr>
-<td scope="col">후원번호</td>
-<td scope="col">후원자</td>
-<td scope="col">후원내액</td>
-<td scope="col">후원금액</td>
-</tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-
-</table>
-</div>
-
-우리 보호소를 후원해주신 분들의 후원메시지입니다.
-<p></p>
-<table>
-<tr>
-<td>ID</td>
-<td>message</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-
-</table>
+<h3 class="hdg">후원받은 목록</h3>
+							<table class="table table-hover">
+							  <thead>
+							    <tr>
+							      <th scope="col">후원자 번호</th>
+							      <th scope="col">후원자 닉네임</th>
+							      <th scope="col">후원 날짜</th>							     
+							      <th scope="col">후원 상품번호</th>
+							      <th scope="col">후원 상품명</th>
+							      <th scope="col">후원 상품 수량</th>
+							       <th scope="col">후원 메시지</th>
+							      <th scope="col">후원 금액</th>							      
+							    </tr>
+							  </thead>
+							  <tbody id="output">
+														 
+							  </tbody>
+							</table> 
+						</div>		
+						
+						
 </div>
 
 
 
-</div>
+
+
+
 
 
 

@@ -5,35 +5,32 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.spring.ap.domain.ApBoCommand;
-import kr.spring.ap.domain.ApCallCommand;
-import kr.spring.ap.domain.ApCommand;
-import kr.spring.ap.service.ApBoService;
-import kr.spring.ap.service.ApCallService;
-import kr.spring.ap.service.ApService;
+import kr.spring.goods.domain.CartListCommand;
+import kr.spring.goods.domain.GoodsListCommand;
+import kr.spring.goods.domain.OrderCommand;
 import kr.spring.mypage.service.MypageService;
 import kr.spring.recriut.service.RecruitService;
 import kr.spring.recruit.domain.RecruitCommand;
+import kr.spring.shelter.domain.ShelterCommand;
+import kr.spring.shelter.service.ShelterService;
 import kr.spring.volunteer.service.VolunteerService;
 
 @Controller
 public class MypageAjaxController {
 	private Logger log = Logger.getLogger(this.getClass());
 
+	@Resource
+	private ShelterService shelterService;
+	
 	@Resource
 	private VolunteerService volunteerService;
 	
@@ -42,6 +39,8 @@ public class MypageAjaxController {
 	
 	@Resource
 	private RecruitService recruitService;
+	
+	
 	
 
 	@RequestMapping(value="/mypage/volunteerMyCalendar.do")
@@ -53,11 +52,11 @@ public class MypageAjaxController {
 		}
 		
 		String id = (String)session.getAttribute("user_id");	
-		ApBoCommand boCall = new ApBoCommand();
-		boCall.setBo_id(id);
-		String bo_id = boCall.getBo_id();
-		boCall.setId(id);
-		String boho_id = boCall.getId();
+		ApBoCommand bo = new ApBoCommand();
+		bo.setBo_id(id);
+		String bo_id = bo.getBo_id();
+		bo.setId(id);
+		String boho_id = bo.getId();
 		
 		
 		Map<String, Object> map = new HashMap<String,Object>();
@@ -66,11 +65,11 @@ public class MypageAjaxController {
 		map.put("boho_id", boho_id);
 		
 		List<RecruitCommand> volunteer = null;
-		List<ApBoCommand> boCallList = null;
+		List<ApBoCommand> boList = null;
 		List<ApBoCommand> bohoCallList = null;
 		
 		volunteer = volunteerService.selectList(map);
-		boCallList = mypageService.selectBoCallList(bo_id);
+		boList = mypageService.selectBoList(bo_id);
 		bohoCallList = mypageService.selectBohoCallList(boho_id);
 		
 		if(log.isDebugEnabled()) {
@@ -78,7 +77,7 @@ public class MypageAjaxController {
 		}
 		
 		if(log.isDebugEnabled()) {
-			log.debug("<<boCallList>> : " + boCallList);
+			log.debug("<<boList>> : " + boList);
 		}		
 		if(log.isDebugEnabled()) {
 			log.debug("<<bohoCallList>> : " + bohoCallList);
@@ -88,7 +87,7 @@ public class MypageAjaxController {
 		Map<String,Object> mapJson = new HashMap<String,Object>();
 		
 		mapJson.put("volunteer", volunteer);	
-		mapJson.put("boCallList", boCallList);
+		mapJson.put("boList", boList);
 		mapJson.put("bohoCallList", bohoCallList);
 		return  mapJson;
 	}
@@ -141,20 +140,120 @@ public class MypageAjaxController {
 		mapJson.put("recruit", recruit);	
 		return  mapJson;
 	}	
+
+	
 	
 	/*public Map<String,Object> getDonationList*/
 	
-	@RequestMapping(value="/mypage/donaShelterPage.do")
+/*	@RequestMapping(value="/mypage/donaShelterPage.do")
 	@ResponseBody
-	public  Map<String,Object> getDonaShelterList(@RequestParam("r_id") String r_id, HttpSession session){
-		
+	public  Map<String,Object> getDonaShelterList(HttpSession session){
+				
 		Map<String, Object> map = new HashMap<String,Object>();
-		map.put("r_id", r_id);
 		
+		String s_id = (String)session.getAttribute("user_id");	
+		map.put("s_id", s_id);
+		
+		ShelterCommand shelter = shelterService.selectShelter(s_id);
+		String s_name = shelter.getS_name();
+				
+		OrderCommand donaOrder = new OrderCommand();
+		
+		
+		int countDonaS = mypageService.selectDonaSCount(s_name, s_id);
+		
+		if(countDonaS > 0) {
+			
+		}
 		
 		
 		return null;
 		
 	}
+	*/
+	//후원 내역 출력
+	@RequestMapping(value="/mypage/donaShelterPage.do")
+	@ResponseBody
+	public Map<String,Object> getDonaShelterList(@RequestParam("dona_asname") String dona_asname, HttpSession session){
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<dona_asname>> : " + dona_asname);
+		}
+			
+		Map<String,Object> map = new HashMap<String,Object>();
+		
+		String s_id = (String)session.getAttribute("user_id");
 	
+			map.put("s_id", s_id);
+			map.put("dona_asname", dona_asname);
+			
+			List<OrderCommand> donaS = null;			
+			donaS =	mypageService.selectDonaSList(map);	
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<donaS>> : " + donaS);
+			}
+				
+			Map<String,Object> mapJson = new HashMap<String,Object>();
+
+			mapJson.put("list", donaS);	
+			return  mapJson;
+	}
+	
+	@RequestMapping("/mypage/getProductNameNPrice.do")
+	@ResponseBody
+	public Map<String,Object> getProductNameNPrice(@RequestParam("g_num") int g_num){
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<g_num>> : " + g_num);
+		}
+					
+		GoodsListCommand goods =	mypageService.getMyGoods(g_num);	
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<goods>> : " + goods);
+			}
+				
+			Map<String,Object> mapJson = new HashMap<String,Object>();
+
+			mapJson.put("goods", goods);	
+			return  mapJson;
+	}	
+		
+	//마이페이지 후원 내역 출력
+	@RequestMapping(value="/mypage/donaMyPage.do")
+	@ResponseBody
+	public Map<String,Object> getDonaMyList(HttpSession session){
+				
+		Map<String,Object> map = new HashMap<String,Object>();
+		
+		String dona_id = (String)session.getAttribute("user_id");
+	
+			map.put("dona_id", dona_id);
+							
+			List<OrderCommand> donaList = null;
+			donaList =	mypageService.selectDanaList(dona_id);	
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<donaList>> : " + donaList );
+			}
+		
+			Map<String,Object> mapJson = new HashMap<String,Object>();
+			
+			mapJson.put("list", donaList);	
+			
+		/*	GoodsListCommand goods = new GoodsListCommand();	
+			for(int i=1;i<6;i++) {
+				goods = mypageService.getMyGoods(i);
+				String g_name = goods.getG_name();
+				Integer g_price = goods.getG_price();
+				Integer g_num= goods.getG_num();
+				mapJson.put("g_name["+i+"]", g_name);
+				mapJson.put("g_price["+i+"]", g_price);
+				mapJson.put("g_num["+i+"]", g_num);			
+			}*/
+			return  mapJson;
+	}
 }
+	
+

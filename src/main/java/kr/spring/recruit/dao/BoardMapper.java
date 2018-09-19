@@ -12,7 +12,7 @@ import kr.spring.recruit.domain.RecruitCommand;
 import kr.spring.shelter.domain.ShelterCommand;
 
 public interface BoardMapper {
-	//����Ȱ�� ���� �Խ��� ��Ϻ���
+	//占쏙옙占쏙옙활占쏙옙 占쏙옙占쏙옙 占쌉쏙옙占쏙옙 占쏙옙瞿占쏙옙占�
 	
 	public List<RecruitCommand> selectList(Map<String,Object> map);
 	
@@ -22,12 +22,12 @@ public interface BoardMapper {
 
 	public List<ShelterCommand> selectBoNameList(Map<String, Object> map);
 	
-	//���� �� �ۼ�
+	//占쏙옙占쏙옙 占쏙옙 占쌜쇽옙
 	@Insert("INSERT INTO recruit (r_num,r_id,r_image,r_title,r_start_date,r_end_date,r_people,r_people_count,r_filename,r_content,r_status) "
 	+ "VALUES (recruit_seq.nextval,#{r_id},#{r_image},#{r_title},#{r_start_date},#{r_end_date},#{r_people},#{r_people_count},#{r_filename},#{r_content},#{r_status})")
 	public void insert(RecruitCommand recruit);
 	
-	//���� �� �� ����
+	//占쏙옙占쏙옙 占쏙옙 占쏙옙 占쏙옙占쏙옙
 	@Select("SELECT * FROM recruit WHERE r_num=#{r_num}")
 	public RecruitCommand selectBoard(Integer r_num);
 	
@@ -39,11 +39,11 @@ public interface BoardMapper {
 	
 	public void updateHit(Integer r_num);
 	
-	//���� �� ����
+	//占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙
 	@Update("UPDATE recruit SET r_image=#{r_image},r_title=#{r_title},r_start_date=#{r_start_date},r_end_date=#{r_end_date},r_people=#{r_people},r_filename=#{r_filename},r_content=#{r_content},r_status=#{r_status} WHERE r_num = #{r_num}")
 	public void update(RecruitCommand recruit);
 	
-	//���� �� ����	
+	//占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙	
 	@Delete("DELETE recruit WHERE r_num=#{r_num}")
 	public void delete(Integer r_num);
 	

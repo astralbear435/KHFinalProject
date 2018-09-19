@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.mypage.dao.MypageMapper">
+<select id="selectDonaSList" parameterType="map" resultType="OrderCommand">
+	SELECT dona_num, dona_id, dona_asname, dona_date, dona_message, dona_price, dona_goodsnum, dona_goodsamount, dona_username, s_id  
+    FROM donation, shelter_detail        
+<where>
+dona_asname LIKE '%'||#{dona_asname}||'%'  AND s_id = #{s_id}
+</where>
+</select>
+</mapper> 

@@ -24,7 +24,7 @@ public interface VolunteerMapper {
 	public RecruitCommand selectBoard(Integer v_num);
 
 	@Update("UPDATE volunteer SET v_date=#{v_date}, v_status=#{v_status} WHERE v_num=#{v_num}")
-	public void update(RecruitCommand volunteer);
+	public void update(Map<String,Object> map);
 
 	@Delete("DELETE FROM volunteer WHERE v_num=#{v_num}")
 	public void delete(Integer v_num);

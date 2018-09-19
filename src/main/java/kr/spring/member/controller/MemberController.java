@@ -135,73 +135,73 @@ public class MemberController {
 		Map<String,String> map = new HashMap<String,String>();
 
 		try {
-
+	         
 			int auth = memberService.selectMemberAuth(m_id); // 권한 값을 구함
-			boolean check = false;
+	         boolean check = false;
+	         
+	         if(auth==1 || auth==2 || auth==5) {
+	            MemberCommand member = memberService.selectMember(m_id);
+	            log.info(member.getM_id());
+	            
+	            check = member.isCheckedPasswd(cipherAES.encrypt(m_passwd));
+	            log.info(member.getM_passwd());
+	            
+	            if(check) {   //인증성공, 로그인 처리
 
-			if(auth==1 || auth==2 || auth==5) {
-				MemberCommand member = memberService.selectMember(m_id);
-				log.info(member.getM_id());
+	               session.setAttribute("user_id", member.getM_id());
+	               session.setAttribute("user_auth", member.getAuth());
 
-				check = member.isCheckedPasswd(cipherAES.encrypt(m_passwd));
-				log.info(member.getM_passwd());
+	               if(log.isDebugEnabled()) {
+	                  log.debug("<<인증 성공>>");
+	                  log.debug("<<user_id>> : " + member.getM_id());
+	                  log.debug("<<user_auth>> : " + member.getAuth());
+	               }
+	               
+	               map.put("result", "success");
+	               
+	               return map;
 
-				if(check) {	//인증성공, 로그인 처리
+	            } else { // 인증실패
+	               System.out.println("일반 회원 로그인 오류");
+	               throw new Exception();
+	            }
+	         }else if(auth==3 || auth==4) {
+	            ShelterCommand shelter = shelterService.selectShelter(m_id);
+	            log.info(shelter.getS_id());
+	            
+	            check = shelter.isCheckedPasswd(cipherAES.encrypt(m_passwd));
+	            log.info(shelter.getS_passwd());
+	            
+	            if(check) {   //인증성공, 로그인 처리
 
-					session.setAttribute("user_id", member.getM_id());
-					session.setAttribute("user_auth", member.getAuth());
+	               session.setAttribute("user_id", shelter.getS_id());
+	               session.setAttribute("user_auth", shelter.getAuth());
 
-					if(log.isDebugEnabled()) {
-						log.debug("<<인증 성공>>");
-						log.debug("<<user_id>> : " + member.getM_id());
-						log.debug("<<user_auth>> : " + member.getAuth());
-					}
+	               if(log.isDebugEnabled()) {
+	                  log.debug("<<인증 성공>>");
+	                  log.debug("<<user_id>> : " + shelter.getS_id());
+	                  log.debug("<<user_auth>> : " + shelter.getAuth());
+	               }
+	               
+	               map.put("result", "success");
+	               
+	               return map;
 
-					map.put("result", "success");
-
-					return map;
-
-				} else { // 인증실패
-					System.out.println("일반 회원 로그인 오류");
-					throw new Exception();
-				}
-			}else if(auth==3 || auth==4) {
-				ShelterCommand shelter = shelterService.selectShelter(m_id);
-				log.info(shelter.getS_id());
-
-				check = shelter.isCheckedPasswd(cipherAES.encrypt(m_passwd));
-				log.info(shelter.getS_passwd());
-
-				if(check) {	//인증성공, 로그인 처리
-
-					session.setAttribute("user_id", shelter.getS_id());
-					session.setAttribute("user_auth", shelter.getAuth());
-
-					if(log.isDebugEnabled()) {
-						log.debug("<<인증 성공>>");
-						log.debug("<<user_id>> : " + shelter.getS_id());
-						log.debug("<<user_auth>> : " + shelter.getAuth());
-					}
-
-					map.put("result", "success");
-
-					return map;
-
-				} else { // 인증실패
-					System.out.println("보호소 회원 로그인 오류");
-					throw new Exception();
-				}
-			}else {
-				System.out.println("권한 값 오류");
-				throw new Exception();
-			}
-
-		} catch(Exception e) {
-
-			map.put("result", "false");
-
-			return map;
-		}
+	            } else { // 인증실패
+	               System.out.println("보호소 회원 로그인 오류");
+	               throw new Exception();
+	            }
+	         }else {
+	            System.out.println("권한 값 오류");
+	            throw new Exception();
+	         }
+	         
+	      } catch(Exception e) {
+	         
+	         map.put("result", "false");
+	         
+	         return map;
+	      }
 	}
 
 

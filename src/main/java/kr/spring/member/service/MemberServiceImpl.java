@@ -194,4 +194,7 @@ public class MemberServiceImpl implements MemberService {
 	public int selectMemberAuth(String m_id) {
 		return memberMapper.selectMemberAuth(m_id);
 	}
+
+	
+
 }

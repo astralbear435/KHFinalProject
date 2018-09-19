@@ -64,7 +64,6 @@ public class ShelterServiceImpl implements ShelterService{
 
 	@Override
 	public void updatePwShelter(String m_email) throws Exception {
-
 		int index = 0;		
 		char[] charset_num = new char[] {
 				'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
@@ -106,5 +105,8 @@ public class ShelterServiceImpl implements ShelterService{
 		
 		shelterMapper.updatePwShelter(m_email,cipherAES.encrypt(sb.toString()));
 	}
+
+
+	
 
 }
