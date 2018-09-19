@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ap/apbook.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ap/ap.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ap.css">
 <!-- jQuery -->
@@ -34,6 +35,9 @@
 	</div>
 	<div class="border-styles col-md-5"style="float:left; margin:100px 0 50px 0;">
 		<div style="margin:10px 0 10px 0;">
+			<div data-num="${apcommand.ap_num}" data-id="${user_id}" id="bookmark">
+						<button type="button" style="float:right;" class="btn btn-secondary"><i class="fa fa-bookmark-o"></i></button>
+			</div>
 			[${apcommand.id}] ${apcommand.ap_job}	
 		</div>
 		<hr>
@@ -173,7 +177,7 @@
 			<input type="submit" class="btn btn-warning btn-lg btn-block" 
 					style="margin:10px 0 10px 100px; width:150px;" id="apbooking" data-num="${apcommand.ap_num}" value="예약하기">
 		</form:form>
-	</div>
+	</div> 
 		
 	<!-- 목록 출력 -->
 	<div id="output"></div>

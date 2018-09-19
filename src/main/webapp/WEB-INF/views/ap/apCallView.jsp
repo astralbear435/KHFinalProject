@@ -5,6 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ap/apCall.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ap/apboCheck.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ap.css">
 
 <div class="container">
@@ -18,7 +19,10 @@
 	</div>
 	<div class="border-styles col-md-7"style="float:left; margin:100px 0 50px 0;">
 		<div style="margin:10px 0 10px 0;">
-			[${apcall.call_num}] ${apcall.call_name} 
+			[${apcall.call_num}] ${apcall.call_name}
+			<div id="bookcheck" data-num="${apcall.call_num}">
+					<p>[예약 가능]</p>
+			</div>
 		</div>
 		<hr>
 		
@@ -68,8 +72,8 @@
 				<p>${apcall.call_intro}</p>
 		</div>
 		<hr>
-		
-		<div>
+		<c:if test="${user_auth==5}">
+		<div id="apbo">
 			<form:form commandName="command" action="apBoCallWrite.do" enctype="multipart/form-data">
 
 			<input type="hidden" id="bo_call_id" name="bo_call_id" value="${user_id}">
@@ -92,6 +96,7 @@
 					style="margin:10px 0 10px 0;" value="예약하기" id="apbooking" data-num="${apcall.call_num}" >
 		</form:form>
 		</div>
+		</c:if>
 	</div>
 
 		

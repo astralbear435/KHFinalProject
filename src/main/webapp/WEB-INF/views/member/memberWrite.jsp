@@ -11,17 +11,18 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <div class="500 margin0a">
-<<<<<<< HEAD
-	<br>
-	<div id="margin0a">
-		<div style="width: 450px; margin: 0 auto;">
-			<img src="${pageContext.request.contextPath}\resources\images\sy\보호소 줄 그림.png">
-		</div>
-	</div>
 	<br>
 	<div>
-
 		<div class="titleText">회원가입</div>
+	<div class="horizontal"></div><!-- 가로 여백 -->
+		<div id="margin0a">
+			<div style="width: 450px; margin: 0 auto;">
+				<img src="${pageContext.request.contextPath}\resources\images\sy\보호소 줄 그림.png">
+			</div>
+		</div>
+		<br>
+
+		<div class="titleText">회원가입</div><br>
 		<div class="horizontal"></div><!-- 가로 여백 -->
 		<div class="w500 margin0a">
 			<form:form commandName="command" action="sendEmail.do"
@@ -51,7 +52,7 @@
 					<div class="form-group clearB">
 						<label for="m_gender">성별</label><br>
 						<div class="btn-group btn-group-toggle" data-toggle="buttons">
-							<label class="btn btn-info active">
+							<label class="btn btn-warning active">
 							<input type="radio" name="m_gender" id="man" value="남" autocomplete="off"> 남
 						</label>
 						<label class="btn btn-info active">
@@ -153,7 +154,7 @@
 					<br><hr size="1" width="100%">
 		
 					<div class="w500 clearB" style="text-align:center; margin: 0;">
-						<input type="submit" value="회원가입" class="btn btn-primary">&nbsp;&nbsp;&nbsp;
+						<input type="submit" value="회원가입" class="btn btn-warning">&nbsp;&nbsp;&nbsp;
 						<input type="button" value="홈으로" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 					</div>
 

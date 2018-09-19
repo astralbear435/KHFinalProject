@@ -24,6 +24,7 @@
 	<context:component-scan base-package="kr.spring.admin.controller"/>
 	<context:component-scan base-package="kr.spring.admin.mainmenu.controller"/>
 	<context:component-scan base-package="kr.spring.board.controller"/>
+
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -59,7 +60,7 @@
 				<beans:value>/WEB-INF/tiles-def/mypage.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/ap.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/apcall.xml</beans:value>
-
+				<beans:value>/WEB-INF/tiles-def/review.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -127,10 +128,12 @@
 	<view-controller path="/ap/apForm1.do" view-name="apForm1"/>
 	<view-controller path="/ap/apModify.do" view-name="apModify"/>
 	<view-controller path="/ap/apList.do" view-name="apList"/>
+	<view-controller path="/admin/List.do" view-name="List"/>
+	
 	<!-- 로그인 여부 체크 -->
 	<interceptors>
 		<interceptor>
-			<!-- <mapping path="/ap/apCallList.do" /> -->
+			<mapping path="/ap/apCallList.do" />
 			<mapping path="/shelter/shelterInfo.do" />
 			<mapping path="/note/receivedList.do" />
 			<mapping path="/board/sendList.do" />

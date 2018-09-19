@@ -58,7 +58,9 @@
 			  <ul id="m_nav_list" class="m_nav">
 				<li> <a href="${pageContext.request.contextPath}/main/main.do">Home</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/main/icons.do">Icons</a> </li>
-			    <li><a href="${pageContext.request.contextPath}/main/codes2.do">codes</a> </li>				
+			    <li><a href="${pageContext.request.contextPath}/main/codes2.do">codes</a> </li>	
+			    <li><a href="${pageContext.request.contextPath}/admin/List.do">공지사항</a> </li>
+			    <li><a href="${pageContext.request.contextPath}/recruit/recruitList.do">봉사활동 모집</a></li>			
 				<li> <a href="${pageContext.request.contextPath}/ap/apMain.do">임시보호</a> </li>
 				<li> <a href="${pageContext.request.contextPath}/shelter/shelterList.do">보호소 조회</a> </li>
 				<li><a href="${pageContext.request.contextPath}/recruit/recruitList.do">봉사활동 모집</a></li>
@@ -79,6 +81,8 @@
 					<li><a href="${pageContext.request.contextPath}/note/receivedList.do">쪽지</a></li>
 					<li><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
 				</c:if>
+				<li><a href="${pageContext.request.contextPath}/goods/list.do">후원하기</a></li>
+				<li> <a href="${pageContext.request.contextPath}/review/reviewList.do">Review</a></li>
 			  </ul>
 			</div>
 		<!-- menu -->

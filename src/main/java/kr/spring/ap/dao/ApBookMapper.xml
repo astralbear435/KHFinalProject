@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace="kr.spring.ap.dao.ApBookMapper">  <!-- namespace는 유니크하게 설정, sql식별자 -->
+
+  <!-- map,interger는 Map,Integer 둘 다 상관 없음. mybatisc가 alias를 가지고 있으므로 -->
+	<select id="checkBook" parameterType="map" resultType="apBookCommand">
+	  	SELECT * FROM ap_book
+  </select>
+  
+</mapper>
+
+
+
+
+
+
+

@@ -46,5 +46,6 @@ public interface BoardMapper {
    @Select("SELECT count(*) FROM recruit WHERE r_id=#{r_id}")
    public int recruitCount(String r_id);
 
+
 }
 

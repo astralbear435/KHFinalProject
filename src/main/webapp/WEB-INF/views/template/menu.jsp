@@ -52,7 +52,6 @@
 			<div class="m_nav_ham" id="m_ham_3"></div>
 		</div>
 	</div>
-
 	<div id="m_nav_container" class="m_nav">
 
 		<a href="${pageContext.request.contextPath}/main/main.do">

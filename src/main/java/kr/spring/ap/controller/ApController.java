@@ -189,17 +189,17 @@ public class ApController {
 	}
 	
 //==========게시판 글 삭제==========	
-		@RequestMapping("/ap/apdelete.do")
-		public String submit(@RequestParam("ap_num") int ap_num) {
-			
-			if(log.isDebugEnabled()) {
-				log.debug("<<ap_num>> : " + ap_num);
-			}
-			
-			//글삭제
-			apService.apdelete(ap_num);
-			
-			return "redirect:/ap/apList.do";
+	@RequestMapping("/ap/apdelete.do")
+	public String submit(@RequestParam("ap_num") int ap_num) {
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<ap_num>> : " + ap_num);
 		}
+		
+		//글삭제
+		apService.apdelete(ap_num);
+		
+		return "redirect:/ap/apList.do";
+	}
 		
 }
