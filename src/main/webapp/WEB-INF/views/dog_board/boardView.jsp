@@ -79,8 +79,7 @@ img.show{
 	</ul>
 		<br>
 		<div id="backdiv">
-            <span><b>${s_name}&nbsp;CENTER</b></span>
-            <br>
+            <span><b style="font-size:2.5em;">${s_name}&nbsp;CENTER</b></span>
             <br>
             <span>대표전화</span>
             <br>
@@ -90,7 +89,7 @@ img.show{
             <br>
         </div>
 		<br>
-		</div>
+	</div>
 	<br><br>
 	<hr size="1" width="100%" style="display:inline-block;">
 	<div style="width: 450px; margin: 0 auto;">
@@ -123,8 +122,13 @@ img.show{
 		<form id="re_form">
 			<input type="hidden" name="num"
 			       value="${board.num}" id="num">
+			
 			<input type="hidden" name="id"
 			       value="${user_id}" id="user_id">
+			
+			<input type="hidden" name="auth"
+			       value="${user_auth}" id="user_auth"> 
+			       
 			<input type="hidden" name="pt_num" value="${pt_num}">
 		    <input type="hidden" name="depth" value="${depth}">      
 			<textarea style="width:100%;"

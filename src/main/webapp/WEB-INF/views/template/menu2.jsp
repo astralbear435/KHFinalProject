@@ -63,6 +63,7 @@
 				<li> <a href="${pageContext.request.contextPath}/shelter/shelterList.do">보호소 조회</a> </li>
 				<li><a href="${pageContext.request.contextPath}/recruit/recruitList.do">봉사활동 모집</a></li>
 				<li><a href="${pageContext.request.contextPath}/goods/list.do">후원하기</a></li>
+				<li><a href="${pageContext.request.contextPath}/dog_board/list.do">보호소입양페이지</a></li>
 				<c:if test="${empty user_id}">
 				<li><a href="#" id="memberLogin">로그인</a></li>
 				</c:if>

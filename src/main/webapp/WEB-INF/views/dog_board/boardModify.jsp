@@ -65,22 +65,24 @@ ul{
 			</li>
 			<br>
 			<li>
-				<label for="an_name">강아지 이름</label>
-				<form:input path="an_name" class="form-control" placeholder="이름을 입력해 하세요!"/>
+				<label for="an_name">강아지이름</label>
+				<form:input  path="an_name" class="form-control" placeholder="이름을 입력해 주세요!"/>
 				<form:errors path="an_name" 
 				             cssClass="error-an_name"/>
 			</li>
 			<br>
 			<li>
 				<label for="an_species">묘종/견종</label>
-				<form:input path="an_species" class="form-control" placeholder="묘/견종을 입력하세요!"/>
-				<form:errors path="an_species" cssClass="error-an_species"/>
+				<form:input  path="an_species" class="form-control" placeholder="묘/견종을 입력해주세요!"/>
+				<form:errors path="an_species"
+				             cssClass="error-an_species"/>
 			</li>
 			<br>
-				<li>
+			<li>
 				<label for="an_color">모색</label>
-				<form:input path="an_color" class="form-control" placeholder="유기견/묘 의 컬러을 입력하세요!"/>
-				<form:errors path="an_color" cssClass="error-an_color"/>
+				<form:input  path="an_color" class="form-control" placeholder="유기견/묘 의  모색을 입력해주세요!"/>
+				<form:errors path="an_color" 
+				             cssClass="error-an_color"/>
 			</li>
 			<br>
 			<li>

@@ -23,6 +23,7 @@
 	<context:component-scan base-package="kr.spring.ap.controller" />
 	<context:component-scan base-package="kr.spring.admin.controller"/>
 	<context:component-scan base-package="kr.spring.admin.mainmenu.controller"/>
+	<context:component-scan base-package="kr.spring.board.controller"/>
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 

@@ -25,10 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.board.domain.BoardCommand;
 import kr.spring.board.service.BoardService;
-import kr.spring.shelter.domain.ShelterCommand;
 import kr.spring.shelter.service.ShelterService;
 import kr.spring.util.PagingUtil;
-import kr.spring.util.StringUtil;
 
 @Controller
 public class BoardController {
@@ -141,6 +139,7 @@ public class BoardController {
 		if(log.isDebugEnabled()) {
 			log.debug("<<조회수 확인용 글번호>> : " + num);
 		}
+
 
 		//해당 글의 조회수 증가
 		boardService.updateHit(num);

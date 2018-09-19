@@ -98,7 +98,8 @@
 		              		 kr.spring.ap.dao,
 		              		 kr.spring.recruit.dao,
 		            		 kr.spring.volunteer.dao,
-		            		 kr.spring.mypage.dao" />
+		            		 kr.spring.mypage.dao,
+		            		 kr.spring.admin.mainmenu.dao" />
 
 	</bean>
 	

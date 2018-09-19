@@ -16,6 +16,7 @@ an_hit number(5) not null,
 reg_date date not null,
 filename varchar2(100),
 uploadfile blob,
+an_sheltername varchar2(100)default 'standard' not null
 
 constraint dog_board_pk  primary key(num),
 constraint dog_board_member_fk1 foreign key(id) references member(m_id)

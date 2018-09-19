@@ -32,18 +32,27 @@ $(document).ready(function(){
 					alert('목록 호출 오류 발생!');
 				}else {
 					$(list).each(function(index,item){
+						var wid=0;
 						var output = '<div class="item">';
+						
+						if(item.depth > 0){
+							wid = 50*item.depth;
+							output += '<img src="../resources/images/level.gif" width="'+wid+'" height="16"><img src="../resources/images/re.gif"> '
+							
+						}else if(item.depth <= 0){
+							output += '<img src="../resources/images/level.gif" width="'+wid+'" height="16">';
+						}
 						output += item.id+'<br>';
 						output += ' <font size="0.3">'+item.re_date+'</font>';
 						output += ' <div class="sub-item">';
 						output += '   <p>' + item.re_content + '</p>';
-			
-						if($('#user_id').val()==item.id){
-							//로그인 한 id가 댓글 작성자 id와 같으면
-						    output += '  <input type="button" data-ptnum="'+item.re_num+'" data-id="'+item.id+'" data-depth="'+item.depth+'" value="댓글" class="reply-btn">';
+						if($('#user_id').val() == item.id || $('#user_auth').val() == 3){
+							//로그인 한 id가 댓글 작성자 id와 같거나 auth번호가 4번일때
+						    output += '  <input type="button" data-num="'+$('#num').val()+'" data-ptnum="'+item.re_num+'" data-id="'+item.id+'" data-depth="'+item.depth+'" value="댓글" class="reply-btn">';
 							output += '  <input type="button" data-num="'+item.re_num+'" data-id="'+item.id+'" value="수정" class="modify-btn">';
 							output += '  <input type="button" data-num="'+item.re_num+'" data-id="'+item.id+'" value="지우기" class="delete-btn">';
 						}
+						
 						output += '   <hr width="100%" class="hr-line" noshade>';
 						output += ' </div>';
 						output += '</div>';
@@ -267,15 +276,18 @@ $(document).ready(function(){
 	});
 	//댓글의 댓글을 달기 위한 등록폼 호출
 	$(document).on('click','.reply-btn',function(){
+		//부모 글 번호
+		var num = $(this).attr('data-num');
 		//댓글 부모 글 번호
 		var pt_num = $(this).attr('data-ptnum');
 		//작성자 아이디
 		var id = $(this).attr('data-id');
 		//댓글 깊이
-		var depth = $(this).attr('data-depth') + 1;
+		var depth = Number($(this).attr('data-depth')) + 1;
 		
 		//댓글 수정폼 UI
 		var modifyUI = '<form id="reply_form">';
+		   modifyUI += ' <input type="hidden" name="num" id="pnum" value="'+ num +'">';
 		   modifyUI += ' <input type="hidden" name="pt_num" id="pt_num" value="'+ pt_num +'">';
 		   modifyUI += ' <input type="hidden" name="depth" id="depth" value="'+ depth +'">';
 		   modifyUI += ' <input type="hidden" name="id" id="id" value="'+ id +'">';
@@ -301,6 +313,42 @@ $(document).ready(function(){
 		$(this).parents('.sub-item').find('.modify-btn').show();
 		$(this).parents('.sub-item').find('.delete-btn').show();
 		$('#reply_form').remove();
+	});
+	
+	//댓글의 댓글 등록
+	$(document).on('submit','#reply_form',function(event){
+		if($('#mre_content2').val()==''){
+			alert('내용을 입력하세요');
+			$('#mre_content2').focus();
+			return false;
+		}
+		
+		var data = $(this).serialize();
+		
+		//등록
+		$.ajax({
+			type:'post',
+			data:data,
+			url:'writeReply.do',
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(data){
+				if(data.result == 'logout'){
+					alert('로그인해야 작성할 수 있습니다.');
+				}else if(data.result == 'success'){
+					//목록 호출
+					selectData(1,$('#num').val());
+				}else{
+					alert('등록시 오류 발생');
+				}
+			},
+			error:function(){
+				alert('등록시 네트워크 오류 발생!');
+			}
+		});
+		//기본 이벤트 제거
+		event.preventDefault();
 	});
 
 	//초기 데이터(목록) 호출

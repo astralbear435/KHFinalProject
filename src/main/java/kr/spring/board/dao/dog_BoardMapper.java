@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Update;
 import kr.spring.board.domain.BoardCommand;
 import kr.spring.board.domain.BoardReplyCommand;
 
-public interface BoardMapper {
+public interface dog_BoardMapper {
 	//ºÎ¸ð±Û
 	public List<BoardCommand> selectList(
 			Map<String,Object> map);
