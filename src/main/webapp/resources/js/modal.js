@@ -18,9 +18,6 @@ $(document).ready(function() {
 			success:function(data) {
 				
 				if(data.result == 'success') {	//로그인 성공
-					
-					alert('환영합니다!');
-
 					$('#loginModal').hide();
 					location.href='../main/main.do';
 				

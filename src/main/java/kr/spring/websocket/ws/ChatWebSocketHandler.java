@@ -38,7 +38,7 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
 		
 		System.out.println(session.getId() + "로 부터 메시지 수신 : " + message.getPayload());
 		//클라이언트에 메시지 전송
-		session.sendMessage(new TextMessage("echo : "+ message.getPayload()));
+		//session.sendMessage(new TextMessage(message.getPayload()));
 		//메시지를 수신하면 등록된 유저 전원에게 메시지 전송
 		for(WebSocketSession s : users.values()) {
 			//유저에 메시지 전송

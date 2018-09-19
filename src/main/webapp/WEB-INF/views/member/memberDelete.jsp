@@ -19,12 +19,12 @@
 	<div align="center">
 		<form:form commandName="command" action="memberDelete.do" id="login_form">
 	   		<form:hidden path="m_id"/>
-			<form:password path="m_passwd" class="form-control" placeholder="비밀번호를 입력하세요."/><br>
+			<form:password path="m_passwd" class="form-control" placeholder="비밀번호를 입력하세요."/><br><br>
 			<span style="color:red;"><form:errors path="m_passwd" cssClass="error-color"/></span>
 			<br><hr>		
 			<div align="center">
 				<input type="submit" value="탈퇴하기" class="btn btn-primary">&nbsp;&nbsp;&nbsp;
-				<input type="button" value="홈으로" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+				<input type="button" value="뒤로" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/member/memberDetail.do'">
 			</div><br>
 		</form:form>
 	</div><br>

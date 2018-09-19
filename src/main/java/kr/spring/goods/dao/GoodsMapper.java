@@ -76,6 +76,5 @@ public interface GoodsMapper {
 	//¿À´Ã ÃÑ °áÁ¦±Ý¾×
 	@Select("SELECT NVL(sum(DONA_PRICE),0) FROM DONATION WHERE TO_DATE(DONA_DATE,'yyyy-MM-dd') = TO_DATE(sysdate,'yyyy-MM-dd')")
 	public int selectTodayPayment();
-	
 }
 

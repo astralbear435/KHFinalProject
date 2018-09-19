@@ -129,7 +129,7 @@ public class GoodsServiceImpl implements GoodsService {
 		goodsMapper.minusCount(map2);
 		
 	}
-
+	@Override
 	public String comeonId(String dona_asname) {
 		// 보호소 아이디 가져오기
 		return goodsMapper.comeonId(dona_asname);
@@ -144,5 +144,6 @@ public class GoodsServiceImpl implements GoodsService {
 	public int selectTodayPayment() {
 		// TODO Auto-generated method stub
 		return goodsMapper.selectTodayPayment(); 
+
 	}
 }

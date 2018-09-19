@@ -40,11 +40,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  -->
 <!-- chatting style -->
 <style>
+	@media screen and (max-width: 1000px) {
+		#m_nav_chat {
+			display:none;
+		}
+	}
 	#m_nav_chat {
 		width: 120px;
 		position: fixed;
 		bottom: 80px;
-		left: 180px;
+		left: 30px;
 		z-index: 9991;
 		cursor: pointer;
 		padding: .5em;
@@ -323,7 +328,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- chat -->
 		<div id="toggle_chat">
 			<div id="m_nav_chat">
-				채팅문의
 				<div id="chat_icon">
 					<img src="${pageContext.request.contextPath}/resources/images/member/chatting_icon.png">
 				</div>

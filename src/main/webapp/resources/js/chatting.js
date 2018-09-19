@@ -9,16 +9,20 @@ $(document).ready(function() {
 	
 	//WebSocket 연결
 	function connect() {
-		wsocket = new WebSocket("ws://192.168.110.12:8080/ProjectCAN/chat-ws.do");
+		wsocket = new WebSocket("ws://192.168.110.12.:8080/ProjectCAN/chat-ws.do");
 		wsocket.onopen = function(evt) {
-			var msg = '';
+			
 		};
 		
 		//서버로부터 메시지를 받으면 호출되는 함수 지정
 		wsocket.onmessage = function(evt) {
 			var data = evt.data;
-			if(data.substring(0,4) == 'msg:') {
-				appendMessage(data.substring(4));
+			if(data.substring(0,6) == 'admin:') {
+				console.log('----------->' + data.substring(6));
+				appendMessage(data.substring(6),data.substring(0,6));
+			}
+			else {
+				appendMessage(data.substring(4),data.substring(0,4));
 			}
 		};
 		
@@ -37,20 +41,25 @@ $(document).ready(function() {
 	//서버에 메시지 전송
 	function send() {
 		var msg = $('#message_input').val();
+		var user_id = $('#user_id').val();
+		console.log(user_id);
 		//메시지를 서버로 전송
-		wsocket.send('msg:' + msg);
+		if(user_id.indexOf('admin') != -1) {	//관리자일 때
+			wsocket.send('admin:' + msg);
+		}
+		else {	//고객일 때
+			wsocket.send('msg:' + msg);
+		}
 		//메시지 초기화
 		$('#message_input').val('');
 	}
 	
 	
 	//서버에서 전송된 메시지를 UI에 표시
-	function appendMessage(msg) {
-		
-		var user_id = $('#user_id').val();
-		
+	function appendMessage(msg,user) {
+		console.log('~~~~'+msg);
 		//관리자 메세지
-		if(user_id.indexOf('admin') != -1) {
+		if(user.indexOf('admin') != -1) {
 			var userMsg = '<br><br>';
 			userMsg += '<li class="message left appeared">';
 			userMsg += '<div class="avatar">';
@@ -114,64 +123,9 @@ $(document).ready(function() {
 			}
 		});
 		
+		
 	});
 	
-	
-    /*var Message;
-    Message = function (arg) {
-        this.text = arg.text, this.message_side = arg.message_side;
-        this.draw = function (_this) {
-            return function () {
-                var $message;
-                $message = $($('.message_template').clone().html());
-                $message.addClass(_this.message_side).find('.text').html(_this.text);
-                $('.messages').append($message);
-                return setTimeout(function () {
-                    return $message.addClass('appeared');
-                }, 0);
-            };
-        }(this);
-        return this;
-    };
-    $(function () {
-        var getMessageText, message_side, sendMessage;
-        message_side = 'right';
-        getMessageText = function () {
-            var $message_input;
-            $message_input = $('.message_input');
-            return $message_input.val();
-        };
-        sendMessage = function (text) {
-            var $messages, message;
-            if (text.trim() === '') {
-                return;
-            }
-            $('.message_input').val('');
-            $messages = $('.messages');
-            message_side = message_side === 'left' ? 'right' : 'left';
-            message = new Message({
-                text: text,
-                message_side: message_side
-            });
-            message.draw();
-            return $messages.animate({ scrollTop: $messages.prop('scrollHeight') }, 300);
-        };
-        $('.send_message').click(function (e) {
-            return sendMessage(getMessageText());
-        });
-        $('.message_input').keyup(function (e) {
-            if (e.which === 13) {
-                return sendMessage(getMessageText());
-            }
-        });
-        sendMessage('Hello Philip! :)');
-        setTimeout(function () {
-            return sendMessage('Hi Sandy! How are you?');
-        }, 1000);
-        return setTimeout(function () {
-            return sendMessage('I\'m fine, thank you!');
-        }, 2000);
-    });*/
 });
 	
 	

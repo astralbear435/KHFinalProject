@@ -11,7 +11,7 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <div class="500 margin0a">
-	<br>
+<%-- 	<br>
 	<div>
 		<div class="titleText">회원가입</div>
 	<div class="horizontal"></div><!-- 가로 여백 -->
@@ -22,7 +22,16 @@
 		</div>
 		<br>
 
-		<div class="titleText">회원가입</div><br>
+		<div class="titleText">회원가입</div><br> --%>
+	<br>
+	<div id="margin0a">
+		<div style="width: 450px; margin: 0 auto;">
+			<img src="${pageContext.request.contextPath}\resources\images\sy\보호소 줄 그림.png">
+		</div>
+	</div>
+	<br>
+	<div>
+		<div class="titleText">회원가입</div>
 		<div class="horizontal"></div><!-- 가로 여백 -->
 		<div class="w500 margin0a">
 			<form:form commandName="command" action="sendEmail.do"
@@ -42,12 +51,25 @@
 
 					</div><br>
 					<div id="message_id"></div><br>
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+					
+>>>>>>> d3f122582d0e687d12cb3d34dbd4a14f2954e329
+>>>>>>> d656dce3edc76ffd09ff45d4470a68df1679bd2e
 					<div class="form-group clearB">
 						<label for="m_name">이름</label> <input type="text" name="m_name"
 							id="m_name" class="form-control" placeholder="이름 입력">
 						<div id="message_name"></div>
 					</div><br>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> d656dce3edc76ffd09ff45d4470a68df1679bd2e
 					
 					<div class="form-group clearB">
 						<label for="m_gender">성별</label><br>
@@ -61,6 +83,23 @@
 						</div>						
 						<div id="message_gender"></div>
 					</div>
+<<<<<<< HEAD
+=======
+>>>>>>> d3f122582d0e687d12cb3d34dbd4a14f2954e329
+					
+					<div class="form-group clearB">
+						<label for="m_gender">성별</label><br>
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">
+							<label class="btn btn-info active">
+							<input type="radio" name="m_gender" id="man" value="남" autocomplete="off"> 남
+						</label>
+						<label class="btn btn-info active">
+							<input type="radio" name="m_gender" id="woman" value="여" autocomplete="off"> 여
+						</label><br>
+						</div>						
+						<div id="message_gender"></div>
+					</div>
+>>>>>>> d656dce3edc76ffd09ff45d4470a68df1679bd2e
 
 					<div class="w500 h72">
 						<div class="form-group floatL">
@@ -104,6 +143,14 @@
 							name="m_zipcode" id="m_zipcode" class="form-control"
 							style="width: 200px;" placeholder="우편번호 찾기 버튼 클릭" readonly>
 					</div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+					<div class="floatL h72" style="width: 5px;"></div>
+>>>>>>> d3f122582d0e687d12cb3d34dbd4a14f2954e329
+>>>>>>> d656dce3edc76ffd09ff45d4470a68df1679bd2e
 					<div class="form-group floatL h72 lineh95">
 						<input type="button" id="selectZipcode" class="btn btn-primary" value="우편번호 찾기">
 					</div><br><br>				
@@ -154,7 +201,15 @@
 					<br><hr size="1" width="100%">
 		
 					<div class="w500 clearB" style="text-align:center; margin: 0;">
+<<<<<<< HEAD
 						<input type="submit" value="회원가입" class="btn btn-warning">&nbsp;&nbsp;&nbsp;
+=======
+<<<<<<< HEAD
+						<input type="submit" value="회원가입" class="btn btn-primary">&nbsp;&nbsp;&nbsp;
+=======
+						<input type="submit" value="회원가입" class="btn btn-warning">&nbsp;&nbsp;&nbsp;
+>>>>>>> d3f122582d0e687d12cb3d34dbd4a14f2954e329
+>>>>>>> d656dce3edc76ffd09ff45d4470a68df1679bd2e
 						<input type="button" value="홈으로" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 					</div>
 

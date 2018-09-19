@@ -18,7 +18,8 @@
 	<br>
 	<div>
 		<div class="titleText">회원정보 수정</div>
-		<div class="horizontal"></div><!-- 가로 여백 -->
+		<div style="text-align: center;"><span style="color: red;">*빨간부분만 수정가능</span></div><!-- 
+		<div class="horizontal"></div>가로 여백 -->
 		<div class="w500 margin0a">
 			<form:form commandName="command" action="memberUpdate.do" id="modify_form" enctype="multipart/form-data">
 				<fieldset class="clearB">
@@ -131,7 +132,6 @@
 					<div class="w500 clearB" style="text-align:center; margin: 0;">
 						<input type="submit" class="btn btn-primary" value="수정하기">&nbsp;&nbsp;
 						<input type="button" value="뒤로" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/member/memberDetail.do'">&nbsp;&nbsp;
-						<input type="button" value="홈으로" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 					</div>
 					
 					<div class="horizontal"></div><!-- 가로 여백 -->
