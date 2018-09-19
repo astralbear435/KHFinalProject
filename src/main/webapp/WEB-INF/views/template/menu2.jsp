@@ -5,9 +5,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/modal.js"></script>
 
 	<!-- 모달창 열기 -->
-	<div id="loginModal" class="modal">
-
-		<div class="loginModal-content">
+	<div id="loginModal" class="modalLogin">
+		<div class="modal-contentLogin">
 			<span style="font-size:10pt; text-align:right;">
 				<a href="#" id="closeMemberLogin">X</a>
 			</span>
@@ -66,13 +65,11 @@
 				<li><a href="${pageContext.request.contextPath}/recruit/recruitList.do">봉사활동 모집</a></li>
 				<li><a href="${pageContext.request.contextPath}/goods/list.do">후원하기</a></li>
 				<li><a href="${pageContext.request.contextPath}/dog_board/list.do">보호소입양페이지</a></li>
+				
 				<c:if test="${empty user_id}">
-				<li><a href="#" id="memberLogin">로그인</a></li>
-<<<<<<< HEAD
-				</c:if>							
-=======
+					<li><a href="#" id="memberLogin">로그인</a></li>
 				</c:if>
->>>>>>> 946d60e80f8d548f2407eff899236760518d372c
+							
 				<c:if test="${!empty user_id}">
 					<c:if test="${user_auth==1 || user_auth==2 || user_auth==5}">
 						<li><a href="#">${user_id}님 로그인 중</a></li>
