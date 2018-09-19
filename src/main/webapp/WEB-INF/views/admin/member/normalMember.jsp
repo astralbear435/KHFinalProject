@@ -4,8 +4,7 @@
 <!-- DataTables -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-<!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/admin/plugins/iCheck/all.css">
+
 
 <!-- Content Header (Page header) -->
 

@@ -7,8 +7,8 @@ import kr.spring.admin.mainmenu.domain.MainmenuCommend;
 
 public interface MainmenuService {
 	public int selectmenuCount();
-	public int selectActiveMenuCount(String use);
-	public List<MainmenuCommend> selectActiveMenu(String use);
+	public int selectActiveMenuCount();
+	public List<MainmenuCommend> selectActiveMenu();
 	public List<MainmenuCommend> selectMenuList();
 	public List<MainmenuCommend> selectDdMenu(String dd);
 	public MainmenuCommend selectMenu(int menu_num);

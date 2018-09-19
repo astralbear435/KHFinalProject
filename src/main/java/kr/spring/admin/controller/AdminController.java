@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.admin.mainmenu.domain.MainmenuCommend;
+import kr.spring.admin.mainmenu.service.MainmenuService;
 import kr.spring.goods.service.GoodsService;
 import kr.spring.member.domain.MemberCommand;
 import kr.spring.member.service.MemberService;
@@ -31,9 +33,31 @@ public class AdminController {
 
 	@Resource
 	private GoodsService goods;
+	
 	@Resource
 	private ShelterService shelter;
-
+	
+	@Resource
+	private MainmenuService mainMenu;
+	
+	@RequestMapping("/template/menu.do")
+	public String mainMenu(HttpSession session, Model model){
+		String id="";
+		int count=0;
+		List<MainmenuCommend> list =null;
+		if((String)session.getAttribute("user_id")!=null) {
+			id=(String)session.getAttribute("user_id");
+		}
+		count=mainMenu.selectActiveMenuCount();
+		if (count>0) {
+			list= mainMenu.selectActiveMenu();
+		}
+		
+		model.addAttribute("id",id);
+		model.addAttribute("mlist",list);
+		model.addAttribute("mcount",count);
+		return "template/menu";
+	}
 	@RequestMapping("/admin/main.do")
 	public ModelAndView mainPage(){
 		int totalV=0,todayV=0;
@@ -69,19 +93,23 @@ public class AdminController {
 	}
 	@RequestMapping("/admin/template/menu.do")
 	public String process(HttpSession session, Model model) {	//로그인이 되어있으면 session에서 아이디를 가져옴
-
+		MemberCommand member=null;
 		String id = (String)session.getAttribute("user_id");
-
-		MemberCommand member = memberService.selectMember(id);
+		System.out.println("id>>>>>>>>>>>>"+id);
+		if(id!=null) {
+			member = memberService.selectMember(id);
+			model.addAttribute("member", member);
+		}
+		
 
 		/*if(log.isDebugEnabled()) {
 			log.debug("<<memberCommand>> : " + member);
 		}*/
 
-		model.addAttribute("member", member);
 
 		return "admin/template/menu";
 	}
+	//어드민 헤더
 	@RequestMapping("/admin/template/header.do")
 	public String processHeader(HttpSession session, Model model) {	//로그인이 되어있으면 session에서 아이디를 가져옴
 

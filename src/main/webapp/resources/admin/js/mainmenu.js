@@ -164,7 +164,7 @@ $(document).ready(function(){
 			success:function(data){
 				var msg= data.msg;
 				if(msg=="success"){
-					renewal("삭제 완료!");
+					renewal("삭제 완료");
 				}else{
 					alert("삭제오류");
 				}
@@ -173,20 +173,20 @@ $(document).ready(function(){
 			}
 		});
 		
-		redetail(m_num);
+		
 		
 	});
 	$(document).on('click','#menu_update',function(){
 		var menu_num = $(this).attr("data-num");
-		var menu_use =  $("input[name=menu_use]").attr("value");
+		var menu_use =  $(":input:radio[name=menu_use]:checked").val()
 		var menu_name =  $("input[name=menu_name]").attr("value");
 		var menu_url =  $("input[name=menu_url]").attr("value");
-		var menu_order =  $("input[name=menu_order]").attr("value");
-		var menu_dd = $("input[name=menu_dd]").attr("value");
-		var parent_num = $("#select_id2").val();
-		alert(menu_num+","+menu_use+","+menu_name+","+menu_url+","+menu_order+",dd="+menu_dd+","+parent_num);
+		var menu_order =  $("#menu_order").val(); 
+		var menu_dd = $(":input:radio[name=menu_dd]:checked").val();
+		var parent_num = $("#select_id2").val(); 
+		alert(menu_num+","+menu_use+","+menu_name+","+menu_url+","+menu_order+",dd="+menu_dd+","+parent_num+","); 
 		$.ajax({
-			type:'post',
+			type:'post', 
 			data:{menu_num:menu_num,menu_use:menu_use,menu_name:menu_name,menu_url:menu_url,menu_order:menu_order,menu_dd:menu_dd,parent_num:parent_num},
 			url:'updateMenu.do',
 			dataType:'json',
@@ -195,15 +195,15 @@ $(document).ready(function(){
 			success:function(data){
 				var msg= data.msg;
 				if(msg=="success"){
-					renewal("수정 완료!");
+					renewal("수정 완료");
 				}else{
-					alert("삭제오류");
+					alert("수정 오류");
 				}
 			},error:function(){
 				alert('네트워크 에러!!');
 			}
 		})
-
+		
 	});
 	
 	$('#writeMenu').submit(function(){

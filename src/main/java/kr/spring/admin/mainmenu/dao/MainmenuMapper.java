@@ -13,10 +13,10 @@ public interface MainmenuMapper {
 	
 	@Select("SELECT count(*) FROM MAIN_MENU")
 	public int selectmenuCount();
-	@Select("SELECT count(*) FROM MAIN_MENU WHERE menu_use=#{use}")
-	public int selectActiveMenuCount(String use);
-	@Select("SELECT * FROM MAIN_MENU WHERE menu_use=#{use}")
-	public List<MainmenuCommend> selectActiveMenu(String use);
+	@Select("SELECT count(*) FROM MAIN_MENU WHERE menu_use='Y'")
+	public int selectActiveMenuCount();
+	@Select("SELECT * FROM MAIN_MENU WHERE menu_use='Y'ORDER BY MENU_ORDER") 
+	public List<MainmenuCommend> selectActiveMenu();
 	@Select("SELECT * FROM MAIN_MENU WHERE menu_dropdown=#{dd} ")
 	public List<MainmenuCommend> selectDdMenu(String dd);
 	@Select("SELECT * FROM MAIN_MENU ORDER BY MENU_ORDER")

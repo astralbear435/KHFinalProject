@@ -1,6 +1,8 @@
 package kr.spring.admin.mainpage.dao;
 
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -19,4 +21,6 @@ public interface MainImageMapper {
 	public void updateMainImageOrder(Integer num,Integer order);
 	@Select("SELECT COUNT(*) FROM main_image")
 	public Integer selectImageCount();
+	@Select("SELECT * FROM main_image ORDER BY main_num")
+	public List<MainImageCommand> selectImageList();
 }

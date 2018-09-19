@@ -199,13 +199,13 @@ public class MainmenuAjaxController {
 		menu.setMenu_name(menu_name);
 		menu.setMenu_url(menu_url);
 		menu.setMenu_use(menu_use);
+		menu.setMenu_order(menu_order); 
 		menu.setMenu_parent_num(parent_num);
 		menu.setMenu_dropdown(menu_dd);
 		menu.setMenu_depth(1);
 		if(log.isDebugEnabled()) {
 			log.debug("<<menu>> : "+menu);
 		}
-		
 		try {
 			mainmenuService.updateMenu(menu);
 			msg="success";

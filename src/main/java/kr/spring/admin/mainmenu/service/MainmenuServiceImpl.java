@@ -23,13 +23,13 @@ public class MainmenuServiceImpl implements MainmenuService{
 	}
 
 	@Override
-	public int selectActiveMenuCount(String use) {
-		return mainmenuMapper.selectActiveMenuCount(use);
+	public int selectActiveMenuCount() {
+		return mainmenuMapper.selectActiveMenuCount();
 	}
 
 	@Override
-	public List<MainmenuCommend> selectActiveMenu(String use) {
-		return mainmenuMapper.selectActiveMenu(use);
+	public List<MainmenuCommend> selectActiveMenu() {
+		return mainmenuMapper.selectActiveMenu();
 	}
 
 	@Override
@@ -85,16 +85,23 @@ public class MainmenuServiceImpl implements MainmenuService{
 	@Override
 	public void updateMenu(MainmenuCommend mainmenuCommend) {
 		List<MainmenuCommend> list = mainmenuMapper.selectMenuList();
+		MainmenuCommend temp1= new MainmenuCommend();
+		int order=0;
 		for(MainmenuCommend m : list) {
-			if(mainmenuCommend.getMenu_order()==m.getMenu_order()&&mainmenuCommend.getMenu_num()!=m.getMenu_num()) {
-				System.out.println("--------->"+m);
-				m.setMenu_order((mainmenuCommend.getMenu_order()));
-				System.out.println("--------->"+m);
-				mainmenuMapper.updateMenuOrder(m);
+			if(mainmenuCommend.getMenu_order()==m.getMenu_order()) {
+				System.out.println(mainmenuCommend.getMenu_order()+"--------->"+m);
+				temp1=m;
+				System.out.println("--------->"+temp1);
 			}
-			mainmenuMapper.updateMenu(mainmenuCommend);
+			if(mainmenuCommend.getMenu_num()==m.getMenu_num()) {
+				order=m.getMenu_order();
+			}
+			
 		}
-		
+		temp1.setMenu_order(order);
+		System.out.println("temp1--------->"+temp1);
+		mainmenuMapper.updateMenuOrder(temp1); 
+		mainmenuMapper.updateMenu(mainmenuCommend);   
 	}
 
 }

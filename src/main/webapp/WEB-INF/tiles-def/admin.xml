@@ -35,8 +35,14 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/notice/noticeWrite.jsp" />
 	</definition>
+	<definition name="noticeModify" extends="admin">
+		<put-attribute name="title" value="공지사항 수정" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/notice/noticeModify.jsp" />
+	</definition>
+	
 	<definition name="menulist" extends="admin">
-		<put-attribute name="title" value="공지사항 목록" />
+		<put-attribute name="title" value="메뉴 설정" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/mainmenu/menulist.jsp" />
 	</definition>

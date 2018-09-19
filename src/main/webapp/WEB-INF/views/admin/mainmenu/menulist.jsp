@@ -14,8 +14,8 @@ selectbox#select_id {
 		메인 메뉴 <small> 메뉴 편집</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i>공지사항</a></li>
-		<li class="active">작성</li>
+		<li><a href="#"><i class="fa fa-dashboard"></i>메인메뉴</a></li>
+		<li class="active">설정</li>
 	</ol>
 </section>
 

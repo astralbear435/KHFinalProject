@@ -4,12 +4,11 @@
 <!-- DataTables -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-<!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/admin/plugins/iCheck/all.css">
+	
 <!-- Content Header (Page header) -->
 <section class="content-header">
 	<h1>
-		Page Header <small>Optional description</small>
+		공지사항 <small>목록</small>
 	</h1>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i>공지사항</a></li>
@@ -36,17 +35,17 @@
 						<th>글 제목</th>
 						<th>조회수</th>
 						<th>작성자</th>
-						<th>X</th>
+						<th><input type="checkbox" id="allCheck"></th>
 					</tr>
 				</thead>
 				<tbody>
 				<c:forEach var="notice" items="${list}">
 					<tr>
-						<td>${notice.n_idx}</td>
-						<td>${notice.n_subject}</td>
-						<td>${notice.n_hit}</td>
+						<td><a href="${pageContext.request.contextPath}/admin/notice/noticeModify.do?n_idx=${notice.n_idx}">${notice.n_idx}</a></td> 
+						<td><a href="${pageContext.request.contextPath}/admin/notice/noticeDetail.do?n_idx=${notice.n_idx}" onclick="window.open(this.href,'상세보기','width=600,height=700');return false;">${notice.n_subject}</a></td>
+						<td>${notice.n_hit}</td> 
 						<td>${notice.n_id}</td>
-						<td><div class="icheckbox_minimal-blue" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="checkbox" id="${notice.n_idx}" class="minimal" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+						<td><input type="checkbox" name=checkNum id="${notice.n_idx}" class="minimal"></td>
 					</tr>
 				</c:forEach>
 				
@@ -64,6 +63,7 @@
 			</c:if>
 		</div>
 		<!-- /.box-body -->
+		<button id="notice_delete" class="btn btn-info pull-right">삭제</button>
 	</div>
 
 </section>
@@ -88,9 +88,6 @@
 <!-- AdminLTE for demo purposes -->
 <script
 	src="${pageContext.request.contextPath}/resources/admin/dist/js/demo.js"></script>
-<!-- iCheck 1.0.1 -->
-<script src="${pageContext.request.contextPath}/resources/admin/plugins/iCheck/icheck.min.js"></script>	
-	
 <!-- page script -->
 <script>
 $(function () {
@@ -103,9 +100,18 @@ $(function () {
     'autoWidth'   : false
   })
 })
- //iCheck for checkbox and radio inputs
-    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-      checkboxClass: 'icheckbox_minimal-blue',
-      radioClass   : 'iradio_minimal-blue'
-    })
+$(document).ready(function(){
+    //최상단 체크박스 클릭
+    $("#allCheck").click(function(){
+        //클릭되었으면
+        if($("#allCheck").prop("checked")){
+            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+            $("input[name=checkNum]").prop("checked",true);
+            //클릭이 안되있으면
+        }else{
+            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+            $("input[name=checkNum]").prop("checked",false);
+        }
+    });
+})
 </script>
