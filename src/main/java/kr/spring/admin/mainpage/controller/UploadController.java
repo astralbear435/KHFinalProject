@@ -67,7 +67,7 @@ public class UploadController {
     	fN = UploadFileUtils.uploadMain(uploadPath, file.getOriginalFilename(), file.getBytes());
     	MainImageCommand mainimage = new MainImageCommand();
     	mainimage.setMain_img_name(fN.substring(fN.indexOf("s_")+2));
-    	mainimage.setS_main_img_name(fN.substring(fN.indexOf("s_")));
+    	mainimage.setMain_s_img_name(fN.substring(fN.indexOf("s_")));
     	if(mainImageService.selectImageCount()==0) {
     		order=1;
     	}else {
@@ -92,7 +92,7 @@ public class UploadController {
             // 헤더 구성 객체(외부에서 데이터를 주고받을 때에는 header와 body를 구성해야하기 때문에)
             HttpHeaders headers = new HttpHeaders();
             // InputStream 생성
-            in = new FileInputStream(uploadPath+"mainImage\\" + fileName); 
+            in = new FileInputStream(uploadPath + fileName); 
             // 이미지 파일이면
             if (mType != null) { 
                 headers.setContentType(mType);

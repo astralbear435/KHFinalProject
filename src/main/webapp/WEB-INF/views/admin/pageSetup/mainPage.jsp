@@ -3,7 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 .fileDrop {
-	border: 1px dotted blue;
+	border: 1px dotted blue;;
+	height: 400px;
 }
 </style>
 <script type="text/javascript"
@@ -23,12 +24,12 @@
 
 <!-- Main content -->
 <section class="content container-fluid">
+<div class="col-md-6">
 	<div class="box box-info">
 		<div class="box box-solid">
 			<div class="box-header with-border">
 				<i class="fa fa-text-width"></i>
-
-				<h3 class="box-title">파일 이미지 등록</h3>
+				<h3 class="box-title">이미지 등록</h3>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
@@ -39,9 +40,9 @@
 						<c:if test="${count>0 }">
 							<c:forEach var="image" items="${list}">
 								<div class='col-md-3 col-sm-4'>
-									<a href='displayFile.do?fileName=${image.main_img_name}'>
-										<img src='displayFile.do?fileName=${image.main_s_img_name}'> 
-									</a><br> <span data-src="${image.main_num}"><i class='fa fa-fw fa-close'></i></span>
+									<a href='displayFile.do?fileName=mainImage/${image.main_img_name}'>
+										<img src='displayFile.do?fileName=mainImage/${image.main_s_img_name}'> 
+									</a><br> <span data-src="${image.main_s_img_name}"><i class='fa fa-fw fa-close'></i></span>
 								</div>
 							</c:forEach>
 						</c:if>
@@ -52,5 +53,6 @@
 			<!-- /.box-body -->
 		</div>
 	</div>
+</div>
 </section>
 <!-- /.content -->

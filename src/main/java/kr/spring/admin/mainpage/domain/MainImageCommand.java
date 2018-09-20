@@ -18,9 +18,9 @@ public class MainImageCommand {
 		this.main_img_name = main_img_name;
 	}
 	public String getMain_s_img_name() {
-		return main_s_img_name; 
+		return main_s_img_name;
 	}
-	public void setS_main_img_name(String main_s_img_name) {
+	public void setMain_s_img_name(String main_s_img_name) {
 		this.main_s_img_name = main_s_img_name;
 	}
 	public Integer getMain_order() {
@@ -31,8 +31,9 @@ public class MainImageCommand {
 	}
 	@Override
 	public String toString() {
-		return "MainImageCommand [main_num=" + main_num + ", main_img_name=" + main_img_name + ", s_main_img_name="
+		return "MainImageCommand [main_num=" + main_num + ", main_img_name=" + main_img_name + ", main_s_img_name="
 				+ main_s_img_name + ", main_order=" + main_order + "]";
 	}
+
 	
 }

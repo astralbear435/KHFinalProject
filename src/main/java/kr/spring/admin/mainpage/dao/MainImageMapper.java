@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Update;
 import kr.spring.admin.mainpage.domain.MainImageCommand;
 
 public interface MainImageMapper {
-	@Insert("INSERT INTO main_image(main_num,main_img_name,main_s_img_name,main_order) VALUES(MAIN_IMAGE_MAIN_NUM_SEQ.nextval,#{main_img_name},#{s_main_img_name},#{main_order})")
+	@Insert("INSERT INTO main_image(main_num,main_img_name,main_s_img_name,main_order) VALUES(MAIN_IMAGE_MAIN_NUM_SEQ.nextval,#{main_img_name},#{main_s_img_name},#{main_order})")
 	public void insertMainImage(MainImageCommand mainImage);
 	@Delete("DELETE FROM main_image WHERE main_s_img_name=#{main_s_img_name}")
 	public void deleteMainImage(String s_img);
