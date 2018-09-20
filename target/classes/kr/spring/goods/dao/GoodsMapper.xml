@@ -3,11 +3,8 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.spring.goods.dao.GoodsMapper">
-
-	<select id="getASList" parameterType="map"
-		resultType="goodsCommand">
-		SELECT	*
-		FROM as_goods
+	<select id="getASList" parameterType="map" resultType="goodsCommand">
+		SELECT * FROM as_goods
 	<where>
 			<if test="keyword != '' and keyfield == 'as_name'">
 				as_name like '%' || #{keyword} || '%'
@@ -19,18 +16,21 @@
 				as_name like '%' || #{keyword} || '%' or
 				as_location like '%' || #{keyword} || '%'
 			</if>
+						
+			<!-- 세영추가(아이디로 검색) -->
+			<if test="keyword != '' and keyfield == 'id'">
+				as_id like '%' || #{keyword} || '%'
+			</if>
 		</where>
-ORDER BY as_id desc
+			ORDER BY as_id desc
+
  	<!-- <![CDATA[
  		WHERE rnum >= #{start} AND rnum <= #{end}
  	]]> -->
-	</select>
-
-	<select id="selectRowCount" parameterType="map"
+</select>
+<select id="selectRowCount" parameterType="map"
 		resultType="integer">
-		SELECT
-		count(*)
-		FROM as_goods
+		SELECT count(*) FROM as_goods
 		<where>
 			<if test="keyword != '' and keyfield == 'as_name'">
 				as_name like '%' || #{keyword} || '%'
@@ -42,9 +42,25 @@ ORDER BY as_id desc
 				as_name like '%' || #{keyword} || '%' or
 				as_location like '%' || #{keyword} || '%'
 			</if>
+			
+			<!-- 세영추가(아이디로 검색) -->
+			<if test="keyword != '' and keyfield == 'id'">
+				as_id like '%' || #{keyword} || '%'
+			</if>
 		</where>
 	</select>
-
+<update id="minusCount" parameterType="map">
+UPDATE as_goods
+	<trim prefix="SET" suffixOverrides=",">
+	<if test="goodsnum==1">PAD=PAD-TO_NUMBER(#{dona_goodsamount}),</if>
+	<if test="goodsnum==2">DOGFOOD=DOGFOOD-TO_NUMBER(#{dona_goodsamount}),</if>
+	<if test="goodsnum==3">CATFOOD=CATFOOD-TO_NUMBER(#{dona_goodsamount}),</if>
+	<if test="goodsnum==4">SHAMPOO=SHAMPOO-TO_NUMBER(#{dona_goodsamount}),</if>
+	<if test="goodsnum==5">CATSAND=CATSAND-TO_NUMBER(#{dona_goodsamount})</if>
+	</trim>
+WHERE as_name=#{dona_asname}
+</update>	
+	
 </mapper>
 
 

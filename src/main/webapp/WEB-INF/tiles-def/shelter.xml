@@ -7,33 +7,33 @@
 <tiles-definitions>
 	<definition name="shelterLogin" extends="main">
 		<put-attribute name="title" value="memberLogin"/>
-		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
+		<put-attribute name="menu" value="/template/menu2.do"/>
 		<put-attribute name="body" value="/WEB-INF/views/shelter/shelterLogin.jsp"/>
 	</definition>
 
 	<definition name="shelterWrite" extends="main">
 		<put-attribute name="title" value="shelterWrite"/>
-		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
+		<put-attribute name="menu" value="/template/menu2.do"/>
 		<put-attribute name="body" value="/WEB-INF/views/shelter/shelterWrite.jsp"/>
 	</definition>
 	<definition name="shelterConfirm" extends="main">
 		<put-attribute name="title" value="shelterInfo"/>
-		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
+		<put-attribute name="menu" value="/template/menu2.do"/>
 		<put-attribute name="body" value="/WEB-INF/views/shelter/shelterConfirm.jsp"/>
 	</definition>
 	<definition name="shelterInfo" extends="main">
 		<put-attribute name="title" value="shelterInfo"/>
-		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
+		<put-attribute name="menu" value="/template/menu2.do"/>
 		<put-attribute name="body" value="/WEB-INF/views/shelter/shelterInfo.jsp"/>
 	</definition>
 	<definition name="shelterList" extends="main">
 		<put-attribute name="title" value="shelterList"/>
-		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
+		<put-attribute name="menu" value="/template/menu2.do"/>
 		<put-attribute name="body" value="/WEB-INF/views/shelter/shelterList.jsp"/>
 	</definition>
 	<definition name="shelterDetail" extends="main">
 		<put-attribute name="title" value="shelterList"/>
-		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
+		<put-attribute name="menu" value="/template/menu2.do"/>
 		<put-attribute name="body" value="/WEB-INF/views/shelter/shelterDetail.jsp"/>
 	</definition>
 </tiles-definitions>

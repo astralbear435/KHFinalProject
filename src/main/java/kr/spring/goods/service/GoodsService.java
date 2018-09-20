@@ -16,7 +16,7 @@ public interface GoodsService {
 	public List<GoodsCommand> getASList(Map<String,Object> map);
 	public GoodsCommand selectDetailAS(String as_name);
 	public int selectRowCount(Map<String,Object> map);
-	List<GoodsListCommand> goodsPhotoList(Map<String, Object> photo_map);
+	public List<GoodsListCommand> goodsPhotoList(Map<String, Object> photo_map);
 	public GoodsListCommand selectDetailGoods(Integer g_num);
 
 	//장바구니 넣기

@@ -12,4 +12,5 @@ public interface MainImageService {
 	public MainImageCommand selectMainImage(String imagename);
 	public void updateMainImageOrder(Integer num,Integer order);
 	public Integer selectImageCount();
+	public List<MainImageCommand> selectImageList();
 }

@@ -79,7 +79,7 @@ $(document).ready(function(){
 	    // 이미지 파일이면(썸네일이 아닌 원본이미지를 가져오기 위해)
 	    // 썸네일 이미지 파일명 - 파일경로+파일명 /2017/03/09/s_43fc37cc-021b-4eec-8322-bc5c8162863d_spring001.png
 	    var front = fileName.substr(0, 12); // 년원일 경로 추출
-	    var end = fileName.substr(14); // 년원일 경로와 s_를 제거한 원본 파일명을 추출
+	    var end = fileName.substr(12); // 년원일 경로와 s_를 제거한 원본 파일명을 추출
 	    console.log(front); // /2017/03/09/
 	    console.log(end); // 43fc37cc-021b-4eec-8322-bc5c8162863d_spring001.png
 	    // 원본 파일명 - /2017/03/09/43fc37cc-021b-4eec-8322-bc5c8162863d_spring001.png

@@ -1,5 +1,6 @@
 ﻿@charset "UTF-8";
 /* modal */
+
 .modalLogin {
 
 	display: none; /* Hidden by default */
@@ -134,9 +135,14 @@ a:hover {
 }
 
 .bigSquare {
+<<<<<<< HEAD
+	width: 80%;
+	margin: 0 auto;
+=======
    width: 80%;
    height: 1450px;
    margin: 0 auto;
+>>>>>>> e1628094b0c6202790c9402b427d717daafd7612
 }
 
 .link2blank {

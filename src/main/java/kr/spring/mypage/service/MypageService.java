@@ -24,6 +24,7 @@ public interface MypageService {
 	public int selectCountdonation(String dona_id);
 	//(소은):가장 최근 기부리스트 필요해서 사용합니다.
 	public OrderCommand selectNowList(String dona_id);
+
 	
 	//임시보호자 집에 맡기기 //일반회원 
 	public List<ApBoCommand>selectBoList(String bo_id);

@@ -127,7 +127,6 @@ public class GoodsServiceImpl implements GoodsService {
 	public void minusCount(Map<String, Object> map2) {
 		// 결제시 as_goods에서 신청수량을 결제갯수만큼 뺀다
 		goodsMapper.minusCount(map2);
-
 	}
 	@Override
 	public String comeonId(String dona_asname){

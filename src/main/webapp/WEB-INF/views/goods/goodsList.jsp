@@ -8,7 +8,7 @@
 <style>
 
 #backdiv{
-	 background-color:#e0f7ff;
+	 background-color:#f7efd9;
 	  width:100%;
 }
  .modal {

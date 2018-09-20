@@ -109,6 +109,11 @@ public class ShelterServiceImpl implements ShelterService{
 
 
 	@Override
+	public String selectAsName(String id) {
+		//보호소 이름
+		return shelterMapper.selectAsName(id);
+	}
+	@Override
 	public int selectShelterCount() {
 		
 		return shelterMapper.selectShelterCount();
@@ -126,8 +131,5 @@ public class ShelterServiceImpl implements ShelterService{
 	public List<ShelterCommand> selectShelterList() {
 		return shelterMapper.selectShelterList();
 	}
-
-
-	
 
 }

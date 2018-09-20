@@ -15,18 +15,17 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
  * */
 
 public class ChatWebSocketHandler extends TextWebSocketHandler {
-	
-	private Map<String,WebSocketSession> users = new ConcurrentHashMap<String,WebSocketSession>();
-	
-	@Override
-	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		
-		Map<String,Object> map = session.getAttributes();
-		String userId = (String)map.get("user_id");
-		System.out.println(userId +"연결 됨");
-		//유저를 저장
-		users.put(session.getId(), session);
-
+   
+   private Map<String,WebSocketSession> users = new ConcurrentHashMap<String,WebSocketSession>();
+   
+   @Override
+   public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+      
+      Map<String,Object> map = session.getAttributes();
+      String userId = (String)map.get("user_id");
+      System.out.println(userId +"연결 됨");
+      //유저를 저장
+      users.put(session.getId(), session);
 	}
 	//웹 소켓 클라이언트가 데이터를 전송
 	@Override
@@ -61,4 +60,3 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
 		System.out.println(session.getId() + " 에러발생 : " + exception.getMessage());
 	}
 }
-

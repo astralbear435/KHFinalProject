@@ -23,8 +23,8 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public NoticeCommend selectNotice(Integer n_inx) {
-		return notice.selectNotice(n_inx);
+	public NoticeCommend selectNotice(Integer n_idx) {
+		return notice.selectNotice(n_idx);
 	}
 
 	@Override

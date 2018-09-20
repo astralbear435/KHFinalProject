@@ -1,8 +1,10 @@
 package kr.spring.review.service;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
+import kr.spring.goods.domain.OrderCommand;
 import kr.spring.review.domain.ReviewCommand;
 import kr.spring.review.domain.ReviewReplyCommand;
 import kr.spring.shelter.domain.ShelterCommand;
@@ -23,7 +25,13 @@ public interface ReviewService {
 	public void deleteReview(int re_num);
 	//리뷰 수정
 	public ReviewCommand updateDetail(ReviewCommand review);
-	
+	//자기가 쓴글 카운트 갖고오기
+	public int selectCountId(String re_id);
+	public List<ReviewCommand> shelterReviewList(String re_id);
+	//가장 최근의 데이트 값 갖고오기
+	public Date selectBeforeDate(String re_id);
+	//나의 기부값 갖고오기
+	public List<OrderCommand> MyOrder(Map<String,Object> map);
 	
 	
 	//댓글 등록

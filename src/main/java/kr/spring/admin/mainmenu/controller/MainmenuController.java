@@ -50,15 +50,23 @@ public class MainmenuController {
 	@RequestMapping(value="admin/mainmenu/writeMenu.do", method=RequestMethod.POST)
 	public String WriteMenu(@RequestParam("menu_use") String menu_use,
 			@RequestParam("menu_name") String menu_name, @RequestParam("menu_url") String menu_url,
-			@RequestParam("menu_order") int menu_order, @RequestParam("menu_order") String menu_dd,
-			@RequestParam("parent_num") String parent_num) {
-		
+			@RequestParam("menu_order") int menu_order, @RequestParam("menu_dd") String menu_dd,
+			@RequestParam(value="parent_num",defaultValue="0") int parent_num) {
+		if(log.isDebugEnabled()) {
+			log.debug("<<parent_num>> : "+parent_num);
+			log.debug("<<menu_dd>> : "+menu_dd); 
+		}
 		MainmenuCommend mainmenuCommend = new MainmenuCommend();
 		mainmenuCommend.setMenu_name(menu_name);
 		mainmenuCommend.setMenu_dropdown(menu_dd);
 		mainmenuCommend.setMenu_url(menu_url);
 		mainmenuCommend.setMenu_order(menu_order);
 		mainmenuCommend.setMenu_use(menu_use);
+		if(menu_dd.equals("N"))mainmenuCommend.setMenu_depth(1);
+		if(parent_num!=0)mainmenuCommend.setMenu_parent_num(parent_num);
+		if(log.isDebugEnabled()) {  
+			log.debug("<mainmenuCommend> : "+ mainmenuCommend);
+		}
 		mainmenuService.insertMenu(mainmenuCommend);
 		return "redirect:/admin/mainmenu/menulist.do";
 	}

@@ -11,7 +11,7 @@ public interface NoticeService {
 	public List<NoticeCommend> selectNoticeList2(Map<String,Object> map);
 	
 	public Integer selectCountList();
-	public NoticeCommend selectNotice(Integer n_inx);
+	public NoticeCommend selectNotice(Integer n_idx);
 	public void insertNotice(NoticeCommend nc);
 	public void updateNotice(NoticeCommend nc);
 	public void updateHits(Integer n_idx);

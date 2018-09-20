@@ -10,6 +10,7 @@ public class ReviewCommand {
 	private String re_content;//내용
 	private Date re_date;//작성일
 	private int re_hit;//조회수
+	private int re_auth;//조회수
 	
 	public int getRe_num() {
 		return re_num;
@@ -53,10 +54,19 @@ public class ReviewCommand {
 	public void setRe_hit(int re_hit) {
 		this.re_hit = re_hit;
 	}
+	
+	public int getRe_auth() {
+		return re_auth;
+	}
+	public void setRe_auth(int re_auth) {
+		this.re_auth = re_auth;
+	}
 	@Override
 	public String toString() {
 		return "ReviewCommand [re_num=" + re_num + ", re_title=" + re_title + ", re_asname=" + re_asname + ", re_id="
-				+ re_id + ", re_content=" + re_content + ", re_date=" + re_date + ", re_hit=" + re_hit + "]";
-	}	
+				+ re_id + ", re_content=" + re_content + ", re_date=" + re_date + ", re_hit=" + re_hit + ", re_auth="
+				+ re_auth + "]";
+	}
+	
 	
 }

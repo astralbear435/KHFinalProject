@@ -1,16 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
+
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sy.css">
-<body>
+<style>
+th, td {
+    border: 1px solid #444444;
+  }
+</style>
 	<input type="hidden" id="s_address1" value="${shelter.s_address1}">
 	<div class="horizontal"></div><!-- 가로 여백 -->
 	<div class="bigSquare">
 		<c:if test="${user_id == shelter.s_id}">
+		
 		<p align="right" style="margin:0;">
+		<input type="button" value="임시리뷰" class="btn"
+					onclick="location.href='${pageContext.request.contextPath}/shelter/shelterReview.do'">			
 			<input type="button" value="수정하기" class="btn btn-warning"
-					onclick="location.href='${pageContext.request.contextPath}/shelter/shelterConfirm.do'">
+					onclick="location.href='${pageContext.request.contextPath}/shelter/shelterConfirm.do'">			
 		</p>
 		</c:if>
 		<div class="horizontal"></div><!-- 가로 여백 -->
@@ -129,9 +136,12 @@
 								여러분의 도움을<br>
 								필요로 하고 있습니다.<br>
 							</div><br>
+
 							<input type="button" value="보러가기 >" class="btn btn-primary"
 									onclick="location.href='${pageContext.request.contextPath}/dog_board/list.do?keyfield=id&keyword=${shelter.s_id}'">
+									
 
+							<button class="btn btn-danger" onclick="location.href='${pageContext.request.contextPath}/dog_board/list.do?keyfield=id&keyword=${shelter.s_id}'">보러가기</button>
 						</div>
 					</div>
 					<div  class="link2blank" style="width: 145px;"></div>
@@ -144,8 +154,9 @@
 								필요한 물품을 <br>
 								후원하실 수 있습니다.<br>
 							</div><br>
-							<input type="button" value="후원하기 >" class="btn btn-warning"
-										onclick="location.href='${pageContext.request.contextPath}/goods/list.do?keyfield=id&keyword=${shelter.s_id}'">
+
+							<input type="button" value="후원하기 >" class="btn btn-info"
+										onclick="location.href='${pageContext.request.contextPath}/goods/list.do?keyfield=as_name&keyword=${shelter.s_name}'">
 						</div>
 					</div>
 					<div class="horizontal"></div><!-- 가로 여백 -->
@@ -169,7 +180,6 @@
 					</div><br>
 					<input type="button" value="보러가기 >" class="btn btn-warning"
 							onclick="location.href='location.href='${pageContext.request.contextPath}/dog_board/list.do?keyfield=id&keyword=${shelter.s_id}'">
-							onclick="location.href='${pageContext.request.contextPath}/dog_board/list.do?keyfield=id&keyword=${shelter.s_id}'">
 				</div>
 			</div>
 			<div class="link3blank"></div>
@@ -182,8 +192,9 @@
 						필요한 물품을 <br>
 						후원하실 수 있습니다.<br>
 					</div><br>
-					<input type="button" value="후원하기 >" class="btn btn-primary"
-							onclick="location.href='${pageContext.request.contextPath}/goods/list.do?keyfield=id&keyword=${shelter.s_id}'">
+
+					<input type="button" value="후원하기 >" class="btn btn-info"
+							onclick="location.href='${pageContext.request.contextPath}/goods/list.do?keyfield=as_name&keyword=${shelter.s_name}'">
 				</div>
 			</div>
 			<div class="link3blank"></div>
@@ -203,6 +214,69 @@
 		</div>
 		</c:if>
 		<!-- 링크3 끝 -->
-	</div>
-</body>
-</html>
+		</div>
+<div style="color:write;width:100%;height:500px;">.</div>
+ <script type="text/javascript">
+function deleteReview(num){
+	var result=confirm('글을 삭제 하시겠습니까?');
+	if(result){
+		alert('글이 삭제되었습니다.');
+		location.href='shelterReviewDelete.do?re_num='+num+'';
+	}else{
+		alert('글 삭제를 취소하였습니다.');
+	}
+};
+
+
+</script>
+<div class="container">
+	<c:if test="${count>0}">
+		<br><br>
+		<!-- 아코디언 div  -->
+		<div class="panel-group" style="width: 80%; margin-left: 8%">
+
+			<!-- 아코디언 이부분 반복  -->
+			<c:forEach var="review" items="${review}">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<span style="margin-left: 2%;width: 35%;display: inline-block;">${review.re_date}</span><a class="accordion-toggle"
+								data-toggle="collapse" data-parent="#accordion"
+								href="#_${review.re_num}"><b>${review.re_title}</b></a>
+						</h4>
+					</div>
+					<!-- .panel - heading  -->
+					<div id="_${review.re_num}" class="panel-collapse collapse">
+						<div class="panel-body">${review.re_content}
+						<br>
+						<h4>후원 내역 발표</h4><br>
+						<p style="color:gray"> 따듯한 마음이 중요하기에 개별적인 수량과 금액은 나오지 않습니다.<br>본인의 후원 내역은 <a href="#">마이페이지</a>를 확인해 주세요*^^*</p>
+						<c:if test="${donaList!=null}">
+						<br><br>
+						<table class="table" style="width:80%;border: 1px solid #444444;border-collapse: collapse;">
+						<tr>
+							<th>후원일</th>
+							<th>후원자</th>
+							<th>한마디</th>
+						</tr>
+						<c:forEach var="donaList" items="${donaList}">
+							<tr>
+							<td>${donaList.dona_date}</td>
+							<td>${donaList.dona_username}</td>
+							<td>${donaList.dona_message}</td>
+							</tr>					
+						</c:forEach>
+						</table>
+						</c:if>
+						</div>
+						<button style="margin-left:48%" class="btn btn-warning" onclick="deleteReview(${review.re_num})">삭제하기</button><br>
+					</div>
+				</div>
+				<!-- 아코디언 이부분 반복  -->
+			</c:forEach>
+
+		</div>
+		<!-- 아코디언 div  -->
+	</c:if>		
+</div>
+

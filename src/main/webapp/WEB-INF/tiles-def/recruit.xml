@@ -8,7 +8,7 @@
 	<definition name="recruitWrite" extends="main">
 		<put-attribute name="title" value="글쓰기" />
 		<put-attribute name="menu"
-			value="/WEB-INF/views/template/menu2.jsp" />
+			value="/template/menu2.do" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/recruit/recruitWrite.jsp" />
 	</definition>
@@ -16,7 +16,7 @@
 	<definition name="recruitList" extends="main">
 		<put-attribute name="title" value="목록 보기" />
 		<put-attribute name="menu"
-			value="/WEB-INF/views/template/menu2.jsp" />
+			value="/template/menu2.do" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/recruit/recruitList.jsp" />
 	</definition>
@@ -24,7 +24,7 @@
 	<definition name="recruitModify" extends="main">
 		<put-attribute name="title" value="수정하기" />
 		<put-attribute name="menu"
-			value="/WEB-INF/views/template/menu2.jsp" />
+			value="/template/menu2.do" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/recruit/recruitModify.jsp" />
 	</definition>
