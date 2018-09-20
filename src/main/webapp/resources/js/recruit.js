@@ -1,11 +1,7 @@
 $(document).ready(function(){
 	//봉사모집글 작성 유효성 체크
 	$('#recruitWrite_form').submit(function(){
-		if($('#r_upload').val()==''){
-			alert('보호소를 소개할 이미지를 반드시 첨부해주세요');
-			$('#r_upload').focus();
-			return false;
-		}
+		
 		if($('#r_title').val()==''){
 			alert('글 제목을 작성해주세요');
 			$('#r_title').focus();

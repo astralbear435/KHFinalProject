@@ -7,18 +7,17 @@ $(document).ready(function() {
 	});
 	
 	$('#loginButton').click(function() {
-		
+		console.log($('#m_id').val()+','+ $('#m_passwd').val());
 		$.ajax({
 			url:'../member/memberLogin.do',
 			type:'post',
-			data:{m_id:$('#m_id').val(),m_passwd:$('#m_passwd').val()},
+			data:{m_id:$('#l_id').val(),m_passwd:$('#l_passwd').val()},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
 			success:function(data) {
 				
 				if(data.result == 'success') {	//로그인 성공
-					
 					$('#loginModal').hide();
 					location.href='../main/main.do';
 				

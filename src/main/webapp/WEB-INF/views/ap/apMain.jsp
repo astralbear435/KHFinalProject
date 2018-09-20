@@ -1,13 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ap.css">
 <div class="container">
 	<div style="margin:50px 0 0 0;">
 		<span>
 			<img src="${pageContext.request.contextPath}/resources/images/ap/apmain.jpg" style="height:574px; width:1058px;" alt="임시보호자 메인" class="img-responsive" />
 		</span>
 	</div>
-
+	
+	<div class="col-md-12" id="container">
+		<div id="block" style="margin:0 0 0 300px;">
+		<div class="jumbotron col-md-6"  style="margin:50px 50px 50px 0; width:900px; text-align:center;">
+			<p class="lead" style="font-weight:bold;">임시 보호자 지원 신청하기</p>
+			<hr class="my-4">
+			<p>자원봉사로 다른 사람의 동물을 대신<br>돌봐주는 시스템</p>
+			<p class="lead">
+				<a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/ap/apForm.do" role="button">신청하기</a>
+			</p>
+		</div>
+		</div>
+	</div>
 	<div class="jumbotron col-md-6" style="margin:50px 50px 50px 0; width:500px; text-align:center;">
 		<p class="lead" style="font-weight:bold;">임시 보호자 집으로 부르기</p>
 		<hr class="my-4">
@@ -26,13 +38,6 @@
 		</p>
 	</div>
 	
-	<div class="jumbotron col-md-6" style="margin:50px 50px 50px 0; width:500px; text-align:center;">
-		<p class="lead" style="font-weight:bold;">임시 보호자 지원 신청하기</p>
-		<hr class="my-4">
-		<p>자원봉사로 다른 사람의 동물을 대신<br>돌봐주는 시스템</p>
-		<p class="lead">
-			<a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/ap/apForm.do" role="button">신청하기</a>
-		</p>
-	</div>
+	
 	
 </div>

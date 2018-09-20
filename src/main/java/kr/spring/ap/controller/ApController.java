@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.spring.ap.domain.ApCallCommand;
 import kr.spring.ap.domain.ApCommand;
 import kr.spring.ap.service.ApService;
 import kr.spring.util.PagingUtil;
@@ -33,6 +32,11 @@ public class ApController {
 	
 	@Resource
 	private ApService apService;
+	
+	@ModelAttribute("command")
+	public ApCommand initApCommand() {
+		return new ApCommand();
+	}
 
 //==========임시보호자 메인 ==========
 	//메인폼
@@ -183,6 +187,19 @@ public class ApController {
 		
 		return "redirect:/ap/apList.do";
 	}
-
-//
+	
+//==========게시판 글 삭제==========	
+	@RequestMapping("/ap/apdelete.do")
+	public String submit(@RequestParam("ap_num") int ap_num) {
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<ap_num>> : " + ap_num);
+		}
+		
+		//글삭제
+		apService.apdelete(ap_num);
+		
+		return "redirect:/ap/apList.do";
+	}
+		
 }

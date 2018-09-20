@@ -43,9 +43,8 @@ public class ApServiceImpl implements ApService{
 	}
 
 	@Override
-	public void apApdelete(Integer ap_num) {
-		// TODO Auto-generated method stub
-		
+	public void apdelete(Integer ap_num) {
+		apMapper.apdelete(ap_num);
 	}
 
 }

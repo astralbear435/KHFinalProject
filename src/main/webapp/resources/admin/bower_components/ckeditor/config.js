@@ -38,6 +38,6 @@ config.toolbarGroups = [
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
-	config.filebrowserUploadUrl = '/ProjectCAN/admin/notice/fileUpload.do'; 
-	
+	//config.filebrowserUploadUrl = '/ProjectCAN/admin/notice/fileUpload.do'; 
+	config.height = '600px';
 };

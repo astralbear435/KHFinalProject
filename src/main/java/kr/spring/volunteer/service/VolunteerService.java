@@ -7,17 +7,17 @@ import kr.spring.recruit.domain.RecruitCommand;
 
 
 public interface VolunteerService {
-	//봉사활동 신청 글 작성
+	//遊됱궗�솢�룞 �떊泥� 湲� �옉�꽦
 	public void insert(Map<String,Object> map);
-	//봉사활동 신청 글 확인 
-	//마이페이지 캘린더에서 상세 확인 
-	//아이디와 일치하면 전부 보여주기
+	//遊됱궗�솢�룞 �떊泥� 湲� �솗�씤 
+	//留덉씠�럹�씠吏� 罹섎┛�뜑�뿉�꽌 �긽�꽭 �솗�씤 
+	//�븘�씠�뵒�� �씪移섑븯硫� �쟾遺� 蹂댁뿬二쇨린
 	public List<RecruitCommand> selectList(Map<String,Object> map);	
-	//신청 글 보기
+	//�떊泥� 湲� 蹂닿린
 	public RecruitCommand selectBoard(Integer v_num);
-	//신청 글 수정
-	public void update(RecruitCommand volunteer);
-	//신청 글 삭제
+	//�떊泥� 湲� �닔�젙
+	public void update(Map<String,Object> map);
+	//�떊泥� 湲� �궘�젣
 	public void delete(Integer v_num);
 	
 }

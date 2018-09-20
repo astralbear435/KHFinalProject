@@ -165,15 +165,13 @@ $(document).ready(function(){
 <!--모달닫는다~~~~~-->
             
 <div class="page-main-style">
-	<div>
+	<div class="margin0a" style="width: 80%;">
 		<div class="horizontal"></div><!-- 가로 여백 -->
-		<div id="margin0a">
-			<div style="width: 450px; margin: 0 auto;">
-				<img src="${pageContext.request.contextPath}\resources\images\sy\보호소 줄 그림.png">
-			</div>
+		<div class="margin0a" style="width: 450px;">
+			<img src="${pageContext.request.contextPath}\resources\images\sy\보호소 줄 그림.png">
 		</div>
 		
-		<div class="w500 margin0a">
+		<div class="margin0a" style="width: 450px;">
 			<form id="shelterDeleteForm" method="post" action="delete.do">
 				<input type="hidden" name="s_id" value="${shelter.s_id}">
 			</form>

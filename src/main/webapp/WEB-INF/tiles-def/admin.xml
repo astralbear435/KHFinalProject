@@ -9,29 +9,62 @@
 		template="/WEB-INF/views/admin/template/layout.jsp">
 		<put-attribute name="title" value="Admin Page" />
 		<put-attribute name="menu"
-			value="/WEB-INF/views/admin/template/menu.jsp" />
+			value="/admin/template/menu.do" />
 		<put-attribute name="header"
-			value="/WEB-INF/views/admin/template/header.jsp" />
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/main/main.jsp" />
+			value="/admin/template/header.do" />
 		<put-attribute name="footer"
 			value="/WEB-INF/views/admin/template/footer.jsp" />
 	</definition>
-
+	<definition name="adminMain" extends="admin">
+		<put-attribute name="title" value="관리자 메인페이지" /> 
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/main/main.jsp" />
+	</definition>
 	<definition name="mainPageSetup" extends="admin">
 		<put-attribute name="title" value="메인페이지 설정" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/pageSetup/mainPage.jsp" />
 	</definition>
 	<definition name="noticeList" extends="admin">
-		<put-attribute name="title" value="공지사항"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/notice/noticeList.jsp"/>
-	</definition>  
+		<put-attribute name="title" value="공지사항" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/notice/noticeList.jsp" />
+	</definition>
 	<definition name="noticeWrite" extends="admin">
-		<put-attribute name="title" value="공지사항 작성"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/notice/noticeWrite.jsp"/>
+		<put-attribute name="title" value="공지사항 작성" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/notice/noticeWrite.jsp" />
+	</definition>
+	<definition name="menulist" extends="admin">
+		<put-attribute name="title" value="공지사항 목록" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/mainmenu/menulist.jsp" />
+	</definition>
+	<definition name="normalMember" extends="admin">
+		<put-attribute name="title" value="회원 목록" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/member/normalMember.jsp" />
+	</definition>
+	<definition name="shelterMember" extends="admin">
+		<put-attribute name="title" value="보호소 목록" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/member/shelterMember.jsp" />
 	</definition>  
-	
+	<definition name="List" extends="main">
+		<put-attribute name="title" value="공지사항"/>
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/List.jsp"/>
+	</definition>
+	<definition name="detail" extends="main">
+		<put-attribute name="title" value="공지사항 상세보기"/>
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/detail.jsp"/>
+	</definition>
+	<definition name="faq" extends="main">
+		<put-attribute name="title" value="FAQ"/>
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu2.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/faq.jsp"/>
+	</definition>
 </tiles-definitions>
 
 

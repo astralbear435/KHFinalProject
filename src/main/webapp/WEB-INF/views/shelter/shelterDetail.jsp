@@ -76,10 +76,10 @@ th, td {
 				var map = new daum.maps.Map(mapContainer, mapOption); 
 				
 				// 마우스 드래그와 모바일 터치를 이용한 지도 이동을 막는다
-				map.setDraggable(false);		
+				//map.setDraggable(false);		
 
 				// 마우스 휠과 모바일 터치를 이용한 지도 확대, 축소를 막는다
-				map.setZoomable(false);   
+				//map.setZoomable(false);   
 				
 				// 주소-좌표 변환 객체를 생성합니다
 				var geocoder = new daum.maps.services.Geocoder();
@@ -137,7 +137,12 @@ th, td {
 								필요로 하고 있습니다.<br>
 							</div><br>
 							<input type="button" value="보러가기 >" class="btn btn-danger"
+<<<<<<< HEAD
 									onclick="location.href='#'">
+=======
+									onclick="location.href='${pageContext.request.contextPath}/dog_board/list.do?keyfield=id&keyword=${shelter.s_id}'">
+
+>>>>>>> e1628094b0c6202790c9402b427d717daafd7612
 						</div>
 					</div>
 					<div  class="link2blank" style="width: 145px;"></div>
@@ -174,7 +179,8 @@ th, td {
 						필요로 하고 있습니다.<br>
 					</div><br>
 					<input type="button" value="보러가기 >" class="btn btn-danger"
-							onclick="location.href='#'">
+							onclick="location.href='location.href='${pageContext.request.contextPath}/dog_board/list.do?keyfield=id&keyword=${shelter.s_id}'">
+							onclick="location.href='${pageContext.request.contextPath}/dog_board/list.do?keyfield=id&keyword=${shelter.s_id}'">
 				</div>
 			</div>
 			<div class="link3blank"></div>

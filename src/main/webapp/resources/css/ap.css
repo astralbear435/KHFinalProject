@@ -10,6 +10,8 @@
 	border-style: solid;
 }
 
+.margin0a {margin: 0 auto;}
+
 .floatL {
 	float: left;
 }
@@ -19,7 +21,6 @@
 }
 
 .search {
-	background-color: #bcbcbc;
    	margin:5px 0px 5px 10px;
    	line-height:40px;
 }

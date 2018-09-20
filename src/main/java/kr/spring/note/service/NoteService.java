@@ -7,11 +7,11 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.note.domain.NoteCommand;
-
+ 
 public interface NoteService {
 	public List<NoteCommand> selectNoteList(Map<String,Object> map);
 	public int selectNoteRowCount(Map<String,Object> map);
-	
+	 
 	// 안 읽은 쪽지 수 세기
 	public int openNotCount(String recipient);
 	

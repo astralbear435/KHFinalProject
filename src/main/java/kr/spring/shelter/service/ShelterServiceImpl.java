@@ -64,6 +64,7 @@ public class ShelterServiceImpl implements ShelterService{
 
 	@Override
 	public void updatePwShelter(String m_email) throws Exception {
+
 			int index = 0;		
 			char[] charset_num = new char[] {
 					'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
@@ -108,9 +109,33 @@ public class ShelterServiceImpl implements ShelterService{
 
 
 	@Override
+<<<<<<< HEAD
 	public String selectAsName(String id) {
 		//보호소 이름
 		return shelterMapper.selectAsName(id);
 	}
 
+=======
+	public int selectShelterCount() {
+		
+		return shelterMapper.selectShelterCount();
+	}
+
+
+	@Override
+	public int selectTodayShelterCount() {
+		
+		return shelterMapper.selectTodayShelterCount();
+	}
+
+
+	@Override
+	public List<ShelterCommand> selectShelterList() {
+		return shelterMapper.selectShelterList();
+	}
+
+
+	
+
+>>>>>>> e1628094b0c6202790c9402b427d717daafd7612
 }

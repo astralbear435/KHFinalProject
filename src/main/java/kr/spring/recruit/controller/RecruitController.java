@@ -34,14 +34,14 @@ public class RecruitController {
 	@Resource
 	private RecruitService recruitService;
 
-	//�ڹٺ� �ʱ�ȭ
+	//占쌘바븝옙 占십깍옙화
 	@ModelAttribute("command")
 	public RecruitCommand initCommand() {
 		return new RecruitCommand();
 	}
 
-	//...................�Խ��� �� ���...........................//
-	//��� ��
+	//...................占쌉쏙옙占쏙옙 占쏙옙 占쏙옙占�...........................//
+	//占쏙옙占� 占쏙옙
 	@RequestMapping(value="/recruit/recruitWrite.do", method=RequestMethod.GET)
 	public String form(HttpSession session, Model model) {
 		String id = (String)session.getAttribute("user_id");
@@ -54,7 +54,7 @@ public class RecruitController {
 		return "recruitWrite";
 	}
 
-	//���۵� ������ ó��
+	//占쏙옙占쌜듸옙 占쏙옙占쏙옙占쏙옙 처占쏙옙
 	@RequestMapping(value="/recruit/recruitWrite.do", method=RequestMethod.POST)
 	public String submit(@ModelAttribute("recruit") RecruitCommand recruit, BindingResult result, HttpServletRequest request) {
 		if(log.isDebugEnabled()) {
@@ -70,10 +70,10 @@ public class RecruitController {
 	
 		recruitService.insert(recruit);
 
-		return "recruitList";
+		return "redirect:/recruit/recruitList.do";
 	}
 
-	//...................�Խ��� �� ���    .......................//
+	//...................占쌉쏙옙占쏙옙 占쏙옙 占쏙옙占�    .......................//
 	@RequestMapping("/recruit/recruitList.do")
 	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1")int currentPage, @RequestParam(value="keyfield",defaultValue="")String keyfield
 			, @RequestParam(value="keyword",defaultValue="")String keyword) {
@@ -100,7 +100,7 @@ public class RecruitController {
 			list = recruitService.selectList(map);
 			shelterNameList = recruitService.selectBoNameList(map);
 		}
-				
+			
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("recruitList");
 		mav.addObject("count",count);		
@@ -124,7 +124,7 @@ public class RecruitController {
 		return mav;
 	}
 
-	//...................�Խ��� �� �� ����.......................//
+	//...................占쌉쏙옙占쏙옙 占쏙옙 占쏙옙 占쏙옙占쏙옙.......................//
 	@RequestMapping("/volunteer/volunteerWrite2.do")
 	public ModelAndView process(@RequestParam("r_num") int r_num) {
 		if(log.isDebugEnabled()) {
@@ -149,7 +149,7 @@ public class RecruitController {
 		return mav;
 	}
 	
-	//비회원 봉사활동 신청 못함
+	//鍮꾪쉶�썝 遊됱궗�솢�룞 �떊泥� 紐삵븿
 	@RequestMapping("/volunteer/noUser.do")
 	public String processNoUser(HttpSession session) {
 
@@ -157,8 +157,8 @@ public class RecruitController {
 	}
 
 
-	//...................�Խ��� �� ����..........................//
-	//���� ��
+	//...................占쌉쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙..........................//
+	//占쏙옙占쏙옙 占쏙옙
 	@RequestMapping(value="/recruit/recruitUpdate.do", method=RequestMethod.GET)
 	public String form(@RequestParam("r_num") int r_num, Model model) {
 
@@ -179,16 +179,16 @@ public class RecruitController {
 		/*if(result.hasErrors()) {
 				return "recruitModify";
 			}*/
-		//ip����
+		//ip占쏙옙占쏙옙
 		//recruitCommand.setR_Ip(request.getRemoteAddr());
 
-		//�� ����
+		//占쏙옙 占쏙옙占쏙옙
 		recruitService.update(recruit);
 
 		return "redirect:/recruit/recruitList.do";
 	}
 
-	//...................�Խ��� �� ����..........................//
+	//...................占쌉쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙..........................//
 	@RequestMapping("/recruit/recruitDelete.do")
 	public String submit(@RequestParam("r_num") int r_num, HttpSession session) {
 		recruitService.deleteVolunteer(r_num);
