@@ -24,7 +24,7 @@
 					<c:forEach var="notice" items="${list}">
 						<tr class="table-light">
 							<td>${notice.n_idx}</td>
-							<td><a href="detail.do?n_idx=${notice.n_idx}" class="card-link">${notice.n_subject}</a></td>
+							<td><a href="noticeDetail.do?n_idx=${notice.n_idx}" class="card-link">${notice.n_subject}</a></td>
 							<td>${notice.n_hit}</td>
 							<td>${notice.n_id}</td>
 						</tr>

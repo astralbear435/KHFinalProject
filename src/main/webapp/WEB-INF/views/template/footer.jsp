@@ -9,61 +9,57 @@
 						<h4>Address</h4>
 					</div>
 					<div class="footer-grid-info">
-						<p>Eiusmod Tempor inc
-							<span>St Dolore Place,Kingsport 56777.</span>
+						<p>서울시 중구 대일빌딩 2층 A강의장
+							<span></span>
 						</p>
-						<p class="phone">Phone : +1 123 456 789
+						<p class="phone">Phone : +82 010 1234 5678
 							<span>Email : <a href="mailto:example@email.com">mail@example.com</a></span>
 						</p>
 					</div>
 				</div>
+				
 				<div class="col-md-3 footer-grid">
 					<div class="footer-grid-heading">
 						<h4>Navigation</h4>
 					</div>
 					<div class="footer-grid-info">
 						<ul>
-							<li><a href="${pageContext.request.contextPath}/main/about.do">About</a></li>
-							<li><a href="${pageContext.request.contextPath}/main/gallery.do">Gallery</a></li>
-							<li><a href="${pageContext.request.contextPath}/main/blog.do">Blog</a></li>
-							<li><a href="${pageContext.request.contextPath}/main/icons.do">Icons</a></li>
-							<li><a href="${pageContext.request.contextPath}/main/codes.do">Codes</a></li>
-							<li><a href="${pageContext.request.contextPath}/main/contact.do">Contact</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/main.do">관리자 페이지</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-md-3 footer-grid">
 					<div class="footer-grid-heading">
-						<h4>Latest Posts</h4>
+						<h4>Our team</h4>
 					</div>
 					<div class="w3agile_footer_grid_list">
 						<ul>
-							<li><i class="fa fa-angle-right" aria-hidden="true"></i> Vestibulum ante ipsum</li>
-							<li><i class="fa fa-angle-right" aria-hidden="true"></i> Phasellus at eros</li>
-							<li><i class="fa fa-angle-right" aria-hidden="true"></i> Mauris eleifend aliquet</li>
-							<li><i class="fa fa-angle-right" aria-hidden="true"></i> Aliquam vitae tristique</li>
-							<li><i class="fa fa-angle-right" aria-hidden="true"></i> Pellentesque lobortis</li>
-							<li><i class="fa fa-angle-right" aria-hidden="true"></i> Class aptent taciti</li>
+							<li><i class="fa fa-angle-right" aria-hidden="true"></i> 상필 킴</li>
+							<li><i class="fa fa-angle-right" aria-hidden="true"></i> 상우 초이</li>
+							<li><i class="fa fa-angle-right" aria-hidden="true"></i> 다영 오</li>
+							<li><i class="fa fa-angle-right" aria-hidden="true"></i> 세영 팍</li>
+							<li><i class="fa fa-angle-right" aria-hidden="true"></i> 두철 장</li>
+							<li><i class="fa fa-angle-right" aria-hidden="true"></i> 소은 장</li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-md-3 footer-grid">
 					<div class="footer-grid-heading">
-						<h4>Twitter Posts</h4>
+						<h4>X</h4>
 					</div>
 					<div class="w3agile_footer_grid_list w3agile-post">
 						<ul>
-							<li>Ut aut reiciendis voluptatibus <a href="#">http://example.com</a> alias, ut aut.
-								<span><i class="fa fa-twitter" aria-hidden="true"></i> 02 days ago</span></li>
-							<li>Itaque earum rerum hic tenetur a sapiente <a href="#">http://example.com</a> ut aut.
-							<span><i class="fa fa-twitter" aria-hidden="true"></i> 03 days ago</span></li>
+							<li>트위터는 개설 전 입니다.
+								<span><i class="fa fa-twitter" aria-hidden="true"></i> now</span></li>
+							<li>페이스북은 개설 전 입니다.
+							<span><i class="fa fa-twitter" aria-hidden="true"></i> now </span></li>
 						</ul>
 					</div>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 			<div class="agileits-w3layouts-copyright">
-				<p>© 2017 Njoy Trip . All Rights Reserved | Design by <a href="http://w3layouts.com/"> W3layouts</a> </p>
+				<p>© 2018 CocoAndNabi | Derecting by <a href="http://w3layouts.com/"> "일조"</a> </p>
 			</div>
 		</div>
 	</div>

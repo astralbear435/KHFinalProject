@@ -174,7 +174,7 @@ public class NoticeController {
 		return mav;
 	}
 //==========모든 회원이 보는 글 목록==========
-		@RequestMapping("/admin/List.do")
+		@RequestMapping("/main/noticeList.do")
 		public ModelAndView process(@RequestParam(value="pageNum", defaultValue="1") int currentPage) {
 			
 			Map<String, Object> map = new HashMap<String, Object>();
@@ -202,7 +202,7 @@ public class NoticeController {
 			}
 			
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("List");
+			mav.setViewName("noticeList2");
 			mav.addObject("count", count);
 			mav.addObject("list", list);
 			mav.addObject("pagingHtml", page.getPagingHtml());
@@ -210,7 +210,7 @@ public class NoticeController {
 			return mav;
 		}
 		
-		@RequestMapping("/admin/detail.do")
+		@RequestMapping("/main/noticeDetail.do")
 		public ModelAndView process2(@RequestParam("n_idx") int n_inx) {
 			
 			if(log.isDebugEnabled()) {
@@ -225,7 +225,7 @@ public class NoticeController {
 			//enter에 대한 줄바꿈처리
 			noticeCommend.setN_subject(StringUtil.useBrNoHtml(noticeCommend.getN_subject()));
 			
-			return new ModelAndView("detail", "noticeCommend", noticeCommend);
+			return new ModelAndView("noticeDetail2", "noticeCommend", noticeCommend);
 		}
 
 	//============================ 게시글 글 수정 ============================

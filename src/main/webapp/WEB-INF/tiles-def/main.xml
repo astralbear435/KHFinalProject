@@ -66,7 +66,27 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/main/single.jsp" />
 	</definition>
-
+	<definition name="noticeList2" extends="main">
+		<put-attribute name="title" value="공지사항 리스트" />
+		<put-attribute name="menu"
+			value="/template/menu2.do" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/noticeList.jsp" />
+	</definition>
+	<definition name="noticeDetail2" extends="main">
+		<put-attribute name="title" value="공지사항 " />
+		<put-attribute name="menu"
+			value="/template/menu2.do" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/noticeDetail.jsp" />
+	</definition>
+	<definition name="faq" extends="main">
+		<put-attribute name="title" value="FAQ" />
+		<put-attribute name="menu"
+			value="/template/menu2.do" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/faq.jsp" />
+	</definition>
 </tiles-definitions>
 
 

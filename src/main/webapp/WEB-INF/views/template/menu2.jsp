@@ -7,39 +7,37 @@
 	src="${pageContext.request.contextPath}/resources/js/modal.js"></script>
 
 <!-- 모달창 열기 -->
-<div id="loginModal" class="modal">
-	<div class="loginModal-content">
-		<span style="font-size: 10pt; text-align: right;"> <a href="#"
-			id="closeMemberLogin">X</a>
-		</span>
-		<p style="text-align: center;">
-			<span style="font-size: 14pt;"> <b><span
-					style="font-size: 20pt;">로그인</span></b>
-			</span>
-		</p>
-		<div style="text-align: center;">
-			<hr color="skyblue">
-			<br> <label for="l_id">아이디</label> <br> <input type="text"
-				name="m_id" id="l_id" class="form-control" style="max-width: 280px"
-				placeholder="아이디 입력" /> <br> <br> <label for="m_passwd">비밀번호</label>
-			<br> <input type="password" name="m_passwd" id="l_passwd"
-				class="form-control" placeholder="비밀번호 입력" style="max-width: 280px" />
-			<br>
-			<br>
-			<div id="errorLogin"></div>
-			<br> <input type="button" class="btn btn-warning btn-lg"
-				id="loginButton" value="로그인"><br>
-			<br> &nbsp; <a class="agile-icon"
-				href="${pageContext.request.contextPath}/member/provision.do"> <i
-				class="fa fa-user">회원가입</i>
-			</a>&nbsp;&nbsp;&nbsp; <a class="agile-icon"
-				href="${pageContext.request.contextPath}/member/findMember.do">
-				<i class="fa fa-unlock-alt">아이디/비밀번호 찾기</i>
-			</a>
-		</div>
-	</div>
+<div id="loginModal" class="modalLogin">
+   <div class="modal-contentLogin">
+      <span style="font-size: 10pt; text-align: right;"> <a href="#"
+         id="closeMemberLogin">X</a>
+      </span>
+      <p style="text-align: center;">
+         <span style="font-size: 14pt;"> <b><span
+               style="font-size: 20pt;">로그인</span></b>
+         </span>
+      </p>
+      <div style="text-align: center;">
+         <hr color="black">
+         <label for="l_id">아이디</label> <br> <input type="text" name="m_id" id="l_id" class="form-control" style="max-width: 280px;" placeholder="아이디 입력" /> <br>
+         <br> 
+         <label for="l_passwd">비밀번호</label> <br> 
+         <input type="password" name="m_passwd" id="l_passwd" class="form-control" style="max-width: 280px;" placeholder="비밀번호 입력" /> <br>
+         <br>
+         <div id="errorLogin"></div>
+         <br> 
+         <input type="button" class="btn btn-warning btn-lg" id="loginButton" value="로그인"> <br>
+         <br>&nbsp; 
+         <a class="agile-icon" href="${pageContext.request.contextPath}/member/provision.do"> 
+            <i class="fa fa-user">회원가입</i>
+         </a>&nbsp;&nbsp;&nbsp; 
+         <a class="agile-icon" href="${pageContext.request.contextPath}/member/findMember.do">
+            <i class="fa fa-unlock-alt">아이디/비밀번호 찾기</i>
+         </a> <br>
+         <br>
+      </div>
+   </div>
 </div>
-
 <!-- 모달창 닫기 -->
 
 <!-- banner -->
