@@ -54,39 +54,20 @@
 	<div id="m_nav_container" class="m_nav">
 		<ul id="m_nav_list" class="m_nav">
 		<c:if test="${mcount==0}">
-			<li><a href="${pageContext.request.contextPath}/main/main.do">Home</a>
-			</li>
-			<li><a href="${pageContext.request.contextPath}/main/icons.do">Icons</a>
-			</li>
-			<li><a href="${pageContext.request.contextPath}/main/codes2.do">codes</a>
-			</li>
-			<li><a href="${pageContext.request.contextPath}/ap/apMain.do">임시보호</a>
-			</li>
-			<li><a
-				href="${pageContext.request.contextPath}/shelter/shelterList.do">보호소
-					조회</a></li>
-			<li><a
-				href="${pageContext.request.contextPath}/recruit/recruitList.do">봉사활동
-					모집</a></li>
-			<li><a href="${pageContext.request.contextPath}/goods/list.do">후원하기</a></li>
 			</c:if>
 			<c:if test="${mcount>0}">
 				<c:forEach var="menu" items="${mlist}">
 					<c:if test="${menu.menu_order==1}">
-						<li><a
-							href="${pageContext.request.contextPath}${menu.menu_url}">${menu.menu_name}</a></li>
+						<li><a href="${pageContext.request.contextPath}${menu.menu_url}">${menu.menu_name}</a></li>
 					</c:if>
 					<c:if test="${menu.menu_order==2}">
-						<li><a
-							href="${pageContext.request.contextPath}${menu.menu_url}">${menu.menu_name}</a></li>
+						<li><a href="${pageContext.request.contextPath}${menu.menu_url}">${menu.menu_name}</a></li>
 					</c:if>
 					<c:if test="${menu.menu_order==3}">
-						<li><a
-							href="${pageContext.request.contextPath}${menu.menu_url}">${menu.menu_name}</a></li>
+						<li><a href="${pageContext.request.contextPath}${menu.menu_url}">${menu.menu_name}</a></li>
 					</c:if>
 					<c:if test="${menu.menu_order==4}">
-						<li><a
-							href="${pageContext.request.contextPath}${menu.menu_url}">${menu.menu_name}</a></li>
+						<li><a href="${pageContext.request.contextPath}${menu.menu_url}">${menu.menu_name}</a></li>
 					</c:if>
 					<c:if test="${menu.menu_order==5}">
 						<li><a
@@ -109,6 +90,7 @@
 							<li><a href="${menu.menu_url}" id="memberLogin">${menu.menu_name}</a></li>
 						</c:if>
 					</c:if>
+					</c:forEach>
 					<c:if test="${!empty user_id}">
 						<c:if test="${user_auth==1 || user_auth==2 || user_auth==5}">
 							<li><a href="#">${user_id}님 로그인 중</a></li>
@@ -129,7 +111,7 @@
 						<li><a
 							href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
 					</c:if>
-				</c:forEach>
+				
 			</c:if>
 		</ul>
 	</div>

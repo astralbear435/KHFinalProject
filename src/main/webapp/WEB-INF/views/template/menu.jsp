@@ -9,35 +9,35 @@
 
 <!-- 모달창 열기 -->
 <div id="loginModal" class="modalLogin">
-   <div class="modal-contentLogin">
-      <span style="font-size: 10pt; text-align: right;"> <a href="#"
-         id="closeMemberLogin">X</a>
-      </span>
-      <p style="text-align: center;">
-         <span style="font-size: 14pt;"> <b><span
-               style="font-size: 20pt;">로그인</span></b>
-         </span>
-      </p>
-      <div style="text-align: center;">
-         <hr color="black">
-         <label for="l_id">아이디</label> <br> <input type="text" name="m_id" id="l_id" class="form-control" style="max-width: 280px;" placeholder="아이디 입력" /> <br>
-         <br> 
-         <label for="l_passwd">비밀번호</label> <br> 
-         <input type="password" name="m_passwd" id="l_passwd" class="form-control" style="max-width: 280px;" placeholder="비밀번호 입력" /> <br>
-         <br>
-         <div id="errorLogin"></div>
-         <br> 
-         <input type="button" class="btn btn-warning btn-lg" id="loginButton" value="로그인"> <br>
-         <br>&nbsp; 
-         <a class="agile-icon" href="${pageContext.request.contextPath}/member/provision.do"> 
-            <i class="fa fa-user">회원가입</i>
-         </a>&nbsp;&nbsp;&nbsp; 
-         <a class="agile-icon" href="${pageContext.request.contextPath}/member/findMember.do">
-            <i class="fa fa-unlock-alt">아이디/비밀번호 찾기</i>
-         </a> <br>
-         <br>
-      </div>
-   </div>
+	<div class="modal-contentLogin">
+		<span style="font-size: 10pt; text-align: right;"> <a href="#"
+			id="closeMemberLogin">X</a>
+		</span>
+		<p style="text-align: center;">
+			<span style="font-size: 14pt;"> <b><span
+					style="font-size: 20pt;">로그인</span></b>
+			</span>
+		</p>
+		<div style="text-align: center;">
+			<hr color="black">
+			<label for="l_id">아이디</label> <br> <input type="text"
+				name="m_id" id="l_id" class="form-control" style="max-width: 280px;"
+				placeholder="아이디 입력" /> <br> <br> <label for="l_passwd">비밀번호</label>
+			<br> <input type="password" name="m_passwd" id="l_passwd"
+				class="form-control" style="max-width: 280px;" placeholder="비밀번호 입력" />
+			<br> <br>
+			<div id="errorLogin"></div>
+			<br> <input type="button" class="btn btn-warning btn-lg"
+				id="loginButton" value="로그인"> <br> <br>&nbsp; <a
+				class="agile-icon"
+				href="${pageContext.request.contextPath}/member/provision.do"> <i
+				class="fa fa-user">회원가입</i>
+			</a>&nbsp;&nbsp;&nbsp; <a class="agile-icon"
+				href="${pageContext.request.contextPath}/member/findMember.do">
+				<i class="fa fa-unlock-alt">아이디/비밀번호 찾기</i>
+			</a> <br> <br>
+		</div>
+	</div>
 </div>
 <!-- 모달창 닫기 -->
 
@@ -111,7 +111,7 @@
 			</c:if>
 			<c:if test="${mcount>0}">
 				<c:forEach var="menu" items="${mlist}">
-					<c:if test="${menu.menu_order==1}"> 
+					<c:if test="${menu.menu_order==1}">
 						<li><a
 							href="${pageContext.request.contextPath}${menu.menu_url}">${menu.menu_name}</a></li>
 					</c:if>
@@ -136,40 +136,43 @@
 							href="${pageContext.request.contextPath}${menu.menu_url}">${menu.menu_name}</a></li>
 					</c:if>
 					<c:if test="${menu.menu_order==7}">
-						<li><a href="${pageContext.request.contextPath}${menu.menu_url}">${menu.menu_name}</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}${menu.menu_url}">${menu.menu_name}</a></li>
 					</c:if>
 					<c:if test="${menu.menu_order>8}">
-					<li><a href="${pageContext.request.contextPath}${menu.menu_url}">${menu.menu_name}</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}${menu.menu_url}">${menu.menu_name}</a></li>
 					</c:if>
 					<c:if test="${empty user_id}">
 						<c:if test="${menu.menu_order==8}">
 							<li><a href="#" id="memberLogin">${menu.menu_name}</a></li>
 						</c:if>
 					</c:if>
-					<c:if test="${!empty user_id}">
-
-						<c:if test="${user_auth==1 || user_auth==2 || user_auth==5}">
-							<li><a
-								href="${pageContext.request.contextPath}/member/memberDetail.do?m_id='${user_id}'">${user_id}님
-									로그인 중</a></li>
-							<li><a
-								href="${pageContext.request.contextPath}/mypage/mypage.do?v_id=${user_id}">마이페이지</a>
-							</li>
-						</c:if>
-						<c:if test="${user_auth==3 || user_auth==4}">
-							<li><a
-								href="${pageContext.request.contextPath}/shelter/shelterConfirm.do">${user_id}님
-									로그인 중</a></li>
-							<li><a
-								href="${pageContext.request.contextPath}/mypage/mypageShelter.do?r_id=${user_id}">마이페이지</a>
-							</li>
-						</c:if>
-						<li><a
-							href="${pageContext.request.contextPath}/note/receivedList.do">쪽지</a></li>
-						<li><a
-							href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
-					</c:if>
 				</c:forEach>
+				<c:if test="${!empty user_id}">
+
+					<c:if test="${user_auth==1 || user_auth==2 || user_auth==5}">
+						<li><a
+							href="${pageContext.request.contextPath}/member/memberDetail.do?m_id='${user_id}'">${user_id}님
+								로그인 중</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/mypage/mypage.do?v_id=${user_id}">마이페이지</a>
+						</li>
+					</c:if>
+					<c:if test="${user_auth==3 || user_auth==4}">
+						<li><a
+							href="${pageContext.request.contextPath}/shelter/shelterConfirm.do">${user_id}님
+								로그인 중</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/mypage/mypageShelter.do?r_id=${user_id}">마이페이지</a>
+						</li>
+					</c:if>
+					<li><a
+						href="${pageContext.request.contextPath}/note/receivedList.do">쪽지</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
+				</c:if>
+
 			</c:if>
 		</ul>
 	</div>
