@@ -58,6 +58,24 @@ public class AdminController {
 		model.addAttribute("mcount",count);
 		return "template/menu";
 	}
+	@RequestMapping("/template/menu2.do")
+	public String mainMenu2(HttpSession session, Model model){
+		String id="";
+		int count=0;
+		List<MainmenuCommend> list =null;
+		if((String)session.getAttribute("user_id")!=null) {
+			id=(String)session.getAttribute("user_id");
+		}
+		count=mainMenu.selectActiveMenuCount();
+		if (count>0) {
+			list= mainMenu.selectActiveMenu();
+		}
+		
+		model.addAttribute("id",id);
+		model.addAttribute("mlist",list);
+		model.addAttribute("mcount",count);
+		return "template/menu2";
+	}
 	@RequestMapping("/admin/main.do")
 	public ModelAndView mainPage(){
 		int totalV=0,todayV=0;
