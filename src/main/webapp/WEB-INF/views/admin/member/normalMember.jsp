@@ -4,8 +4,7 @@
 <!-- DataTables -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-<!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/admin/plugins/iCheck/all.css">
+
 
 <!-- Content Header (Page header) -->
 
@@ -49,7 +48,7 @@
 						<td>${member.m_name}</td>
 						<c:if test="${member.auth==1}"><td>준회원</td></c:if>
 						<c:if test="${member.auth==2}"><td>일반회원</td></c:if>
-						<c:if test="${member.auth==5}"><td>펫시터</td></c:if>
+						<c:if test="${member.auth==5}"><td>임시 보호자</td></c:if>
 						<td><input type="checkbox" name="checkNum" id="${member.m_num}"></td>
 					</tr>
 				</c:forEach>
@@ -122,3 +121,4 @@ $(document).ready(function(){
         }
     })
 })
+</script>

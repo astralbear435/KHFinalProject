@@ -13,13 +13,13 @@ public interface MainmenuMapper {
 	
 	@Select("SELECT count(*) FROM MAIN_MENU")
 	public int selectmenuCount();
-	@Select("SELECT count(*) FROM MAIN_MENU WHERE menu_use=#{use}")
-	public int selectActiveMenuCount(String use);
-	@Select("SELECT * FROM MAIN_MENU WHERE menu_use=#{use}")
-	public List<MainmenuCommend> selectActiveMenu(String use);
+	@Select("SELECT count(*) FROM MAIN_MENU WHERE menu_use='Y'")
+	public int selectActiveMenuCount();
+	@Select("SELECT * FROM MAIN_MENU WHERE menu_use='Y'ORDER BY MENU_ORDER") 
+	public List<MainmenuCommend> selectActiveMenu();
 	@Select("SELECT * FROM MAIN_MENU WHERE menu_dropdown=#{dd} ")
 	public List<MainmenuCommend> selectDdMenu(String dd);
-	@Select("SELECT * FROM (SELECT a.*, rownum rnum FROM (select * FROM (SELECT * FROM MAIN_MENU START WITH menu_depth=1 CONNECT BY PRIOR menu_num = menu_parent_num ORDER SIBLINGS BY menu_num asc)b)a)")
+	@Select("SELECT * FROM MAIN_MENU ORDER BY MENU_ORDER")
 	public List<MainmenuCommend> selectMenuList();
 	@Select("SELECT * FROM MAIN_MENU WHERE menu_num=#{menu_num} ")
 	public MainmenuCommend selectMenu(int menu_num);
@@ -29,7 +29,9 @@ public interface MainmenuMapper {
 	public void updateMenuOrder(MainmenuCommend mainmenuCommend);
 	@Update("UPDATE MAIN_MENU SET menu_dropdown=#{menu_dropdown} WHERE menu_num=#{menu_num}")
 	public void updateMenuDd(MainmenuCommend mainmenuCommend);
-	@Delete("DELETE FROM MAIN_MENU WEHRE menu_num=#{menu_num}")
+	@Update("UPDATE MAIN_MENU SET menu_name=#{menu_name}, menu_url=#{menu_url},menu_order=#{menu_order}, menu_depth=#{menu_depth}, menu_parent_num=#{menu_parent_num}, menu_dropdown=#{menu_dropdown}, menu_use=#{menu_use} WHERE menu_num=#{menu_num}")
+	public void updateMenu(MainmenuCommend mainmenuCommend);
+	@Delete("DELETE FROM MAIN_MENU WHERE menu_num=#{menu_num}")
 	public void deleteMenu(int menu_num);
 
 }

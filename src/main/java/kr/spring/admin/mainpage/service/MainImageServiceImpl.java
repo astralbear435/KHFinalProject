@@ -1,5 +1,7 @@
 package kr.spring.admin.mainpage.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -40,6 +42,12 @@ public class MainImageServiceImpl implements MainImageService {
 	public Integer selectImageCount() {
 		// TODO Auto-generated method stub
 		return mainImageMapper.selectImageCount();
+	}
+
+	@Override
+	public List<MainImageCommand> selectImageList() {
+		// TODO Auto-generated method stub
+		return mainImageMapper.selectImageList();
 	}
 
 }

@@ -121,15 +121,15 @@
               <!-- The user image in the navbar-->
               <img src="${pageContext.request.contextPath}/member/imageView.do?m_id=${member.m_id}" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">${member.m_name} </span> 
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
                 <img src="${pageContext.request.contextPath}/member/imageView.do?m_id=${member.m_id}" class="img-circle" alt="User Image">
                 <p>
-                  Alexander Pierce - Web Developer 
-                  <small>Member since Nov. 2012</small>
+                  ${member.m_name} 
+                  <small>Member since ${member.m_reg_date}</small>
                 </p>
               </li>
               <!-- Menu Body -->

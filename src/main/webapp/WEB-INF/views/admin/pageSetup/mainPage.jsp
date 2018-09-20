@@ -1,16 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 .fileDrop {
-	width: 600px;
-	height: 200px;
-	border: 1px dotted blue;
-}
-
-small {
-	margin-left: 3px;
-	font-weight: bold;
-	color: gray;
+	border: 1px dotted blue;;
+	height: 400px;
 }
 </style>
 <script type="text/javascript"
@@ -30,24 +24,35 @@ small {
 
 <!-- Main content -->
 <section class="content container-fluid">
+<div class="col-md-6">
 	<div class="box box-info">
 		<div class="box box-solid">
 			<div class="box-header with-border">
 				<i class="fa fa-text-width"></i>
-
-				<h3 class="box-title">파일 이미지 등록</h3>
+				<h3 class="box-title">이미지 등록</h3>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
 				<!-- 파일을 업로드할 영역 -->
 				<div class="fileDrop">
-				<!-- 업로드된 파일 목록 -->
-				<div class="uploadedList"></div>
+					<!-- 업로드된 파일 목록 -->
+					<div class="uploadedList">
+						<c:if test="${count>0 }">
+							<c:forEach var="image" items="${list}">
+								<div class='col-md-3 col-sm-4'>
+									<a href='displayFile.do?fileName=mainImage/${image.main_img_name}'>
+										<img src='displayFile.do?fileName=mainImage/${image.main_s_img_name}'> 
+									</a><br> <span data-src="${image.main_s_img_name}"><i class='fa fa-fw fa-close'></i></span>
+								</div>
+							</c:forEach>
+						</c:if>
+					</div>
 				</div>
-				
+
 			</div>
 			<!-- /.box-body -->
 		</div>
 	</div>
+</div>
 </section>
 <!-- /.content -->

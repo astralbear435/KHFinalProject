@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	
 	//X버튼 클릭시 채팅창 숨김
 	$('#button_close').on('click',function() {
 		$('#m_chat_container').hide();
@@ -9,7 +8,7 @@ $(document).ready(function() {
 	
 	//WebSocket 연결
 	function connect() {
-		wsocket = new WebSocket("ws://192.168.110.12.:8080/ProjectCAN/chat-ws.do");
+		wsocket = new WebSocket("ws://192.168.10.27:8080/ProjectCAN/chat-ws.do");
 		wsocket.onopen = function(evt) {
 			
 		};
@@ -127,5 +126,5 @@ $(document).ready(function() {
 	});
 	
 });
-	
-	
+   
+   

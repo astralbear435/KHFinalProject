@@ -14,8 +14,8 @@ selectbox#select_id {
 		메인 메뉴 <small> 메뉴 편집</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i>공지사항</a></li>
-		<li class="active">작성</li>
+		<li><a href="#"><i class="fa fa-dashboard"></i>메인메뉴</a></li>
+		<li class="active">설정</li>
 	</ol>
 </section>
 
@@ -29,9 +29,10 @@ selectbox#select_id {
 						<h3 class="box-title">메뉴 목록</h3>
 					</div>
 					<!-- /.box-header -->
-					<div id="menu_box" class="box-body">
+					<div class="box-body">
+					<div id="menu_box">
 						<select id="select_id1" name=s1 size=15
-							class="form-control" style="font-size: 20px;">
+							class="form-control select_id1" style="font-size: 20px;">
 							<option selected="selected" value=0>-메뉴 추가-</option>
 							<c:if test="${count>0}">
 								<c:forEach var="menu" items="${list}">
@@ -43,8 +44,9 @@ selectbox#select_id {
 									</c:if>
 								</c:forEach>
 							</c:if>
-						</select><br>
-
+						</select>
+					</div>
+					<br>
 						<button id="menu_up" class="btn btn-info">▲</button>
 						<button id="menu_down" class="btn btn-info">▼</button>
 						<button id="menu_delete" class="btn btn-info pull-right">삭제</button>
@@ -73,7 +75,7 @@ selectbox#select_id {
 							<span class="help-block"></span>
 						</div>
 						<div class="form-group">
-							<label for="menu_order">메뉴 순서</label> <input type="number" id="menu_order" name="menu_order" class="form-control" placeholder="0">
+							<label for="menu_order">메뉴 순서</label> <input type="number" value="${count+1}" id="menu_order" name="menu_order" class="form-control" placeholder="0">
 							<span class="help-block"></span>
 						</div>
 						<div class="form-group">
@@ -84,10 +86,10 @@ selectbox#select_id {
 						<div class="form-group">
 							<label>상위 메뉴</label> 
 							<select id="select_id2" name="parent_num" class="form-control">
-							<option selected="selected" value=null disabled="disabled">-선택-</option>
+							<option selected="selected" value="0" disabled="disabled">-선택-</option>
 							</select>
-						</div>
-						<input class="btn btn-info" type="submit" value="추가">
+						</div> 
+						<input class="btn btn-info" type="submit" value="추가"> 
 					</div>
 					</form>
 				</div>

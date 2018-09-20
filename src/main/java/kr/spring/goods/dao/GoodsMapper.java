@@ -72,10 +72,11 @@ public interface GoodsMapper {
 	
 	//상필
 	//누적 총 결제 금액
-	@Select("SELECT sum(DONA_PRICE) FROM DONATION")
+	@Select("SELECT NVL(sum(DONA_PRICE),0) FROM DONATION") 
 	public int selectTotalPayment();
 	//오늘 총 결제금액
 	@Select("SELECT NVL(sum(DONA_PRICE),0) FROM DONATION WHERE TO_DATE(DONA_DATE,'yyyy-MM-dd') = TO_DATE(sysdate,'yyyy-MM-dd')")
 	public int selectTodayPayment();
+
 }
 

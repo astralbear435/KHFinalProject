@@ -39,7 +39,7 @@ public class NoticeController {
 	private Logger log = Logger.getLogger(this.getClass());
 
 	@Resource(name="uploadPath")
-	    String uploadPath;
+	String uploadPath;
 
 	private int rowCount = 10;
 	private int pageCount = 10;
@@ -51,23 +51,23 @@ public class NoticeController {
 	@RequestMapping(value = "/admin/notice/fileUpload.do", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String,Object> imageUpload(HttpServletRequest request, HttpServletResponse response,
-			 @RequestParam MultipartFile upload) throws IOException {
+			@RequestParam MultipartFile upload) throws IOException {
 		OutputStream out = null;
 		//PrintWriter printWriter = null;
 		Map<String,Object> map=new HashMap<String,Object>();
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		
+
 		Calendar today = Calendar.getInstance();  
 		int year = today.get(Calendar.YEAR);
 		int month = today.get(Calendar.MONTH);
 		String monthStr="";
-		
-		
+
+
 		if(month<10) monthStr ="0"+month;
 		else monthStr =""+month;
-			
-		
+
+
 		String defaultPath = request.getSession().getServletContext().getRealPath("/");
 		String contextPath = request.getSession().getServletContext().getContextPath();
 		String fileUploadPathTail = "upload\\notice\\"+year+"" +monthStr+"\\";
@@ -81,49 +81,49 @@ public class NoticeController {
 		String test="";
 		try{
 			if( upload!=null) {
-	            fileName = upload.getOriginalFilename();
-	            System.out.println("fileName : " + fileName);
-	            String fileNameExt = fileName.substring(fileName.indexOf(".")+1);
-	            System.out.println("fileNameExt : " + fileNameExt);
-	            
-	            if(!"".equals(fileName)) {
-	            	File destD = new File(fileUploadPath);
-	            	
-	            	if(!destD.exists()) {
-	            		destD.mkdirs();
-	            	}
-	            	File destination = File.createTempFile("ckeditor_","."+fileNameExt,destD);
-	            	upload.transferTo(destination);
-	            	fileUrl=contextPath+"/upload/notice/"+year+"" +monthStr+"/"+destination.getName();
-	            	System.out.println("fileUrl : " + fileUrl );
-	            	System.out.println("destination : " + destination.getName());
-	            	String tmp = destination.getName();
-	            	test = tmp.substring(9, tmp.length()-4);
-	            	System.out.println("test : " + test);
-	            	//printWriter = response.getWriter();
+				fileName = upload.getOriginalFilename();
+				System.out.println("fileName : " + fileName);
+				String fileNameExt = fileName.substring(fileName.indexOf(".")+1);
+				System.out.println("fileNameExt : " + fileNameExt);
 
-	                //printWriter.println("{\"filename\" : \""+fileName+"\", \"uploaded\" : 1, \"url\":\""+fileUrl+"\"}");
-	                //printWriter.flush();
-	            }
+				if(!"".equals(fileName)) {
+					File destD = new File(fileUploadPath);
+
+					if(!destD.exists()) {
+						destD.mkdirs();
+					}
+					File destination = File.createTempFile("ckeditor_","."+fileNameExt,destD);
+					upload.transferTo(destination);
+					fileUrl=contextPath+"/upload/notice/"+year+"" +monthStr+"/"+destination.getName();
+					System.out.println("fileUrl : " + fileUrl );
+					System.out.println("destination : " + destination.getName());
+					String tmp = destination.getName();
+					test = tmp.substring(9, tmp.length()-4);
+					System.out.println("test : " + test);
+					//printWriter = response.getWriter();
+
+					//printWriter.println("{\"filename\" : \""+fileName+"\", \"uploaded\" : 1, \"url\":\""+fileUrl+"\"}");
+					//printWriter.flush();
+				}
 			}
-       }catch(IOException e){
-           e.printStackTrace();
-       } finally {
-           try {
-               if (out != null) {
-                   out.close();
-               }
-/*               if (printWriter != null) {
+		}catch(IOException e){
+			e.printStackTrace();
+		} finally {
+			try {
+				if (out != null) {
+					out.close();
+				}
+				/*               if (printWriter != null) {
                    printWriter.close();
                }*/
-           } catch (IOException e) {
-               e.printStackTrace();
-           }
-       }
-	   map.put("filename",fileName);
-	   map.put("uploaded", 1);
-	   map.put("url", fileUrl);
-       return map;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		map.put("filename",fileName);
+		map.put("uploaded", 1);
+		map.put("url", fileUrl);
+		return map;
 	}
 	//==============게시판 글 등록=============//
 	//등록 폼
@@ -151,8 +151,6 @@ public class NoticeController {
 			return "noticeWrite";
 
 		}
-		//ip 셋팅
-		//boardCommand.setIp(request.getRemoteAddr());
 		notice.insertNotice(noticeCommend);
 		return "redirect:/admin/notice/noticeList.do";
 	}
@@ -231,5 +229,48 @@ public class NoticeController {
 			
 			return new ModelAndView("detail", "noticeCommend", noticeCommend);
 		}
+
+	//============================ 게시글 글 수정 ============================
+	//수정 폼
+	@RequestMapping(value="/admin/notice/noticeModify.do",method=RequestMethod.GET)
+	public String modifyForm(@RequestParam("n_idx") int n_idx, Model model) {
+
+		NoticeCommend noticeCommend = notice.selectNotice(n_idx);
+
+		model.addAttribute("command",noticeCommend); 
+
+
+		return "noticeModify";
+	}
+	//수정폼에서 전송된 데이터 처리
+	@RequestMapping(value="/admin/notice/noticeModify.do", method=RequestMethod.POST)
+	public String modifySubmit(@ModelAttribute("command") @Valid NoticeCommend noticeCommend, BindingResult result,HttpSession session,HttpServletRequest request) {
+		if(log.isDebugEnabled()) {
+			log.debug("<<noticeCommend>> : " + noticeCommend);
+		}
+
+		if(result.hasErrors()) {
+			return "noticeModify";
+		}
+
+		//글 수정
+		notice.updateNotice(noticeCommend);
+		return "redirect:/admin/notice/noticeList.do";
+	}
+	//============================ 게시글 글 상세 ============================
+		@RequestMapping("/admin/notice/noticeDetail.do")
+		public ModelAndView noticeDetail(@RequestParam("n_idx") int n_idx) {
+
+			if(log.isDebugEnabled()) {
+				log.debug("<<n_idx>> : "+n_idx);
+			}
+
+			//해당 글의 조회수 증가
+			notice.updateHits(n_idx);;
+			NoticeCommend noticeCommend = notice.selectNotice(n_idx);
+			
+			return new ModelAndView("admin/notice/noticeDetail","notice",noticeCommend);
+		}
+
 
 }
