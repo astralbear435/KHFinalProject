@@ -40,9 +40,7 @@
 	}
 </script>
 <body>
-<div style="container"><img src="${pageContext.request.contextPath}/upload/goods/message.jpg" alt="" style="width:100%"></div>
 	<div style="width:540px; height:600px;">
-	
 		<div style="margin:20px;">
 			<div id="note_num" style="display: none;">${note.note_num}</div>
 			<form action="reply.do" method="post" id="noteReplyForm">
