@@ -58,7 +58,7 @@
 				<input type="file" name="r_upload" id="r_upload">	
 
 		<div style="text-align:center;">
-			<input type="submit" value="전송" class="btn btn-primary btn-lg" > 
+			<input type="submit" value="전송" class="btn btn-warning btn-lg" > 
 			<input type="button" value="목록" class="btn btn-primary btn-lg" onclick="location.href='recruitList.do'">
 		</div>
 	</form:form>

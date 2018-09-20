@@ -34,7 +34,7 @@
 
 		
 		<div class="align-center">
-			<input type="button" class="btn btn-primary btn-lg" id="v_btn"  value="전송"> 
+			<input type="button" class="btn btn-warning btn-lg" id="v_btn"  value="전송"> 
 			<input type="button" class="btn btn-primary btn-lg" id="del_btn" value="목록" onclick="${pageContext.request.contextPath}/mypage/mypage.do'">
 		</div>
 	</form:form>

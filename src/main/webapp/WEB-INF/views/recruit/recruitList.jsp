@@ -32,7 +32,7 @@ ul{
 <c:if test="${user_auth == 4}">
 <div style="text-align: right;">
 	<input type="button" value="봉사활동 모집 글 쓰기"
-		class="btn btn-primary btn-lg"
+		class="btn btn-warning btn-lg"
 		onclick="location.href='${pageContext.request.contextPath}/recruit/recruitWrite.do'">
 </div>
 </c:if>
@@ -45,7 +45,7 @@ ul{
 					<option value="r_content">내용</option>
 			</select></span>
 			<span><input type="text" name="keyword" id="keyword"></span>
-			<span><input type="submit" class="btn btn-primary btn-lg" value="검색"></span>
+			<span><input type="submit" class="btn btn-warning btn-lg" value="검색"></span>
 		</div>
 	</form>
 
@@ -115,7 +115,7 @@ function showPopup(r_num){
 					</c:if>
 					
 					<c:if test="${!empty user_id && user_id == recruit.r_id}">		
-						<input type="button" value="수정" class="btn btn-success"
+						<input type="button" value="수정" class="btn btn-warning"
 							onclick="location.href='${pageContext.request.contextPath}/recruit/recruitUpdate.do?r_num=${recruit.r_num}'">
 				
 						<input type="button" value="삭제" class="btn btn-danger"

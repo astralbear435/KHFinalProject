@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.admin.notice.domin.NoticeCommend;
-
+ 
 public interface NoticeMapper {
 	@Select("SELECT * FROM admin_notice order by n_idx desc")
 	public List<NoticeCommend> selectNoticeList();

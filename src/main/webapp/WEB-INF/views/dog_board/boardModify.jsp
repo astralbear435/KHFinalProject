@@ -118,9 +118,9 @@ ul{
 			
 		</ul>
 		<div align="center">
-			<input type="submit" value="전송" class="btn btn-outline-info">
+			<input type="submit" value="전송" class="btn btn-warning">
 			<input type="button" value="목록"
-			      onclick="location.href='list.do'" class="btn btn-outline-info">
+			      onclick="location.href='list.do'" class="btn btn-primary">
 		</div>
 	</form:form>
 </div>

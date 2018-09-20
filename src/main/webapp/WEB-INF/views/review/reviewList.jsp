@@ -21,13 +21,13 @@
 				<input type="text" name="keyword" id="keyword">
 			</li>
 			<li style="display:inline-block;">
-				<input type="submit" value="search">
+				<input type="submit" class="btn btn-warning"value="search">
 			</li>
 		</ul>
 	</form>
 <c:if test="${user_id!=null}">
 <div style="float:right;">
-<button class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/review/reviewWrite.do'">후기쓰기</button>
+<button class="btn btn-warning" onclick="location.href='${pageContext.request.contextPath}/review/reviewWrite.do'">후기쓰기</button>
 </div>
 </c:if>
 

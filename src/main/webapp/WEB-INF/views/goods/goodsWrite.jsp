@@ -63,8 +63,8 @@
 			</li>			
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="등록">
-			<input type="button" value="홈으로"
+			<input type="submit" class="btn btn-warning" value="등록">
+			<input type="button" class="btn btn-primary" value="홈으로"
 			      onclick="location.href='${pageContext.request.contextPath}/main/main.do'">	    
 		</div>
 	</form:form>

@@ -181,8 +181,8 @@ body {
 	
 		<h2 class="hdg"><span id="sname">${shelter.s_name}</span> MYPAGE</h2>
 <div style="text-align:right;">
-<input type="button" class="btn btn-outline-primary" onclick="location.href='${pageContext.request.contextPath}/shelter/shelterDetail.do?id=${user_id}'" value="${shelter.s_name} 페이지 바로 가기">
-	<input type="button" class="btn btn-outline-primary" onclick="location.href='${pageContext.request.contextPath}/member/detail.do?${user_id}'" value="${user_id}님 로그인">
+<input type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/shelter/shelterDetail.do?id=${user_id}'" value="${shelter.s_name} 페이지 바로 가기">
+	<input type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/member/detail.do?${user_id}'" value="${user_id}님 로그인">
 </div>
 	<hr class="my-4">
 	

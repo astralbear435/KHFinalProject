@@ -273,7 +273,7 @@ function nanoCount(){
 	<button class="test btn">SELECT</button>
 	</div>
 <!-- 전체 결제 버튼  -->
-&nbsp;<button style="float:right;" class="btn btn-danger test">PAYMENT</button>
+&nbsp;<button style="float:right;" class="btn btn-warning test">PAYMENT</button>
 	<div style="float:right;"id="allTotal">
 		<span><b style="color:red">TOTAL : <fmt:formatNumber value="${sum}" pattern="#,###"/> won &nbsp;</b></span>
 	</div>
@@ -281,8 +281,8 @@ function nanoCount(){
 </c:if>
 <br><br><br><br>
 <div style="text-align:center">
-<button class="btn" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">HOME</button>
-<button class="btn" onclick="nanoCount();">분할카운팅</button>
+<button class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">HOME</button>
+<button class="btn btn-warning" onclick="nanoCount();">분할카운팅</button>
 </div>
 <br><br><br>
 </div>

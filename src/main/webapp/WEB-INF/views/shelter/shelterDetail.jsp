@@ -129,7 +129,7 @@
 								여러분의 도움을<br>
 								필요로 하고 있습니다.<br>
 							</div><br>
-							<input type="button" value="보러가기 >" class="btn btn-danger"
+							<input type="button" value="보러가기 >" class="btn btn-primary"
 									onclick="location.href='${pageContext.request.contextPath}/dog_board/list.do?keyfield=id&keyword=${shelter.s_id}'">
 
 						</div>
@@ -144,7 +144,7 @@
 								필요한 물품을 <br>
 								후원하실 수 있습니다.<br>
 							</div><br>
-							<input type="button" value="후원하기 >" class="btn btn-info"
+							<input type="button" value="후원하기 >" class="btn btn-warning"
 										onclick="location.href='${pageContext.request.contextPath}/goods/list.do?keyfield=id&keyword=${shelter.s_id}'">
 						</div>
 					</div>
@@ -167,7 +167,7 @@
 						여러분의 도움을<br>
 						필요로 하고 있습니다.<br>
 					</div><br>
-					<input type="button" value="보러가기 >" class="btn btn-danger"
+					<input type="button" value="보러가기 >" class="btn btn-warning"
 							onclick="location.href='location.href='${pageContext.request.contextPath}/dog_board/list.do?keyfield=id&keyword=${shelter.s_id}'">
 							onclick="location.href='${pageContext.request.contextPath}/dog_board/list.do?keyfield=id&keyword=${shelter.s_id}'">
 				</div>
@@ -182,7 +182,7 @@
 						필요한 물품을 <br>
 						후원하실 수 있습니다.<br>
 					</div><br>
-					<input type="button" value="후원하기 >" class="btn btn-info"
+					<input type="button" value="후원하기 >" class="btn btn-primary"
 							onclick="location.href='${pageContext.request.contextPath}/goods/list.do?keyfield=id&keyword=${shelter.s_id}'">
 				</div>
 			</div>

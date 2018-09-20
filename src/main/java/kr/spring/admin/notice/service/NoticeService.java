@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.spring.admin.notice.domin.NoticeCommend;
-
+ 
 public interface NoticeService {
 	public List<NoticeCommend> selectNoticeList();
 	

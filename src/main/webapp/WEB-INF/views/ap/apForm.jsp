@@ -116,7 +116,7 @@
 		<div class="custom-control custom-checkbox">
 			<input type="checkbox" class="custom-control-input" id="okCheck" name="agree" value="true">
 				<label class="custom-control-label" for="okCheck">이용 약관에 동의 합니다.</label>
-				<button type="button" class="btn btn-secondary" style="float:right;" onclick="javascript:agree();">다음</button>
+				<button type="button" class="btn btn-primary" style="float:right;" onclick="javascript:agree();">다음</button>
 		</div>
 		
 	</div>

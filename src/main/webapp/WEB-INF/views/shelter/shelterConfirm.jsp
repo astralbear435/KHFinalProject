@@ -42,7 +42,7 @@ $(document).ready(function(){
 						</div>
 						<div class="horizontal"></div><!-- 가로 여백 -->
 						<div class="w500 clearB" style="text-align:center; margin: 0;">
-							<input type="button" id="confirmBtn" class="btn btn-primary" value="확인">
+							<input type="button" id="confirmBtn" class="btn btn-warning" value="확인">
 							<input type="button"  class="btn btn-primary" value="취소"
 							      onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 						</div>

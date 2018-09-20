@@ -68,7 +68,7 @@ $(document).ready(function() {
 			</li>						
 		</ul><br><br>
 		<div style="text-align:center;">
-			<input type="button" value="취소" class="btn" onclick="history.go(-1)">
+			<input type="button" value="취소" class="btn btn-primary" onclick="history.go(-1)">
 			<input class="btn btn-warning" type="submit" value="작성">
 		</div>
 	</form:form>

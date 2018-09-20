@@ -231,8 +231,8 @@ body {
 
 	<h2 class="hdg">${command.m_id}'s  MYPAGE</h2>
 	<div style="text-align:right;">
-	<input style="type="button" class="btn btn-outline-primary" onclick="location.href='${pageContext.request.contextPath}/note/receivedList.do'" value="받은 쪽지함">
-	<input style="type="button" class="btn btn-outline-primary" onclick="location.href='${pageContext.request.contextPath}/member/detail.do?${user_id}'" value="${user_id}님 로그인">
+	<input type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/note/receivedList.do'" value="받은 쪽지함">
+	<input type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/member/detail.do?${user_id}'" value="${user_id}님 로그인">
 	</div>
 	<hr class="my-4">
 	
@@ -308,7 +308,7 @@ body {
 					<tr class="table-info">
 					<td>${callHome.call_start}~${callHome.call_end}</td>
 					<td>신청 중</td>
-					<td><button type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/ap/apCalldetail.do?call_num=${callHome.call_num}'" >GO</button></td>		
+					<td><button type="button" class="btn btn-warning" onclick="location.href='${pageContext.request.contextPath}/ap/apCalldetail.do?call_num=${callHome.call_num}'" >GO</button></td>		
 					</tr>
 			</c:forEach>
 		<%-- 	 <c:forEach var="complete" items="${callList2}">

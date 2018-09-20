@@ -69,7 +69,7 @@
 				</c:if>
 				
 		<div style="text-align:center;">
-			<input type="submit" class="btn btn-primary btn-lg"  value="전송"> 
+			<input type="submit" class="btn btn-warning btn-lg"  value="전송"> 
 			<input type="button" class="btn btn-primary btn-lg" 
 				value="목록" onclick="location.href='recruitList.do'">
 		</div>

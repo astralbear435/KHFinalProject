@@ -38,8 +38,8 @@ $('#delete').click(function(){
 
 <c:if test="${user_id.equals(review.re_id)}">
 <div  style="float:right;">
-<button class="btn" id="delete">삭제하기</button>
-<button class="btn btn-danger">수정하기</button>
+<button class="btn btn-dange" id="delete">삭제하기</button>
+<button class="btn btn-warning">수정하기</button>
 </div></c:if>
 <div style="float:left;color:gray">작성자: ${review.re_id} / 작성일 : ${review.re_date} </div>
 <br><br>

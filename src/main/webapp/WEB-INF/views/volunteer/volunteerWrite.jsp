@@ -190,7 +190,7 @@ function ajax() {
 					</td>
 				</tr>
 			</table>
-			<input type="submit" value="신청하기" id="date_submit" class="btn btn-info">	
+			<input type="submit" value="신청하기" id="date_submit" class="btn btn-warning">	
 		</form>
 				
 			</div>

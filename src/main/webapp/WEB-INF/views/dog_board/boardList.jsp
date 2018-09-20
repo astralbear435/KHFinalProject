@@ -45,10 +45,10 @@ img.abc{
 				<input type="text" name="keyword" id="keyword">
 			</li>
 			<li style="display:inline-block;">
-				<input type="submit" value="search" class="btn btn-outline-info">
+				<input type="submit" value="search" class="btn btn-warning">
 			</li>
 			<li style="display:inline-block;">
-				<input type="button" value="reset" class="btn btn-outline-info" onclick="location.href='list.do'">
+				<input type="button" value="reset" class="btn btn-primary" onclick="location.href='list.do'">
 			</li>
 		</ul>
 	</form>
@@ -56,7 +56,7 @@ img.abc{
 	<c:if test="${count == 0}"><!--  게시물이 없을때 -->
 	<div align=center>등록된 게시물이 없습니다.</div>
 	<c:if test="${!empty user_id && user_auth==4}"> 
-			<input type="button" value="글쓰기"  class="btn btn-info"
+			<input type="button" value="글쓰기"  class="btn btn-warning"
 		       onclick="location.href='write.do'">
 	</c:if>
 	</c:if>
@@ -71,7 +71,7 @@ img.abc{
 	</c:forEach>
 	<div align="right">
 		<c:if test="${!empty user_id && user_auth==4}"> 
-			<input type="button" value="글쓰기"  class="btn btn-info"
+			<input type="button" value="글쓰기"  class="btn btn-warning"
 		       onclick="location.href='write.do'">
 		</c:if>
 	</div>

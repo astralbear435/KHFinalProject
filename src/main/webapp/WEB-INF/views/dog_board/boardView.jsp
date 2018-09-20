@@ -116,12 +116,12 @@ img.show{
 	<hr size="1" width="100%">
 	<div align="right">
 		<c:if test="${!empty user_id && user_id == board.id}">
-		<input type="button" value="수정" class="btn btn-info"
+		<input type="button" value="수정" class="btn btn-warning"
 		  onclick="location.href='update.do?num=${board.num}'">	
-		<input type="button" value="삭제" class="btn btn-info"
+		<input type="button" value="삭제" class="btn btn-danger"
 		  onclick="delUrl()">	  
 		</c:if>
-		<input type="button" value="목록" class="btn btn-info"
+		<input type="button" value="목록" class="btn btn-primary"
 		         onclick="location.href='list.do'">	  
 	</div>
 		<div id="reply_div">
@@ -148,7 +148,7 @@ img.show{
 				<span class="letter-count">300/300</span>
 			</div>
 			<div id="re_second" class="align-right">
-				<input type="submit" value="전송" class="btn btn-outline-info">
+				<input type="submit" value="전송" class="btn btn-warning">
 			</div>
 			<br>
 			</c:if>

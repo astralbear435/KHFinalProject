@@ -25,8 +25,8 @@
 		</div><hr>
 		
 		<div align="center">
-			<input type="button" id="find_Id" value="아이디 찾기" class="btn btn-primary">&nbsp;&nbsp;&nbsp;
-			<input type="submit" id="find_passwd" value="비밀번호 찾기" class="btn btn-primary">
+			<input type="button" id="find_Id" value="아이디 찾기" class="btn btn-warning">&nbsp;&nbsp;&nbsp;
+			<input type="submit" id="find_passwd" value="비밀번호 찾기" class="btn btn-warning">
 		</div><br>
 	</form>
 </div>

@@ -1,7 +1,7 @@
 package kr.spring.admin.notice.domin;
 
 import org.springframework.web.multipart.MultipartFile;
-
+ 
 public class CkeditorCommand {
 	private String n_attach_path;
 	private MultipartFile n_upload;

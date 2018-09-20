@@ -49,15 +49,15 @@
 			<div class="m_text">
 				이메일 : ${member.m_email} &nbsp;
 				<c:if test="${member.auth != 2 }">
-					<input type="button" class="btn btn-outline-warning" value="인증메일 재전송" onclick="location.href='${pageContext.request.contextPath}/member/resend_e.do'">
+					<input type="button" class="btn btn-warning" value="인증메일 재전송" onclick="location.href='${pageContext.request.contextPath}/member/resend_e.do'">
 				</c:if>
 			</div><hr>
 			<div class="m_text">생년월일 : ${fn:substring(member.m_birth,0,4)}년 ${fn:substring(member.m_birth,4,6)}월 ${fn:substring(member.m_birth,6,8)}일</div><hr>
 			<div class="m_text">가입날짜 : ${member.m_reg_date}</div><hr>
 		</div>
 		<div align="center">
-			<input type="button" value="수정" class="btn btn-primary" onclick="location.href='memberUpdate.do'">&nbsp;&nbsp;&nbsp;
-			<input type="button" value="탈퇴" class="btn btn-primary" onclick="location.href='memberDelete.do'">
+			<input type="button" value="수정" class="btn btn-warning" onclick="location.href='memberUpdate.do'">&nbsp;&nbsp;&nbsp;
+			<input type="button" value="탈퇴" class="btn btn-danger" onclick="location.href='memberDelete.do'">
 		</div><br>
 	</div>
 </div>

@@ -174,8 +174,8 @@
 		
 	<div style="clear:both;">
 <div id="before2" >
-	<input type="button" value="봉사활동 일정  변경" style="float:left;" class="btn btn-info" id="modify-btn">
+	<input type="button" value="봉사활동 일정  변경" style="float:left;" class="btn btn-warning" id="modify-btn">
 </div>
-	<input type="button" value="봉사활동 일정 취소" style="float:left;" class="btn btn-info" id="delete" >				
+	<input type="button" value="봉사활동 일정 취소" style="float:left;" class="btn btn-danger" id="delete" >				
 </div>
 </div>	

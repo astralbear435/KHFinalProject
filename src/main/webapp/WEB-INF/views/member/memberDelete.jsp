@@ -23,7 +23,7 @@
 			<span style="color:red;"><form:errors path="m_passwd" cssClass="error-color"/></span>
 			<br><hr>		
 			<div align="center">
-				<input type="submit" value="탈퇴하기" class="btn btn-primary">&nbsp;&nbsp;&nbsp;
+				<input type="submit" value="탈퇴하기" class="btn btn-danger">&nbsp;&nbsp;&nbsp;
 				<input type="button" value="뒤로" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/member/memberDetail.do'">
 			</div><br>
 		</form:form>

@@ -52,7 +52,7 @@
 	</div>
 	
 	<div class="floatL">&nbsp;&nbsp;</div>
-	<input type="button" class="btn btn-secondary" style="float:right; margin:20px 0 20px 0;" 
+	<input type="button" class="btn btn-primary" style="float:right; margin:20px 0 20px 0;" 
 			value="임시보호자 메인으로" onclick="location.href='apMain.do'">
 	<c:if test="${!empty user_id && user_auth==5}">
 		<input type="button" class="btn btn-warning" style="float:right; margin:20px 10px 20px 0;" 

@@ -31,7 +31,7 @@
 			<input type="button" class="btn btn-warning" value="수정" onclick="location.href='apModify.do?ap_num=${apcommand.ap_num}'">
 			<input type="button" class="btn btn-danger" value="삭제" id="apdelete" data-num="${apcommand.ap_num}">
 		</c:if>
-		<input type="button" class="btn btn-secondary" value="목록" onclick="location.href='apList.do'"><br><br>
+		<input type="button" class="btn btn-primary" value="목록" onclick="location.href='apList.do'"><br><br>
 	</div>
 	<div class="border-styles col-md-5"style="float:left; margin:100px 0 50px 0;">
 		<div style="margin:10px 0 10px 0;">
