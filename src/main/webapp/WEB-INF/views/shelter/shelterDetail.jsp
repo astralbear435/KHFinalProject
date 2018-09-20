@@ -136,11 +136,10 @@ th, td {
 								여러분의 도움을<br>
 								필요로 하고 있습니다.<br>
 							</div><br>
-							<input type="button" value="보러가기 >" class="btn btn-danger"
 <<<<<<< HEAD
 									onclick="location.href='#'">
 =======
-									onclick="location.href='${pageContext.request.contextPath}/dog_board/list.do?keyfield=id&keyword=${shelter.s_id}'">
+							<button class="btn btn-danger" onclick="location.href='${pageContext.request.contextPath}/dog_board/list.do?keyfield=id&keyword=${shelter.s_id}'">보러가기</button>
 
 >>>>>>> e1628094b0c6202790c9402b427d717daafd7612
 						</div>
